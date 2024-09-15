@@ -1,4 +1,4 @@
-# **GAME TITLE** by Snake Physics
+# **Shards of Kalia** by Snake Physics
 ## Course number: 601.01
 ## Semester year: Fall 2024
 
