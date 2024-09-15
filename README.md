@@ -1,6 +1,6 @@
 # **GAME TITLE** by Snake Physics
-## Course number: title
-## Semester year
+## Course number: 601.01
+## Semester year: Fall 2024
 
 _This README contains basic information about the project and its artifacts. If kept up to date, it will act as a primary dashboard for the project._
 
