@@ -15,5 +15,5 @@ _This README contains basic information about the project and its artifacts. If 
 - [build/](build/) - Where to build to for GH pages to deploy it.
 
 ## Other Resources
-- [Task management Board](TBD)
-- [Google Project Doc](TBD)
+- [Task management Board](https://trello.com/b/eWLH0xh2/601-game)
+- [Google Project Doc](https://docs.google.com/document/d/1LvMUvG3YfJyA5cH02R-h1fpshntQBEq_ijmW-yeBYVk/edit)
