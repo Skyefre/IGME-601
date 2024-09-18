@@ -187,21 +187,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be4c5071fc6a4d045920f9804d49b96c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  runSpeed: 3
-  jumpForce: 10
+  runSpeed: 4
+  jumpForce: 15
   gravity: 1
-  health: 100
+  health: 4
   hspd: 0
   vspd: 0
-  maxHspd: 6
-  maxVspd: 4
+  maxHspd: 10
+  maxVspd: 10
   state: 0
   animator: {fileID: 237148384208766883}
   facingRight: 1
   inputHandler: {fileID: 1195620023101770444}
   groundLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 8
   rayLength: 1
   rayOffset: {x: 0.1, y: 0}
 --- !u!95 &237148384208766883
