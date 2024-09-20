@@ -11,7 +11,15 @@ public class Player : MonoBehaviour
         Jumpsquat,
         Jump,
         Landing,
+        Hitstun,
     }
+
+    //Animation fields
+    public AnimatorStateInfo animStateInfo;
+    public AnimatorClipInfo[] currentClipInfo;
+    int currentFrame;
+    int frameCount;
+
     public int runSpeed = 3;
     public int jumpForce = 10;
     public int gravity = 1;
@@ -28,7 +36,8 @@ public class Player : MonoBehaviour
     public InputHandler inputHandler;
     public LayerMask groundLayer; // Layer mask to specify what is considered ground
     public float rayLength = 0.1f; // Length of the ray
-    public Vector2 rayOffset = new Vector2(0.1f, 0f); // Offset for the rays
+    public Vector2 rayOffset = new Vector2(8f, 8f); // Offset for the rays
+    public RaycastHit2D grounded;
 
     private BoxCollider2D boxCollider;// Reference to the BoxCollider2D component
     private Dictionary<InputHandler.Inputs, InputHandler.InputState> inputs;
@@ -54,16 +63,30 @@ public class Player : MonoBehaviour
         //update this frames inputs
         inputs = inputHandler.keyBindings;
 
+        //update animator info things to get current frame and frame count
+        //dt = Time.deltaTime;
+        animStateInfo = animator.GetCurrentAnimatorStateInfo(0);
+        currentClipInfo = animator.GetCurrentAnimatorClipInfo(0);
+        frameCount = (int)(currentClipInfo[0].clip.length * currentClipInfo[0].clip.frameRate);
+        currentFrame = (Mathf.RoundToInt(animStateInfo.normalizedTime * frameCount)) % frameCount;
+        //Debug.Log(currentFrame);
+
+
         switch (state)
         {
             case PlayerState.Idle:
                 //check for collision
-                if (IsGrounded() == null)
-                {
-                    //if not grounded
-                    SetState(PlayerState.Jump);
-                    break;
-                }
+                //grounded = IsGrounded();
+                //if (grounded.collider == null)
+                //{
+                //    //if not grounded
+                //    SetState(PlayerState.Jump);
+                //    break;
+                //}
+                //else
+                //{
+                //    SnapToSurface(grounded);
+                //}
 
                 //check for input
                 if (inputs[InputHandler.Inputs.Left] == InputHandler.InputState.Pressed)
@@ -91,13 +114,18 @@ public class Player : MonoBehaviour
 
                 break;
             case PlayerState.Run:
-                //check for ground under player
-                if (IsGrounded() == null)
-                {
-                    //if not grounded
-                    SetState(PlayerState.Jump);
-                    break;
-                }
+                //check for collision
+                //grounded = IsGrounded();
+                //if (grounded.collider == null)
+                //{
+                //    //if not grounded
+                //    SetState(PlayerState.Jump);
+                //    break;
+                //}
+                //else
+                //{
+                //    SnapToSurface(grounded);
+                //}
                 //run logic
                 if (facingRight)
                 {
@@ -130,7 +158,19 @@ public class Player : MonoBehaviour
                 }
                 break;
             case PlayerState.Jumpsquat:
-                SetState(PlayerState.Jump);
+                int tempHspd = hspd;
+                hspd = 0;
+                if (currentFrame == frameCount - 1 && grounded.collider != null)
+                {
+                    hspd = tempHspd;
+                    vspd = jumpForce;
+                }
+                if (animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1)
+                {
+                    
+                    SetState(PlayerState.Jump);
+                }
+                
                 break;
             case PlayerState.Jump:
                 vspd -= gravity;
@@ -140,22 +180,41 @@ public class Player : MonoBehaviour
                 }
 
                 //check for ceiling
-                Collider2D collidedCeiling = IsTouchingCeiling();
+                Collider2D collidedCeiling = IsTouchingCeiling().collider;
                 if (collidedCeiling != null)
                 {
                     vspd = 0;
-                    gameObject.transform.position = new Vector3(gameObject.transform.position.x, collidedCeiling.bounds.min.y - (boxCollider.size.y * gameObject.transform.localScale.y / 2) - 1, 0);
+                    gameObject.transform.position = new Vector3(gameObject.transform.position.x, collidedCeiling.bounds.min.y - (boxCollider.size.y * gameObject.transform.localScale.y) - 1, 0);
                 }
-                Collider2D collidedGround = IsGrounded();
+                #region ground collision check
+                //cast ray to check for ground and get variables for return values
+                RaycastHit2D groundHitRayHit = IsGrounded();
+                Vector2? collideGroundPoint = groundHitRayHit.collider != null ? (Vector2?)groundHitRayHit.point : null;
+                Collider2D collidedGround = groundHitRayHit.collider;
+
+                //check for ground differing based on if colider is on slope or flat ground
                 if (collidedGround != null)
                 {
+                    //if (collidedGround.gameObject.tag == "slope")
+                    //{
+                    //    //if slope
+                    //    vspd = 0;
+                    //    gameObject.transform.position = new Vector3(gameObject.transform.position.x, collideGroundPoint.Value.y, 0);
+                    //}
+                    //else
+                    //{
+                    //    //if flat ground
+                    //    vspd = 0;
+                    //    gameObject.transform.position = new Vector3(gameObject.transform.position.x, collidedGround.bounds.max.y, 0);
+                    //}
+                    SnapToSurface(groundHitRayHit);
                     vspd = 0;
-                    gameObject.transform.position = new Vector3(gameObject.transform.position.x, collidedGround.bounds.max.y + (boxCollider.size.y * gameObject.transform.localScale.y / 2), 0);
                     SetState(PlayerState.Landing);
-
+                    break;
                 }
-                //allow for horizontal movement
+                #endregion
 
+                //allow for horizontal movement
                 if (inputs[InputHandler.Inputs.Right] == InputHandler.InputState.Pressed)
                 {
                     facingRight = true;
@@ -175,39 +234,70 @@ public class Player : MonoBehaviour
             case PlayerState.Landing:
                 vspd = 0;
                 hspd = 0;
-                SetState(PlayerState.Idle);
+                if (animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1)
+                {
+                    SetState(PlayerState.Idle);
+                }
+                
                 break;
         }
 
-        //check horizontal collision
-        Collider2D collidedWall = IsTouchingWall();
-        if (collidedWall != null)
+        grounded = IsGrounded();
+        if (grounded.collider == null)
         {
-            hspd = 0;
+            //if not grounded
+            SetState(PlayerState.Jump);
+        }
+        else
+        {
+            SnapToSurface(grounded);
+        }
+        //check horizontal collision
+        RaycastHit2D hitWallRay = IsTouchingWall();
+        if (hitWallRay.collider != null && hitWallRay.collider.gameObject.tag != "slope")
+        {
+            if(hitWallRay.point.x < gameObject.transform.position.x)
+            {
+                if (hspd < 0)
+                {
+                    hspd = 0;
+                }
+            }
+            else
+            {
+                if (hspd > 0)
+                {
+                    hspd = 0;
+                }
+            }
         }
 
         gameObject.transform.position += new Vector3(hspd, vspd, 0);
+        gameObject.GetComponent<SpriteRenderer>().flipX = facingRight ? false : true;
     }
 
     private void SetState(PlayerState targetState)
     {
+        animator.enabled = true;
+        animator.SetInteger("player_state", (int)targetState);
         prevState = state;
         state = targetState;
         //----------------------------any State specific enter and exit logic----------------------
-        if (prevState == PlayerState.Jumpsquat && state == PlayerState.Jump)
-        {
-            //apply jumpforce
-            vspd = jumpForce;
-        }
+        //if (prevState == PlayerState.Jumpsquat && state == PlayerState.Jump)
+        //{
+        //    //apply jumpforce
+        //    vspd = jumpForce;
+        //}
 
     }
 
     #region Collision Detection
-    private Collider2D IsGrounded()
+
+    private RaycastHit2D IsGrounded()
     {
         // Get the bounds of the BoxCollider2D
         Bounds bounds = boxCollider.bounds;
-        rayLength = -(vspd - 1);
+        rayLength = -(vspd - 10);
 
         // Calculate the positions for the left and right rays
         Vector2 leftRayOrigin = new Vector2(bounds.min.x + rayOffset.x, bounds.min.y);
@@ -216,60 +306,79 @@ public class Player : MonoBehaviour
         // Cast rays downwards
         RaycastHit2D leftHit = Physics2D.Raycast(leftRayOrigin, Vector2.down, rayLength, groundLayer);
         RaycastHit2D rightHit = Physics2D.Raycast(rightRayOrigin, Vector2.down, rayLength, groundLayer);
+        RaycastHit2D nullHit = new RaycastHit2D();
 
         // Draw the rays in the editor for debugging
         Debug.DrawRay(leftRayOrigin, Vector2.down * rayLength, Color.red);
         Debug.DrawRay(rightRayOrigin, Vector2.down * rayLength, Color.red);
 
-
-
-        // Return true if either ray hits the ground
+        // Return the point of collision if either ray hits the ground
+        if(leftHit.collider != null && rightHit.collider != null)
+        {
+            
+            return leftHit.point.y > rightHit.point.y? leftHit: leftHit;
+        }
         if (leftHit.collider != null)
         {
-            return leftHit.collider;
+            return leftHit;
         }
         else if (rightHit.collider != null)
         {
-            return rightHit.collider;
+            return rightHit;
         }
-        return null;
+        return nullHit;
     }
 
 
-    private Collider2D IsTouchingWall()
+
+    private RaycastHit2D IsTouchingWall()
     {
         // Get the bounds of the BoxCollider2D
         Bounds bounds = boxCollider.bounds;
         rayLength = hspd;
 
-        // Calculate the positions for the rays on the left and right sides
-        Vector2 leftRayOrigin = new Vector2(bounds.min.x, bounds.center.y);
-        Vector2 rightRayOrigin = new Vector2(bounds.max.x, bounds.center.y);
+        // Calculate the positions for the top and bottom rays on the left and right sides
+        Vector2 topLeftRayOrigin = new Vector2(bounds.min.x + 2, bounds.max.y - rayOffset.y);
+        Vector2 bottomLeftRayOrigin = new Vector2(bounds.min.x + 2, bounds.min.y + rayOffset.y);
+        Vector2 topRightRayOrigin = new Vector2(bounds.max.x - 2, bounds.max.y - rayOffset.y);
+        Vector2 bottomRightRayOrigin = new Vector2(bounds.max.x - 2, bounds.min.y + rayOffset.y);
 
         // Cast rays to the left and right
-        RaycastHit2D leftHit = Physics2D.Raycast(leftRayOrigin, Vector2.right, rayLength, groundLayer);
-        RaycastHit2D rightHit = Physics2D.Raycast(rightRayOrigin, Vector2.right, rayLength, groundLayer);
+        RaycastHit2D topLeftHit = Physics2D.Raycast(topLeftRayOrigin, Vector2.left, rayLength, groundLayer);
+        RaycastHit2D bottomLeftHit = Physics2D.Raycast(bottomLeftRayOrigin, Vector2.left, rayLength, groundLayer);
+        RaycastHit2D topRightHit = Physics2D.Raycast(topRightRayOrigin, Vector2.right, rayLength, groundLayer);
+        RaycastHit2D bottomRightHit = Physics2D.Raycast(bottomRightRayOrigin, Vector2.right, rayLength, groundLayer);
 
         // Draw the rays in the editor for debugging
-        Debug.DrawRay(leftRayOrigin, Vector2.left * rayLength, Color.blue);
-        Debug.DrawRay(rightRayOrigin, Vector2.right * rayLength, Color.blue);
+        Debug.DrawRay(topLeftRayOrigin, Vector2.left * rayLength, Color.blue);
+        Debug.DrawRay(bottomLeftRayOrigin, Vector2.left * rayLength, Color.blue);
+        Debug.DrawRay(topRightRayOrigin, Vector2.right * rayLength, Color.blue);
+        Debug.DrawRay(bottomRightRayOrigin, Vector2.right * rayLength, Color.blue);
 
-        // Return the collider if any of the rays hit a wall
-        if (leftHit.collider != null && hspd < 0)
+        // Return true if any of the rays hit a wall
+        if (topLeftHit.collider != null)
         {
-            return leftHit.collider;
+            return topLeftHit;
         }
-        else if (rightHit.collider != null && hspd > 0)
+        else if (bottomLeftHit.collider != null)
         {
-            return rightHit.collider;
+            return bottomLeftHit;
+        }
+        else if (topRightHit.collider != null)
+        {
+            return topRightHit;
+        }
+        else if (bottomRightHit.collider != null)
+        {
+            return bottomRightHit;
         }
         else
         {
-            return null;
+            return new RaycastHit2D();
         }
     }
 
-    private Collider2D IsTouchingCeiling()
+    private RaycastHit2D IsTouchingCeiling()
     {
         // Get the bounds of the BoxCollider2D
         Bounds bounds = boxCollider.bounds;
@@ -289,16 +398,44 @@ public class Player : MonoBehaviour
 
         if (leftHit.collider != null)
         {
-            return leftHit.collider;
+            return leftHit;
         }
         else if (rightHit.collider != null)
         {
-            return rightHit.collider;
+            return rightHit;
         }
         else
         {
-            return null;
+            return new RaycastHit2D();
         }
     }
+
+    public float getColliderSurface(float xValue, Collider2D targetCollider)
+    {
+        // Define a point above the collider at the given x value
+        Vector2 rayOrigin = new Vector2(xValue, targetCollider.bounds.max.y +1); // Adjust the y value as needed
+
+        // Cast a ray downwards
+        RaycastHit2D hit = Physics2D.Raycast(rayOrigin, Vector2.down, Mathf.Infinity, groundLayer);
+
+        // Draw the ray in the editor for debugging
+        Debug.DrawRay(rayOrigin, Vector2.down * 20f, Color.grey);
+
+        // Check if the ray hit a collider
+        if (hit.collider != null)
+        {
+            // Return the y-coordinate of the hit point
+            return hit.point.y;
+        }
+
+        // If no collider was hit, return a default value (e.g., float.MinValue)
+        return 0;
+    }
     #endregion
+
+    public void SnapToSurface(RaycastHit2D hitRay)
+    {
+        float surfaceYVal = getColliderSurface(hitRay.point.x, hitRay.collider);
+        gameObject.transform.position = new Vector3(gameObject.transform.position.x, surfaceYVal, 0);
+    }
 }
