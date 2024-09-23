@@ -14,7 +14,7 @@ public class InputHandler : MonoBehaviour
         Down,
         Jump,
         Attack,
-        Grapple,
+        Spell,
         Shield,
         Pause,
     }
@@ -31,7 +31,7 @@ public class InputHandler : MonoBehaviour
         {Inputs.Right, InputState.UnPressed},
         {Inputs.Jump, InputState.UnPressed},
         {Inputs.Attack, InputState.UnPressed},
-        {Inputs.Grapple, InputState.UnPressed},
+        {Inputs.Spell, InputState.UnPressed},
         {Inputs.Shield, InputState.UnPressed},
         {Inputs.Pause, InputState.UnPressed},
     };
@@ -42,7 +42,7 @@ public class InputHandler : MonoBehaviour
         {Inputs.Right, InputState.UnPressed},
         {Inputs.Jump, InputState.UnPressed},
         {Inputs.Attack, InputState.UnPressed},
-        {Inputs.Grapple, InputState.UnPressed},
+        {Inputs.Spell, InputState.UnPressed},
         {Inputs.Shield, InputState.UnPressed},
         {Inputs.Pause, InputState.UnPressed},
     };
@@ -148,25 +148,25 @@ public class InputHandler : MonoBehaviour
             case "Spell":
                 if (context.performed)
                 {
-                    if (prevInputs[Inputs.Grapple] == InputState.UnPressed || prevInputs[Inputs.Grapple] == InputState.Released)
+                    if (prevInputs[Inputs.Spell] == InputState.UnPressed || prevInputs[Inputs.Spell] == InputState.Released)
                     {
-                        keyBindings[Inputs.Grapple] = InputState.Pressed;
+                        keyBindings[Inputs.Spell] = InputState.Pressed;
                     }
                     else
                     {
-                        keyBindings[Inputs.Grapple] = InputState.Held;
+                        keyBindings[Inputs.Spell] = InputState.Held;
                     }
 
                 }
                 else
                 {
-                    if (prevInputs[Inputs.Grapple] == InputState.Pressed || prevInputs[Inputs.Grapple] == InputState.Held)
+                    if (prevInputs[Inputs.Spell] == InputState.Pressed || prevInputs[Inputs.Spell] == InputState.Held)
                     {
-                        keyBindings[Inputs.Grapple] = InputState.Released;
+                        keyBindings[Inputs.Spell] = InputState.Released;
                     }
                     else
                     {
-                        keyBindings[Inputs.Grapple] = InputState.UnPressed;
+                        keyBindings[Inputs.Spell] = InputState.UnPressed;
                     }
                 }
                 break;
