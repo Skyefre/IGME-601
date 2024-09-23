@@ -307,7 +307,7 @@ public class Player : MonoBehaviour
         // Return the point of collision if either ray hits the ground
         if (leftHit.collider != null && rightHit.collider != null)
         {
-            if (leftHit.point.y > rightHit.point.y)
+            if(leftHit.point.y > rightHit.point.y)
             {
                 return leftHit;
             }
@@ -317,7 +317,7 @@ public class Player : MonoBehaviour
             }
             else
             {
-                return facingRight ? rightHit : leftHit;
+                return facingRight? rightHit:leftHit;
             }
         }
         if (leftHit.collider != null)
@@ -346,7 +346,6 @@ public class Player : MonoBehaviour
         Vector2 topRightRayOrigin = new Vector2(bounds.max.x - 2, bounds.max.y - rayOffset.y);
         Vector2 bottomRightRayOrigin = new Vector2(bounds.max.x - 2, bounds.min.y + rayOffset.y);
         Vector2 centerRightRayOrigin = new Vector2(bounds.max.x - 2, bounds.center.y);
-
 
         // Cast rays to the left and right
         RaycastHit2D topLeftHit = Physics2D.Raycast(topLeftRayOrigin, Vector2.left, rayLength, groundLayer);
