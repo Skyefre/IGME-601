@@ -315,8 +315,18 @@ public class Player : MonoBehaviour
         // Return the point of collision if either ray hits the ground
         if(leftHit.collider != null && rightHit.collider != null)
         {
-            
-            return leftHit.point.y > rightHit.point.y? leftHit: leftHit;
+            if(leftHit.point.y > rightHit.point.y)
+            {
+                return leftHit;
+            }
+            else if (leftHit.point.y < rightHit.point.y)
+            {
+                return rightHit;
+            }
+            else
+            {
+                return facingRight? rightHit:leftHit;
+            }
         }
         if (leftHit.collider != null)
         {
@@ -340,20 +350,26 @@ public class Player : MonoBehaviour
         // Calculate the positions for the top and bottom rays on the left and right sides
         Vector2 topLeftRayOrigin = new Vector2(bounds.min.x + 2, bounds.max.y - rayOffset.y);
         Vector2 bottomLeftRayOrigin = new Vector2(bounds.min.x + 2, bounds.min.y + rayOffset.y);
+        Vector2 centerLeftRayOrigin = new Vector2(bounds.min.x + 2, bounds.center.y);
         Vector2 topRightRayOrigin = new Vector2(bounds.max.x - 2, bounds.max.y - rayOffset.y);
         Vector2 bottomRightRayOrigin = new Vector2(bounds.max.x - 2, bounds.min.y + rayOffset.y);
+        Vector2 centerRightRayOrigin = new Vector2(bounds.max.x - 2, bounds.center.y);
 
         // Cast rays to the left and right
         RaycastHit2D topLeftHit = Physics2D.Raycast(topLeftRayOrigin, Vector2.left, rayLength, groundLayer);
         RaycastHit2D bottomLeftHit = Physics2D.Raycast(bottomLeftRayOrigin, Vector2.left, rayLength, groundLayer);
+        RaycastHit2D centerLeftHit = Physics2D.Raycast(centerLeftRayOrigin, Vector2.left, rayLength, groundLayer);
         RaycastHit2D topRightHit = Physics2D.Raycast(topRightRayOrigin, Vector2.right, rayLength, groundLayer);
         RaycastHit2D bottomRightHit = Physics2D.Raycast(bottomRightRayOrigin, Vector2.right, rayLength, groundLayer);
+        RaycastHit2D centerRightHit = Physics2D.Raycast(centerRightRayOrigin, Vector2.right, rayLength, groundLayer);
 
         // Draw the rays in the editor for debugging
         Debug.DrawRay(topLeftRayOrigin, Vector2.left * rayLength, Color.blue);
         Debug.DrawRay(bottomLeftRayOrigin, Vector2.left * rayLength, Color.blue);
+        Debug.DrawRay(centerLeftRayOrigin, Vector2.left * rayLength, Color.blue);
         Debug.DrawRay(topRightRayOrigin, Vector2.right * rayLength, Color.blue);
         Debug.DrawRay(bottomRightRayOrigin, Vector2.right * rayLength, Color.blue);
+        Debug.DrawRay(centerRightRayOrigin, Vector2.right * rayLength, Color.blue);
 
         // Return true if any of the rays hit a wall
         if (topLeftHit.collider != null)
@@ -364,6 +380,10 @@ public class Player : MonoBehaviour
         {
             return bottomLeftHit;
         }
+        else if (centerLeftHit.collider != null)
+        {
+            return centerLeftHit;
+        }
         else if (topRightHit.collider != null)
         {
             return topRightHit;
@@ -371,6 +391,10 @@ public class Player : MonoBehaviour
         else if (bottomRightHit.collider != null)
         {
             return bottomRightHit;
+        }
+        else if (centerRightHit.collider != null)
+        {
+            return centerRightHit;
         }
         else
         {
