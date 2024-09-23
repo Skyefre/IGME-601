@@ -15,7 +15,7 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "Grapple",
+                    "name": "Spell",
                     "type": "Button",
                     "id": "75aff702-f993-4953-8cb6-df1e0d2257fa",
                     "expectedControlType": "Button",
@@ -112,7 +112,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Controller",
-                    "action": "Grapple",
+                    "action": "Spell",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -123,7 +123,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard",
-                    "action": "Grapple",
+                    "action": "Spell",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
