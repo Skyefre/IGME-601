@@ -14,6 +14,12 @@ public class Player : MonoBehaviour
         Hitstun,
     }
 
+    public enum PlayerPower
+    {
+        Ice,
+        Wind,
+    }
+
     //Animation fields
     public AnimatorStateInfo animStateInfo;
     public AnimatorClipInfo[] currentClipInfo;
@@ -74,6 +80,7 @@ public class Player : MonoBehaviour
 
         switch (state)
         {
+            
             case PlayerState.Idle:
 
                 //check for input
