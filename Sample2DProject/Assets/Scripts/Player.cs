@@ -14,12 +14,6 @@ public class Player : MonoBehaviour
         Hitstun,
     }
 
-    public enum PlayerPower
-    {
-        Ice,
-        Wind,
-    }
-
     //Animation fields
     public AnimatorStateInfo animStateInfo;
     public AnimatorClipInfo[] currentClipInfo;
@@ -36,6 +30,8 @@ public class Player : MonoBehaviour
     public int maxVspd = 1;
     private PlayerState prevState;
     public PlayerState state = PlayerState.Idle;
+    public BaseSpell currentSpell;
+    public BaseSpell[] PlayerSpells;
     public Animator animator;
     //public Rigidbody2D rb;
     public bool facingRight = true;
