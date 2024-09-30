@@ -54,8 +54,6 @@ public class Player : MonoBehaviour
     public PlayerState state = PlayerState.Idle;
     public BaseSpell currentSpell;
     public BaseSpell[] PlayerSpells;
-    public Animator animator;
-    //public Rigidbody2D rb;
     public bool facingRight = true;
     public InputHandler inputHandler;
     public LayerMask groundLayer; // Layer mask to specify what is considered ground
