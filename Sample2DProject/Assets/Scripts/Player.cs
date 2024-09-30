@@ -52,6 +52,10 @@ public class Player : MonoBehaviour
     public int maxHspd = 10;
     public int maxVspd = 1;
     public PlayerState state = PlayerState.Idle;
+    public BaseSpell currentSpell;
+    public BaseSpell[] PlayerSpells;
+    public Animator animator;
+    //public Rigidbody2D rb;
     public bool facingRight = true;
     public InputHandler inputHandler;
     public LayerMask groundLayer; // Layer mask to specify what is considered ground
@@ -139,6 +143,7 @@ public class Player : MonoBehaviour
 
         switch (state)
         {
+            
             case PlayerState.Idle:
 
                 //check for attack input
@@ -319,7 +324,6 @@ public class Player : MonoBehaviour
                 {
 
                     SetState(PlayerState.Jump);
-
                 }
 
                 break;
