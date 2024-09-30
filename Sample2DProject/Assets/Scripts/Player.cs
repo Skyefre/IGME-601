@@ -1,6 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.Animations;
+//using UnityEditor.Animations;
 using UnityEngine;
 
 public class Player : MonoBehaviour
@@ -30,7 +30,8 @@ public class Player : MonoBehaviour
     //weapon and color swapping support fields
     public string weaponName = "sword";
     public Animator animator;
-    public AnimatorController baseAnimController;
+    //public AnimatorController baseAnimController;
+    public RuntimeAnimatorController baseAnimController;
     public List<AnimatorOverrideController> otherWeaponAnimControllers;
     public List<Texture2D> colorPalletes;
     public JSONReader characterJSON;
