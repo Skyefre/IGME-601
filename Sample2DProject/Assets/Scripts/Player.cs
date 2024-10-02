@@ -19,7 +19,7 @@ public class Player : MonoBehaviour
         UpAttack,
         DownAttack,
         Menuing,
-        SpellAtack
+        SpellAttack
     }
 
     //Animation info fields
@@ -160,16 +160,19 @@ public class Player : MonoBehaviour
                         SetState(PlayerState.DownAttack);
                         break;
                     }
-                    else if (inputs[InputHandler.Inputs.Spell] == InputHandler.InputState.Pressed)
-                    {
-                        SetState(PlayerState.SpellAtack);
-                        Debug.Log("Pew!");
-                    }
                     else
                     {
                         SetState(PlayerState.SideAttack);
                         break;
                     }
+
+                }
+                //check for spell input
+                if (inputs[InputHandler.Inputs.Spell] == InputHandler.InputState.Pressed)
+                {
+                    SetState(PlayerState.SpellAttack);
+                    Debug.Log("Pew!");
+                    break;
                 }
                 //check for movement input
                 if (inputs[InputHandler.Inputs.Left] == InputHandler.InputState.Held)
@@ -201,7 +204,7 @@ public class Player : MonoBehaviour
                 {
                     SetState(PlayerState.Menuing);
                 }
-
+             
                 LerpHspd(0, 1);
                 //check for ground
                 if (grounded.collider == null)
@@ -233,10 +236,10 @@ public class Player : MonoBehaviour
                 }
                 //Spell Input
                 if (inputs[InputHandler.Inputs.Spell] == InputHandler.InputState.Pressed)
-                {
-                    Debug.Log("Pew!");
+                {   
+                    SetState(PlayerState.SpellAttack);
+                    break;
                 }
-
                 //run logic
                 if (facingRight)
                 {
@@ -715,6 +718,38 @@ public class Player : MonoBehaviour
                     SetState(grounded.collider != null ? PlayerState.Idle : PlayerState.Jump);
                     break;
                 }
+                break;
+            case PlayerState.SpellAttack:
+                //This is literally just copied from side attack.
+                //handle hitbox activation
+                Debug.Log("Pew!");
+              /*  for (int i = 0; i < frameData.sideAttackFrames.startFrames.Count; i++)
+                {
+                    if (currentFrame == frameData.sideAttackFrames.startFrames[i])
+                    {
+                        if (hitboxes[0].activeSelf == false)
+                        {
+                            hitboxes[0].GetComponent<Hitbox>().hitboxActive = true;
+                        }
+                        hitboxes[0].SetActive(true);
+                        hitboxes[0].GetComponent<Hitbox>().updateHitbox(
+                            1,
+                            hitboxData.sideAttackHitboxes[i].xOffset,
+                            hitboxData.sideAttackHitboxes[i].yOffset,
+                            hitboxData.sideAttackHitboxes[i].width,
+                            hitboxData.sideAttackHitboxes[i].height,
+                            hitboxData.sideAttackHitboxes[i].xKnockback,
+                            hitboxData.sideAttackHitboxes[i].yKnockback,
+                            hitboxData.sideAttackHitboxes[i].hitstun
+                        );
+                    }
+                    else if (currentFrame == frameData.sideAttackFrames.endFrames[i])
+                    {
+                        hitboxes[0].SetActive(false);
+
+                    }
+                }*/
+                SetState(PlayerState.Idle);
                 break;
             case PlayerState.Menuing:
                 hspd = 0;
