@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 //using UnityEditor.Animations;
@@ -17,7 +18,8 @@ public class Player : MonoBehaviour
         SideAttack,
         UpAttack,
         DownAttack,
-        Menuing
+        Menuing,
+        SpellAtack
     }
 
     //Animation info fields
@@ -158,6 +160,11 @@ public class Player : MonoBehaviour
                         SetState(PlayerState.DownAttack);
                         break;
                     }
+                    else if (inputs[InputHandler.Inputs.Spell] == InputHandler.InputState.Pressed)
+                    {
+                        SetState(PlayerState.SpellAtack);
+                        Debug.Log("Pew!");
+                    }
                     else
                     {
                         SetState(PlayerState.SideAttack);
@@ -224,6 +231,12 @@ public class Player : MonoBehaviour
                         break;
                     }
                 }
+                //Spell Input
+                if (inputs[InputHandler.Inputs.Spell] == InputHandler.InputState.Pressed)
+                {
+                    Debug.Log("Pew!");
+                }
+
                 //run logic
                 if (facingRight)
                 {
