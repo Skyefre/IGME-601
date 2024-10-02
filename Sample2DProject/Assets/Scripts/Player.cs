@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+//using UnityEditor.Animations;
 using UnityEngine;
 
 public class Player : MonoBehaviour
@@ -12,14 +13,37 @@ public class Player : MonoBehaviour
         Jump,
         Landing,
         Hitstun,
+        Shield,
+        SideAttack,
+        UpAttack,
+        DownAttack,
+        Menuing
     }
 
-    //Animation fields
+    //Animation info fields
     public AnimatorStateInfo animStateInfo;
     public AnimatorClipInfo[] currentClipInfo;
-    int currentFrame;
-    int frameCount;
+    private int currentFrame;
+    private int frameCount;
+    private int hitstunVal = 0;
 
+    //weapon and color swapping support fields
+    public string weaponName = "sword";
+    public Animator animator;
+    //public AnimatorController baseAnimController;
+    public RuntimeAnimatorController baseAnimController;
+    public List<AnimatorOverrideController> otherWeaponAnimControllers;
+    public List<Texture2D> colorPalletes;
+    public JSONReader characterJSON;
+    public JSONReader.FrameDataContainer frameData;
+    public JSONReader.HitboxDataContainer hitboxData;
+    public JSONReader.HurtboxDataContainer hurtboxData;
+    public int maxHitboxes = 2;
+    private JSONReader.WeaponDataList weaponData;
+    private int currentAnimControllerIndex = 0;
+    private int currentColorIndex = 0;
+
+    //Player fields
     public int runSpeed = 3;
     public int jumpForce = 10;
     public int gravity = 1;
@@ -28,58 +52,119 @@ public class Player : MonoBehaviour
     public int vspd = 0;
     public int maxHspd = 10;
     public int maxVspd = 1;
-    private PlayerState prevState;
     public PlayerState state = PlayerState.Idle;
     public BaseSpell currentSpell;
     public BaseSpell[] PlayerSpells;
-    public Animator animator;
-    //public Rigidbody2D rb;
     public bool facingRight = true;
     public InputHandler inputHandler;
     public LayerMask groundLayer; // Layer mask to specify what is considered ground
     public float rayLength = 0.1f; // Length of the ray
     public Vector2 rayOffset = new Vector2(8f, 8f); // Offset for the rays
     public RaycastHit2D grounded;
+    public RaycastHit2D collidedCeiling;
+    public GameObject hitboxReference;
+    public GameObject hurtboxReference;
+    private List<GameObject> hitboxes = new List<GameObject>();
+    private GameObject hurtbox;
 
+    
+    private int tempHspd = 0;
+    public int hitstopVal = 0;
+    private PlayerState prevState;
+    private int lerpDelay = 0;
+    //private int gravityDelay = 1;
     private BoxCollider2D boxCollider;// Reference to the BoxCollider2D component
     private Dictionary<InputHandler.Inputs, InputHandler.InputState> inputs;
+    
 
+
+    public BoxCollider2D PlayerCollider
+    {
+        get => boxCollider;
+    }
     private void Awake()
     {
         inputs = inputHandler.keyBindings;
+
+
     }
     // Start is called before the first frame update
     void Start()
     {
         boxCollider = GetComponent<BoxCollider2D>();
+        if (characterJSON == null)
+        {
+            characterJSON = gameObject.GetComponent<JSONReader>();
+        }
+        characterJSON.GetWeaponStats();
+        weaponData = characterJSON.weaponDataList;
+        InitWeapon();
     }
 
-    // Update is called once per frame
-    private void Update()
-    {
-
-    }
-
+   
     void FixedUpdate()
     {
+        if(hitstopVal > 0)
+        {
+            hitstopVal--;
+            return;
+        }
+        else
+        {
+            animator.enabled = true;
+        }
         //update this frames inputs
         inputs = inputHandler.keyBindings;
 
         //update animator info things to get current frame and frame count
-        //dt = Time.deltaTime;
         animStateInfo = animator.GetCurrentAnimatorStateInfo(0);
         currentClipInfo = animator.GetCurrentAnimatorClipInfo(0);
         frameCount = (int)(currentClipInfo[0].clip.length * currentClipInfo[0].clip.frameRate);
-        currentFrame = (Mathf.RoundToInt(animStateInfo.normalizedTime * frameCount)) % frameCount;
-        //Debug.Log(currentFrame);
+        currentFrame = ((int)(animStateInfo.normalizedTime * frameCount)) % frameCount;
+        
+        grounded = IsGrounded();
+        if (grounded.collider == null)
+        {
+            vspd -= gravity;
+            if (vspd < -maxVspd)
+            {
+                vspd = -maxVspd;
+            }
+        }
 
+        //re-update weapon stats when pause is pressed
+        if (Input.GetKey(KeyCode.F1))
+        {
+            characterJSON.GetWeaponStats();
+            weaponData = characterJSON.weaponDataList;
+            InitWeapon();
+        }
 
         switch (state)
         {
             
             case PlayerState.Idle:
 
-                //check for input
+                //check for attack input
+                if (inputs[InputHandler.Inputs.Attack] == InputHandler.InputState.Pressed)
+                {
+                    if (inputs[InputHandler.Inputs.Up] == InputHandler.InputState.Held)
+                    {
+                        SetState(PlayerState.UpAttack);
+                        break;
+                    }
+                    else if (inputs[InputHandler.Inputs.Down] == InputHandler.InputState.Held)
+                    {
+                        SetState(PlayerState.DownAttack);
+                        break;
+                    }
+                    else
+                    {
+                        SetState(PlayerState.SideAttack);
+                        break;
+                    }
+                }
+                //check for movement input
                 if (inputs[InputHandler.Inputs.Left] == InputHandler.InputState.Held)
                 {
                     //hspd = -runSpeed;
@@ -96,16 +181,48 @@ public class Player : MonoBehaviour
                 {
                     SetState(PlayerState.Jumpsquat);
                 }
+            
 
-                break;
-            case PlayerState.Run:
-                //check for collision
-                grounded = IsGrounded();
+                //check for shield input
+                if (inputs[InputHandler.Inputs.Shield] == InputHandler.InputState.Pressed)
+                {
+                    SetState(PlayerState.Shield);
+                }
+
+                //check for menu input
+                if (inputs[InputHandler.Inputs.Pause] == InputHandler.InputState.Pressed)
+                {
+                    SetState(PlayerState.Menuing);
+                }
+
+                LerpHspd(0, 1);
+                //check for ground
                 if (grounded.collider == null)
                 {
-                    //if not grounded
                     SetState(PlayerState.Jump);
                     break;
+                }
+                break;
+            case PlayerState.Run:
+
+                //check for attack input
+                if (inputs[InputHandler.Inputs.Attack] == InputHandler.InputState.Pressed)
+                {
+                    if (inputs[InputHandler.Inputs.Up] == InputHandler.InputState.Held)
+                    {
+                        SetState(PlayerState.UpAttack);
+                        break;
+                    }
+                    else if (inputs[InputHandler.Inputs.Down] == InputHandler.InputState.Held)
+                    {
+                        SetState(PlayerState.DownAttack);
+                        break;
+                    }
+                    else
+                    {
+                        SetState(PlayerState.SideAttack);
+                        break;
+                    }
                 }
                 //run logic
                 if (facingRight)
@@ -133,18 +250,74 @@ public class Player : MonoBehaviour
                         SetState(PlayerState.Idle);
                     }
                 }
+                //check for jump input
                 if (inputs[InputHandler.Inputs.Jump] == InputHandler.InputState.Pressed)
                 {
                     SetState(PlayerState.Jumpsquat);
                 }
+                //check for shield input
+                if (inputs[InputHandler.Inputs.Shield] == InputHandler.InputState.Pressed)
+                {
+                    SetState(PlayerState.Shield);
+                }
+                //check for collision
+                if (grounded.collider == null)
+                {
+                    //if not grounded
+                    SetState(PlayerState.Jump);
+                    break;
+                }
                 break;
             case PlayerState.Jumpsquat:
-                int tempHspd = hspd;
-                hspd = 0;
+
+                if (hspd != 0)
+                {
+                    tempHspd = hspd;
+                    hspd = 0;
+                }
+                //check for attack input
+                if (inputs[InputHandler.Inputs.Attack] == InputHandler.InputState.Pressed)
+                {
+                    hspd = tempHspd;
+                    tempHspd = 0;
+                    vspd = jumpForce;
+                    if (inputs[InputHandler.Inputs.Up] == InputHandler.InputState.Held)
+                    {
+                        SetState(PlayerState.UpAttack);
+                        break;
+                    }
+                    else if (inputs[InputHandler.Inputs.Down] == InputHandler.InputState.Held)
+                    {
+                        SetState(PlayerState.DownAttack);
+                        break;
+                    }
+                    else
+                    {
+                        SetState(PlayerState.SideAttack);
+                        break;
+                    }
+                }
+                //check for shield input
+                if (inputs[InputHandler.Inputs.Shield] == InputHandler.InputState.Pressed)
+                {
+                    hspd = tempHspd;
+                    tempHspd = 0;
+                    vspd = jumpForce;
+                    SetState(PlayerState.Shield);
+                }
+                if (inputs[InputHandler.Inputs.Right] == InputHandler.InputState.Held)
+                {
+                    facingRight = true;
+                }
+                else if (inputs[InputHandler.Inputs.Left] == InputHandler.InputState.Held)
+                {
+                    facingRight = false;
+                }
                 if (currentFrame == frameCount - 1 && grounded.collider != null)
                 {
                     hspd = tempHspd;
-                    vspd = jumpForce;
+                    tempHspd = 0;
+                    vspd = (inputs[InputHandler.Inputs.Jump] == InputHandler.InputState.Held?jumpForce: jumpForce/2);
                 }
                 if (animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1)
                 {
@@ -154,47 +327,42 @@ public class Player : MonoBehaviour
 
                 break;
             case PlayerState.Jump:
-                vspd -= gravity;
-                if (vspd < -maxVspd)
-                {
-                    vspd = -maxVspd;
-                }
 
-                //check for ceiling
-                Collider2D collidedCeiling = IsTouchingCeiling().collider;
-                if (collidedCeiling != null)
-                {
-                    vspd = 0;
-                    gameObject.transform.position = new Vector3(gameObject.transform.position.x, collidedCeiling.bounds.min.y - (boxCollider.size.y * gameObject.transform.localScale.y) - 1, 0);
-                }
                 #region ground collision check
                 //cast ray to check for ground and get variables for return values
-                RaycastHit2D groundHitRayHit = IsGrounded();
-                Vector2? collideGroundPoint = groundHitRayHit.collider != null ? (Vector2?)groundHitRayHit.point : null;
-                Collider2D collidedGround = groundHitRayHit.collider;
+                //RaycastHit2D groundHitRayHit = IsGrounded();
+                Vector2? collideGroundPoint = grounded.collider != null ? (Vector2?)grounded.point : null;
+                Collider2D collidedGround = grounded.collider;
 
                 //check for ground differing based on if colider is on slope or flat ground
                 if (collidedGround != null)
                 {
-                    //if (collidedGround.gameObject.tag == "slope")
-                    //{
-                    //    //if slope
-                    //    vspd = 0;
-                    //    gameObject.transform.position = new Vector3(gameObject.transform.position.x, collideGroundPoint.Value.y, 0);
-                    //}
-                    //else
-                    //{
-                    //    //if flat ground
-                    //    vspd = 0;
-                    //    gameObject.transform.position = new Vector3(gameObject.transform.position.x, collidedGround.bounds.max.y, 0);
-                    //}
-                    SnapToSurface(groundHitRayHit);
+                    SnapToSurface(grounded);
                     vspd = 0;
                     SetState(PlayerState.Landing);
                     break;
                 }
                 #endregion
 
+                //check for attack input
+                if (inputs[InputHandler.Inputs.Attack] == InputHandler.InputState.Pressed)
+                {
+                    if (inputs[InputHandler.Inputs.Up] == InputHandler.InputState.Held)
+                    {
+                        SetState(PlayerState.UpAttack);
+                        break;
+                    }
+                    else if (inputs[InputHandler.Inputs.Down] == InputHandler.InputState.Held)
+                    {
+                        SetState(PlayerState.DownAttack);
+                        break;
+                    }
+                    else
+                    {
+                        SetState(PlayerState.SideAttack);
+                        break;
+                    }
+                }
                 //allow for horizontal movement
                 if (inputs[InputHandler.Inputs.Right] == InputHandler.InputState.Held)
                 {
@@ -209,6 +377,11 @@ public class Player : MonoBehaviour
                 else if (inputs[InputHandler.Inputs.Left] == InputHandler.InputState.UnPressed && inputs[InputHandler.Inputs.Right] == InputHandler.InputState.UnPressed)
                 {
                     hspd = 0;
+                }
+                //check for shield input
+                if (inputs[InputHandler.Inputs.Shield] == InputHandler.InputState.Pressed)
+                {
+                    SetState(PlayerState.Shield);
                 }
 
                 break;
@@ -235,15 +408,322 @@ public class Player : MonoBehaviour
                 }
 
                 break;
+            case PlayerState.Hitstun:
+                if(grounded.collider != null)
+                {
+                    SnapToSurface(grounded);
+                    vspd = -vspd;
+                    LerpHspd(0, 3);
+                }
+                if (hitstunVal > 0)
+                {
+                    hitstunVal--;
+                }
+                else
+                {
+                    SetState(grounded.collider != null ? PlayerState.Idle : PlayerState.Jump);
+                }
+                break;
+            case PlayerState.Shield:
+                //check for ground collision
+                if (grounded.collider != null)
+                {
+                    SnapToSurface(grounded);
+                    vspd = 0;
+                    //check for Jump input
+                    if (inputs[InputHandler.Inputs.Jump] == InputHandler.InputState.Pressed)
+                    {
+                        SetState(PlayerState.Jumpsquat);
+                    }
+                }
+                //check for wall collision
+                if (IsTouchingWall().collider != null)
+                {
+                    hspd = -hspd;
+                }
+                //check for shield release
+                if (inputs[InputHandler.Inputs.Shield] == InputHandler.InputState.UnPressed)
+                {
+                    SetState(grounded.collider != null ? PlayerState.Idle : PlayerState.Jump);
+                }
+
+                //check for horizontal inputs
+                if (inputs[InputHandler.Inputs.Right] == InputHandler.InputState.Held)
+                {
+                    facingRight = true;
+                }
+                else if (inputs[InputHandler.Inputs.Left] == InputHandler.InputState.Held)
+                {
+                    facingRight = false;
+                }
+                
+
+                LerpHspd(0, 10);
+                break;
+            case PlayerState.SideAttack:
+
+                //handle hitbox activation
+                for (int i = 0; i < frameData.sideAttackFrames.startFrames.Count; i++)
+                {
+                    if (currentFrame == frameData.sideAttackFrames.startFrames[i])
+                    {
+                        if(hitboxes[0].activeSelf == false)
+                        {
+                            hitboxes[0].GetComponent<Hitbox>().hitboxActive = true;
+                        }
+                        hitboxes[0].SetActive(true);
+                        hitboxes[0].GetComponent<Hitbox>().updateHitbox(
+                            1,
+                            hitboxData.sideAttackHitboxes[i].xOffset,
+                            hitboxData.sideAttackHitboxes[i].yOffset,
+                            hitboxData.sideAttackHitboxes[i].width,
+                            hitboxData.sideAttackHitboxes[i].height,
+                            hitboxData.sideAttackHitboxes[i].xKnockback,
+                            hitboxData.sideAttackHitboxes[i].yKnockback,
+                            hitboxData.sideAttackHitboxes[i].hitstun
+                        );
+                    }
+                    else if (currentFrame == frameData.sideAttackFrames.endFrames[i])
+                    {
+                        hitboxes[0].SetActive(false);
+                        
+                    }
+
+                }
+
+                
+                //if grounded
+                if (grounded.collider != null)
+                {
+                    SnapToSurface(grounded);
+                    vspd = 0;
+                    if (prevState == PlayerState.Jump || prevState == PlayerState.Jumpsquat)
+                    {
+
+                        SetState(PlayerState.Landing);
+                        break;
+                    }
+                    else
+                    {
+                        LerpHspd(0, 3);
+                        //jump canceling logic on ground only
+                        if (hitboxes[0].GetComponent<Hitbox>().canCancel)
+                        {
+                            //check for Jump input
+                            if (inputs[InputHandler.Inputs.Jump] == InputHandler.InputState.Pressed)
+                            {
+                                SetState(PlayerState.Jumpsquat);
+                            }
+                        }
+                    }
+
+                }
+                else
+                {
+                    //allow for horizontal movement
+                    if (inputs[InputHandler.Inputs.Right] == InputHandler.InputState.Held)
+                    {
+                        hspd = runSpeed;
+                    }
+                    else if (inputs[InputHandler.Inputs.Left] == InputHandler.InputState.Held)
+                    {
+                        hspd = -runSpeed;
+                    }
+                    else if (inputs[InputHandler.Inputs.Left] == InputHandler.InputState.UnPressed && inputs[InputHandler.Inputs.Right] == InputHandler.InputState.UnPressed)
+                    {
+                        hspd = 0;
+                    }
+                }
+                if (animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1)
+                {
+                    SetState(grounded.collider != null ? PlayerState.Idle : PlayerState.Jump);
+                    break;
+                }
+                break;
+            case PlayerState.UpAttack:
+
+                //handle hitbox activation
+                for (int i = 0; i < frameData.upAttackFrames.startFrames.Count; i++)
+                {
+                    if (currentFrame == frameData.upAttackFrames.startFrames[i])
+                    {
+                        if (hitboxes[0].activeSelf == false)
+                        {
+                            hitboxes[0].GetComponent<Hitbox>().hitboxActive = true;
+                        }
+                        hitboxes[0].SetActive(true);
+                        hitboxes[0].GetComponent<Hitbox>().updateHitbox(
+                            1,
+                            hitboxData.upAttackHitboxes[i].xOffset,
+                            hitboxData.upAttackHitboxes[i].yOffset,
+                            hitboxData.upAttackHitboxes[i].width,
+                            hitboxData.upAttackHitboxes[i].height,
+                            hitboxData.upAttackHitboxes[i].xKnockback,
+                            hitboxData.upAttackHitboxes[i].yKnockback,
+                            hitboxData.upAttackHitboxes[i].hitstun
+                        );
+                    }
+                    else if (currentFrame == frameData.upAttackFrames.endFrames[i])
+                    {
+                        hitboxes[0].SetActive(false);
+                    }
+
+                }
+
+                
+
+                if (grounded.collider != null)
+                {
+
+                    SnapToSurface(grounded);
+                    vspd = 0;
+                    if (prevState == PlayerState.Jump || prevState == PlayerState.Jumpsquat)
+                    {
+
+                        SetState(PlayerState.Landing);
+                        break;
+                    }
+                    else
+                    {
+                        LerpHspd(0, 1);
+
+                        //jump canceling logic on ground only
+                        if (hitboxes[0].GetComponent<Hitbox>().canCancel)
+                        {
+                            //check for Jump input
+                            if (inputs[InputHandler.Inputs.Jump] == InputHandler.InputState.Pressed)
+                            {
+                                SetState(PlayerState.Jumpsquat);
+                            }
+                        }
+                    }
+
+                }
+                else
+                {
+                    //allow for horizontal movement
+                    if (inputs[InputHandler.Inputs.Right] == InputHandler.InputState.Held)
+                    {
+                        hspd = runSpeed;
+                    }
+                    else if (inputs[InputHandler.Inputs.Left] == InputHandler.InputState.Held)
+                    {
+                        hspd = -runSpeed;
+                    }
+                    else if (inputs[InputHandler.Inputs.Left] == InputHandler.InputState.UnPressed && inputs[InputHandler.Inputs.Right] == InputHandler.InputState.UnPressed)
+                    {
+                        hspd = 0;
+                    }
+                }
+                if (animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1)
+                {
+
+                    SetState(grounded.collider != null ? PlayerState.Idle : PlayerState.Jump);
+                    break;
+                }
+                break;
+            case PlayerState.DownAttack:
+
+                //handle hitbox activation
+                for (int i = 0; i < frameData.downAttackFrames.startFrames.Count; i++)
+                {
+                    if (currentFrame == frameData.downAttackFrames.startFrames[i])
+                    {
+                        if (hitboxes[0].activeSelf == false)
+                        {
+                            hitboxes[0].GetComponent<Hitbox>().hitboxActive = true;
+                        }
+                        hitboxes[0].SetActive(true);
+                        hitboxes[0].GetComponent<Hitbox>().updateHitbox(
+                            1,
+                            hitboxData.downAttackHitboxes[i].xOffset,
+                            hitboxData.downAttackHitboxes[i].yOffset,
+                            hitboxData.downAttackHitboxes[i].width,
+                            hitboxData.downAttackHitboxes[i].height,
+                            hitboxData.downAttackHitboxes[i].xKnockback,
+                            hitboxData.downAttackHitboxes[i].yKnockback,
+                            hitboxData.downAttackHitboxes[i].hitstun
+                        );
+                    }
+                    else if (currentFrame == frameData.downAttackFrames.endFrames[i])
+                    {
+                        hitboxes[0].SetActive(false);
+                    }
+
+                }
+                if (grounded.collider != null)
+                {
+                    SnapToSurface(grounded);
+                    vspd = 0;
+                    if (prevState == PlayerState.Jump || prevState == PlayerState.Jumpsquat)
+                    {
+
+                        SetState(PlayerState.Landing);
+                        break;
+                    }
+                    else
+                    {
+                        LerpHspd(0, 2);
+                        //jump canceling logic on ground only
+                        if (hitboxes[0].GetComponent<Hitbox>().canCancel)
+                        {
+                            //check for Jump input
+                            if (inputs[InputHandler.Inputs.Jump] == InputHandler.InputState.Pressed)
+                            {
+                                SetState(PlayerState.Jumpsquat);
+                            }
+                        }
+                    }
+
+                }
+                else
+                {
+                    //allow for horizontal movement
+                    if (inputs[InputHandler.Inputs.Right] == InputHandler.InputState.Held)
+                    {
+                        hspd = runSpeed;
+                    }
+                    else if (inputs[InputHandler.Inputs.Left] == InputHandler.InputState.Held)
+                    {
+                        hspd = -runSpeed;
+                    }
+                    else if (inputs[InputHandler.Inputs.Left] == InputHandler.InputState.UnPressed && inputs[InputHandler.Inputs.Right] == InputHandler.InputState.UnPressed)
+                    {
+                        hspd = 0;
+                    }
+                }
+                if (animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1)
+                {
+
+                    SetState(grounded.collider != null ? PlayerState.Idle : PlayerState.Jump);
+                    break;
+                }
+                break;
+            case PlayerState.Menuing:
+                hspd = 0;
+                vspd = 0;
+                if (inputs[InputHandler.Inputs.Pause] == InputHandler.InputState.Pressed)
+                {
+                    SetState(grounded.collider != null ? PlayerState.Idle : PlayerState.Jump);
+                }
+
+                //change weapon when attack is pressed
+                if (inputs[InputHandler.Inputs.Attack] == InputHandler.InputState.Pressed)
+                {
+                    CycleWeapon();
+                }
+                //change color when jump is pressed
+                if (inputs[InputHandler.Inputs.Jump] == InputHandler.InputState.Pressed)
+                {
+                    CycleColor();
+                }
+
+                break;
         }
 
-        grounded = IsGrounded();
-        if (grounded.collider == null)
-        {
-            //if not grounded
-            SetState(PlayerState.Jump);
-        }
-        else
+
+        //check for ground collision
+        if (grounded.collider != null)
         {
             SnapToSurface(grounded);
         }
@@ -266,6 +746,13 @@ public class Player : MonoBehaviour
                 }
             }
         }
+        // check for ceiling
+        collidedCeiling = IsTouchingCeiling();
+        if (collidedCeiling.collider != null)
+        {
+            vspd = vspd > 0 ? 0 : vspd;
+            SnapToCeiling(collidedCeiling);
+        }
 
         gameObject.transform.position += new Vector3(hspd, vspd, 0);
         gameObject.GetComponent<SpriteRenderer>().flipX = facingRight ? false : true;
@@ -277,13 +764,136 @@ public class Player : MonoBehaviour
         animator.SetInteger("player_state", (int)targetState);
         prevState = state;
         state = targetState;
-        //----------------------------any State specific enter and exit logic----------------------
-        //if (prevState == PlayerState.Jumpsquat && state == PlayerState.Jump)
-        //{
-        //    //apply jumpforce
-        //    vspd = jumpForce;
-        //}
 
+
+        //----------------------------any State specific enter and exit logic----------------------
+        switch (targetState)
+        {
+            case PlayerState.Idle:
+                hurtbox.GetComponent<Hurtbox>().updateHurtbox(
+                hurtboxData.idleHurtbox.xOffset,
+                hurtboxData.idleHurtbox.yOffset,
+                hurtboxData.idleHurtbox.width,
+                hurtboxData.idleHurtbox.height
+                );
+                break;
+            case PlayerState.Run:
+                hurtbox.GetComponent<Hurtbox>().updateHurtbox(
+                hurtboxData.runHurtbox.xOffset,
+                hurtboxData.runHurtbox.yOffset,
+                hurtboxData.runHurtbox.width,
+                hurtboxData.runHurtbox.height
+                );
+                break;
+            case PlayerState.Jumpsquat:
+                hurtbox.GetComponent<Hurtbox>().updateHurtbox(
+                hurtboxData.jumpsquatHurtbox.xOffset,
+                hurtboxData.jumpsquatHurtbox.yOffset,
+                hurtboxData.jumpsquatHurtbox.width,
+                hurtboxData.jumpsquatHurtbox.height
+                );
+                break;
+            case PlayerState.Jump:
+                hurtbox.GetComponent<Hurtbox>().updateHurtbox(
+                hurtboxData.jumpHurtbox.xOffset,
+                hurtboxData.jumpHurtbox.yOffset,
+                hurtboxData.jumpHurtbox.width,
+                hurtboxData.jumpHurtbox.height
+                );
+                break;
+            case PlayerState.Landing:
+                hurtbox.GetComponent<Hurtbox>().updateHurtbox(
+                hurtboxData.landingHurtbox.xOffset,
+                hurtboxData.landingHurtbox.yOffset,
+                hurtboxData.landingHurtbox.width,
+                hurtboxData.landingHurtbox.height
+                );
+                break;
+            case PlayerState.Hitstun:
+                hurtbox.GetComponent<Hurtbox>().updateHurtbox(
+                hurtboxData.hitstunHurtbox.xOffset,
+                hurtboxData.hitstunHurtbox.yOffset,
+                hurtboxData.hitstunHurtbox.width,
+                hurtboxData.hitstunHurtbox.height
+                );
+                // hitstunVal = 60;
+                break;
+            case PlayerState.Shield:
+                hurtbox.GetComponent<Hurtbox>().updateHurtbox(
+                hurtboxData.shieldHurtbox.xOffset,
+                hurtboxData.shieldHurtbox.yOffset,
+                hurtboxData.shieldHurtbox.width,
+                hurtboxData.shieldHurtbox.height
+                );
+                break;
+            case PlayerState.SideAttack:
+                hitboxes[0].GetComponent<Hitbox>().canCancel = false;
+
+                hurtbox.GetComponent<Hurtbox>().updateHurtbox(
+                hurtboxData.sideAttackHurtbox.xOffset,
+                hurtboxData.sideAttackHurtbox.yOffset,
+                hurtboxData.sideAttackHurtbox.width,
+                hurtboxData.sideAttackHurtbox.height
+                );
+                break;
+            case PlayerState.UpAttack:
+                hitboxes[0].GetComponent<Hitbox>().canCancel = false;
+
+                hurtbox.GetComponent<Hurtbox>().updateHurtbox(
+                hurtboxData.upAttackHurtbox.xOffset,
+                hurtboxData.upAttackHurtbox.yOffset,
+                hurtboxData.upAttackHurtbox.width,
+                hurtboxData.upAttackHurtbox.height
+                );
+                break;
+            case PlayerState.DownAttack:
+                hitboxes[0].GetComponent<Hitbox>().canCancel = false;
+
+                hurtbox.GetComponent<Hurtbox>().updateHurtbox(
+                hurtboxData.downAttackHurtbox.xOffset,
+                hurtboxData.downAttackHurtbox.yOffset,
+                hurtboxData.downAttackHurtbox.width,
+                hurtboxData.downAttackHurtbox.height
+                );
+                break;
+            case PlayerState.Menuing:
+                hurtbox.GetComponent<Hurtbox>().updateHurtbox(
+                hurtboxData.menuingHurtbox.xOffset,
+                hurtboxData.menuingHurtbox.yOffset,
+                hurtboxData.menuingHurtbox.width,
+                hurtboxData.menuingHurtbox.height
+                );
+                break;
+        }
+
+        switch (prevState)
+        {
+            case PlayerState.Idle:
+                break;
+            case PlayerState.Run:
+                break;
+            case PlayerState.Jumpsquat:
+                break;
+            case PlayerState.Jump:
+                break;
+            case PlayerState.Landing:
+                break;
+            case PlayerState.Hitstun:
+                break;
+            case PlayerState.Shield:
+                break;
+            case PlayerState.SideAttack:
+                DisableAllHitboxes();
+                break;
+            case PlayerState.UpAttack:
+                DisableAllHitboxes();
+                break;
+            case PlayerState.DownAttack:
+                DisableAllHitboxes();
+                break;
+            case PlayerState.Menuing:
+                break;
+        }
     }
 
     #region Collision Detection
@@ -310,7 +920,7 @@ public class Player : MonoBehaviour
         // Return the point of collision if either ray hits the ground
         if (leftHit.collider != null && rightHit.collider != null)
         {
-            if(leftHit.point.y > rightHit.point.y)
+            if (leftHit.point.y > rightHit.point.y)
             {
                 return leftHit;
             }
@@ -320,7 +930,7 @@ public class Player : MonoBehaviour
             }
             else
             {
-                return facingRight? rightHit:leftHit;
+                return facingRight ? rightHit : leftHit;
             }
         }
         if (leftHit.collider != null)
@@ -333,8 +943,6 @@ public class Player : MonoBehaviour
         }
         return nullHit;
     }
-
-
 
     private RaycastHit2D IsTouchingWall()
     {
@@ -350,18 +958,19 @@ public class Player : MonoBehaviour
         Vector2 bottomRightRayOrigin = new Vector2(bounds.max.x - 2, bounds.min.y + rayOffset.y);
         Vector2 centerRightRayOrigin = new Vector2(bounds.max.x - 2, bounds.center.y);
 
+
         // Cast rays to the left and right
-        RaycastHit2D topLeftHit = Physics2D.Raycast(topLeftRayOrigin, Vector2.left, rayLength, groundLayer);
-        RaycastHit2D bottomLeftHit = Physics2D.Raycast(bottomLeftRayOrigin, Vector2.left, rayLength, groundLayer);
-        RaycastHit2D centerLeftHit = Physics2D.Raycast(centerLeftRayOrigin, Vector2.left, rayLength, groundLayer);
+        RaycastHit2D topLeftHit = Physics2D.Raycast(topLeftRayOrigin, Vector2.right, rayLength, groundLayer);
+        RaycastHit2D bottomLeftHit = Physics2D.Raycast(bottomLeftRayOrigin, Vector2.right, rayLength, groundLayer);
+        RaycastHit2D centerLeftHit = Physics2D.Raycast(centerLeftRayOrigin, Vector2.right, rayLength, groundLayer);
         RaycastHit2D topRightHit = Physics2D.Raycast(topRightRayOrigin, Vector2.right, rayLength, groundLayer);
         RaycastHit2D bottomRightHit = Physics2D.Raycast(bottomRightRayOrigin, Vector2.right, rayLength, groundLayer);
         RaycastHit2D centerRightHit = Physics2D.Raycast(centerRightRayOrigin, Vector2.right, rayLength, groundLayer);
 
         // Draw the rays in the editor for debugging
-        Debug.DrawRay(topLeftRayOrigin, Vector2.left * rayLength, Color.blue);
-        Debug.DrawRay(bottomLeftRayOrigin, Vector2.left * rayLength, Color.blue);
-        Debug.DrawRay(centerLeftRayOrigin, Vector2.left * rayLength, Color.blue);
+        Debug.DrawRay(topLeftRayOrigin, Vector2.right * rayLength, Color.blue);
+        Debug.DrawRay(bottomLeftRayOrigin, Vector2.right * rayLength, Color.blue);
+        Debug.DrawRay(centerLeftRayOrigin, Vector2.right * rayLength, Color.blue);
         Debug.DrawRay(topRightRayOrigin, Vector2.right * rayLength, Color.blue);
         Debug.DrawRay(bottomRightRayOrigin, Vector2.right * rayLength, Color.blue);
         Debug.DrawRay(centerRightRayOrigin, Vector2.right * rayLength, Color.blue);
@@ -450,11 +1059,191 @@ public class Player : MonoBehaviour
         // If no collider was hit, return a default value (e.g., float.MinValue)
         return 0;
     }
-    #endregion
+
+    public float getColliderCeiling(float xValue, Collider2D targetCollider)
+    {
+        // Define a point above the collider at the given x value
+        Vector2 rayOrigin = new Vector2(xValue, targetCollider.bounds.min.y - 1); // Adjust the y value as needed
+
+        // Cast a ray upwards
+        RaycastHit2D hit = Physics2D.Raycast(rayOrigin, Vector2.up, Mathf.Infinity, groundLayer);
+
+        // Draw the ray in the editor for debugging
+        Debug.DrawRay(rayOrigin, Vector2.up * 20f, Color.grey);
+
+        // Check if the ray hit a collider
+        if (hit.collider != null)
+        {
+            // Return the y-coordinate of the hit point
+            return hit.point.y;
+        }
+
+        // If no collider was hit, return a default value (e.g., float.MinValue)
+        return 0;
+    }
 
     public void SnapToSurface(RaycastHit2D hitRay)
     {
         float surfaceYVal = getColliderSurface(hitRay.point.x, hitRay.collider);
         gameObject.transform.position = new Vector3(gameObject.transform.position.x, surfaceYVal, 0);
+    }
+
+    public void SnapToCeiling(RaycastHit2D hitRay)
+    {
+        float ceilingYVal = getColliderCeiling(hitRay.point.x, hitRay.collider);
+        gameObject.transform.position = new Vector3(gameObject.transform.position.x, ceilingYVal - boxCollider.bounds.size.y - 1, 0);
+    }
+    #endregion
+
+    public void LerpHspd(int targetHspd, int lerpval)
+    {
+        if (lerpDelay >= lerpval)
+        {
+            lerpDelay = 0;
+            if (hspd < targetHspd)
+            {
+                hspd++;
+            }
+            else if (hspd > targetHspd)
+            {
+                hspd--;
+            }
+        }
+        else
+        {
+            lerpDelay++;
+        }
+
+        return;
+    }
+
+    void InitWeapon()
+    {
+
+        for (int i = 0; i < weaponData.weaponData.Count; i++)
+        {
+            if (weaponData.weaponData[i].weapon == weaponName)
+            {
+                runSpeed = weaponData.weaponData[i].runSpeed;
+                jumpForce = weaponData.weaponData[i].jumpForce;
+                maxHitboxes = weaponData.weaponData[i].maxHitboxes;
+                frameData = weaponData.weaponData[i].frameData;
+                hitboxData = weaponData.weaponData[i].hitboxData;
+                hurtboxData = weaponData.weaponData[i].hurtboxData;
+            }
+        }
+        InitHitboxes();
+        InitHurtbox();
+    }
+
+    void InitHitboxes()
+    {
+        if(hitboxes.Count >= maxHitboxes)
+        {
+            return;
+        }
+        for (int i = 0; i < maxHitboxes; i++)
+        {
+            GameObject hitbox = Instantiate(hitboxReference, gameObject.transform);
+            hitbox.GetComponent<Hitbox>().owner = gameObject;
+            hitbox.GetComponent<Hitbox>().hitboxActive = false;
+            hitbox.GetComponent<Hitbox>().damage = 0;
+            hitbox.GetComponent<Hitbox>().xoffset = 0;
+            hitbox.GetComponent<Hitbox>().yoffset = 0;
+            hitbox.GetComponent<Hitbox>().width = 0;
+            hitbox.GetComponent<Hitbox>().height = 0;
+            hitbox.GetComponent<Hitbox>().xKnockback = 0;
+            hitbox.GetComponent<Hitbox>().yKnockback = 0;
+            hitbox.GetComponent<Hitbox>().hitstun = 0;
+            hitbox.SetActive(false);
+            hitboxes.Add(hitbox);
+        }
+
+    }
+    void InitHurtbox()
+    {
+        if(hurtbox != null)
+        {
+            return;
+        }
+        hurtbox = Instantiate(hurtboxReference, gameObject.transform);
+        hurtbox.GetComponent<Hurtbox>().owner = gameObject;
+        hurtbox.GetComponent<Hurtbox>().hurtboxActive = true;
+        hurtbox.GetComponent<Hurtbox>().xoffset = 0;
+        hurtbox.GetComponent<Hurtbox>().yoffset = 0;
+        hurtbox.GetComponent<Hurtbox>().width = 0;
+        hurtbox.GetComponent<Hurtbox>().height = 0;
+        hurtbox.SetActive(true);
+
+    }
+
+    void DisableAllHitboxes()
+    {
+        foreach (GameObject hitbox in hitboxes)
+        {
+            hitbox.SetActive(false);
+        }
+
+    }
+    
+    public void TakeDamage(GameObject hitPlayer, int damage, int xKnockback, int yKnockback, int hitstun)
+    {
+
+        //If this player is block and facing the right direction
+        if (state == PlayerState.Shield && 
+            ((hitPlayer.transform.position.x > gameObject.transform.position.x && facingRight) ||
+            (hitPlayer.transform.position.x < gameObject.transform.position.x && !facingRight)))
+        {
+            hspd = xKnockback/2;
+        }
+        else
+        {
+            health -= damage;
+            hspd = xKnockback;
+            vspd = yKnockback;
+            hitstunVal = hitstun;
+            SetState(PlayerState.Hitstun);
+        }
+        
+        Debug.Log("Player Health: " + health);
+
+        
+    }
+
+    private void CycleWeapon()
+    {
+        if (otherWeaponAnimControllers.Count == 0) return;
+
+        currentAnimControllerIndex++;
+        if (currentAnimControllerIndex > otherWeaponAnimControllers.Count)
+        {
+            currentAnimControllerIndex = 0;
+        }
+
+        if (currentAnimControllerIndex == 0)
+        {
+            animator.runtimeAnimatorController = baseAnimController;
+            weaponName = "sword";
+            animator.SetInteger(name: "player_state", (int)PlayerState.Menuing); 
+        }
+        else
+        {
+            animator.runtimeAnimatorController = otherWeaponAnimControllers[currentAnimControllerIndex - 1];
+            weaponName = otherWeaponAnimControllers[currentAnimControllerIndex - 1].name;
+        }
+
+        InitWeapon();
+
+    }
+
+    private void CycleColor()
+    {
+        currentColorIndex++;
+        if (currentColorIndex >= colorPalletes.Count)
+        {
+            currentColorIndex = 0;
+        }
+        gameObject.GetComponent<SpriteRenderer>().material.SetTexture("_PaletteTex", colorPalletes[currentColorIndex]);
+
     }
 }

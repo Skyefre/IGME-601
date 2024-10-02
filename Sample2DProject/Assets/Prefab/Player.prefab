@@ -15,9 +15,10 @@ GameObject:
   - component: {fileID: 237148384208766883}
   - component: {fileID: 1195620023101770444}
   - component: {fileID: -4435922527637562003}
+  - component: {fileID: -7222035744448415508}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -29,13 +30,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1649555061467412725}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1136893714204477083
 SpriteRenderer:
@@ -57,7 +58,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 04fc3674d6f8c404eaf5fd38cb76a6b6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -78,12 +79,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 1980548163, guid: 7489ae6c13744a343b57c2a06720dfc7, type: 3}
+  m_Sprite: {fileID: 2135969413, guid: 5b0fba48b6bc193428882593f1900332, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 256, y: 128}
+  m_Size: {x: 256, y: 150}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -239,16 +240,101 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be4c5071fc6a4d045920f9804d49b96c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  weaponName: sword
+  animator: {fileID: 237148384208766883}
+  baseAnimController: {fileID: 9100000, guid: c916afd6bc4a3114aadd5a2f0c1b51ec, type: 2}
+  otherWeaponAnimControllers:
+  - {fileID: 22100000, guid: 1946a103821a42044a0280dceb1a3cb6, type: 2}
+  colorPalletes:
+  - {fileID: 2800000, guid: 36f54093edda18d49bbf3f24db706f94, type: 3}
+  - {fileID: 2800000, guid: 3e09eff68976942408a8f0db96df60f9, type: 3}
+  - {fileID: 2800000, guid: 85fb5b4d274a09d48babf6c02c51f858, type: 3}
+  - {fileID: 2800000, guid: 47d6a3f8f5682f649ab5feca38cf2dcc, type: 3}
+  - {fileID: 2800000, guid: 956a001447930a741bfb91eac5f19c80, type: 3}
+  - {fileID: 2800000, guid: bb616aaa5d694dd4690d375bc27d90a9, type: 3}
+  - {fileID: 2800000, guid: facc0654fa12202468726d0b8606b116, type: 3}
+  - {fileID: 2800000, guid: 3689982420f251449be9cc70fecaa4aa, type: 3}
+  characterJSON: {fileID: -7222035744448415508}
+  frameData:
+    sideAttackFrames:
+      startFrames: 
+      endFrames: 
+    upAttackFrames:
+      startFrames: 
+      endFrames: 
+    downAttackFrames:
+      startFrames: 
+      endFrames: 
+  hitboxData:
+    sideAttackHitboxes: []
+    upAttackHitboxes: []
+    downAttackHitboxes: []
+  hurtboxData:
+    idleHurtbox:
+      xOffset: 0
+      yOffset: 0
+      width: 0
+      height: 0
+    runHurtbox:
+      xOffset: 0
+      yOffset: 0
+      width: 0
+      height: 0
+    jumpsquatHurtbox:
+      xOffset: 0
+      yOffset: 0
+      width: 0
+      height: 0
+    jumpHurtbox:
+      xOffset: 0
+      yOffset: 0
+      width: 0
+      height: 0
+    landingHurtbox:
+      xOffset: 0
+      yOffset: 0
+      width: 0
+      height: 0
+    hitstunHurtbox:
+      xOffset: 0
+      yOffset: 0
+      width: 0
+      height: 0
+    shieldHurtbox:
+      xOffset: 0
+      yOffset: 0
+      width: 0
+      height: 0
+    sideAttackHurtbox:
+      xOffset: 0
+      yOffset: 0
+      width: 0
+      height: 0
+    upAttackHurtbox:
+      xOffset: 0
+      yOffset: 0
+      width: 0
+      height: 0
+    downAttackHurtbox:
+      xOffset: 0
+      yOffset: 0
+      width: 0
+      height: 0
+    menuingHurtbox:
+      xOffset: 0
+      yOffset: 0
+      width: 0
+      height: 0
+  maxHitboxes: 2
   runSpeed: 4
   jumpForce: 15
   gravity: 1
-  health: 100
+  health: 8
   hspd: 0
   vspd: 0
-  maxHspd: 10
-  maxVspd: 10
+  maxHspd: 15
+  maxVspd: 15
   state: 0
-  animator: {fileID: 237148384208766883}
   facingRight: 1
   inputHandler: {fileID: 1195620023101770444}
   groundLayer:
@@ -256,6 +342,9 @@ MonoBehaviour:
     m_Bits: 8
   rayLength: 1
   rayOffset: {x: 8, y: 12}
+  hitboxReference: {fileID: 2071856720676495377, guid: a9bab66106fe9f64f8e123ff86289a9a, type: 3}
+  hurtboxReference: {fileID: 2071856720676495377, guid: 93f0f0d69bc905d49a654f329ed68ef4, type: 3}
+  hitstopVal: 0
 --- !u!95 &237148384208766883
 Animator:
   serializedVersion: 5
@@ -266,7 +355,7 @@ Animator:
   m_GameObject: {fileID: 1649555061467412725}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: f80424a89097ea7438e30cb63227b0a7, type: 2}
+  m_Controller: {fileID: 9100000, guid: c916afd6bc4a3114aadd5a2f0c1b51ec, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -324,9 +413,9 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 32}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.421875, y: 0.1875}
-    oldSize: {x: 256, y: 128}
-    newSize: {x: 256, y: 128}
+    pivot: {x: 0.421875, y: 0.2266667}
+    oldSize: {x: 256, y: 150}
+    newSize: {x: 256, y: 150}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -334,3 +423,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 32, y: 64}
   m_EdgeRadius: 0
+--- !u!114 &-7222035744448415508
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1649555061467412725}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e260f258abc47e488618211eb41f673, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  jsonFile: {fileID: 4900000, guid: ca64a7a0f9a3fde41a6666a90e20a1b5, type: 3}
+  weaponDataList:
+    weaponData: []
