@@ -426,7 +426,11 @@ public class Player : MonoBehaviour
                 {
                     SnapToSurface(grounded);
                     vspd = -vspd;
-                    LerpHspd(0, 3);
+                    //LerpHspd(0, 3);
+                }
+                if(IsTouchingWall().collider != null)
+                {
+                    hspd = -hspd;
                 }
                 if (hitstunVal > 0)
                 {
