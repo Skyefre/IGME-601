@@ -64,6 +64,8 @@ public class JSONReader : MonoBehaviour
         public HurtboxData upAttackHurtbox;
         public HurtboxData downAttackHurtbox;
         public HurtboxData menuingHurtbox;
+        public HurtboxData spellAttackHurtbox;
+        public HurtboxData spellUtilHurtbox;
     }
 
     [System.Serializable]

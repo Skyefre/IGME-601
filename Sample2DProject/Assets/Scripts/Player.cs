@@ -19,7 +19,8 @@ public class Player : MonoBehaviour
         UpAttack,
         DownAttack,
         Menuing,
-        SpellAttack
+        SpellAttack,
+        SpellUtil
     }
 
     //Animation info fields
@@ -30,7 +31,7 @@ public class Player : MonoBehaviour
     private int hitstunVal = 0;
 
     //weapon and color swapping support fields
-    public string weaponName = "sword";
+    public string weaponName = "ice";
     public Animator animator;
     //public AnimatorController baseAnimController;
     public RuntimeAnimatorController baseAnimController;
@@ -1275,7 +1276,7 @@ public class Player : MonoBehaviour
         if (currentAnimControllerIndex == 0)
         {
             animator.runtimeAnimatorController = baseAnimController;
-            weaponName = "sword";
+            weaponName = "ice";
             animator.SetInteger(name: "player_state", (int)PlayerState.Menuing); 
         }
         else

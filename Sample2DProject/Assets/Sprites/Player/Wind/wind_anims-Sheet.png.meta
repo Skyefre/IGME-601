@@ -1,0 +1,1306 @@
+fileFormatVersion: 2
+guid: 5d88fdd8c66a917499c62a81415257b8
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 0
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 0.5
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 4096
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 4096
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: wind_anims-Sheet_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 675
+        width: 128
+        height: 75
+      alignment: 9
+      pivot: {x: 0.421875, y: 0.2266667}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5f4f5dfa377c2374586f9e5c7677dd3b
+      internalID: 92097652
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wind_anims-Sheet_1
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 675
+        width: 128
+        height: 75
+      alignment: 9
+      pivot: {x: 0.421875, y: 0.2266667}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 28427e1d6a3fac8438e2f7e49dd9f1b0
+      internalID: -1634202854
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wind_anims-Sheet_2
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 675
+        width: 128
+        height: 75
+      alignment: 9
+      pivot: {x: 0.421875, y: 0.2266667}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 62c34b91ed282ab47ad5b19f8172ae50
+      internalID: 50131827
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wind_anims-Sheet_3
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 675
+        width: 128
+        height: 75
+      alignment: 9
+      pivot: {x: 0.421875, y: 0.2266667}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 397b9367383a0004a8be69a4d674554a
+      internalID: 628470523
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wind_anims-Sheet_4
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 675
+        width: 128
+        height: 75
+      alignment: 9
+      pivot: {x: 0.421875, y: 0.2266667}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6c948acbbe27bab4cafe7b9f6ae40c88
+      internalID: 1476993551
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wind_anims-Sheet_5
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 675
+        width: 128
+        height: 75
+      alignment: 9
+      pivot: {x: 0.421875, y: 0.2266667}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 795284cda16a233449c6fcafd5cf59fa
+      internalID: 924321416
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wind_anims-Sheet_6
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 675
+        width: 128
+        height: 75
+      alignment: 9
+      pivot: {x: 0.421875, y: 0.2266667}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3e7265dd3157afe40bac9c4783107dcf
+      internalID: -802239716
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wind_anims-Sheet_7
+      rect:
+        serializedVersion: 2
+        x: 896
+        y: 675
+        width: 128
+        height: 75
+      alignment: 9
+      pivot: {x: 0.421875, y: 0.2266667}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c157301b8fd0c5d4e9eabe1867fb351f
+      internalID: 1534728996
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wind_anims-Sheet_8
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 600
+        width: 128
+        height: 75
+      alignment: 9
+      pivot: {x: 0.421875, y: 0.2266667}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d7758f013265fd24c90fa65d6697ea99
+      internalID: 1287303472
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wind_anims-Sheet_9
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 600
+        width: 128
+        height: 75
+      alignment: 9
+      pivot: {x: 0.421875, y: 0.2266667}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 66664ac0b42e3c542a5fc828d942557b
+      internalID: 409467706
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wind_anims-Sheet_10
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 600
+        width: 128
+        height: 75
+      alignment: 9
+      pivot: {x: 0.421875, y: 0.2266667}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d7f5dcb892bac8347b4d3104539d8863
+      internalID: 1311568238
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wind_anims-Sheet_11
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 600
+        width: 128
+        height: 75
+      alignment: 9
+      pivot: {x: 0.421875, y: 0.2266667}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4030f21e1db317040bbd9c2d43cdefa9
+      internalID: -723439895
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wind_anims-Sheet_12
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 600
+        width: 128
+        height: 75
+      alignment: 9
+      pivot: {x: 0.421875, y: 0.2266667}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f829ad70c5e32b144a4c7bdc4d321991
+      internalID: 165841823
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wind_anims-Sheet_13
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 600
+        width: 128
+        height: 75
+      alignment: 9
+      pivot: {x: 0.421875, y: 0.2266667}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8c9c33c028ecae540bf79b78166cbd89
+      internalID: -41549685
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wind_anims-Sheet_14
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 600
+        width: 128
+        height: 75
+      alignment: 9
+      pivot: {x: 0.421875, y: 0.2266667}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e45b079975031f74b84c83067423f044
+      internalID: -1017684311
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wind_anims-Sheet_15
+      rect:
+        serializedVersion: 2
+        x: 896
+        y: 600
+        width: 128
+        height: 75
+      alignment: 9
+      pivot: {x: 0.421875, y: 0.2266667}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0e28c0bada9e95b438334bd73da8126c
+      internalID: -1811940175
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wind_anims-Sheet_16
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 525
+        width: 128
+        height: 75
+      alignment: 9
+      pivot: {x: 0.421875, y: 0.2266667}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d8e010f19fd068f4a87b5b0bf0303cb5
+      internalID: -375960611
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wind_anims-Sheet_17
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 525
+        width: 128
+        height: 75
+      alignment: 9
+      pivot: {x: 0.421875, y: 0.2266667}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ae56cd01141e6364bafa75de6dafc37a
+      internalID: -1464656214
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wind_anims-Sheet_18
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 525
+        width: 128
+        height: 75
+      alignment: 9
+      pivot: {x: 0.421875, y: 0.2266667}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6ea9488fdaa4e17429f6bbdd12887471
+      internalID: 898665744
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wind_anims-Sheet_19
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 450
+        width: 128
+        height: 75
+      alignment: 9
+      pivot: {x: 0.421875, y: 0.2266667}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0a10f192628ac3d44bea5a652b3e2126
+      internalID: 1621502976
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wind_anims-Sheet_20
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 450
+        width: 128
+        height: 75
+      alignment: 9
+      pivot: {x: 0.421875, y: 0.2266667}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 26e98521c4b506347989966574d1e976
+      internalID: -282334382
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wind_anims-Sheet_21
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 450
+        width: 128
+        height: 75
+      alignment: 9
+      pivot: {x: 0.421875, y: 0.2266667}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9e7223e616287714f99190dd8ca1f1f2
+      internalID: 1088687287
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wind_anims-Sheet_22
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 450
+        width: 128
+        height: 75
+      alignment: 9
+      pivot: {x: 0.421875, y: 0.2266667}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 56bfdd19272e5ba4192462a854a59e0b
+      internalID: 805391659
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wind_anims-Sheet_23
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 375
+        width: 128
+        height: 75
+      alignment: 9
+      pivot: {x: 0.421875, y: 0.2266667}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e8b927985d8c2fe4185f71038e744d24
+      internalID: 1649536550
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wind_anims-Sheet_24
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 375
+        width: 128
+        height: 75
+      alignment: 9
+      pivot: {x: 0.421875, y: 0.2266667}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8bded873527064c4fbc10fe24fbcd5ed
+      internalID: -1332239398
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wind_anims-Sheet_25
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 300
+        width: 128
+        height: 75
+      alignment: 9
+      pivot: {x: 0.421875, y: 0.2266667}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f82db0098e3c8ff418858de5667b1c85
+      internalID: 1813178928
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wind_anims-Sheet_26
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 300
+        width: 128
+        height: 75
+      alignment: 9
+      pivot: {x: 0.421875, y: 0.2266667}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1ec996662a366064bb0b0159e9e455fa
+      internalID: -715664058
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wind_anims-Sheet_27
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 300
+        width: 128
+        height: 75
+      alignment: 9
+      pivot: {x: 0.421875, y: 0.2266667}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 774664ebd98a15849b28c3b50508303e
+      internalID: -1680300373
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wind_anims-Sheet_28
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 300
+        width: 128
+        height: 75
+      alignment: 9
+      pivot: {x: 0.421875, y: 0.2266667}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 59acb939909de9d4e83ccaa26998a6b1
+      internalID: -526765656
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wind_anims-Sheet_29
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 225
+        width: 128
+        height: 75
+      alignment: 9
+      pivot: {x: 0.421875, y: 0.2266667}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3550ec2154cabf640a69d1479ee909ad
+      internalID: 81630731
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wind_anims-Sheet_30
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 225
+        width: 128
+        height: 75
+      alignment: 9
+      pivot: {x: 0.421875, y: 0.2266667}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d31c58a67baab944c9c9680d1277b59e
+      internalID: -1624664477
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wind_anims-Sheet_31
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 225
+        width: 128
+        height: 75
+      alignment: 9
+      pivot: {x: 0.421875, y: 0.2266667}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9aa1844af75af4542b8a5f91b5d64f33
+      internalID: 1269857995
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wind_anims-Sheet_32
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 225
+        width: 128
+        height: 75
+      alignment: 9
+      pivot: {x: 0.421875, y: 0.2266667}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: af020df072ca0e648ba4304ad05fda44
+      internalID: 1793561368
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wind_anims-Sheet_33
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 225
+        width: 128
+        height: 75
+      alignment: 9
+      pivot: {x: 0.421875, y: 0.2266667}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e4e81544bb704524c9e998544c4b04af
+      internalID: 971755829
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wind_anims-Sheet_34
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 150
+        width: 128
+        height: 75
+      alignment: 9
+      pivot: {x: 0.421875, y: 0.2266667}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 673571b21f0c4404393dd8c9bccc7336
+      internalID: 1907103067
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wind_anims-Sheet_35
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 150
+        width: 128
+        height: 75
+      alignment: 9
+      pivot: {x: 0.421875, y: 0.2266667}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0040bb22a66db7449bc380d9df44798f
+      internalID: -746043038
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wind_anims-Sheet_36
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 150
+        width: 128
+        height: 75
+      alignment: 9
+      pivot: {x: 0.421875, y: 0.2266667}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1f966078a7317ff479f75e6ed4013c4b
+      internalID: 390246609
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wind_anims-Sheet_37
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 150
+        width: 128
+        height: 75
+      alignment: 9
+      pivot: {x: 0.421875, y: 0.2266667}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2c4a9f9e6c9a2014fa54e5d2255f8b2e
+      internalID: 513710645
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wind_anims-Sheet_38
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 150
+        width: 128
+        height: 75
+      alignment: 9
+      pivot: {x: 0.421875, y: 0.2266667}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f380bb7a29d060f45b30cf4b5e738547
+      internalID: -79591331
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wind_anims-Sheet_39
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 75
+        width: 128
+        height: 75
+      alignment: 9
+      pivot: {x: 0.421875, y: 0.2266667}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 40c2e66d6a47af54890a85eee3c66992
+      internalID: 1194007412
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wind_anims-Sheet_40
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 75
+        width: 128
+        height: 75
+      alignment: 9
+      pivot: {x: 0.421875, y: 0.2266667}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 20ccf2047b81ef8419f97a3112dc1252
+      internalID: 2138860505
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wind_anims-Sheet_41
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 75
+        width: 128
+        height: 75
+      alignment: 9
+      pivot: {x: 0.421875, y: 0.2266667}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e43950189528e2049bba4e10c572f609
+      internalID: 574639694
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wind_anims-Sheet_42
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 75
+        width: 128
+        height: 75
+      alignment: 9
+      pivot: {x: 0.421875, y: 0.2266667}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9d4ee57e4f7daeb43946bc5d4335d8c4
+      internalID: 318444770
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wind_anims-Sheet_43
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 75
+        width: 128
+        height: 75
+      alignment: 9
+      pivot: {x: 0.421875, y: 0.2266667}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ae2a978555b1f204891d88e569a19d30
+      internalID: -491058911
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wind_anims-Sheet_44
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 75
+        width: 128
+        height: 75
+      alignment: 9
+      pivot: {x: 0.421875, y: 0.2266667}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: af174e6f2b87f5d42af34e36e2210f02
+      internalID: -718756844
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wind_anims-Sheet_45
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 128
+        height: 75
+      alignment: 9
+      pivot: {x: 0.421875, y: 0.2266667}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 68a8922f5ecf1ae4aa622a9ddd941f90
+      internalID: -1399416548
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wind_anims-Sheet_46
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 0
+        width: 128
+        height: 75
+      alignment: 9
+      pivot: {x: 0.421875, y: 0.2266667}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b6c108461c88fb248a4dacd551bdcef6
+      internalID: -225649933
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wind_anims-Sheet_47
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 0
+        width: 128
+        height: 75
+      alignment: 9
+      pivot: {x: 0.421875, y: 0.2266667}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 36a42b435302ca24eb715efcc0f07464
+      internalID: -120519640
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wind_anims-Sheet_48
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 0
+        width: 128
+        height: 75
+      alignment: 9
+      pivot: {x: 0.421875, y: 0.2266667}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 55cd3673863149642933e8d2cac3100b
+      internalID: 155631911
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wind_anims-Sheet_49
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 0
+        width: 128
+        height: 75
+      alignment: 9
+      pivot: {x: 0.421875, y: 0.2266667}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 616a2103a90ba8649a6d790647c8c55a
+      internalID: -1059843443
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wind_anims-Sheet_50
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 0
+        width: 128
+        height: 75
+      alignment: 9
+      pivot: {x: 0.421875, y: 0.2266667}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2798e72b90e6ab942952615bdde9cbfb
+      internalID: 1001483564
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wind_anims-Sheet_51
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 0
+        width: 128
+        height: 75
+      alignment: 9
+      pivot: {x: 0.421875, y: 0.2266667}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8b7dd53de2d29024c80a3c7a6d87dbb2
+      internalID: -1074035940
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wind_anims-Sheet_52
+      rect:
+        serializedVersion: 2
+        x: 896
+        y: 0
+        width: 128
+        height: 75
+      alignment: 9
+      pivot: {x: 0.421875, y: 0.2266667}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d4db3705cca0c974cbf285e8866a5a1d
+      internalID: -91172783
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      wind_anims-Sheet_0: 92097652
+      wind_anims-Sheet_1: -1634202854
+      wind_anims-Sheet_10: 1311568238
+      wind_anims-Sheet_11: -723439895
+      wind_anims-Sheet_12: 165841823
+      wind_anims-Sheet_13: -41549685
+      wind_anims-Sheet_14: -1017684311
+      wind_anims-Sheet_15: -1811940175
+      wind_anims-Sheet_16: -375960611
+      wind_anims-Sheet_17: -1464656214
+      wind_anims-Sheet_18: 898665744
+      wind_anims-Sheet_19: 1621502976
+      wind_anims-Sheet_2: 50131827
+      wind_anims-Sheet_20: -282334382
+      wind_anims-Sheet_21: 1088687287
+      wind_anims-Sheet_22: 805391659
+      wind_anims-Sheet_23: 1649536550
+      wind_anims-Sheet_24: -1332239398
+      wind_anims-Sheet_25: 1813178928
+      wind_anims-Sheet_26: -715664058
+      wind_anims-Sheet_27: -1680300373
+      wind_anims-Sheet_28: -526765656
+      wind_anims-Sheet_29: 81630731
+      wind_anims-Sheet_3: 628470523
+      wind_anims-Sheet_30: -1624664477
+      wind_anims-Sheet_31: 1269857995
+      wind_anims-Sheet_32: 1793561368
+      wind_anims-Sheet_33: 971755829
+      wind_anims-Sheet_34: 1907103067
+      wind_anims-Sheet_35: -746043038
+      wind_anims-Sheet_36: 390246609
+      wind_anims-Sheet_37: 513710645
+      wind_anims-Sheet_38: -79591331
+      wind_anims-Sheet_39: 1194007412
+      wind_anims-Sheet_4: 1476993551
+      wind_anims-Sheet_40: 2138860505
+      wind_anims-Sheet_41: 574639694
+      wind_anims-Sheet_42: 318444770
+      wind_anims-Sheet_43: -491058911
+      wind_anims-Sheet_44: -718756844
+      wind_anims-Sheet_45: -1399416548
+      wind_anims-Sheet_46: -225649933
+      wind_anims-Sheet_47: -120519640
+      wind_anims-Sheet_48: 155631911
+      wind_anims-Sheet_49: -1059843443
+      wind_anims-Sheet_5: 924321416
+      wind_anims-Sheet_50: 1001483564
+      wind_anims-Sheet_51: -1074035940
+      wind_anims-Sheet_52: -91172783
+      wind_anims-Sheet_6: -802239716
+      wind_anims-Sheet_7: 1534728996
+      wind_anims-Sheet_8: 1287303472
+      wind_anims-Sheet_9: 409467706
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
