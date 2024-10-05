@@ -2,7 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static Player;
+//using static Player;
 
 public class Enemy : MonoBehaviour
 {
@@ -90,6 +90,9 @@ public class Enemy : MonoBehaviour
         }
         characterJSON.GetWeaponStats();
         weaponData = characterJSON.weaponDataList;
+        InitWeapon();
+        SetState(EnemyState.Idle);
+
     }
 
     // Update is called once per frame
@@ -131,57 +134,7 @@ public class Enemy : MonoBehaviour
 
             case EnemyState.Idle:
 
-                //check for attack input
-                /*if (inputs[InputHandler.Inputs.Attack] == InputHandler.InputState.Pressed)
-                {
-                    if (inputs[InputHandler.Inputs.Up] == InputHandler.InputState.Held)
-                    {
-                        SetState(EnemyState.UpAttack);
-                        break;
-                    }
-                    else if (inputs[InputHandler.Inputs.Down] == InputHandler.InputState.Held)
-                    {
-                        SetState(EnemyState.DownAttack);
-                        break;
-                    }
-                    else
-                    {
-                        SetState(EnemyState.SideAttack);
-                        break;
-                    }
-
-                }
-                //check for spell input
-                if (inputs[InputHandler.Inputs.Spell] == InputHandler.InputState.Pressed)
-                {
-                    SetState(EnemyState.SpellAttack);
-                    Debug.Log("Pew!");
-                    break;
-                }
-                //check for movement input
-                if (inputs[InputHandler.Inputs.Left] == InputHandler.InputState.Held)
-                {
-                    //hspd = -runSpeed;
-                    SetState(EnemyState.Run);
-                    facingRight = false;
-                }
-                else if (inputs[InputHandler.Inputs.Right] == InputHandler.InputState.Held)
-                {
-                    //hspd = runSpeed;
-                    SetState(EnemyState.Run);
-                    facingRight = true;
-                }
-                else if (inputs[InputHandler.Inputs.Jump] == InputHandler.InputState.Pressed)
-                {
-                    SetState(EnemyState.Jumpsquat);
-                }
-
-
-                //check for shield input
-                if (inputs[InputHandler.Inputs.Shield] == InputHandler.InputState.Pressed)
-                {
-                    SetState(EnemyState.Shield);
-                }
+               
 
                 LerpHspd(0, 1);
                 //check for ground
@@ -190,71 +143,11 @@ public class Enemy : MonoBehaviour
                     SetState(EnemyState.Jump);
                     break;
                 }
-                break;*/
+                break;
 
             case EnemyState.Run:
 
-                //check for attack input
-                /*if (inputs[InputHandler.Inputs.Attack] == InputHandler.InputState.Pressed)
-                {
-                    if (inputs[InputHandler.Inputs.Up] == InputHandler.InputState.Held)
-                    {
-                        SetState(EnemyState.UpAttack);
-                        break;
-                    }
-                    else if (inputs[InputHandler.Inputs.Down] == InputHandler.InputState.Held)
-                    {
-                        SetState(EnemyState.DownAttack);
-                        break;
-                    }
-                    else
-                    {
-                        SetState(EnemyState.SideAttack);
-                        break;
-                    }
-                }
-                //Spell Input
-                if (inputs[InputHandler.Inputs.Spell] == InputHandler.InputState.Pressed)
-                {
-                    SetState(EnemyState.SpellAttack);
-                    break;
-                }
-                //run logic
-                if (facingRight)
-                {
-                    if (inputs[InputHandler.Inputs.Right] == InputHandler.InputState.Held)
-                    {
-                        hspd = runSpeed;
-                    }
-                    else if (inputs[InputHandler.Inputs.Right] == InputHandler.InputState.UnPressed)
-                    {
-                        hspd = 0;
-                        SetState(EnemyState.Idle);
-                        break;
-                    }
-                }
-                else
-                {
-                    if (inputs[InputHandler.Inputs.Left] == InputHandler.InputState.Held)
-                    {
-                        hspd = -runSpeed;
-                    }
-                    else if (inputHandler.keyBindings[InputHandler.Inputs.Left] == InputHandler.InputState.UnPressed)
-                    {
-                        hspd = 0;
-                        SetState(EnemyState.Idle);
-                    }
-                }
-                //check for jump input
-                if (inputs[InputHandler.Inputs.Jump] == InputHandler.InputState.Pressed)
-                {
-                    SetState(EnemyState.Jumpsquat);
-                }
-                //check for shield input
-                if (inputs[InputHandler.Inputs.Shield] == InputHandler.InputState.Pressed)
-                {
-                    SetState(EnemyState.Shield);
-                }
+                
                 //check for collision
                 if (grounded.collider == null)
                 {
@@ -262,7 +155,11 @@ public class Enemy : MonoBehaviour
                     SetState(EnemyState.Jump);
                     break;
                 }
-                break;*/
+                else
+                {
+                    SetState(EnemyState.Idle);
+                }
+                break;
             case EnemyState.Jumpsquat:
 
                 if (hspd != 0)
@@ -270,50 +167,13 @@ public class Enemy : MonoBehaviour
                     tempHspd = hspd;
                     hspd = 0;
                 }
-                //check for attack input
-                /*if (inputs[InputHandler.Inputs.Attack] == InputHandler.InputState.Pressed)
-                {
-                    hspd = tempHspd;
-                    tempHspd = 0;
-                    vspd = jumpForce;
-                    if (inputs[InputHandler.Inputs.Up] == InputHandler.InputState.Held)
-                    {
-                        SetState(EnemyState.UpAttack);
-                        break;
-                    }
-                    else if (inputs[InputHandler.Inputs.Down] == InputHandler.InputState.Held)
-                    {
-                        SetState(EnemyState.DownAttack);
-                        break;
-                    }
-                    else
-                    {
-                        SetState(EnemyState.SideAttack);
-                        break;
-                    }
-                }
-                //check for shield input
-                if (inputs[InputHandler.Inputs.Shield] == InputHandler.InputState.Pressed)
-                {
-                    hspd = tempHspd;
-                    tempHspd = 0;
-                    vspd = jumpForce;
-                    SetState(EnemyState.Shield);
-                }
-                if (inputs[InputHandler.Inputs.Right] == InputHandler.InputState.Held)
-                {
-                    facingRight = true;
-                }
-                else if (inputs[InputHandler.Inputs.Left] == InputHandler.InputState.Held)
-                {
-                    facingRight = false;
-                }
+                
                 if (currentFrame == frameCount - 1 && grounded.collider != null)
                 {
                     hspd = tempHspd;
                     tempHspd = 0;
-                    vspd = (inputs[InputHandler.Inputs.Jump] == InputHandler.InputState.Held ? jumpForce : jumpForce / 2);
-                }*/
+                    vspd = jumpForce;
+                }
                 if (animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1)
                 {
 
@@ -321,7 +181,6 @@ public class Enemy : MonoBehaviour
                 }
 
                 break;
-
             case EnemyState.Jump:
 
                 #region ground collision check
@@ -340,69 +199,18 @@ public class Enemy : MonoBehaviour
                 }
                 #endregion
 
-                //check for attack input
-                /*if (inputs[InputHandler.Inputs.Attack] == InputHandler.InputState.Pressed)
-                {
-                    if (inputs[InputHandler.Inputs.Up] == InputHandler.InputState.Held)
-                    {
-                        SetState(EnemyState.UpAttack);
-                        break;
-                    }
-                    else if (inputs[InputHandler.Inputs.Down] == InputHandler.InputState.Held)
-                    {
-                        SetState(EnemyState.DownAttack);
-                        break;
-                    }
-                    else
-                    {
-                        SetState(EnemyState.SideAttack);
-                        break;
-                    }
-                }
-                //allow for horizontal movement
-                if (inputs[InputHandler.Inputs.Right] == InputHandler.InputState.Held)
-                {
-                    facingRight = true;
-                    hspd = runSpeed;
-                }
-                else if (inputs[InputHandler.Inputs.Left] == InputHandler.InputState.Held)
-                {
-                    facingRight = false;
-                    hspd = -runSpeed;
-                }
-                else if (inputs[InputHandler.Inputs.Left] == InputHandler.InputState.UnPressed && inputs[InputHandler.Inputs.Right] == InputHandler.InputState.UnPressed)
-                {
-                    hspd = 0;
-                }
-                //check for shield input
-                if (inputs[InputHandler.Inputs.Shield] == InputHandler.InputState.Pressed)
-                {
-                    SetState(EnemyState.Shield);
-                }
-                */
+                
+                
+                
                 break;
 
             case EnemyState.Landing:
                 vspd = 0;
                 hspd = 0;
-                /*if (animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1)
+                if (animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1)
                 {
-                    if (inputs[InputHandler.Inputs.Left] == InputHandler.InputState.Held)
-                    {
-                        SetState(EnemyState.Run);
-                        facingRight = false;
-                    }
-                    else if (inputs[InputHandler.Inputs.Right] == InputHandler.InputState.Held)
-                    {
-                        SetState(EnemyState.Run);
-                        facingRight = true;
-                    }
-                    else
-                    {
-                        SetState(EnemyState.Idle);
-                    }
-
-                }*/
+                    SetState(EnemyState.Idle);
+                }
 
                 break;
             case EnemyState.Hitstun:
@@ -431,32 +239,12 @@ public class Enemy : MonoBehaviour
                 {
                     SnapToSurface(grounded);
                     vspd = 0;
-                    //check for Jump input
-                    /*if (inputs[InputHandler.Inputs.Jump] == InputHandler.InputState.Pressed)
-                    {
-                        SetState(EnemyState.Jumpsquat);
-                    }*/
                 }
                 //check for wall collision
                 if (IsTouchingWall().collider != null)
                 {
                     hspd = -hspd;
                 }
-                //check for shield release
-                /*if (inputs[InputHandler.Inputs.Shield] == InputHandler.InputState.UnPressed)
-                {
-                    SetState(grounded.collider != null ? EnemyState.Idle : EnemyState.Jump);
-                }
-
-                //check for horizontal inputs
-                if (inputs[InputHandler.Inputs.Right] == InputHandler.InputState.Held)
-                {
-                    facingRight = true;
-                }
-                else if (inputs[InputHandler.Inputs.Left] == InputHandler.InputState.Held)
-                {
-                    facingRight = false;
-                }*/
 
 
                 LerpHspd(0, 10);
@@ -507,34 +295,11 @@ public class Enemy : MonoBehaviour
                     else
                     {
                         LerpHspd(0, 3);
-                        //jump canceling logic on ground only
-                        /*if (hitboxes[0].GetComponent<Hitbox>().canCancel)
-                        {
-                            //check for Jump input
-                            if (inputs[InputHandler.Inputs.Jump] == InputHandler.InputState.Pressed)
-                            {
-                                SetState(EnemyState.Jumpsquat);
-                            }
-                        }*/
+                        
                     }
 
                 }
-                /*else
-                {
-                    //allow for horizontal movement
-                    if (inputs[InputHandler.Inputs.Right] == InputHandler.InputState.Held)
-                    {
-                        hspd = runSpeed;
-                    }
-                    else if (inputs[InputHandler.Inputs.Left] == InputHandler.InputState.Held)
-                    {
-                        hspd = -runSpeed;
-                    }
-                    else if (inputs[InputHandler.Inputs.Left] == InputHandler.InputState.UnPressed && inputs[InputHandler.Inputs.Right] == InputHandler.InputState.UnPressed)
-                    {
-                        hspd = 0;
-                    }
-                }*/
+                
                 if (animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1)
                 {
                     SetState(grounded.collider != null ? EnemyState.Idle : EnemyState.Jump);
@@ -588,34 +353,10 @@ public class Enemy : MonoBehaviour
                     {
                         LerpHspd(0, 1);
 
-                        //jump canceling logic on ground only
-                        /*if (hitboxes[0].GetComponent<Hitbox>().canCancel)
-                        {
-                            //check for Jump input
-                            if (inputs[InputHandler.Inputs.Jump] == InputHandler.InputState.Pressed)
-                            {
-                                SetState(EnemyState.Jumpsquat);
-                            }
-                        }*/
+                        
                     }
 
                 }
-                /*else
-                {
-                    //allow for horizontal movement
-                    if (inputs[InputHandler.Inputs.Right] == InputHandler.InputState.Held)
-                    {
-                        hspd = runSpeed;
-                    }
-                    else if (inputs[InputHandler.Inputs.Left] == InputHandler.InputState.Held)
-                    {
-                        hspd = -runSpeed;
-                    }
-                    else if (inputs[InputHandler.Inputs.Left] == InputHandler.InputState.UnPressed && inputs[InputHandler.Inputs.Right] == InputHandler.InputState.UnPressed)
-                    {
-                        hspd = 0;
-                    }
-                }*/
                 if (animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1)
                 {
 
@@ -665,34 +406,9 @@ public class Enemy : MonoBehaviour
                     else
                     {
                         LerpHspd(0, 2);
-                        //jump canceling logic on ground only
-                        /*if (hitboxes[0].GetComponent<Hitbox>().canCancel)
-                        {
-                            //check for Jump input
-                            if (inputs[InputHandler.Inputs.Jump] == InputHandler.InputState.Pressed)
-                            {
-                                SetState(EnemyState.Jumpsquat);
-                            }
-                        }*/
                     }
 
                 }
-                /*else
-                {
-                    //allow for horizontal movement
-                    if (inputs[InputHandler.Inputs.Right] == InputHandler.InputState.Held)
-                    {
-                        hspd = runSpeed;
-                    }
-                    else if (inputs[InputHandler.Inputs.Left] == InputHandler.InputState.Held)
-                    {
-                        hspd = -runSpeed;
-                    }
-                    else if (inputs[InputHandler.Inputs.Left] == InputHandler.InputState.UnPressed && inputs[InputHandler.Inputs.Right] == InputHandler.InputState.UnPressed)
-                    {
-                        hspd = 0;
-                    }
-                }*/
                 if (animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1)
                 {
 
@@ -701,35 +417,7 @@ public class Enemy : MonoBehaviour
                 }
                 break;
             case EnemyState.SpellAttack:
-                //This is literally just copied from side attack.
-                //handle hitbox activation
-                Debug.Log("Pew!");
-                /*  for (int i = 0; i < frameData.sideAttackFrames.startFrames.Count; i++)
-                  {
-                      if (currentFrame == frameData.sideAttackFrames.startFrames[i])
-                      {
-                          if (hitboxes[0].activeSelf == false)
-                          {
-                              hitboxes[0].GetComponent<Hitbox>().hitboxActive = true;
-                          }
-                          hitboxes[0].SetActive(true);
-                          hitboxes[0].GetComponent<Hitbox>().updateHitbox(
-                              1,
-                              hitboxData.sideAttackHitboxes[i].xOffset,
-                              hitboxData.sideAttackHitboxes[i].yOffset,
-                              hitboxData.sideAttackHitboxes[i].width,
-                              hitboxData.sideAttackHitboxes[i].height,
-                              hitboxData.sideAttackHitboxes[i].xKnockback,
-                              hitboxData.sideAttackHitboxes[i].yKnockback,
-                              hitboxData.sideAttackHitboxes[i].hitstun
-                          );
-                      }
-                      else if (currentFrame == frameData.sideAttackFrames.endFrames[i])
-                      {
-                          hitboxes[0].SetActive(false);
-
-                      }
-                  }*/
+               
                 SetState(EnemyState.Idle);
                 break;
         }

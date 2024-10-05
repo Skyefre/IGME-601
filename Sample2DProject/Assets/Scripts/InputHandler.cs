@@ -29,6 +29,8 @@ public class InputHandler : MonoBehaviour
     {
         {Inputs.Left, InputState.UnPressed},
         {Inputs.Right, InputState.UnPressed},
+        {Inputs.Up, InputState.UnPressed},
+        {Inputs.Down, InputState.UnPressed},
         {Inputs.Jump, InputState.UnPressed},
         {Inputs.Attack, InputState.UnPressed},
         {Inputs.Spell, InputState.UnPressed},
@@ -40,6 +42,8 @@ public class InputHandler : MonoBehaviour
     {
         {Inputs.Left, InputState.UnPressed},
         {Inputs.Right, InputState.UnPressed},
+        {Inputs.Up, InputState.UnPressed},
+        {Inputs.Down, InputState.UnPressed},
         {Inputs.Jump, InputState.UnPressed},
         {Inputs.Attack, InputState.UnPressed},
         {Inputs.Spell, InputState.UnPressed},

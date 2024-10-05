@@ -2,9 +2,8 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
-
-//using UnityEditor.Animations;
 using UnityEngine;
+//using static Enemy;
 
 public class Player : MonoBehaviour
 {
@@ -106,6 +105,7 @@ public class Player : MonoBehaviour
         characterJSON.GetWeaponStats();
         weaponData = characterJSON.weaponDataList;
         InitWeapon();
+        SetState(PlayerState.Idle);
     }
 
    
