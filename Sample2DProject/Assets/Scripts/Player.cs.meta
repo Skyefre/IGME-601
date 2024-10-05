@@ -3,7 +3,15 @@ guid: be4c5071fc6a4d045920f9804d49b96c
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - animator: {instanceID: 0}
+  - baseAnimController: {instanceID: 0}
+  - characterJSON: {instanceID: 0}
+  - currentSpell: {instanceID: 0}
+  - inputHandler: {instanceID: 0}
+  - hitboxReference: {instanceID: 0}
+  - hurtboxReference: {instanceID: 0}
+  - iceBlock: {fileID: 3368831122626336784, guid: eaaa902c8e0aed742b8a6fb7927d3fbb, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
