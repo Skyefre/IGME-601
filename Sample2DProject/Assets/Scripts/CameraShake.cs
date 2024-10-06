@@ -7,6 +7,7 @@ public class CameraShake : MonoBehaviour
     public Camera mainCamera;
 
     public float shakeAmount = 0;
+    Vector3 tempCamPos;
 
     private void Awake()
     {
@@ -19,22 +20,22 @@ public class CameraShake : MonoBehaviour
     public void Shake(float amount, float length)
     {
         shakeAmount = amount;
+        tempCamPos = mainCamera.transform.position;
         InvokeRepeating("DoShake", 0, 0.01f);
         Invoke("StopShake", length);
     }
 
-    //private void Update()
-    //{
-    //    if (Input.GetKeyDown(KeyCode.T))
-    //    {
-    //        Shake(1f, 1f);
-    //    }
-    //}
+    private void Update()
+    {
+        
+    }
 
     void DoShake()
     {
+        
         if (shakeAmount > 0)
         {
+            
             Vector3 camPos = mainCamera.transform.position;
 
             float offsetX = Random.value * shakeAmount * 2 - shakeAmount;
@@ -48,7 +49,7 @@ public class CameraShake : MonoBehaviour
         else
         {
             CancelInvoke("DoShake");
-            mainCamera.transform.localPosition = new Vector3(0,0,-10);
+            mainCamera.transform.localPosition = tempCamPos;
         }
 
     }
@@ -56,6 +57,6 @@ public class CameraShake : MonoBehaviour
     void StopShake()
     {
         CancelInvoke("DoShake");
-        mainCamera.transform.localPosition = new Vector3(0, 0, -10);
+        mainCamera.transform.localPosition = tempCamPos;
     }
 }

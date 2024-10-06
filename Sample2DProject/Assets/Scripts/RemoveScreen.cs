@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class RemoveScreen : MonoBehaviour
 {
+    public Animator transition;
+
+    public float transitionTime = 1f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -13,13 +17,20 @@ public class RemoveScreen : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //if (Input.anyKey)
-        //{
-        //    gameObject.SetActive(false);
-        //}
+        
     }
+
     public void Remove()
     {
+        StartCoroutine(StartGame());
+    }
+
+    IEnumerator StartGame()
+    {
+        transition.SetTrigger("Start");
+
+        yield return new WaitForSeconds(transitionTime);
+
         gameObject.SetActive(false);
     }
 }
