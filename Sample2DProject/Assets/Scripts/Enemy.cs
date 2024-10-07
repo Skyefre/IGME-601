@@ -214,11 +214,11 @@ public class Enemy : MonoBehaviour
 
                 break;
             case EnemyState.Hitstun:
-                if (grounded.collider != null)
+                if (grounded.collider != null && vspd < 0)
                 {
                     SnapToSurface(grounded);
                     vspd = -vspd;
-                    //LerpHspd(0, 3);
+                   // LerpHspd(0, 3);
                 }
                 if (IsTouchingWall().collider != null)
                 {

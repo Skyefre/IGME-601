@@ -430,7 +430,7 @@ public class Player : MonoBehaviour
 
                 break;
             case PlayerState.Hitstun:
-                if(grounded.collider != null)
+                if(grounded.collider != null && vspd < 0)
                 {
                     SnapToSurface(grounded);
                     vspd = -vspd;
