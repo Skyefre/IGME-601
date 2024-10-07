@@ -173,12 +173,12 @@ public class Player : MonoBehaviour
 
                 }
                 //check for spell input
-                if (inputs[InputHandler.Inputs.Spell] == InputHandler.InputState.Held)
+                /*if (inputs[InputHandler.Inputs.Spell] == InputHandler.InputState.Held)
                 {
                     SetState(PlayerState.SpellAttack);
                     Debug.Log("Pew!");
                     break;
-                }
+                }*/
                 //check for movement input
                 if (inputs[InputHandler.Inputs.Left] == InputHandler.InputState.Held)
                 {
@@ -240,11 +240,11 @@ public class Player : MonoBehaviour
                     }
                 }
                 //Spell Input
-                if (inputs[InputHandler.Inputs.Spell] == InputHandler.InputState.Pressed)
+                /*if (inputs[InputHandler.Inputs.Spell] == InputHandler.InputState.Pressed)
                 {   
                     SetState(PlayerState.SpellAttack);
                     break;
-                }
+                }*/
                 //run logic
                 if (facingRight)
                 {
