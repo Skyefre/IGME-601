@@ -44,9 +44,13 @@ public class GameManager : MonoBehaviour
     public void GetPlayerIds()
     {
         players = GameObject.FindGameObjectsWithTag("Player");
-        foreach (GameObject player in players)
+        //foreach (GameObject player in players)
+        //{
+        //    Debug.Log(player.name);
+        //}
+        for(int i = 0; i < players.Length; i++)
         {
-            Debug.Log(player.name);
+            players[i].GetComponent<SpriteRenderer>().material.SetTexture("_PaletteTex", players[i].GetComponent<Player>().colorPalletes[i]);
         }
     }
 

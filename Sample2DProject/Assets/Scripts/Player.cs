@@ -291,16 +291,15 @@ public class Player : MonoBehaviour
                 break;
             case PlayerState.Jumpsquat:
 
-                if (hspd != 0)
-                {
-                    tempHspd = hspd;
-                    hspd = 0;
-                }
+                
                 //check for attack input
                 if (inputs[InputHandler.Inputs.Attack] == InputHandler.InputState.Pressed)
                 {
-                    hspd = tempHspd;
-                    tempHspd = 0;
+                    if (tempHspd != 0)
+                    {
+                        hspd = tempHspd;
+                        tempHspd = 0;
+                    }
                     vspd = jumpForce;
                     if (inputs[InputHandler.Inputs.Up] == InputHandler.InputState.Held)
                     {
@@ -321,8 +320,11 @@ public class Player : MonoBehaviour
                 //check for shield input
                 if (inputs[InputHandler.Inputs.Shield] == InputHandler.InputState.Pressed)
                 {
-                    hspd = tempHspd;
-                    tempHspd = 0;
+                    if (tempHspd != 0)
+                    {
+                        hspd = tempHspd;
+                        tempHspd = 0;
+                    }
                     vspd = jumpForce;
                     SetState(PlayerState.Shield);
                 }
@@ -336,8 +338,12 @@ public class Player : MonoBehaviour
                 }
                 if (currentFrame == frameCount - 1 && grounded.collider != null)
                 {
-                    hspd = tempHspd;
-                    tempHspd = 0;
+                    if(tempHspd != 0)
+                    {
+                        hspd = tempHspd;
+                        tempHspd = 0;
+                    }
+                    
                     vspd = (inputs[InputHandler.Inputs.Jump] == InputHandler.InputState.Held?jumpForce: jumpForce/2);
                 }
                 if (animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1)
@@ -755,10 +761,10 @@ public class Player : MonoBehaviour
                     CycleWeapon();
                 }
                 //change color when jump is pressed
-                if (inputs[InputHandler.Inputs.Jump] == InputHandler.InputState.Pressed)
-                {
-                    CycleColor();
-                }
+                //if (inputs[InputHandler.Inputs.Jump] == InputHandler.InputState.Pressed)
+                //{
+                //    CycleColor();
+                //}
 
                 break;
         }
@@ -836,6 +842,11 @@ public class Player : MonoBehaviour
                 );
                 break;
             case PlayerState.Jumpsquat:
+                if (hspd != 0)
+                {
+                    tempHspd = hspd;
+                    hspd = 0;
+                }
                 hurtbox.GetComponent<Hurtbox>().updateHurtbox(
                 hurtboxData.jumpsquatHurtbox.xOffset,
                 hurtboxData.jumpsquatHurtbox.yOffset,
