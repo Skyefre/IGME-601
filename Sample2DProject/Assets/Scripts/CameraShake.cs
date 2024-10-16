@@ -5,11 +5,11 @@ using UnityEngine;
 public class CameraShake : MonoBehaviour
 {
     public Camera mainCamera;
-
     public float shakeAmount = 0;
     Vector3 tempCamPos;
 
-    private void Awake()
+
+    private void Start()
     {
         if (mainCamera == null)
         {
@@ -17,8 +17,13 @@ public class CameraShake : MonoBehaviour
         }
     }
 
+
     public void Shake(float amount, float length)
     {
+        if (mainCamera == null)
+        {
+            mainCamera = Camera.main;
+        }
         shakeAmount = amount;
         tempCamPos = mainCamera.transform.position;
         InvokeRepeating("DoShake", 0, 0.01f);
@@ -27,15 +32,21 @@ public class CameraShake : MonoBehaviour
 
     private void Update()
     {
-        
+        //if (mainCamera == null)
+        //{
+        //    mainCamera = Camera.main;
+        //}
     }
 
     void DoShake()
     {
-        
+        if (mainCamera == null)
+        {
+            mainCamera = Camera.main;
+        }
+
         if (shakeAmount > 0)
         {
-            
             Vector3 camPos = mainCamera.transform.position;
 
             float offsetX = Random.value * shakeAmount * 2 - shakeAmount;
@@ -56,7 +67,16 @@ public class CameraShake : MonoBehaviour
 
     void StopShake()
     {
+        if (mainCamera == null)
+        {
+            mainCamera = Camera.main;
+        }
         CancelInvoke("DoShake");
         mainCamera.transform.localPosition = tempCamPos;
+    }
+
+    public void GetCamera()
+    {
+        mainCamera = Camera.main;
     }
 }

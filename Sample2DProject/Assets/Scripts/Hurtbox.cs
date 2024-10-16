@@ -68,13 +68,13 @@ public class Hurtbox : MonoBehaviour
             if (owner.GetComponent<Player>() != null)
             {
                 owner.GetComponent<Player>().TakeDamage(hitHitbox.owner, hitHitbox.damage, hitHitbox.xKnockback * (hitPlayer.facingRight ? 1 : -1), hitHitbox.yKnockback, hitHitbox.hitstun);
-                owner.GetComponent<Player>().hitstopVal = 6;
+                owner.GetComponent<Player>().hitstopVal = 10;
                 owner.GetComponent<Player>().animator.enabled = false;
             }
             else if(owner.GetComponent<Enemy>() != null)
             {
                 owner.GetComponent<Enemy>().TakeDamage(hitHitbox.owner, hitHitbox.damage, hitHitbox.xKnockback * (hitPlayer.facingRight ? 1 : -1), hitHitbox.yKnockback, hitHitbox.hitstun);
-                owner.GetComponent<Enemy>().hitstopVal = 6;
+                owner.GetComponent<Enemy>().hitstopVal = 10;
                 owner.GetComponent<Enemy>().animator.enabled = false;
             }
             else
@@ -82,9 +82,9 @@ public class Hurtbox : MonoBehaviour
                 Debug.Log("Hurtbox owner is not a player or enemy");
             }
 
-            hitPlayer.hitstopVal = 6;
+            hitPlayer.hitstopVal = 10;
             hitPlayer.animator.enabled = false;
-            GameManager.Instance.gameObject.GetComponent<CameraShake>().Shake(1f, .1f); //shake the camera when hit
+            GameManager.Instance.gameObject.GetComponent<CameraShake>().Shake(3f, (1f/6f)); //shake the camera when hit
         }
         else if(hitHitbox != null && hitHitbox.owner != this.owner && hitHitbox.hitboxActive == true && hitEnemy != null)//the thing that hit you is an enemy
         {
@@ -94,22 +94,22 @@ public class Hurtbox : MonoBehaviour
             if (owner.GetComponent<Player>() != null)
             {
                 owner.GetComponent<Player>().TakeDamage(hitHitbox.owner, hitHitbox.damage, hitHitbox.xKnockback * (hitPlayer.facingRight ? 1 : -1), hitHitbox.yKnockback, hitHitbox.hitstun);
-                owner.GetComponent<Player>().hitstopVal = 6;
+                owner.GetComponent<Player>().hitstopVal = 10;
                 owner.GetComponent<Player>().animator.enabled = false;
             }
             else if (owner.GetComponent<Enemy>() != null)
             {
                 owner.GetComponent<Enemy>().TakeDamage(hitHitbox.owner, hitHitbox.damage, hitHitbox.xKnockback * (hitPlayer.facingRight ? 1 : -1), hitHitbox.yKnockback, hitHitbox.hitstun);
-                owner.GetComponent<Enemy>().hitstopVal = 6;
+                owner.GetComponent<Enemy>().hitstopVal = 10;
                 owner.GetComponent<Enemy>().animator.enabled = false;
             }
             else
             {
                 Debug.Log("Hurtbox owner is not a player or enemy");
             }
-            hitEnemy.hitstopVal = 6;
+            hitEnemy.hitstopVal = 10;
             hitEnemy.animator.enabled = false;
-            GameManager.Instance.gameObject.GetComponent<CameraShake>().Shake(1f, .1f); //shake the camera when hit
+            GameManager.Instance.gameObject.GetComponent<CameraShake>().Shake(3f, (1f/6f)); //shake the camera when hit
         }
     }
 }

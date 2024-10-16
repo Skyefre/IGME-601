@@ -6,14 +6,21 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
     public GameObject[] players;
+    public List<Texture2D> colorPalletes;
+    public bool enableStartScreen;
 
     private void Awake()
     {
-        if(Instance == null)
+        if (Instance == null)
         {
             Instance = this;
+            DontDestroyOnLoad(gameObject);
         }
-        DontDestroyOnLoad(gameObject);
+        else if (Instance != this)
+        {
+            Destroy(gameObject);
+        }
+        enableStartScreen = true;
     }
     // Start is called before the first frame update
     void Start()
@@ -24,11 +31,28 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name != "Scene_MainMenu")
+        {
+            //CheckAlivePlayers();
+        }
+        else
+        {
+            Camera.main.transform.position = new Vector3(0, 0, -10);
+            if(Input.GetKeyDown(KeyCode.Space))
+            {
+                LoadScene("TestScene");
+            }
+        }
     }
     public void LoadScene(string sceneName)
     {
+        for (int i = 0; i < players.Length; i++)
+        {
+            DontDestroyOnLoad(players[i]);
+        }
         UnityEngine.SceneManagement.SceneManager.LoadScene(sceneName);
+        //gameObject.GetComponent<CameraShake>().mainCamera = GameObject.Find("Main Camera").GetComponent<Camera>();
+
     }
 
     public void QuitGame()
@@ -48,9 +72,9 @@ public class GameManager : MonoBehaviour
         //{
         //    Debug.Log(player.name);
         //}
-        for(int i = 0; i < players.Length; i++)
+        for (int i = 0; i < players.Length; i++)
         {
-            players[i].GetComponent<SpriteRenderer>().material.SetTexture("_PaletteTex", players[i].GetComponent<Player>().colorPalletes[i]);
+            players[i].GetComponent<SpriteRenderer>().material.SetTexture("_PaletteTex", colorPalletes[i]);
         }
     }
 

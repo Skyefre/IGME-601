@@ -386,6 +386,7 @@ GameObject:
   - component: {fileID: 519420031}
   - component: {fileID: 519420029}
   - component: {fileID: 519420033}
+  - component: {fileID: 519420034}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -488,6 +489,25 @@ MonoBehaviour:
   m_CropFrameX: 1
   m_CropFrameY: 1
   m_StretchFill: 0
+--- !u!114 &519420034
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 519420028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cda3f3c1407151f4a9a0f26d250e7fe0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  offset: {x: 0, y: 115, z: 0}
+  damping: 0
+  minZoom: 180
+  maxZoom: 360
+  minDistance: 360
+  zoomLimiter: 960
+  target: {x: 0, y: 0, z: 0}
 --- !u!4 &533992988 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2273646752466505601, guid: 8570cbe2501d59a4a82370b211802789, type: 3}
@@ -684,7 +704,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1649555061467412725, guid: 08af4e61ad010ac42ad91398b8cc00d1, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1649555061467412725, guid: 08af4e61ad010ac42ad91398b8cc00d1, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 7366884720313218217, guid: 08af4e61ad010ac42ad91398b8cc00d1, type: 3}
       propertyPath: m_LocalPosition.x
