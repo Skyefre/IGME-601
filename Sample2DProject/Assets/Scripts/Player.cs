@@ -91,6 +91,7 @@ public class Player : MonoBehaviour
     private void Awake()
     {
         inputs = inputHandler.keyBindings;
+        gameObject.GetComponent<SpriteRenderer>().material.SetTexture("_PaletteTex", colorPalletes[/*(gameObject == GameManager.Instance.players[0]?0:1)*/GameManager.Instance.players.Length ==1?0:1]);
 
 
     }
