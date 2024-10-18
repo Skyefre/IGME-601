@@ -38,12 +38,12 @@ public class Player : MonoBehaviour
     public RuntimeAnimatorController baseAnimController;
     public List<AnimatorOverrideController> otherWeaponAnimControllers;
     public List<Texture2D> colorPalletes;
-    public JSONReader characterJSON;
-    public JSONReader.FrameDataContainer frameData;
-    public JSONReader.HitboxDataContainer hitboxData;
-    public JSONReader.HurtboxDataContainer hurtboxData;
-    public int maxHitboxes = 2;
-    private JSONReader.WeaponDataList weaponData;
+    public PlayerJSONReader characterJSON;
+    public PlayerJSONReader.FrameDataContainer frameData;
+    public PlayerJSONReader.HitboxDataContainer hitboxData;
+    public PlayerJSONReader.HurtboxDataContainer hurtboxData;
+    public int maxHitboxes = 1;
+    private PlayerJSONReader.WeaponDataList weaponData;
     private int currentAnimControllerIndex = 0;
     private int currentColorIndex = 0;
 
@@ -101,7 +101,7 @@ public class Player : MonoBehaviour
         boxCollider = GetComponent<BoxCollider2D>();
         if (characterJSON == null)
         {
-            characterJSON = gameObject.GetComponent<JSONReader>();
+            characterJSON = gameObject.GetComponent<PlayerJSONReader>();
         }
         characterJSON.GetWeaponStats();
         weaponData = characterJSON.weaponDataList;

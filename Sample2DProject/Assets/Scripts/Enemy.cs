@@ -2,7 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-//using static Player;
+//using static Enemy;
 
 public class Enemy : MonoBehaviour
 {
@@ -29,18 +29,18 @@ public class Enemy : MonoBehaviour
     private int hitstunVal = 0;
 
     //weapon and color swapping support fields
-    public string weaponName = "ice";
+    public string enemyName = "ice";
     public Animator animator;
     //public AnimatorController baseAnimController;
     public RuntimeAnimatorController baseAnimController;
-    public List<AnimatorOverrideController> otherWeaponAnimControllers;
+    public List<AnimatorOverrideController> otherEnemyAnimControllers;
     public List<Texture2D> colorPalletes;
-    public JSONReader characterJSON;
-    public JSONReader.FrameDataContainer frameData;
-    public JSONReader.HitboxDataContainer hitboxData;
-    public JSONReader.HurtboxDataContainer hurtboxData;
+    public EnemyJSONReader characterJSON;
+    public EnemyJSONReader.FrameDataContainer frameData;
+    public EnemyJSONReader.HitboxDataContainer hitboxData;
+    public EnemyJSONReader.HurtboxDataContainer hurtboxData;
     public int maxHitboxes = 2;
-    private JSONReader.WeaponDataList weaponData;
+    private EnemyJSONReader.EnemyDataList enemyData;
     /*private int currentAnimControllerIndex = 0;
     private int currentColorIndex = 0;*/
 
@@ -55,7 +55,7 @@ public class Enemy : MonoBehaviour
     public int maxVspd = 1;
     public EnemyState state = EnemyState.Idle;
     public BaseSpell currentSpell;
-    public BaseSpell[] PlayerSpells;
+    public BaseSpell[] EnemySpells;
     public bool facingRight = true;
     public LayerMask groundLayer; // Layer mask to specify what is considered ground
     public float rayLength = 0.1f; // Length of the ray
@@ -86,10 +86,10 @@ public class Enemy : MonoBehaviour
         boxCollider = GetComponent<BoxCollider2D>();
         if (characterJSON == null)
         {
-            characterJSON = gameObject.GetComponent<JSONReader>();
+            characterJSON = gameObject.GetComponent<EnemyJSONReader>();
         }
-        characterJSON.GetWeaponStats();
-        weaponData = characterJSON.weaponDataList;
+        characterJSON.GetEnemyStats();
+        enemyData = characterJSON.enemyDataList;
         InitWeapon();
         SetState(EnemyState.Idle);
 
@@ -461,7 +461,7 @@ public class Enemy : MonoBehaviour
     private void SetState(EnemyState targetState)
     {
         animator.enabled = true;
-        animator.SetInteger("player_state", (int)targetState);
+        animator.SetInteger("enemy_state", (int)targetState);
         prevState = state;
         state = targetState;
 
@@ -832,16 +832,16 @@ public class Enemy : MonoBehaviour
     void InitWeapon()
     {
 
-        for (int i = 0; i < weaponData.weaponData.Count; i++)
+        for (int i = 0; i < enemyData.enemyData.Count; i++)
         {
-            if (weaponData.weaponData[i].weapon == weaponName)
+            if (enemyData.enemyData[i].enemy == enemyName)
             {
-                runSpeed = weaponData.weaponData[i].runSpeed;
-                jumpForce = weaponData.weaponData[i].jumpForce;
-                maxHitboxes = weaponData.weaponData[i].maxHitboxes;
-                frameData = weaponData.weaponData[i].frameData;
-                hitboxData = weaponData.weaponData[i].hitboxData;
-                hurtboxData = weaponData.weaponData[i].hurtboxData;
+                runSpeed = enemyData.enemyData[i].runSpeed;
+                jumpForce = enemyData.enemyData[i].jumpForce;
+                maxHitboxes = enemyData.enemyData[i].maxHitboxes;
+                frameData = enemyData.enemyData[i].frameData;
+                hitboxData = enemyData.enemyData[i].hitboxData;
+                hurtboxData = enemyData.enemyData[i].hurtboxData;
             }
         }
         InitHitboxes();
@@ -901,7 +901,7 @@ public class Enemy : MonoBehaviour
     public void TakeDamage(GameObject hitEnemy, int damage, int xKnockback, int yKnockback, int hitstun)
     {
 
-        //If this player is block and facing the right direction
+        //If this enemy is block and facing the right direction
         if (state == EnemyState.Shield &&
             ((hitEnemy.transform.position.x > gameObject.transform.position.x && facingRight) ||
             (hitEnemy.transform.position.x < gameObject.transform.position.x && !facingRight)))
