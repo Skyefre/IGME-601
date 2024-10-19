@@ -946,7 +946,16 @@ public class Enemy : MonoBehaviour
         // Switch target when close to the current one
         if (Vector2.Distance(transform.position, currentTarget) < 5f)
         {
-            currentTarget = currentTarget == rightPosition ? leftPosition : rightPosition;
+            if(currentTarget == rightPosition)
+            {
+                currentTarget = leftPosition;
+                facingRight = false;
+            }
+            else
+            {
+                currentTarget = rightPosition;
+                facingRight = true;
+            }
         }
     }
 }
