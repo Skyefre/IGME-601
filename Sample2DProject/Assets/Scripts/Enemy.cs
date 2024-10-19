@@ -53,6 +53,9 @@ public class Enemy : MonoBehaviour
     public int vspd = 0;
     public int maxHspd = 10;
     public int maxVspd = 1;
+    private Vector3 rightPosition;
+    private Vector3 leftPosition;
+    private Vector3 currentTarget;
     public EnemyState state = EnemyState.Idle;
     public BaseSpell currentSpell;
     public BaseSpell[] EnemySpells;
@@ -93,12 +96,20 @@ public class Enemy : MonoBehaviour
         InitWeapon();
         SetState(EnemyState.Idle);
 
+        // Set the patrol positions relative to the initial position
+        leftPosition = transform.position;
+        rightPosition = transform.position;
+        leftPosition.x -= 80;
+        rightPosition.x += 300;
+
+        // Start by targeting the right position
+        currentTarget = rightPosition;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        Patrolling();
     }
 
     void FixedUpdate()
@@ -918,7 +929,24 @@ public class Enemy : MonoBehaviour
         }
 
         Debug.Log("Enemy Health: " + health);
+    }
 
+    public virtual void Patrolling()
+    {
+        // Determine the horizontal speed based on the current target position
+        if (currentTarget == rightPosition)
+        {
+            hspd = runSpeed/2;
+        }
+        else
+        {
+            hspd = -runSpeed/2;
+        }
 
+        // Switch target when close to the current one
+        if (Vector2.Distance(transform.position, currentTarget) < 5f)
+        {
+            currentTarget = currentTarget == rightPosition ? leftPosition : rightPosition;
+        }
     }
 }
