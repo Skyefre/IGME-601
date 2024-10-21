@@ -739,32 +739,10 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    public float getColliderSurface(float xValue, Collider2D targetCollider)
-    {
-        // Define a point above the collider at the given x value
-        Vector2 rayOrigin = new Vector2(xValue, targetCollider.bounds.max.y + 1); // Adjust the y value as needed
-
-        // Cast a ray downwards
-        RaycastHit2D hit = Physics2D.Raycast(rayOrigin, Vector2.down, Mathf.Infinity, groundLayer);
-
-        // Draw the ray in the editor for debugging
-        Debug.DrawRay(rayOrigin, Vector2.down * 20f, Color.grey);
-
-        // Check if the ray hit a collider
-        if (hit.collider != null)
-        {
-            // Return the y-coordinate of the hit point
-            return hit.point.y;
-        }
-
-        // If no collider was hit, return a default value (e.g., float.MinValue)
-        return 0;
-    }
-
     public float GetColliderSurface(float xValue, Collider2D targetCollider)
     {
         // Define a point above the collider at the given x value
-        Vector2 rayOrigin = new Vector2(xValue, targetCollider.bounds.max.y + 1); // Adjust the y value as needed
+        Vector2 rayOrigin = new Vector2(xValue, boxCollider.bounds.max.y - 1); // Adjust the y value as needed
 
         // Cast a ray downwards
         RaycastHit2D hit = Physics2D.Raycast(rayOrigin, Vector2.down, Mathf.Infinity, groundLayer);
@@ -782,12 +760,12 @@ public class Enemy : MonoBehaviour
         // If no collider was hit, return a default value (e.g., float.MinValue)
         return 0;
     }
+
 
     public float getColliderCeiling(float xValue, Collider2D targetCollider)
     {
         // Define a point above the collider at the given x value
-        Vector2 rayOrigin = new Vector2(xValue, targetCollider.bounds.min.y - 1); // Adjust the y value as needed
-
+        Vector2 rayOrigin = new Vector2(xValue, boxCollider.bounds.min.y + 1); // Adjust the y value as needed
         // Cast a ray upwards
         RaycastHit2D hit = Physics2D.Raycast(rayOrigin, Vector2.up, Mathf.Infinity, groundLayer);
 
