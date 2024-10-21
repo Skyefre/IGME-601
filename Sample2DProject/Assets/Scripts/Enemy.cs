@@ -93,7 +93,7 @@ public class Enemy : MonoBehaviour
         }
         characterJSON.GetEnemyStats();
         enemyData = characterJSON.enemyDataList;
-        InitWeapon();
+        InitEnemy();
         SetState(EnemyState.Idle);
 
         // Set the patrol positions relative to the initial position
@@ -840,7 +840,7 @@ public class Enemy : MonoBehaviour
         return;
     }
 
-    void InitWeapon()
+    void InitEnemy()
     {
 
         for (int i = 0; i < enemyData.enemyData.Count; i++)
