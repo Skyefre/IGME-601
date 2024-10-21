@@ -943,6 +943,8 @@ public class Enemy : MonoBehaviour
             hspd = -runSpeed/2;
         }
 
+        SetState(EnemyState.Run);
+
         // Switch target when close to the current one
         if (Vector2.Distance(transform.position, currentTarget) < 5f)
         {
