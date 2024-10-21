@@ -1,7 +1,7 @@
 {
 	"enemyData": [
 		{
-			"enemy": "basicLand",
+			"enemy": "landBasic",
 			"runSpeed": 4,
 			"jumpForce": 15,
 			"maxHitboxes": 1,
@@ -146,7 +146,7 @@
 			}
 		},
 		{
-			"weapon": "landAdvanced",
+			"enemy": "landAdvanced",
 			"runSpeed": 5,
 			"jumpForce": 16,
 			"maxHitboxes": 1,
@@ -291,7 +291,7 @@
 			}
 		},
 		{
-			"weapon": "airBasic",
+			"enemy": "airBasic",
 			"runSpeed": 6,
 			"jumpForce": 14,
 			"maxHitboxes": 1,
@@ -436,7 +436,7 @@
 			}
 		},
 		{
-			"weapon": "airAdvanced",
+			"enemy": "airAdvanced",
 			"runSpeed": 3,
 			"jumpForce": 17,
 			"maxHitboxes": 1,
