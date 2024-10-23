@@ -21,6 +21,15 @@ public class Enemy : MonoBehaviour
         SpellAttack,
     }
 
+    public enum AIState
+    {
+        Patrol,
+        Chase,
+        Attack,
+        Flee
+    }
+    
+     
     //Animation info fields
     public AnimatorStateInfo animStateInfo;
     public AnimatorClipInfo[] currentClipInfo;
@@ -57,6 +66,7 @@ public class Enemy : MonoBehaviour
     private Vector3 leftPosition;
     private Vector3 currentTarget;
     public EnemyState state = EnemyState.Idle;
+    public AIState aiState = AIState.Patrol;
     public BaseSpell currentSpell;
     public BaseSpell[] EnemySpells;
     public bool facingRight = true;
@@ -74,6 +84,7 @@ public class Enemy : MonoBehaviour
     private int tempHspd = 0;
     public int hitstopVal = 0;
     private EnemyState prevState;
+    private AIState prevAIState;
     private int lerpDelay = 0;
     //private int gravityDelay = 1;
     private BoxCollider2D boxCollider;// Reference to the BoxCollider2D component
@@ -433,6 +444,23 @@ public class Enemy : MonoBehaviour
                 break;
         }
 
+        switch (aiState)
+        {
+            case AIState.Patrol:
+
+                break;
+
+            case AIState.Chase:
+                break;
+
+            case AIState.Attack:
+                break;
+
+            case AIState.Flee:
+                break;
+        }
+
+
         //check for ground collision
         if (grounded.collider != null)
         {
@@ -595,6 +623,12 @@ public class Enemy : MonoBehaviour
                 DisableAllHitboxes();
                 break;
         }
+    }
+
+    private void SetAIState(AIState targetState)
+    {
+        prevAIState = aiState;
+        aiState = targetState;
     }
 
     #region Collision Detection
