@@ -80,7 +80,7 @@ public class Enemy : MonoBehaviour
     private List<GameObject> hitboxes = new List<GameObject>();
     private GameObject hurtbox;
 
-
+    private AIStateHandler AIStateHandler;
     private int tempHspd = 0;
     public int hitstopVal = 0;
     private EnemyState prevState;
@@ -115,6 +115,8 @@ public class Enemy : MonoBehaviour
 
         // Start by targeting the right position
         currentTarget = rightPosition;
+
+        SetAIState(AIState.Patrol);
     }
 
     // Update is called once per frame
@@ -447,16 +449,19 @@ public class Enemy : MonoBehaviour
         switch (aiState)
         {
             case AIState.Patrol:
-
+                AIStateHandler.isPatrolling = true;
                 break;
 
             case AIState.Chase:
+                AIStateHandler.isChasing = true;
                 break;
 
             case AIState.Attack:
+                AIStateHandler.isAttacking = true;
                 break;
 
             case AIState.Flee:
+                AIStateHandler.isFleeing = true;
                 break;
         }
 
