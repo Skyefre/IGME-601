@@ -81,6 +81,7 @@ public class Enemy : MonoBehaviour
     private GameObject hurtbox;
 
     private AIStateHandler AIStateHandler;
+    private Player player;
     private int tempHspd = 0;
     public int hitstopVal = 0;
     private EnemyState prevState;
@@ -448,19 +449,39 @@ public class Enemy : MonoBehaviour
 
         switch (aiState)
         {
-            case AIState.Patrol:
+           /*case AIState.Patrol:
+
                 AIStateHandler.isPatrolling = true;
-                break;
+
+                if (Vector2.Distance(transform.position, player.transform.position) < 50)
+                {
+                    SetAIState(AIState.Chase);
+                }
+
+                break;*/
 
             case AIState.Chase:
+
                 AIStateHandler.isChasing = true;
+                if (Vector2.Distance(transform.position, player.transform.position) < 5)
+                {
+                    SetAIState(AIState.Attack);
+                }
+
                 break;
 
             case AIState.Attack:
+
                 AIStateHandler.isAttacking = true;
+
+                if(health < 10)
+                {
+                    SetAIState(AIState.Flee);
+                }
                 break;
 
             case AIState.Flee:
+
                 AIStateHandler.isFleeing = true;
                 break;
         }
