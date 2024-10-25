@@ -22,7 +22,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2446027952992015299, guid: eaaa902c8e0aed742b8a6fb7927d3fbb, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: -0.00000004371139
       objectReference: {fileID: 0}
     - target: {fileID: 2446027952992015299, guid: eaaa902c8e0aed742b8a6fb7927d3fbb, type: 3}
       propertyPath: m_LocalRotation.x
@@ -30,7 +30,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2446027952992015299, guid: eaaa902c8e0aed742b8a6fb7927d3fbb, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2446027952992015299, guid: eaaa902c8e0aed742b8a6fb7927d3fbb, type: 3}
       propertyPath: m_LocalRotation.z
@@ -50,7 +50,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3368831122626336784, guid: eaaa902c8e0aed742b8a6fb7927d3fbb, type: 3}
       propertyPath: m_Name
-      value: Ice Block
+      value: Ice Block Physics
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

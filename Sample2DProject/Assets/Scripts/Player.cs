@@ -81,8 +81,10 @@ public class Player : MonoBehaviour
     //private int gravityDelay = 1;
     private BoxCollider2D boxCollider;// Reference to the BoxCollider2D component
     private Dictionary<InputHandler.Inputs, InputHandler.InputState> inputs;
-    
 
+    //projectile
+    public ProjectileBehavior projectilePrefab;
+    public Transform launchOffset;
 
     public BoxCollider2D PlayerCollider
     {
@@ -742,6 +744,7 @@ public class Player : MonoBehaviour
                 {
                     Debug.Log("Placed!");
                     Instantiate(iceBlock,iceBlock.transform.position, iceBlock.transform.localRotation);
+                    //Instantiate(projectilePrefab, launchOffset.position, transform.rotation);
                     preview = false;
                     iceBlock.SetActive(false);
 

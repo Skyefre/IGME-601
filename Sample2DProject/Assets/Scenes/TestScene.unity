@@ -882,6 +882,7 @@ MonoBehaviour:
   maxHspd: 15
   maxVspd: 15
   state: 0
+  aiState: 0
   currentSpell: {fileID: 0}
   EnemySpells: []
   facingRight: 1

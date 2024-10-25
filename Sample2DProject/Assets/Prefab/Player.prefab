@@ -35,7 +35,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1610615495506369127}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1136893714204477083
@@ -352,8 +353,10 @@ MonoBehaviour:
   rayOffset: {x: 8, y: 12}
   hitboxReference: {fileID: 2071856720676495377, guid: a9bab66106fe9f64f8e123ff86289a9a, type: 3}
   hurtboxReference: {fileID: 2071856720676495377, guid: 93f0f0d69bc905d49a654f329ed68ef4, type: 3}
-  iceBlock: {fileID: 0}
+  iceBlock: {fileID: 6871520450933059161, guid: d57d2e8b273df6a408217680f38f9bb7, type: 3}
   hitstopVal: 0
+  projectilePrefab: {fileID: 7535727820440762865, guid: 33b9b55ac80ace0428af039babffc17b, type: 3}
+  launchOffset: {fileID: 1610615495506369127}
 --- !u!95 &237148384208766883
 Animator:
   serializedVersion: 5
@@ -447,3 +450,34 @@ MonoBehaviour:
   jsonFile: {fileID: 4900000, guid: ca64a7a0f9a3fde41a6666a90e20a1b5, type: 3}
   weaponDataList:
     weaponData: []
+--- !u!1 &4257491461919741215
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1610615495506369127}
+  m_Layer: 0
+  m_Name: LaunchOffset
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1610615495506369127
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4257491461919741215}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 38.2, y: 41.5, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7366884720313218217}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
