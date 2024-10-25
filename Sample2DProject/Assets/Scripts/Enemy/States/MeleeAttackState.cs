@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class MeleeAttackState : EnemyBaseState
 {
+    private Player player;
     public MeleeAttackState(Enemy enemy, string animationName) : base(enemy, animationName)
     {
 
@@ -14,6 +15,7 @@ public class MeleeAttackState : EnemyBaseState
     {
         base.Enter();
         enemy.SetState(Enemy.EnemyState.SideAttack);
+        player.TakeDamage(player.gameObject, 1, 4, 4, 4);
     }
 
     public override void Exit()

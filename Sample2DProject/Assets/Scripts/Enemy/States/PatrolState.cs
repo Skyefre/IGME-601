@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class PatrolState : EnemyBaseState
 {
+    private float lastRotateTime = 0f;
+    private float intervalTime = 5f; 
+
     public PatrolState(Enemy enemy, string animationName) : base (enemy, animationName)
     {
         
@@ -12,6 +15,7 @@ public class PatrolState : EnemyBaseState
     public override void Enter()
     {
         base.Enter();
+       //enemy.SetState(Enemy.EnemyState.Run);
     }
 
     public override void Exit()
@@ -32,6 +36,12 @@ public class PatrolState : EnemyBaseState
 
     public override void PhysicsUpdate()
     {
+        if (Time.time > lastRotateTime + intervalTime)
+        {
+            lastRotateTime = Time.time;    // Update the last rotate time
+            Rotate();
+        }
+
         base.PhysicsUpdate();
 
         if (enemy.facingRight)

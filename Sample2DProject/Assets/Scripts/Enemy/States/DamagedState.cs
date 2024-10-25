@@ -12,7 +12,6 @@ public class DamagedState : EnemyBaseState
     public override void Enter()
     {
         base.Enter();
-        enemy.SetState(Enemy.EnemyState.Hitstun);
     }
 
     public override void Exit()
