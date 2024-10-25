@@ -12,6 +12,7 @@ public class ChaseState : EnemyBaseState
     public override void Enter()
     {
         base.Enter();
+        enemy.SetState(Enemy.EnemyState.Run);
     }
 
     public override void Exit()

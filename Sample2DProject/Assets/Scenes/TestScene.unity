@@ -786,6 +786,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de750e9913ec4de4e9d52585248ff63e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hitstunVal: 0
   enemyName: ice
   animator: {fileID: 718816642}
   baseAnimController: {fileID: 9100000, guid: c916afd6bc4a3114aadd5a2f0c1b51ec, type: 2}
@@ -22817,6 +22818,10 @@ PrefabInstance:
       propertyPath: ledgeDetector
       value: 
       objectReference: {fileID: 1356710064}
+    - target: {fileID: 4964693390700085476, guid: ffa5b1c162269e543bd5e2036eb4406b, type: 3}
+      propertyPath: baseAnimController
+      value: 
+      objectReference: {fileID: 9100000, guid: 1b36fe47e24061841be98977330e394c, type: 2}
     - target: {fileID: 4964693390700085476, guid: ffa5b1c162269e543bd5e2036eb4406b, type: 3}
       propertyPath: playerLayer.m_Bits
       value: 64

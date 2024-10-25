@@ -88,6 +88,7 @@ public class Enemy : MonoBehaviour
     public PatrolState patrolState;
     public PlayerDetectedState playerDetectedState;
     public ChaseState chaseState;
+    public DamagedState damagedState;
     public MeleeAttackState meleeAttackState;
     public float playerDetectRayLength = 10f;
     public float meleeDetectRayLength = 40;
@@ -104,10 +105,11 @@ public class Enemy : MonoBehaviour
 
     private void Awake()
     {
-        patrolState = new PatrolState(this, "Patrol");
-        playerDetectedState = new PlayerDetectedState(this, "Detected");
-        chaseState = new ChaseState(this, "Chase");
-        meleeAttackState = new MeleeAttackState(this, "MeleeAttack!");
+        patrolState = new PatrolState(this, "patrol");
+        playerDetectedState = new PlayerDetectedState(this, "detected");
+        chaseState = new ChaseState(this, "chase");
+        meleeAttackState = new MeleeAttackState(this, "meleeAttack");
+        damagedState = new DamagedState(this, "damaged");
 
         currentState = patrolState;
         currentState.Enter();
@@ -924,7 +926,7 @@ public class Enemy : MonoBehaviour
 
     public void TakeDamage(GameObject hitEnemy, int damage, int xKnockback, int yKnockback, int hitstun)
     {
-        SwitchAIState(chaseState);
+        SwitchAIState(damagedState);
         if (CheckForMeleeTarget())
             SwitchAIState(meleeAttackState);
         else
@@ -946,6 +948,16 @@ public class Enemy : MonoBehaviour
         }
 
         Debug.Log("Enemy Health: " + health);
+    }
+
+    public void AnimationFinishedTrigger()
+    {
+        currentState.AnimationFinishedTrigger();
+    }
+
+    public void AnimationAttackTrigger()
+    {
+        currentState.AnimationAttackTrigger();
     }
 
     public bool CheckForObstacles()

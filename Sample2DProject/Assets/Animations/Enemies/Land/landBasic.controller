@@ -11,9 +11,6 @@ AnimatorStateTransition:
   - m_ConditionMode: 6
     m_ConditionEvent: enemy_state
     m_EventTreshold: 0
-  - m_ConditionMode: 1
-    m_ConditionEvent: Patrol
-    m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 8994980734576429104}
   m_Solo: 0
@@ -244,9 +241,6 @@ AnimatorStateTransition:
   - m_ConditionMode: 6
     m_ConditionEvent: enemy_state
     m_EventTreshold: 1
-  - m_ConditionMode: 1
-    m_ConditionEvent: Chase
-    m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -6552479731234253615}
   m_Solo: 0
