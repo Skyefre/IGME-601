@@ -12,7 +12,7 @@ public class ChaseState : EnemyBaseState
     public override void Enter()
     {
         base.Enter();
-        enemy.SetState(Enemy.EnemyState.Run);
+        //enemy.SetState(Enemy.EnemyState.Run);
     }
 
     public override void Exit()
@@ -46,9 +46,9 @@ public class ChaseState : EnemyBaseState
 
     void Chase()
     {
-        if(enemy.facingRight)
-           enemy.hspd = enemy.runSpeed / 2;
-        else
-           enemy.hspd = - enemy.runSpeed / 2;
+        //if(enemy.facingRight)
+        //   enemy.hspd = enemy.runSpeed / 2;
+        //else
+        //   enemy.hspd = - enemy.runSpeed / 2;
     }
 }

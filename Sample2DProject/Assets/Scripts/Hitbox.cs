@@ -40,8 +40,10 @@ public class Hitbox : MonoBehaviour
         this.yKnockback = yKnockback;
         this.hitstun = hitstun;
 
+        bool facingRight = owner.GetComponent<Player>() != null? owner.GetComponent<Player>().facingRight: (owner.GetComponent<Enemy>() != null ? owner.GetComponent<Enemy>().facingRight : true);
+
         gameObject.transform.position = new Vector3(
-            owner.transform.position.x + (xoffset + (width/2))*2 * (owner.GetComponent<Player>().facingRight ?1:-1),
+            owner.transform.position.x + (xoffset + (width/2))*2 * (facingRight ?1:-1),
             owner.transform.position.y + (yoffset - (height/2))*2,
             0);
 

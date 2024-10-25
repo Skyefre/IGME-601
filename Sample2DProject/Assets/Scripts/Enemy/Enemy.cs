@@ -1,7 +1,9 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+//using System.Diagnostics;
 using UnityEngine;
+//using static UnityEngine.EventSystems.EventTrigger;
 //using static Enemy;
 
 public class Enemy : MonoBehaviour
@@ -181,6 +183,21 @@ public class Enemy : MonoBehaviour
                     SetState(EnemyState.Jump);
                     break;
                 }
+
+                //AI state specific logic
+                if (currentState == patrolState || currentState == chaseState)
+                {
+                    SetState(EnemyState.Run);
+                }
+                else if (currentState == playerDetectedState)
+                {
+                    SetState(EnemyState.Idle);
+                }
+                else if (currentState == meleeAttackState)
+                {
+                    SetState(EnemyState.SideAttack);
+                }
+
                 break;
 
             case EnemyState.Run:
@@ -193,10 +210,30 @@ public class Enemy : MonoBehaviour
                     SetState(EnemyState.Jump);
                     break;
                 }
-                else
+                //else
+                //{
+                //    SetState(EnemyState.Idle);
+                //}
+
+                //AI state specific logic
+                if (currentState == patrolState)
+                {
+                    hspd = runSpeed / 2 * (facingRight ? 1:-1) ;
+                }
+                else if (currentState == playerDetectedState)
                 {
                     SetState(EnemyState.Idle);
                 }
+                else if (currentState == chaseState)
+                {
+                    hspd = runSpeed * (facingRight ? 1 : -1);
+                }
+                else if (currentState == meleeAttackState)
+                {
+                    SetState(EnemyState.SideAttack);
+                }
+
+
                 break;
             case EnemyState.Jumpsquat:
 
@@ -341,6 +378,8 @@ public class Enemy : MonoBehaviour
                 if (animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1)
                 {
                     SetState(grounded.collider != null ? EnemyState.Idle : EnemyState.Jump);
+                    facingRight = !facingRight;
+                    SwitchAIState(patrolState);
                     break;
                 }
                 break;
@@ -399,6 +438,8 @@ public class Enemy : MonoBehaviour
                 {
 
                     SetState(grounded.collider != null ? EnemyState.Idle : EnemyState.Jump);
+                    facingRight = !facingRight;
+                    SwitchAIState(patrolState);
                     break;
                 }
                 break;
@@ -451,6 +492,8 @@ public class Enemy : MonoBehaviour
                 {
 
                     SetState(grounded.collider != null ? EnemyState.Idle : EnemyState.Jump);
+                    facingRight = !facingRight;
+                    SwitchAIState(patrolState);
                     break;
                 }
                 break;
@@ -926,11 +969,11 @@ public class Enemy : MonoBehaviour
 
     public void TakeDamage(GameObject hitEnemy, int damage, int xKnockback, int yKnockback, int hitstun)
     {
-        SwitchAIState(damagedState);
-        if (CheckForMeleeTarget())
-            SwitchAIState(meleeAttackState);
-        else
-            patrolState.Rotate();
+        //SwitchAIState(damagedState);
+        //if (CheckForMeleeTarget())
+        //    SwitchAIState(meleeAttackState);
+        //else
+        //    patrolState.Rotate();
         //If this enemy is block and facing the right direction
         if (state == EnemyState.Shield &&
             ((hitEnemy.transform.position.x > gameObject.transform.position.x && facingRight) ||

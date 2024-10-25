@@ -44,10 +44,10 @@ public class PatrolState : EnemyBaseState
 
         base.PhysicsUpdate();
 
-        if (enemy.facingRight)
-            enemy.hspd = enemy.runSpeed / 3;
-        else
-            enemy.hspd = -enemy.runSpeed / 3;
+        //if (enemy.facingRight)
+        //    enemy.hspd = enemy.runSpeed / 3;
+        //else
+        //    enemy.hspd = -enemy.runSpeed / 3;
 
     }
 

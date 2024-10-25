@@ -1276,6 +1276,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2273646752466505601, guid: 8570cbe2501d59a4a82370b211802789, type: 3}
   m_PrefabInstance: {fileID: 1637598372}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &1657504094 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 9149916450813229016, guid: ffa5b1c162269e543bd5e2036eb4406b, type: 3}
+  m_PrefabInstance: {fileID: 8500685789443483639}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1676350546
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1751,6 +1756,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy
       objectReference: {fileID: 0}
+    - target: {fileID: 4964693390700085476, guid: ffa5b1c162269e543bd5e2036eb4406b, type: 3}
+      propertyPath: ledgeDetector
+      value: 
+      objectReference: {fileID: 1657504094}
     - target: {fileID: 6309864910153200494, guid: ffa5b1c162269e543bd5e2036eb4406b, type: 3}
       propertyPath: m_LocalPosition.x
       value: -132.5
