@@ -176,12 +176,12 @@ public class Player : MonoBehaviour
 
                 }
                 //check for spell input
-                /*if (inputs[InputHandler.Inputs.Spell] == InputHandler.InputState.Held)
+                if (inputs[InputHandler.Inputs.Spell] == InputHandler.InputState.Held)
                 {
                     SetState(PlayerState.SpellAttack);
-                    Debug.Log("Pew!");
+                    //Debug.Log("Pew!");
                     break;
-                }*/
+                }
                 //check for movement input
                 if (inputs[InputHandler.Inputs.Left] == InputHandler.InputState.Held)
                 {
@@ -243,11 +243,11 @@ public class Player : MonoBehaviour
                     }
                 }
                 //Spell Input
-                /*if (inputs[InputHandler.Inputs.Spell] == InputHandler.InputState.Pressed)
-                {   
+                if (inputs[InputHandler.Inputs.Spell] == InputHandler.InputState.Pressed)
+                {
                     SetState(PlayerState.SpellAttack);
                     break;
-                }*/
+                }
                 //run logic
                 if (facingRight)
                 {
@@ -735,18 +735,20 @@ public class Player : MonoBehaviour
                 break;
             case PlayerState.SpellAttack:
                 //This is literally just copied from side attack.
-                if(preview==false)
+                Instantiate(projectilePrefab, launchOffset.position, transform.rotation);
+
+                if (preview==false)
                 {
-                    iceBlock.SetActive(true);
-                    preview = true;
+                   /* iceBlock.SetActive(true);
+                    preview = true;*/
                 }
                 else
                 {
                     Debug.Log("Placed!");
-                    Instantiate(iceBlock,iceBlock.transform.position, iceBlock.transform.localRotation);
-                    //Instantiate(projectilePrefab, launchOffset.position, transform.rotation);
-                    preview = false;
-                    iceBlock.SetActive(false);
+                   // Instantiate(iceBlock,iceBlock.transform.position, iceBlock.transform.localRotation);
+                    Instantiate(projectilePrefab, launchOffset.position, transform.rotation);
+                    /*preview = false;
+                    iceBlock.SetActive(false);*/
 
                 }
                 SetState(PlayerState.Idle);
