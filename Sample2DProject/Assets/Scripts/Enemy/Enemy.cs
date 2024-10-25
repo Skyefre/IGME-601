@@ -35,7 +35,7 @@ public class Enemy : MonoBehaviour
     public AnimatorClipInfo[] currentClipInfo;
     private int currentFrame;
     private int frameCount;
-    private int hitstunVal = 0;
+    public int hitstunVal = 0;
 
     //weapon and color swapping support fields
     public string enemyName = "ice";
@@ -62,15 +62,11 @@ public class Enemy : MonoBehaviour
     public int vspd = 0;
     public int maxHspd = 10;
     public int maxVspd = 1;
-    private Vector3 rightPosition;
-    private Vector3 leftPosition;
-    private Vector3 currentTarget;
     public EnemyState state = EnemyState.Idle;
-    public AIState aiState = AIState.Patrol;
     public BaseSpell currentSpell;
     public BaseSpell[] EnemySpells;
     public bool facingRight = true;
-    public LayerMask groundLayer; // Layer mask to specify what is considered ground
+    public LayerMask groundLayer, playerLayer; // Layer mask to specify what is considered ground and player
     public float rayLength = 0.1f; // Length of the ray
     public Vector2 rayOffset = new Vector2(8f, 8f); // Offset for the rays
     public RaycastHit2D grounded;
@@ -80,19 +76,42 @@ public class Enemy : MonoBehaviour
     private List<GameObject> hitboxes = new List<GameObject>();
     private GameObject hurtbox;
 
-    private AIStateHandler AIStateHandler;
-    private Player player;
     private int tempHspd = 0;
     public int hitstopVal = 0;
     private EnemyState prevState;
-    private AIState prevAIState;
     private int lerpDelay = 0;
     //private int gravityDelay = 1;
     private BoxCollider2D boxCollider;// Reference to the BoxCollider2D component
 
+    // AI Stuff
+    public EnemyBaseState currentState;
+    public PatrolState patrolState;
+    public PlayerDetectedState playerDetectedState;
+    public ChaseState chaseState;
+    public MeleeAttackState meleeAttackState;
+    public float playerDetectRayLength = 10f;
+    public float meleeDetectRayLength = 40;
+    public Transform ledgeDetector;
+    public float stateTime;     // time when we enter a new state
+    public float playerDetectedWaitTime = 1;
+    public float chaseTime;
+
+
     public BoxCollider2D EnemyCollider
     {
         get => boxCollider;
+    }
+
+    private void Awake()
+    {
+        patrolState = new PatrolState(this, "Patrol");
+        playerDetectedState = new PlayerDetectedState(this, "Detected");
+        chaseState = new ChaseState(this, "Chase");
+        meleeAttackState = new MeleeAttackState(this, "MeleeAttack!");
+
+        currentState = patrolState;
+        currentState.Enter();
+
     }
 
     // Start is called before the first frame update
@@ -108,26 +127,18 @@ public class Enemy : MonoBehaviour
         InitEnemy();
         SetState(EnemyState.Idle);
 
-        // Set the patrol positions relative to the initial position
-        leftPosition = transform.position;
-        rightPosition = transform.position;
-        leftPosition.x -= 80;
-        rightPosition.x += 300;
-
-        // Start by targeting the right position
-        currentTarget = rightPosition;
-
-        SetAIState(AIState.Patrol);
     }
 
     // Update is called once per frame
     void Update()
     {
-        Patrolling();
+        currentState.LogicUpdate();
     }
 
     void FixedUpdate()
     {
+        currentState.PhysicsUpdate();
+
         if (hitstopVal > 0)
         {
             hitstopVal--;
@@ -447,45 +458,6 @@ public class Enemy : MonoBehaviour
                 break;
         }
 
-        switch (aiState)
-        {
-           /*case AIState.Patrol:
-
-                AIStateHandler.isPatrolling = true;
-
-                if (Vector2.Distance(transform.position, player.transform.position) < 50)
-                {
-                    SetAIState(AIState.Chase);
-                }
-
-                break;*/
-
-            case AIState.Chase:
-
-                AIStateHandler.isChasing = true;
-                if (Vector2.Distance(transform.position, player.transform.position) < 5)
-                {
-                    SetAIState(AIState.Attack);
-                }
-
-                break;
-
-            case AIState.Attack:
-
-                AIStateHandler.isAttacking = true;
-
-                if(health < 10)
-                {
-                    SetAIState(AIState.Flee);
-                }
-                break;
-
-            case AIState.Flee:
-
-                AIStateHandler.isFleeing = true;
-                break;
-        }
-
 
         //check for ground collision
         if (grounded.collider != null)
@@ -523,7 +495,7 @@ public class Enemy : MonoBehaviour
         gameObject.GetComponent<SpriteRenderer>().flipX = facingRight ? false : true;
     }
 
-    private void SetState(EnemyState targetState)
+    public void SetState(EnemyState targetState)
     {
         animator.enabled = true;
         animator.SetInteger("enemy_state", (int)targetState);
@@ -651,10 +623,13 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    private void SetAIState(AIState targetState)
+
+    public void SwitchAIState(EnemyBaseState newState)
     {
-        prevAIState = aiState;
-        aiState = targetState;
+        currentState.Exit();
+        currentState = newState;
+        currentState.Enter();
+        stateTime = Time.time;
     }
 
     #region Collision Detection
@@ -949,7 +924,11 @@ public class Enemy : MonoBehaviour
 
     public void TakeDamage(GameObject hitEnemy, int damage, int xKnockback, int yKnockback, int hitstun)
     {
-
+        SwitchAIState(chaseState);
+        if (CheckForMeleeTarget())
+            SwitchAIState(meleeAttackState);
+        else
+            patrolState.Rotate();
         //If this enemy is block and facing the right direction
         if (state == EnemyState.Shield &&
             ((hitEnemy.transform.position.x > gameObject.transform.position.x && facingRight) ||
@@ -969,33 +948,39 @@ public class Enemy : MonoBehaviour
         Debug.Log("Enemy Health: " + health);
     }
 
-    public virtual void Patrolling()
+    public bool CheckForObstacles()
     {
-        // Determine the horizontal speed based on the current target position
-        if (currentTarget == rightPosition)
-        {
-            hspd = runSpeed/2;
-        }
+        RaycastHit2D hit = Physics2D.Raycast(ledgeDetector.position, Vector2.down, playerDetectRayLength, groundLayer);
+
+        if (hit.collider == null)
+            return true;
         else
-        {
-            hspd = -runSpeed/2;
-        }
+            return false;  
+    }
 
-        SetState(EnemyState.Run);
+    public bool CheckForPlayer()
+    {
+        RaycastHit2D hitPlayer = Physics2D.Raycast(ledgeDetector.position, facingRight ? Vector2.right : Vector2.left, playerDetectRayLength, playerLayer);
 
-        // Switch target when close to the current one
-        if (Vector2.Distance(transform.position, currentTarget) < 5f)
-        {
-            if(currentTarget == rightPosition)
-            {
-                currentTarget = leftPosition;
-                facingRight = false;
-            }
-            else
-            {
-                currentTarget = rightPosition;
-                facingRight = true;
-            }
-        }
+        if (hitPlayer.collider == true)
+            return true;
+        else 
+            return false;
+    }
+
+    public bool CheckForMeleeTarget()
+    {
+        RaycastHit2D hitMeleeTarget = Physics2D.Raycast(ledgeDetector.position, facingRight ? Vector2.right : Vector2.left, meleeDetectRayLength, playerLayer);
+
+        if (hitMeleeTarget.collider == true)
+            return true;
+        else
+            return false;
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawRay(ledgeDetector.position, (facingRight ? Vector2.right : Vector2.left) * meleeDetectRayLength);
+        Gizmos.DrawRay(ledgeDetector.position, Vector2.down * playerDetectRayLength);
     }
 }

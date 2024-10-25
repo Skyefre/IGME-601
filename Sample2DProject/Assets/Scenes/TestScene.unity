@@ -888,11 +888,20 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 8
+  playerLayer:
+    serializedVersion: 2
+    m_Bits: 0
   rayLength: 0.1
   rayOffset: {x: 8, y: 8}
   hitboxReference: {fileID: 2071856720676495377, guid: a9bab66106fe9f64f8e123ff86289a9a, type: 3}
   hurtboxReference: {fileID: 2071856720676495377, guid: 93f0f0d69bc905d49a654f329ed68ef4, type: 3}
   hitstopVal: 0
+  playerDetectRayLength: 10
+  meleeDetectRayLength: 5
+  ledgeDetector: {fileID: 0}
+  stateTime: 0
+  playerDetectedWaitTime: 1
+  chaseTime: 0
 --- !u!1 &772515509
 GameObject:
   m_ObjectHideFlags: 0
@@ -22796,6 +22805,34 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy
       objectReference: {fileID: 0}
+    - target: {fileID: 4964693390700085476, guid: ffa5b1c162269e543bd5e2036eb4406b, type: 3}
+      propertyPath: chaseTime
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4964693390700085476, guid: ffa5b1c162269e543bd5e2036eb4406b, type: 3}
+      propertyPath: stateTime
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4964693390700085476, guid: ffa5b1c162269e543bd5e2036eb4406b, type: 3}
+      propertyPath: ledgeDetector
+      value: 
+      objectReference: {fileID: 1356710064}
+    - target: {fileID: 4964693390700085476, guid: ffa5b1c162269e543bd5e2036eb4406b, type: 3}
+      propertyPath: playerLayer.m_Bits
+      value: 64
+      objectReference: {fileID: 0}
+    - target: {fileID: 4964693390700085476, guid: ffa5b1c162269e543bd5e2036eb4406b, type: 3}
+      propertyPath: meleeDetectRayLength
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 4964693390700085476, guid: ffa5b1c162269e543bd5e2036eb4406b, type: 3}
+      propertyPath: playerDetectRayLength
+      value: 210
+      objectReference: {fileID: 0}
+    - target: {fileID: 4964693390700085476, guid: ffa5b1c162269e543bd5e2036eb4406b, type: 3}
+      propertyPath: playerDetectedWaitTime
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6309864910153200494, guid: ffa5b1c162269e543bd5e2036eb4406b, type: 3}
       propertyPath: m_LocalPosition.x
       value: 18.6
@@ -22841,6 +22878,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ffa5b1c162269e543bd5e2036eb4406b, type: 3}
+--- !u!4 &1356710064 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 9149916450813229016, guid: ffa5b1c162269e543bd5e2036eb4406b, type: 3}
+  m_PrefabInstance: {fileID: 1356710063}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1498578650 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6136227294759418334, guid: 9314197c5595ba84f856a1e68eb0737f, type: 3}
