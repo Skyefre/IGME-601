@@ -2,13 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Shard : MonoBehaviour
+public class Shard : MonoBehaviour, ICollectible, IDictionary
 {
-    // Start is called before the first frame update
-    void Start()
+    public void Collect()
     {
-        
+       Debug.Log("You collected an item!");
     }
+
 
     // Update is called once per frame
     void Update()
