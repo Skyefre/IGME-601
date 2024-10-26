@@ -70,14 +70,14 @@ public class Player : MonoBehaviour
     public GameObject hurtboxReference;
     private List<GameObject> hitboxes = new List<GameObject>();
     private GameObject hurtbox;
-    public GameObject iceBlock;
+    //public GameObject iceBlock;
 
     
     private int tempHspd = 0;
     public int hitstopVal = 0;
     private PlayerState prevState;
     private int lerpDelay = 0;
-    private bool preview = false;
+    //private bool preview = false;
     //private int gravityDelay = 1;
     private BoxCollider2D boxCollider;// Reference to the BoxCollider2D component
     private Dictionary<InputHandler.Inputs, InputHandler.InputState> inputs;
@@ -735,22 +735,19 @@ public class Player : MonoBehaviour
                 break;
             case PlayerState.SpellAttack:
                 //This is literally just copied from side attack.
-                Instantiate(projectilePrefab, launchOffset.position, transform.rotation);
+                //if(preview==false)
+                //{
+                //    iceBlock.SetActive(true);
+                //    preview = true;
+                //}
+                //else
+                //{
+                //    Debug.Log("Placed!");
+                //    Instantiate(iceBlock,iceBlock.transform.position, iceBlock.transform.localRotation);
+                //    preview = false;
+                //    iceBlock.SetActive(false);
 
-                if (preview==false)
-                {
-                   /* iceBlock.SetActive(true);
-                    preview = true;*/
-                }
-                else
-                {
-                    Debug.Log("Placed!");
-                   // Instantiate(iceBlock,iceBlock.transform.position, iceBlock.transform.localRotation);
-                    Instantiate(projectilePrefab, launchOffset.position, transform.rotation);
-                    /*preview = false;
-                    iceBlock.SetActive(false);*/
-
-                }
+                //}
                 SetState(PlayerState.Idle);
                 break;
             case PlayerState.Menuing:
@@ -810,13 +807,13 @@ public class Player : MonoBehaviour
 
         gameObject.transform.position += new Vector3(hspd, vspd, 0);
         gameObject.GetComponent<SpriteRenderer>().flipX = facingRight ? false : true;
-        if(facingRight)
-        {
-            iceBlock.transform.localRotation = Quaternion.Euler(0, 0, 0);        }
-        else
-        {
-            iceBlock.transform.localRotation = Quaternion.Euler(0, 180, 0);
-        }
+        //if(facingRight)
+        //{
+        //    iceBlock.transform.localRotation = Quaternion.Euler(0, 0, 0);        }
+        //else
+        //{
+        //    iceBlock.transform.localRotation = Quaternion.Euler(0, 180, 0);
+        //}
         
     }
 
