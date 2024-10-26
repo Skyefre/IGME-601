@@ -7,6 +7,7 @@ public class Hitbox : MonoBehaviour
     public GameObject owner;
     public bool hitboxActive;
     public bool canCancel;
+    public bool isProjectile = false;
     public int damage = 1;
     public int xoffset;
     public int yoffset;
@@ -42,6 +43,18 @@ public class Hitbox : MonoBehaviour
 
         bool facingRight = owner.GetComponent<Player>() != null? owner.GetComponent<Player>().facingRight: (owner.GetComponent<Enemy>() != null ? owner.GetComponent<Enemy>().facingRight : true);
 
+        //if the owner is a projectile, use the projectile's facing direction and skip all the funky math about projectile offsets and scaling
+        if (owner.GetComponent<ProjectileBehavior>() != null)
+        {
+            facingRight = owner.GetComponent<ProjectileBehavior>().facingRight;
+            gameObject.transform.position = new Vector3(
+            owner.transform.position.x + (xoffset) * (facingRight ? 1 : -1),
+            owner.transform.position.y + (yoffset),
+            0);
+            return;
+        }
+
+        //if the owner is a player, use the player's facing direction and normal offsets and scaling
         gameObject.transform.position = new Vector3(
             owner.transform.position.x + (xoffset + (width/2))*2 * (facingRight ?1:-1),
             owner.transform.position.y + (yoffset - (height/2))*2,

@@ -69,6 +69,50 @@ public class PlayerJSONReader : MonoBehaviour
     }
 
     [System.Serializable]
+    public class SpellFrameData
+    {
+        public List<int> spellAttackFrames;
+        public List<int> spellUtilFrames;
+    }
+
+    [System.Serializable]
+    public class SpellSpawnData
+    {
+        public int xOffset;
+        public int yOffset;
+    }
+
+    [System.Serializable]
+    public class SpellSpawnDataContainer
+    {
+        public List<SpellSpawnData> spellAttack;
+        public List<SpellSpawnData> spellUtil;
+    }
+
+    [System.Serializable]
+    public class ImpulseData
+    {
+        public int xImpulse;
+        public int yImpulse;
+    }
+
+    [System.Serializable]
+    public class ImpulseFrameData
+    {
+        public List<int> sideAttackImpulseFrames;
+        public List<int> upAttackImpulseFrames;
+        public List<int> downAttackImpulseFrames;
+    }
+
+    [System.Serializable]
+    public class ImpulseDataContainer
+    {
+        public List<ImpulseData> sideAttackImpulseData;
+        public List<ImpulseData> upAttackImpulseData;
+        public List<ImpulseData> downAttackImpulseData;
+    }
+
+    [System.Serializable]
     public class WeaponData
     {
         public string weapon;
@@ -78,6 +122,10 @@ public class PlayerJSONReader : MonoBehaviour
         public FrameDataContainer frameData;
         public HitboxDataContainer hitboxData;
         public HurtboxDataContainer hurtboxData;
+        public SpellFrameData spellframeData;
+        public SpellSpawnDataContainer spellSpawnData;
+        public ImpulseFrameData impulseFrameData;
+        public ImpulseDataContainer impulseData;
     }
 
     [System.Serializable]
@@ -97,10 +145,7 @@ public class PlayerJSONReader : MonoBehaviour
     {
         if (jsonFile != null)
         {
-            //Debug.Log("JSON file found.");
             weaponDataList = JsonUtility.FromJson<WeaponDataList>(jsonFile.text);
-            //Debug.Log("JSON data loaded.");
-            //Debug.Log("Number of weapons: " + weaponDataList.weaponData.Count);
         }
         else
         {

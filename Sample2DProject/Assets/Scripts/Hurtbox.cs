@@ -58,9 +58,23 @@ public class Hurtbox : MonoBehaviour
     public void OnTriggerEnter2D(Collider2D collision)
     {
         Hitbox hitHitbox = collision.gameObject.GetComponent<Hitbox>();
-        Player hitPlayer = hitHitbox.owner.GetComponent<Player>();
-        Enemy hitEnemy = hitHitbox.owner.GetComponent<Enemy>();
-        if (hitHitbox != null && hitHitbox.owner != this.owner && hitHitbox.hitboxActive == true && hitPlayer != null) //the thing that hit you is a player
+        Player hitPlayer;
+        Enemy hitEnemy;
+        GameObject hitboxOwner;
+        if (hitHitbox.isProjectile)
+        {
+            hitPlayer = hitHitbox.owner.GetComponent<ProjectileBehavior>().owner.GetComponent<Player>();
+            hitEnemy = hitHitbox.owner.GetComponent<ProjectileBehavior>().GetComponent<Enemy>();
+            hitboxOwner = hitHitbox.owner.GetComponent<ProjectileBehavior>().owner;
+        }
+        else
+        {
+            hitPlayer = hitHitbox.owner.GetComponent<Player>();
+            hitEnemy = hitHitbox.owner.GetComponent<Enemy>();
+            hitboxOwner = hitHitbox.owner;
+        }
+        
+        if (hitHitbox != null && hitboxOwner != this.owner && hitHitbox.hitboxActive == true && hitPlayer != null) //the thing that hit you is a player
         {
             //Debug.Log("Hurtbox hit: " + owner.GetInstanceID());
             hitHitbox.hitboxActive = false;
@@ -82,11 +96,17 @@ public class Hurtbox : MonoBehaviour
                 Debug.Log("Hurtbox owner is not a player or enemy");
             }
 
+            //if the hitbox is a projectile, destroy it
+            if (hitHitbox.isProjectile)
+            {
+                hitHitbox.owner.GetComponent<ProjectileBehavior>().DestroyProjectile();
+            }
+
             hitPlayer.hitstopVal = 10;
             hitPlayer.animator.enabled = false;
             GameManager.Instance.gameObject.GetComponent<CameraShake>().Shake(3f, (1f/6f)); //shake the camera when hit
         }
-        else if(hitHitbox != null && hitHitbox.owner != this.owner && hitHitbox.hitboxActive == true && hitEnemy != null)//the thing that hit you is an enemy
+        else if(hitHitbox != null && hitboxOwner != this.owner && hitHitbox.hitboxActive == true && hitEnemy != null)//the thing that hit you is an enemy
         {
             //Debug.Log("Hurtbox hit: " + owner.GetInstanceID());
             hitHitbox.hitboxActive = false;
@@ -109,6 +129,12 @@ public class Hurtbox : MonoBehaviour
             }
             hitEnemy.hitstopVal = 10;
             hitEnemy.animator.enabled = false;
+
+            //if the hitbox is a projectile, destroy it
+            if (hitHitbox.isProjectile)
+            {
+                hitHitbox.owner.GetComponent<ProjectileBehavior>().DestroyProjectile();
+            }
             GameManager.Instance.gameObject.GetComponent<CameraShake>().Shake(3f, (1f/6f)); //shake the camera when hit
         }
     }

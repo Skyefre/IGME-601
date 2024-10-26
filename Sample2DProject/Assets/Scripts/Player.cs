@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
+using Unity.VisualScripting;
 using UnityEngine;
 //using static Enemy;
 
@@ -24,6 +25,8 @@ public class Player : MonoBehaviour
         SpellUtil
     }
 
+    
+
     //Animation info fields
     public AnimatorStateInfo animStateInfo;
     public AnimatorClipInfo[] currentClipInfo;
@@ -42,6 +45,10 @@ public class Player : MonoBehaviour
     public PlayerJSONReader.FrameDataContainer frameData;
     public PlayerJSONReader.HitboxDataContainer hitboxData;
     public PlayerJSONReader.HurtboxDataContainer hurtboxData;
+    public PlayerJSONReader.ImpulseFrameData impulseFrameData;
+    public PlayerJSONReader.ImpulseDataContainer impulseData;
+    public PlayerJSONReader.SpellFrameData spellframeData;
+    public PlayerJSONReader.SpellSpawnDataContainer spellSpawnData;
     public int maxHitboxes = 1;
     private PlayerJSONReader.WeaponDataList weaponData;
     private int currentAnimControllerIndex = 0;
@@ -57,8 +64,9 @@ public class Player : MonoBehaviour
     public int maxHspd = 10;
     public int maxVspd = 1;
     public PlayerState state = PlayerState.Idle;
-    public BaseSpell currentSpell;
-    public BaseSpell[] PlayerSpells;
+    
+    //public BaseSpell currentSpell;
+    //public BaseSpell[] PlayerSpells;
     public bool facingRight = true;
     public InputHandler inputHandler;
     public LayerMask groundLayer; // Layer mask to specify what is considered ground
@@ -72,7 +80,7 @@ public class Player : MonoBehaviour
     private GameObject hurtbox;
     //public GameObject iceBlock;
 
-    
+
     private int tempHspd = 0;
     public int hitstopVal = 0;
     private PlayerState prevState;
@@ -83,8 +91,8 @@ public class Player : MonoBehaviour
     private Dictionary<InputHandler.Inputs, InputHandler.InputState> inputs;
 
     //projectile
-    public ProjectileBehavior projectilePrefab;
-    public Transform launchOffset;
+    public List<GameObject> projectileList = new List<GameObject>();
+    private Dictionary<string, GameObject> projectiles = new Dictionary<string, GameObject>();
 
     public BoxCollider2D PlayerCollider
     {
@@ -93,8 +101,7 @@ public class Player : MonoBehaviour
     private void Awake()
     {
         inputs = inputHandler.keyBindings;
-        gameObject.GetComponent<SpriteRenderer>().material.SetTexture("_PaletteTex", colorPalletes[/*(gameObject == GameManager.Instance.players[0]?0:1)*/GameManager.Instance.players.Length ==1?0:1]);
-
+        gameObject.GetComponent<SpriteRenderer>().material.SetTexture("_PaletteTex", colorPalletes[GameManager.Instance.players.Length == 1 ? 0 : 1]);
 
     }
     // Start is called before the first frame update
@@ -111,10 +118,10 @@ public class Player : MonoBehaviour
         SetState(PlayerState.Idle);
     }
 
-   
-    void FixedUpdate() 
+
+    void FixedUpdate()
     {
-        if(hitstopVal > 0)
+        if (hitstopVal > 0)
         {
             hitstopVal--;
             return;
@@ -131,7 +138,7 @@ public class Player : MonoBehaviour
         currentClipInfo = animator.GetCurrentAnimatorClipInfo(0);
         frameCount = (int)(currentClipInfo[0].clip.length * currentClipInfo[0].clip.frameRate);
         currentFrame = ((int)(animStateInfo.normalizedTime * frameCount)) % frameCount;
-        
+
         grounded = IsGrounded();
         if (grounded.collider == null)
         {
@@ -152,7 +159,7 @@ public class Player : MonoBehaviour
 
         switch (state)
         {
-            
+
             case PlayerState.Idle:
 
                 //check for attack input
@@ -176,7 +183,7 @@ public class Player : MonoBehaviour
 
                 }
                 //check for spell input
-                if (inputs[InputHandler.Inputs.Spell] == InputHandler.InputState.Held)
+                if (inputs[InputHandler.Inputs.Spell] == InputHandler.InputState.Pressed)
                 {
                     SetState(PlayerState.SpellAttack);
                     //Debug.Log("Pew!");
@@ -199,7 +206,7 @@ public class Player : MonoBehaviour
                 {
                     SetState(PlayerState.Jumpsquat);
                 }
-            
+
 
                 //check for shield input
                 if (inputs[InputHandler.Inputs.Shield] == InputHandler.InputState.Pressed)
@@ -212,7 +219,7 @@ public class Player : MonoBehaviour
                 {
                     SetState(PlayerState.Menuing);
                 }
-             
+
                 LerpHspd(0, 1);
                 //check for ground
                 if (grounded.collider == null)
@@ -294,7 +301,7 @@ public class Player : MonoBehaviour
                 break;
             case PlayerState.Jumpsquat:
 
-                
+
                 //check for attack input
                 if (inputs[InputHandler.Inputs.Attack] == InputHandler.InputState.Pressed)
                 {
@@ -341,13 +348,13 @@ public class Player : MonoBehaviour
                 }
                 if (currentFrame == frameCount - 1 && grounded.collider != null)
                 {
-                    if(tempHspd != 0)
+                    if (tempHspd != 0)
                     {
                         hspd = tempHspd;
                         tempHspd = 0;
                     }
-                    
-                    vspd = (inputs[InputHandler.Inputs.Jump] == InputHandler.InputState.Held?jumpForce: jumpForce/2);
+
+                    vspd = (inputs[InputHandler.Inputs.Jump] == InputHandler.InputState.Held ? jumpForce : jumpForce / 2);
                 }
                 if (animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1)
                 {
@@ -392,6 +399,13 @@ public class Player : MonoBehaviour
                         SetState(PlayerState.SideAttack);
                         break;
                     }
+                }
+                //check for spell input
+                if (inputs[InputHandler.Inputs.Spell] == InputHandler.InputState.Pressed)
+                {
+                    SetState(PlayerState.SpellAttack);
+                    //Debug.Log("Pew!");
+                    break;
                 }
                 //allow for horizontal movement
                 if (inputs[InputHandler.Inputs.Right] == InputHandler.InputState.Held)
@@ -439,13 +453,13 @@ public class Player : MonoBehaviour
 
                 break;
             case PlayerState.Hitstun:
-                if(grounded.collider != null && vspd < 0)
+                if (grounded.collider != null && vspd < 0)
                 {
                     SnapToSurface(grounded);
                     vspd = -vspd;
                     //LerpHspd(0, 3);
                 }
-                if(IsTouchingWall().collider != null)
+                if (IsTouchingWall().collider != null)
                 {
                     hspd = -hspd;
                 }
@@ -490,7 +504,7 @@ public class Player : MonoBehaviour
                 {
                     facingRight = false;
                 }
-                
+
 
                 LerpHspd(0, 10);
                 break;
@@ -501,7 +515,7 @@ public class Player : MonoBehaviour
                 {
                     if (currentFrame == frameData.sideAttackFrames.startFrames[i])
                     {
-                        if(hitboxes[0].activeSelf == false)
+                        if (hitboxes[0].activeSelf == false)
                         {
                             hitboxes[0].GetComponent<Hitbox>().hitboxActive = true;
                         }
@@ -520,12 +534,12 @@ public class Player : MonoBehaviour
                     else if (currentFrame == frameData.sideAttackFrames.endFrames[i])
                     {
                         hitboxes[0].SetActive(false);
-                        
+
                     }
 
                 }
 
-                
+
                 //if grounded
                 if (grounded.collider != null)
                 {
@@ -604,7 +618,7 @@ public class Player : MonoBehaviour
 
                 }
 
-                
+
 
                 if (grounded.collider != null)
                 {
@@ -734,21 +748,63 @@ public class Player : MonoBehaviour
                 }
                 break;
             case PlayerState.SpellAttack:
-                //This is literally just copied from side attack.
-                //if(preview==false)
-                //{
-                //    iceBlock.SetActive(true);
-                //    preview = true;
-                //}
-                //else
-                //{
-                //    Debug.Log("Placed!");
-                //    Instantiate(iceBlock,iceBlock.transform.position, iceBlock.transform.localRotation);
-                //    preview = false;
-                //    iceBlock.SetActive(false);
+                ///handle hitbox activation
+                for (int i = 0; i < spellframeData.spellAttackFrames.Count; i++)
+                {
+                    if (currentFrame == spellframeData.spellAttackFrames[i])
+                    {
+                        switch (weaponName)
+                        {
+                            case "ice":
+                                if(projectiles["ice_attack"].activeSelf == false)
+                                {
+                                    projectiles["ice_attack"].SetActive(true);
+                                    projectiles["ice_attack"].GetComponent<ProjectileBehavior>().InitProjectile(spellSpawnData.spellAttack[0].xOffset, spellSpawnData.spellAttack[0].yOffset);
+                                }
+                                break;
+                            case "wind":
+                                break;
+                            case "lightning":
+                                break;
+                            case "fire":
+                                break;
+                            default:
+                                break;
+                        }
+                    }
 
-                //}
-                SetState(PlayerState.Idle);
+                }
+
+
+                //if grounded
+                if (grounded.collider != null)
+                {
+                    SnapToSurface(grounded);
+                    vspd = 0;
+                    LerpHspd(0, 3);
+
+                }
+                else
+                {
+                    //allow for horizontal movement
+                    if (inputs[InputHandler.Inputs.Right] == InputHandler.InputState.Held)
+                    {
+                        hspd = runSpeed;
+                    }
+                    else if (inputs[InputHandler.Inputs.Left] == InputHandler.InputState.Held)
+                    {
+                        hspd = -runSpeed;
+                    }
+                    else if (inputs[InputHandler.Inputs.Left] == InputHandler.InputState.UnPressed && inputs[InputHandler.Inputs.Right] == InputHandler.InputState.UnPressed)
+                    {
+                        hspd = 0;
+                    }
+                }
+                if (animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1)
+                {
+                    SetState(grounded.collider != null ? PlayerState.Idle : PlayerState.Jump);
+                    break;
+                }
                 break;
             case PlayerState.Menuing:
                 hspd = 0;
@@ -814,7 +870,7 @@ public class Player : MonoBehaviour
         //{
         //    iceBlock.transform.localRotation = Quaternion.Euler(0, 180, 0);
         //}
-        
+
     }
 
     private void SetState(PlayerState targetState)
@@ -928,6 +984,22 @@ public class Player : MonoBehaviour
                 hurtboxData.menuingHurtbox.height
                 );
                 break;
+            case PlayerState.SpellAttack:
+                hurtbox.GetComponent<Hurtbox>().updateHurtbox(
+                    hurtboxData.spellAttackHurtbox.xOffset,
+                    hurtboxData.spellAttackHurtbox.yOffset,
+                    hurtboxData.spellAttackHurtbox.width,
+                    hurtboxData.spellAttackHurtbox.height
+                    );
+                break;
+            case PlayerState.SpellUtil:
+                hurtbox.GetComponent<Hurtbox>().updateHurtbox(
+                    hurtboxData.spellUtilHurtbox.xOffset,
+                    hurtboxData.spellUtilHurtbox.yOffset,
+                    hurtboxData.spellUtilHurtbox.width,
+                    hurtboxData.spellUtilHurtbox.height
+                    );
+                break;
         }
 
         switch (prevState)
@@ -956,6 +1028,10 @@ public class Player : MonoBehaviour
                 DisableAllHitboxes();
                 break;
             case PlayerState.Menuing:
+                break;
+            case PlayerState.SpellAttack:
+                break;
+            case PlayerState.SpellUtil:
                 break;
         }
     }
@@ -1105,7 +1181,7 @@ public class Player : MonoBehaviour
     public float getColliderSurface(float xValue, Collider2D targetCollider)
     {
         // Define a point above the collider at the given x value
-        Vector2 rayOrigin = new Vector2(xValue, boxCollider.bounds.max.y -1); // Adjust the y value as needed
+        Vector2 rayOrigin = new Vector2(xValue, boxCollider.bounds.max.y - 1); // Adjust the y value as needed
 
         // Cast a ray downwards
         RaycastHit2D hit = Physics2D.Raycast(rayOrigin, Vector2.down, Mathf.Infinity, groundLayer);
@@ -1127,7 +1203,7 @@ public class Player : MonoBehaviour
     public float getColliderCeiling(float xValue, Collider2D targetCollider)
     {
         // Define a point above the collider at the given x value
-        Vector2 rayOrigin = new Vector2(xValue, boxCollider.bounds.min.y +1); // Adjust the y value as needed
+        Vector2 rayOrigin = new Vector2(xValue, boxCollider.bounds.min.y + 1); // Adjust the y value as needed
 
         // Cast a ray upwards
         RaycastHit2D hit = Physics2D.Raycast(rayOrigin, Vector2.up, Mathf.Infinity, groundLayer);
@@ -1194,15 +1270,20 @@ public class Player : MonoBehaviour
                 frameData = weaponData.weaponData[i].frameData;
                 hitboxData = weaponData.weaponData[i].hitboxData;
                 hurtboxData = weaponData.weaponData[i].hurtboxData;
+                impulseFrameData = weaponData.weaponData[i].impulseFrameData;
+                impulseData = weaponData.weaponData[i].impulseData;
+                spellframeData = weaponData.weaponData[i].spellframeData;
+                spellSpawnData = weaponData.weaponData[i].spellSpawnData;
             }
         }
         InitHitboxes();
         InitHurtbox();
+        InitProjectiles();
     }
 
     void InitHitboxes()
     {
-        if(hitboxes.Count >= maxHitboxes)
+        if (hitboxes.Count >= maxHitboxes)
         {
             return;
         }
@@ -1226,7 +1307,7 @@ public class Player : MonoBehaviour
     }
     void InitHurtbox()
     {
-        if(hurtbox != null)
+        if (hurtbox != null)
         {
             return;
         }
@@ -1241,6 +1322,42 @@ public class Player : MonoBehaviour
 
     }
 
+    void InitProjectiles()
+    {
+        //set all projectiles in projectile list to inactive
+        //for (int i = 0; i < projectileList.Count; i++)
+        //{
+        //    //projectileList[i].SetActive(false);
+        //    projectiles.Add(weaponName + "_attack", Instantiate(projectileList[i]));
+        //    //projectileList[i].GetComponent<ProjectileBehavior>().owner = gameObject;
+        //}
+        
+        //initialize projectile dictionary
+        if(projectiles.Count < 1)
+        {
+            //TODO: Replace the projectile list indicies with the proper projectiles once they are added
+            projectiles.Add("ice_attack", Instantiate(projectileList[0]));
+            projectiles.Add("wind_attack", Instantiate(projectileList[0]));
+            projectiles.Add("lightning_attack", Instantiate(projectileList[0]));
+            projectiles.Add("fire_attack", Instantiate(projectileList[0]));
+
+            projectiles["ice_attack"].GetComponent<ProjectileBehavior>().owner = gameObject;
+            projectiles["ice_attack"].SetActive(false);
+
+            projectiles["wind_attack"].GetComponent<ProjectileBehavior>().owner = gameObject;
+            projectiles["wind_attack"].SetActive(false);
+
+            projectiles["lightning_attack"].GetComponent<ProjectileBehavior>().owner = gameObject;
+            projectiles["lightning_attack"].SetActive(false);
+
+            projectiles["fire_attack"].GetComponent<ProjectileBehavior>().owner = gameObject;
+            projectiles["fire_attack"].SetActive(false);
+        }
+        
+        
+        //projectiles["ice_attack"].GetComponent<ProjectileBehavior>().InitProjectile(spellSpawnData.spellAttack[0].xOffset, spellSpawnData.spellAttack[0].yOffset);
+    }
+
     void DisableAllHitboxes()
     {
         foreach (GameObject hitbox in hitboxes)
@@ -1249,16 +1366,16 @@ public class Player : MonoBehaviour
         }
 
     }
-    
+
     public void TakeDamage(GameObject hitPlayer, int damage, int xKnockback, int yKnockback, int hitstun)
     {
 
         //If this player is block and facing the right direction
-        if (state == PlayerState.Shield && 
+        if (state == PlayerState.Shield &&
             ((hitPlayer.transform.position.x > gameObject.transform.position.x && facingRight) ||
             (hitPlayer.transform.position.x < gameObject.transform.position.x && !facingRight)))
         {
-            hspd = xKnockback/2;
+            hspd = xKnockback / 2;
         }
         else
         {
@@ -1268,10 +1385,10 @@ public class Player : MonoBehaviour
             hitstunVal = hitstun;
             SetState(PlayerState.Hitstun);
         }
-        
+
         Debug.Log("Player Health: " + health);
 
-        
+
     }
 
     private void CycleWeapon()
@@ -1288,7 +1405,7 @@ public class Player : MonoBehaviour
         {
             animator.runtimeAnimatorController = baseAnimController;
             weaponName = "ice";
-            animator.SetInteger(name: "player_state", (int)PlayerState.Menuing); 
+            animator.SetInteger(name: "player_state", (int)PlayerState.Menuing);
         }
         else
         {

@@ -6,6 +6,10 @@ TagManager:
   tags:
   - slope
   - Enemy
+  - Ice
+  - Lightning
+  - Wind
+  - Fire
   layers:
   - Default
   - TransparentFX
