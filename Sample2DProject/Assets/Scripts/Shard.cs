@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Shard : MonoBehaviour, ICollectible, IDictionary
+public class Shard : MonoBehaviour, ICollectible//, IDictionary
 {
     public void Collect()
     {

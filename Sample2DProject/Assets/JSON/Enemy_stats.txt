@@ -2,7 +2,7 @@
 	"enemyData": [
 		{
 			"enemy": "landBasic",
-			"runSpeed": 4,
+			"runSpeed": 3,
 			"jumpForce": 15,
 			"maxHitboxes": 1,
 			"frameData": {

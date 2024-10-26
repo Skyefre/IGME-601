@@ -107,8 +107,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 1188232955
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: -522513420, guid: f6e048a10abd0b044bd9cabc38a72ea3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -133,6 +133,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de750e9913ec4de4e9d52585248ff63e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hitstunVal: 0
   enemyName: landBasic
   animator: {fileID: 1776125985378903741}
   baseAnimController: {fileID: 9100000, guid: 1b36fe47e24061841be98977330e394c, type: 2}
@@ -246,18 +247,18 @@ MonoBehaviour:
     m_Bits: 8
   playerLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 64
   rayLength: 0.1
   rayOffset: {x: 8, y: 8}
   hitboxReference: {fileID: 2071856720676495377, guid: a9bab66106fe9f64f8e123ff86289a9a, type: 3}
   hurtboxReference: {fileID: 2071856720676495377, guid: 93f0f0d69bc905d49a654f329ed68ef4, type: 3}
   hitstopVal: 0
-  playerDetectRayLength: 10
-  meleeDetectRayLength: 5
-  ledgeDetector: {fileID: 0}
+  playerDetectRayLength: 128
+  meleeDetectRayLength: 32
+  ledgeDetector: {fileID: 9149916450813229016}
   stateTime: 0
-  playerDetectedWaitTime: 1
-  chaseTime: 0
+  playerDetectedWaitTime: 0.5
+  chaseTime: 5
 --- !u!95 &1776125985378903741
 Animator:
   serializedVersion: 5
