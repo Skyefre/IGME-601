@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 6245487716298906287}
   - component: {fileID: 237148384208766883}
   - component: {fileID: 1195620023101770444}
+  - component: {fileID: 5484855606325471435}
   - component: {fileID: -4435922527637562003}
   - component: {fileID: -7222035744448415508}
   m_Layer: 6
@@ -78,7 +79,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1188232955
-  m_SortingLayer: 3
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: -302394087, guid: 705a68c5797355c47a37a60824bf4fa2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -353,7 +354,6 @@ MonoBehaviour:
   rayOffset: {x: 8, y: 12}
   hitboxReference: {fileID: 2071856720676495377, guid: a9bab66106fe9f64f8e123ff86289a9a, type: 3}
   hurtboxReference: {fileID: 2071856720676495377, guid: 93f0f0d69bc905d49a654f329ed68ef4, type: 3}
-  iceBlock: {fileID: 6871520450933059161, guid: d57d2e8b273df6a408217680f38f9bb7, type: 3}
   hitstopVal: 0
   projectilePrefab: {fileID: 7535727820440762865, guid: 33b9b55ac80ace0428af039babffc17b, type: 3}
   launchOffset: {fileID: 1610615495506369127}
@@ -388,6 +388,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 380d39d9cb2c2ad41a3ae5884718a3a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &5484855606325471435
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1649555061467412725}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2509502d49572ae4ba832ecf2042c456, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!61 &-4435922527637562003
