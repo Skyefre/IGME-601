@@ -5,6 +5,8 @@ using UnityEngine;
 public class IceSpell : BaseSpell
 {
     public GameObject IceBlock;
+    public GameObject IceShard;
+
     public override void UseChargedSpell()
     {
         Instantiate(IceBlock ,this.transform);
