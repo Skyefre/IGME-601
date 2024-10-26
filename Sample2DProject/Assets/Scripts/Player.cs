@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 //using static Enemy;
@@ -68,6 +69,7 @@ public class Player : MonoBehaviour
     //public BaseSpell currentSpell;
     //public BaseSpell[] PlayerSpells;
     public bool facingRight = true;
+    public bool InTeleport = false;
     public InputHandler inputHandler;
     public LayerMask groundLayer; // Layer mask to specify what is considered ground
     public float rayLength = 0.1f; // Length of the ray
@@ -118,7 +120,25 @@ public class Player : MonoBehaviour
         SetState(PlayerState.Idle);
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.tag == "Portal")
+        {
+            Debug.Log("teleport ready!");
+            InTeleport = true;
 
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.tag == "Portal")
+        {
+            Debug.Log("teleport not ready!");
+            InTeleport = false;
+
+        }
+    }
     void FixedUpdate()
     {
         if (hitstopVal > 0)
@@ -149,6 +169,7 @@ public class Player : MonoBehaviour
             }
         }
 
+        
         //re-update weapon stats when pause is pressed
         if (Input.GetKey(KeyCode.F1))
         {
@@ -161,6 +182,11 @@ public class Player : MonoBehaviour
         {
 
             case PlayerState.Idle:
+
+                /*if (inputs[InputHandler.Inputs.Select] == InputHandler.InputState.Pressed)
+                {
+                    Debug.Log("Selected");
+                }*/
 
                 //check for attack input
                 if (inputs[InputHandler.Inputs.Attack] == InputHandler.InputState.Pressed)
