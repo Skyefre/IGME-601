@@ -5,6 +5,7 @@ using System.Runtime.CompilerServices;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 //using static Enemy;
 
 public class Player : MonoBehaviour
@@ -126,6 +127,7 @@ public class Player : MonoBehaviour
         {
             Debug.Log("teleport ready!");
             InTeleport = true;
+            SceneManager.LoadScene("TestScene");
 
         }
     }
