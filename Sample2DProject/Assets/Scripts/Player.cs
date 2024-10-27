@@ -208,6 +208,14 @@ public class Player : MonoBehaviour
                     }
 
                 }
+                //temp iceBlock
+                if(Input.GetKeyDown(KeyCode.Space))
+                {
+                    Instantiate(iceBlock);
+                    iceBlock.SetActive(true);
+                    
+                    //iceBlock.SetActive(false);
+                }
                 //check for spell input
                 if (inputs[InputHandler.Inputs.Spell] == InputHandler.InputState.Pressed)
                 {
