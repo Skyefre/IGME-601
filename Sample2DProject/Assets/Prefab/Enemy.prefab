@@ -233,7 +233,7 @@ MonoBehaviour:
   runSpeed: 4
   jumpForce: 10
   gravity: 1
-  health: 100
+  health: 5
   hspd: 0
   vspd: 0
   maxHspd: 15
