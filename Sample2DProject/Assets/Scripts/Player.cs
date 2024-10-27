@@ -80,7 +80,7 @@ public class Player : MonoBehaviour
     public GameObject hurtboxReference;
     private List<GameObject> hitboxes = new List<GameObject>();
     private GameObject hurtbox;
-    //public GameObject iceBlock;
+    public GameObject iceBlock;
 
 
     private int tempHspd = 0;
