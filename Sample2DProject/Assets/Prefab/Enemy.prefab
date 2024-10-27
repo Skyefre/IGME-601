@@ -253,7 +253,8 @@ MonoBehaviour:
   hitboxReference: {fileID: 2071856720676495377, guid: a9bab66106fe9f64f8e123ff86289a9a, type: 3}
   hurtboxReference: {fileID: 2071856720676495377, guid: 93f0f0d69bc905d49a654f329ed68ef4, type: 3}
   hitstopVal: 0
-  playerDetectRayLength: 128
+  ledgeDetectRayLength: 100
+  playerDetectRayLength: 256
   meleeDetectRayLength: 32
   ledgeDetector: {fileID: 9149916450813229016}
   stateTime: 0
