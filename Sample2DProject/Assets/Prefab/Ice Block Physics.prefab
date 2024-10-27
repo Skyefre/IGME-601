@@ -76,6 +76,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 3368831122626336784, guid: eaaa902c8e0aed742b8a6fb7927d3fbb, type: 3}
+      propertyPath: m_TagString
+      value: Ice
+      objectReference: {fileID: 0}
     - target: {fileID: 3781216612748593367, guid: eaaa902c8e0aed742b8a6fb7927d3fbb, type: 3}
       propertyPath: m_Color.b
       value: 0.9172198
@@ -95,5 +99,35 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3368831122626336784, guid: eaaa902c8e0aed742b8a6fb7927d3fbb, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -4638867517264936102}
   m_SourcePrefab: {fileID: 100100000, guid: eaaa902c8e0aed742b8a6fb7927d3fbb, type: 3}
+--- !u!1 &6871520450933059161 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3368831122626336784, guid: eaaa902c8e0aed742b8a6fb7927d3fbb, type: 3}
+  m_PrefabInstance: {fileID: 8186688152167921225}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &-4638867517264936102
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6871520450933059161}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fbb785d89621830478c0f97b3c7ab58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hspd: 0
+  vspd: 0
+  lifeTime: 5
+  owner: {fileID: 0}
+  facingRight: 1
+  hitbox: {fileID: 2071856720676495377, guid: a9bab66106fe9f64f8e123ff86289a9a, type: 3}
+  xoffset: 0
+  yoffset: 0
+  width: 57
+  height: 76
