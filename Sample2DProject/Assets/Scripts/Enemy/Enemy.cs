@@ -993,6 +993,10 @@ public class Enemy : MonoBehaviour
         if (health == 0)
             Destroy(this.gameObject);
 
+        bool hitDirection = hspd > 0 ? false : true;
+        if (hitDirection != facingRight)
+            facingRight = !facingRight;
+
         Debug.Log("Enemy Health: " + health);
     }
 
