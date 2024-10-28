@@ -30,6 +30,7 @@ public class GameManager : MonoBehaviour
         ShardsCollected = 0;
     }
 
+
     // Update is called once per frame
     void Update()
     {
@@ -44,6 +45,11 @@ public class GameManager : MonoBehaviour
             {
                 LoadScene("TestScene");
             }
+        }
+
+        if (Input.GetKey(KeyCode.R))
+        {
+            LoadScene("Scene_MainMenu");
         }
     }
     public void LoadScene(string sceneName)
