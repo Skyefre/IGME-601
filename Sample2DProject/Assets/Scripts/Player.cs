@@ -81,7 +81,7 @@ public class Player : MonoBehaviour
     public GameObject hurtboxReference;
     private List<GameObject> hitboxes = new List<GameObject>();
     private GameObject hurtbox;
-    //public GameObject iceBlock;
+    public GameObject iceBlock;
 
 
     private int tempHspd = 0;
@@ -93,9 +93,11 @@ public class Player : MonoBehaviour
     private BoxCollider2D boxCollider;// Reference to the BoxCollider2D component
     private Dictionary<InputHandler.Inputs, InputHandler.InputState> inputs;
 
-    //projectile
+    //Spell stuff
     public List<GameObject> projectileList = new List<GameObject>();
-    private Dictionary<string, GameObject> projectiles = new Dictionary<string, GameObject>();
+    public Dictionary<string, GameObject> projectiles = new Dictionary<string, GameObject>();
+    public int spellCharge = 0;
+    public int maxSpellCharge = 100;
 
     public BoxCollider2D PlayerCollider
     {
@@ -160,6 +162,25 @@ public class Player : MonoBehaviour
             InitWeapon();
         }
 
+        //get spell button for the charge system
+        if (inputs[InputHandler.Inputs.Spell] == InputHandler.InputState.Held)
+        {
+            spellCharge++;
+            if(spellCharge >= maxSpellCharge)
+            {
+                spellCharge = maxSpellCharge + 4;
+                //make the character flash white
+                //gameObject.GetComponent<SpriteRenderer>().material.SetFloat("_Flash", 1);
+            }
+        }
+        else
+        {
+            if(spellCharge > 0)
+            {
+                spellCharge-=2;
+            }
+        }
+
         switch (state)
         {
 
@@ -191,10 +212,17 @@ public class Player : MonoBehaviour
 
                 }
                 //check for spell input
-                if (inputs[InputHandler.Inputs.Spell] == InputHandler.InputState.Pressed)
+                if (inputs[InputHandler.Inputs.Spell] == InputHandler.InputState.Released)
                 {
-                    SetState(PlayerState.SpellAttack);
-                    //Debug.Log("Pew!");
+                    if(spellCharge >= maxSpellCharge)
+                    {
+                        SetState(PlayerState.SpellUtil);
+                    }
+                    else
+                    {
+                        SetState(PlayerState.SpellAttack);
+                    }
+
                     break;
                 }
                 //check for movement input
@@ -257,10 +285,18 @@ public class Player : MonoBehaviour
                         break;
                     }
                 }
-                //Spell Input
-                if (inputs[InputHandler.Inputs.Spell] == InputHandler.InputState.Pressed)
+                //check for spell input
+                if (inputs[InputHandler.Inputs.Spell] == InputHandler.InputState.Released)
                 {
-                    SetState(PlayerState.SpellAttack);
+                    if (spellCharge >= maxSpellCharge)
+                    {
+                        SetState(PlayerState.SpellUtil);
+                    }
+                    else
+                    {
+                        SetState(PlayerState.SpellAttack);
+                    }
+
                     break;
                 }
                 //run logic
@@ -409,10 +445,17 @@ public class Player : MonoBehaviour
                     }
                 }
                 //check for spell input
-                if (inputs[InputHandler.Inputs.Spell] == InputHandler.InputState.Pressed)
+                if (inputs[InputHandler.Inputs.Spell] == InputHandler.InputState.Released)
                 {
-                    SetState(PlayerState.SpellAttack);
-                    //Debug.Log("Pew!");
+                    if (spellCharge >= maxSpellCharge)
+                    {
+                        SetState(PlayerState.SpellUtil);
+                    }
+                    else
+                    {
+                        SetState(PlayerState.SpellAttack);
+                    }
+
                     break;
                 }
                 //allow for horizontal movement
@@ -764,10 +807,69 @@ public class Player : MonoBehaviour
                         switch (weaponName)
                         {
                             case "ice":
-                                if(projectiles["ice_attack"].activeSelf == false)
+                                if (projectiles["ice_attack"].activeSelf == false)
                                 {
                                     projectiles["ice_attack"].SetActive(true);
                                     projectiles["ice_attack"].GetComponent<ProjectileBehavior>().InitProjectile(spellSpawnData.spellAttack[0].xOffset, spellSpawnData.spellAttack[0].yOffset);
+                                }
+                                break;
+                            case "wind":
+                                break;
+                            case "lightning":
+                                break;
+                            case "fire":
+                                break;
+                            default:
+                                break;
+                        }
+                    }
+
+                }
+
+
+                //if grounded
+                if (grounded.collider != null)
+                {
+                    SnapToSurface(grounded);
+                    vspd = 0;
+                    LerpHspd(0, 3);
+
+                }
+                else
+                {
+                    //allow for horizontal movement
+                    if (inputs[InputHandler.Inputs.Right] == InputHandler.InputState.Held)
+                    {
+                        hspd = runSpeed;
+                    }
+                    else if (inputs[InputHandler.Inputs.Left] == InputHandler.InputState.Held)
+                    {
+                        hspd = -runSpeed;
+                    }
+                    else if (inputs[InputHandler.Inputs.Left] == InputHandler.InputState.UnPressed && inputs[InputHandler.Inputs.Right] == InputHandler.InputState.UnPressed)
+                    {
+                        hspd = 0;
+                    }
+                }
+                if (animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1)
+                {
+                    SetState(grounded.collider != null ? PlayerState.Idle : PlayerState.Jump);
+                    break;
+                }
+                break;
+            case PlayerState.SpellUtil:
+                ///handle hitbox activation
+                for (int i = 0; i < spellframeData.spellUtilFrames.Count; i++)
+                {
+                    if (currentFrame == spellframeData.spellUtilFrames[i])
+                    {
+                        switch (weaponName)
+                        {
+                            case "ice":
+                                if (projectiles["ice_util"].activeSelf == false)
+                                {
+                                    projectiles["ice_util"].SetActive(true);
+                                    projectiles["ice_util"].GetComponent<ProjectileBehavior>().InitProjectile(spellSpawnData.spellUtil[0].xOffset, spellSpawnData.spellUtil[0].yOffset);
                                 }
                                 break;
                             case "wind":
@@ -1349,6 +1451,12 @@ public class Player : MonoBehaviour
             projectiles.Add("lightning_attack", Instantiate(projectileList[0]));
             projectiles.Add("fire_attack", Instantiate(projectileList[0]));
 
+            projectiles.Add("ice_util", Instantiate(projectileList[1]));
+            projectiles.Add("wind_util", Instantiate(projectileList[1]));
+            projectiles.Add("lightning_util", Instantiate(projectileList[1]));
+            projectiles.Add("fire_util", Instantiate(projectileList[1]));
+
+
             projectiles["ice_attack"].GetComponent<ProjectileBehavior>().owner = gameObject;
             projectiles["ice_attack"].SetActive(false);
 
@@ -1360,6 +1468,20 @@ public class Player : MonoBehaviour
 
             projectiles["fire_attack"].GetComponent<ProjectileBehavior>().owner = gameObject;
             projectiles["fire_attack"].SetActive(false);
+
+            projectiles["ice_util"].GetComponent<ProjectileBehavior>().owner = gameObject;
+            projectiles["ice_util"].SetActive(false);
+
+            projectiles["wind_util"].GetComponent<ProjectileBehavior>().owner = gameObject;
+            projectiles["wind_util"].SetActive(false);
+
+            projectiles["lightning_util"].GetComponent<ProjectileBehavior>().owner = gameObject;
+            projectiles["lightning_util"].SetActive(false);
+
+            projectiles["fire_util"].GetComponent<ProjectileBehavior>().owner = gameObject;
+            projectiles["fire_util"].SetActive(false);
+
+
         }
         
         

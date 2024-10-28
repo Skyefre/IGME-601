@@ -366,9 +366,13 @@ MonoBehaviour:
   rayOffset: {x: 8, y: 12}
   hitboxReference: {fileID: 2071856720676495377, guid: a9bab66106fe9f64f8e123ff86289a9a, type: 3}
   hurtboxReference: {fileID: 2071856720676495377, guid: 93f0f0d69bc905d49a654f329ed68ef4, type: 3}
+  iceBlock: {fileID: 6871520450933059161, guid: d57d2e8b273df6a408217680f38f9bb7, type: 3}
   hitstopVal: 0
   projectileList:
   - {fileID: 32924885386218554, guid: 33b9b55ac80ace0428af039babffc17b, type: 3}
+  - {fileID: 6871520450933059161, guid: d57d2e8b273df6a408217680f38f9bb7, type: 3}
+  spellCharge: 0
+  maxSpellCharge: 100
 --- !u!95 &237148384208766883
 Animator:
   serializedVersion: 5

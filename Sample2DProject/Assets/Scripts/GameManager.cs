@@ -41,7 +41,7 @@ public class GameManager : MonoBehaviour
         else
         {
             Camera.main.transform.position = new Vector3(0, 0, -10);
-            if(Input.GetKeyDown(KeyCode.Space))
+            if (Input.GetKeyDown(KeyCode.Space))
             {
                 LoadScene("TestScene");
             }
@@ -57,6 +57,10 @@ public class GameManager : MonoBehaviour
         for (int i = 0; i < players.Length; i++)
         {
             DontDestroyOnLoad(players[i]);
+            foreach (KeyValuePair<string, GameObject> projectile in players[i].GetComponent<Player>().projectiles)
+            {
+                DontDestroyOnLoad(projectile.Value);
+            }
         }
         UnityEngine.SceneManagement.SceneManager.LoadScene(sceneName);
         if (sceneName == "TestScene")
@@ -92,7 +96,4 @@ public class GameManager : MonoBehaviour
             players[i].GetComponent<SpriteRenderer>().material.SetTexture("_PaletteTex", colorPalletes[i]);
         }
     }
-
-  
-
 }

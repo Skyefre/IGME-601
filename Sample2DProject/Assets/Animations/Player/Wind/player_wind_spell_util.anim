@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: player_wind_spell_attack
+  m_Name: player_wind_spell_util
   serializedVersion: 7
   m_Legacy: 0
   m_Compressed: 0
@@ -22,28 +22,28 @@ AnimationClip:
     curve:
     - time: 0
       value: {fileID: 356888251, guid: 5d88fdd8c66a917499c62a81415257b8, type: 3}
-    - time: 0.0625
+    - time: 0.055555556
       value: {fileID: 1109929771, guid: 5d88fdd8c66a917499c62a81415257b8, type: 3}
-    - time: 0.125
+    - time: 0.11111111
       value: {fileID: -1002153033, guid: 5d88fdd8c66a917499c62a81415257b8, type: 3}
-    - time: 0.1875
+    - time: 0.16666667
       value: {fileID: -108652411, guid: 5d88fdd8c66a917499c62a81415257b8, type: 3}
-    - time: 0.25
+    - time: 0.22222222
       value: {fileID: 1178256830, guid: 5d88fdd8c66a917499c62a81415257b8, type: 3}
-    - time: 0.3125
+    - time: 0.2777778
       value: {fileID: 1257300363, guid: 5d88fdd8c66a917499c62a81415257b8, type: 3}
-    - time: 0.375
+    - time: 0.33333334
       value: {fileID: 176029215, guid: 5d88fdd8c66a917499c62a81415257b8, type: 3}
-    - time: 0.4375
+    - time: 0.3888889
       value: {fileID: 827760700, guid: 5d88fdd8c66a917499c62a81415257b8, type: 3}
-    - time: 0.5
+    - time: 0.44444445
       value: {fileID: -1728033831, guid: 5d88fdd8c66a917499c62a81415257b8, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
     script: {fileID: 0}
     flags: 2
-  m_SampleRate: 16
+  m_SampleRate: 18
   m_WrapMode: 0
   m_Bounds:
     m_Center: {x: 0, y: 0, z: 0}
@@ -74,7 +74,7 @@ AnimationClip:
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0.5625
+    m_StopTime: 0.5
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0

@@ -22,14 +22,14 @@ public class ProjectileBehavior : MonoBehaviour
     public int hitstun;
     public bool projectileActive = true;
 
-    private float timer = 0.0f;
+    protected float timer = 0.0f;
 
-    private void Start()
+    protected void Start()
     {
         //InitProjectile(0,0);
     }
     // Update is called once per frame
-    private void FixedUpdate()
+    protected virtual void FixedUpdate()
     {
         transform.position += new Vector3(hspd,vspd,0);
 
@@ -43,16 +43,19 @@ public class ProjectileBehavior : MonoBehaviour
     }
 
     //destroy projectile upon collision
-    public void DestroyProjectile()
+    public virtual void DestroyProjectile()
     {
         timer = 0;
-        hitbox.GetComponent<Hitbox>().hitboxActive = false;
+        if(hitbox != null)
+        {
+            hitbox.GetComponent<Hitbox>().hitboxActive = false;
+        }
         gameObject.SetActive(false);
     }
 
-    
 
-    public void InitProjectile(int spawnX, int spawnY)
+
+    public virtual void InitProjectile(int spawnX, int spawnY)
     {
         if(owner == null)
         {
@@ -60,12 +63,17 @@ public class ProjectileBehavior : MonoBehaviour
             return;
         }
         facingRight = owner.GetComponent<Player>() != null ? owner.GetComponent<Player>().facingRight : (owner.GetComponent<Enemy>() != null ? owner.GetComponent<Enemy>().facingRight : true);
-        hitbox.GetComponent<Hitbox>().owner = gameObject;
-        hitbox.GetComponent<Hitbox>().isProjectile = true;
-        hitbox.GetComponent<Hitbox>().hitboxActive = true;
-        hitbox.GetComponent<Hitbox>().updateHitbox(damage, 0, 0, width, height, xKnockback, yKnockback, hitstun);
+        if(hitbox != null)
+        {
+            hitbox.GetComponent<Hitbox>().owner = gameObject;
+            hitbox.GetComponent<Hitbox>().isProjectile = true;
+            hitbox.GetComponent<Hitbox>().hitboxActive = true;
+            hitbox.GetComponent<Hitbox>().updateHitbox(damage, 0, 0, width, height, xKnockback, yKnockback, hitstun);
+        }
+        
         hspd = Mathf.Abs(hspd) * (facingRight ? 1 : -1);
         gameObject.transform.position = new Vector3(owner.transform.position.x + spawnX * (facingRight?1:-1), owner.transform.position.y + spawnY, 0);
+        DontDestroyOnLoad(gameObject);
     }
 
 
