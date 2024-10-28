@@ -357,6 +357,7 @@ MonoBehaviour:
   maxVspd: 15
   state: 0
   facingRight: 1
+  InTeleport: 0
   inputHandler: {fileID: 1195620023101770444}
   groundLayer:
     serializedVersion: 2

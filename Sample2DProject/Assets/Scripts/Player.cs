@@ -121,26 +121,6 @@ public class Player : MonoBehaviour
         SetState(PlayerState.Idle);
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if(collision.tag == "Portal")
-        {
-            Debug.Log("teleport ready!");
-            InTeleport = true;
-            SceneManager.LoadScene("TestScene");
-
-        }
-    }
-
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        if (collision.tag == "Portal")
-        {
-            Debug.Log("teleport not ready!");
-            InTeleport = false;
-
-        }
-    }
     void FixedUpdate()
     {
         if (hitstopVal > 0)
