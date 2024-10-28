@@ -23,6 +23,8 @@ public class ChaseState : EnemyBaseState
     public override void LogicUpdate()
     {
         base.LogicUpdate();
+        if (enemy.CheckForLedge() || enemy.CheckForObstacles())
+            Rotate();
     }
 
     public override void PhysicsUpdate()
@@ -50,5 +52,10 @@ public class ChaseState : EnemyBaseState
         //   enemy.hspd = enemy.runSpeed / 2;
         //else
         //   enemy.hspd = - enemy.runSpeed / 2;
+    }
+
+    public void Rotate()
+    {
+        enemy.facingRight = !enemy.facingRight;
     }
 }

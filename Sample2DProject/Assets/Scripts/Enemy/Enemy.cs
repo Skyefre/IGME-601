@@ -93,9 +93,11 @@ public class Enemy : MonoBehaviour
     public DamagedState damagedState;
     public MeleeAttackState meleeAttackState;
     public float ledgeDetectRayLength;
-    public float playerDetectRayLength = 10f;
-    public float meleeDetectRayLength = 40;
+    public float playerDetectRayLength;
+    public float meleeDetectRayLength;
+    public float obstacleDetectRayLength;
     public Transform ledgeDetector;
+    private Vector3 ledgeDetectorPosition;
     public float stateTime;     // time when we enter a new state
     public float playerDetectedWaitTime = 1;
     public float chaseTime;
@@ -138,6 +140,16 @@ public class Enemy : MonoBehaviour
     void Update()
     {
         currentState.LogicUpdate();
+
+        ledgeDetector.transform.position = ledgeDetectorPosition;
+        if (facingRight)
+        {
+            ledgeDetectorPosition  = transform.position + new Vector3(20, 20, 0);
+        }
+        else
+        {
+            ledgeDetectorPosition = transform.position + new Vector3(-20, 20, 0);
+        }
     }
 
     void FixedUpdate()
@@ -1020,6 +1032,15 @@ public class Enemy : MonoBehaviour
             return false;  
     }
 
+    public bool CheckForObstacles()
+    {
+        RaycastHit2D hitObstacle = Physics2D.Raycast(ledgeDetector.position, facingRight ? Vector2.right : Vector2.left, obstacleDetectRayLength, groundLayer);
+
+        if (hitObstacle.collider == true)
+            return true;
+        else
+            return false;
+    }
     public bool CheckForPlayer()
     {
         RaycastHit2D hitPlayer = Physics2D.Raycast(ledgeDetector.position, facingRight ? Vector2.right : Vector2.left, playerDetectRayLength, playerLayer);

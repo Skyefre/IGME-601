@@ -256,6 +256,7 @@ MonoBehaviour:
   ledgeDetectRayLength: 100
   playerDetectRayLength: 256
   meleeDetectRayLength: 32
+  obstacleDetectRayLength: 40
   ledgeDetector: {fileID: 9149916450813229016}
   stateTime: 0
   playerDetectedWaitTime: 0.5
