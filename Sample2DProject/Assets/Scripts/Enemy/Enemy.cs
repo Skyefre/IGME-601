@@ -92,6 +92,7 @@ public class Enemy : MonoBehaviour
     public ChaseState chaseState;
     public DamagedState damagedState;
     public MeleeAttackState meleeAttackState;
+    public float ledgeDetectRayLength;
     public float playerDetectRayLength = 10f;
     public float meleeDetectRayLength = 40;
     public Transform ledgeDetector;
@@ -989,6 +990,8 @@ public class Enemy : MonoBehaviour
             hitstunVal = hitstun;
             SetState(EnemyState.Hitstun);
         }
+        if (health == 0)
+            Destroy(this.gameObject);
 
         Debug.Log("Enemy Health: " + health);
     }
@@ -1003,9 +1006,9 @@ public class Enemy : MonoBehaviour
         currentState.AnimationAttackTrigger();
     }
 
-    public bool CheckForObstacles()
+    public bool CheckForLedge()
     {
-        RaycastHit2D hit = Physics2D.Raycast(ledgeDetector.position, Vector2.down, playerDetectRayLength, groundLayer);
+        RaycastHit2D hit = Physics2D.Raycast(ledgeDetector.position, Vector2.down, ledgeDetectRayLength, groundLayer);
 
         if (hit.collider == null)
             return true;
@@ -1035,7 +1038,7 @@ public class Enemy : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-        Gizmos.DrawRay(ledgeDetector.position, (facingRight ? Vector2.right : Vector2.left) * meleeDetectRayLength);
-        Gizmos.DrawRay(ledgeDetector.position, Vector2.down * playerDetectRayLength);
+        Gizmos.DrawRay(ledgeDetector.position, (facingRight ? Vector2.right : Vector2.left) * playerDetectRayLength);
+        Gizmos.DrawRay(ledgeDetector.position, Vector2.down * ledgeDetectRayLength);
     }
 }

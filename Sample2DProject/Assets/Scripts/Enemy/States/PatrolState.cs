@@ -27,7 +27,7 @@ public class PatrolState : EnemyBaseState
     {
         base.LogicUpdate();
 
-        if (enemy.CheckForObstacles())
+        if (enemy.CheckForLedge())
             Rotate();
         if (enemy.CheckForPlayer())
             enemy.SwitchAIState(enemy.playerDetectedState);
