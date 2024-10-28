@@ -535,6 +535,25 @@ public class Player : MonoBehaviour
                         SetState(PlayerState.Jumpsquat);
                     }
                 }
+                //check for attack input
+                if (inputs[InputHandler.Inputs.Attack] == InputHandler.InputState.Pressed)
+                {
+                    if (inputs[InputHandler.Inputs.Up] == InputHandler.InputState.Held)
+                    {
+                        SetState(PlayerState.UpAttack);
+                        break;
+                    }
+                    else if (inputs[InputHandler.Inputs.Down] == InputHandler.InputState.Held)
+                    {
+                        SetState(PlayerState.DownAttack);
+                        break;
+                    }
+                    else
+                    {
+                        SetState(PlayerState.SideAttack);
+                        break;
+                    }
+                }
                 //check for wall collision
                 if (IsTouchingWall().collider != null)
                 {
