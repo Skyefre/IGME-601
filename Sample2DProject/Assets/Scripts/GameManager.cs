@@ -53,6 +53,13 @@ public class GameManager : MonoBehaviour
             DontDestroyOnLoad(players[i]);
         }
         UnityEngine.SceneManagement.SceneManager.LoadScene(sceneName);
+        if (sceneName == "TestScene")
+        {
+            for (int i = 0; i < players.Length; i++)
+            {
+                players[i].transform.position = new Vector3(-2664f, -111.1f);
+        }
+        }
         //gameObject.GetComponent<CameraShake>().mainCamera = GameObject.Find("Main Camera").GetComponent<Camera>();
 
     }
