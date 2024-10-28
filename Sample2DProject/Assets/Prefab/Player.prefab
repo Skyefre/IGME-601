@@ -370,6 +370,9 @@ MonoBehaviour:
   hitstopVal: 0
   projectileList:
   - {fileID: 32924885386218554, guid: 33b9b55ac80ace0428af039babffc17b, type: 3}
+  - {fileID: 6871520450933059161, guid: d57d2e8b273df6a408217680f38f9bb7, type: 3}
+  spellCharge: 0
+  maxSpellCharge: 100
 --- !u!95 &237148384208766883
 Animator:
   serializedVersion: 5

@@ -25,7 +25,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -38,7 +38,7 @@ public class GameManager : MonoBehaviour
         else
         {
             Camera.main.transform.position = new Vector3(0, 0, -10);
-            if(Input.GetKeyDown(KeyCode.Space))
+            if (Input.GetKeyDown(KeyCode.Space))
             {
                 LoadScene("TestScene");
             }
@@ -49,6 +49,10 @@ public class GameManager : MonoBehaviour
         for (int i = 0; i < players.Length; i++)
         {
             DontDestroyOnLoad(players[i]);
+            foreach (KeyValuePair<string, GameObject> projectile in players[i].GetComponent<Player>().projectiles)
+            {
+                DontDestroyOnLoad(projectile.Value);
+            }
         }
         UnityEngine.SceneManagement.SceneManager.LoadScene(sceneName);
         //gameObject.GetComponent<CameraShake>().mainCamera = GameObject.Find("Main Camera").GetComponent<Camera>();
@@ -77,6 +81,4 @@ public class GameManager : MonoBehaviour
             players[i].GetComponent<SpriteRenderer>().material.SetTexture("_PaletteTex", colorPalletes[i]);
         }
     }
-
-
 }

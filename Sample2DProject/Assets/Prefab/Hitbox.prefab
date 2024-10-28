@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 2071856720676495377}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 48, y: -113, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -172,14 +172,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   owner: {fileID: 0}
-  hitboxActive: 0
+  hitboxActive: 1
   canCancel: 0
   isProjectile: 0
   damage: 1
   xoffset: 0
   yoffset: 0
-  width: 0
-  height: 0
+  width: 57
+  height: 76
   xKnockback: 0
   yKnockback: 0
   hitstun: 0
