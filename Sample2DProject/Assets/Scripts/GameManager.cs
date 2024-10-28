@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
     public GameObject[] players;
     public List<Texture2D> colorPalletes;
     public bool enableStartScreen;
+    public int ShardsCollected;
 
     private void Awake()
     {
@@ -25,7 +26,8 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        Debug.Log("Shards initiated");
+        ShardsCollected = 0;
     }
 
     // Update is called once per frame
