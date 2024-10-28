@@ -1516,6 +1516,8 @@ public class Player : MonoBehaviour
             SetState(PlayerState.Hitstun);
         }
 
+        if(health <= 0) 
+            Destroy(gameObject);
         Debug.Log("Player Health: " + health);
 
 

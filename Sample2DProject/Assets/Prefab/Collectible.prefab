@@ -12,6 +12,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Collectible
       objectReference: {fileID: 0}
+    - target: {fileID: 1206941424731489362, guid: 8570cbe2501d59a4a82370b211802789, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2273646752466505601, guid: 8570cbe2501d59a4a82370b211802789, type: 3}
       propertyPath: m_LocalScale.x
       value: 1
