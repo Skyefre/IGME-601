@@ -58,5 +58,8 @@ sysinfo.txt
 # Crashlytics generated file
 crashlytics-build.properties
 
+# Annoying default file
+/[Uu]ser[Ss]ettings/Layouts/default-2022.dwlt
+
 # Packed Addressables
 /[Aa]ssets/[Aa]ddressable[Aa]ssets[Dd]ata/*/*.bin*
