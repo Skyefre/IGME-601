@@ -55,6 +55,7 @@ public class Player : MonoBehaviour
     private PlayerJSONReader.WeaponDataList weaponData;
     private int currentAnimControllerIndex = 0;
     private int currentColorIndex = 0;
+    private AudioSource jump;
 
     //Player fields
     public int runSpeed = 3;
@@ -116,6 +117,10 @@ public class Player : MonoBehaviour
         if (characterJSON == null)
         {
             characterJSON = gameObject.GetComponent<PlayerJSONReader>();
+        }
+        if(jump == null)
+        {
+            jump = gameObject.GetComponent<AudioSource>();
         }
         characterJSON.GetWeaponStats();
         weaponData = characterJSON.weaponDataList;
@@ -1043,6 +1048,7 @@ public class Player : MonoBehaviour
                 );
                 break;
             case PlayerState.Jump:
+                jump.Play();
                 hurtbox.GetComponent<Hurtbox>().updateHurtbox(
                 hurtboxData.jumpHurtbox.xOffset,
                 hurtboxData.jumpHurtbox.yOffset,
