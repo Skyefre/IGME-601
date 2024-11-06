@@ -1542,7 +1542,7 @@ public class Player : MonoBehaviour
         }
 
         if(health <= 0) 
-            Destroy(gameObject);
+            gameObject.SetActive(false);
         Debug.Log("Player Health: " + health);
 
 

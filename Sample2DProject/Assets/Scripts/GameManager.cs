@@ -96,4 +96,24 @@ public class GameManager : MonoBehaviour
             players[i].GetComponent<SpriteRenderer>().material.SetTexture("_PaletteTex", colorPalletes[i]);
         }
     }
+
+    public void RespawnPlayer()
+    {
+        if(players.Length>1) {
+
+            if (players[0].activeInHierarchy == false)
+            {
+                players[0].SetActive(true);
+                players[0].transform.position = players[1].transform.position;
+            }
+            else
+            {
+                players[1].SetActive(true);
+                players[1].transform.position = players[0].transform.position;
+            }
+
+        }
+        Debug.Log("all players alive");
+
+    }
 }
