@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class GameManager : MonoBehaviour
 {
@@ -22,6 +23,8 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
         }
         enableStartScreen = true;
+
+       
     }
     // Start is called before the first frame update
     void Start()
@@ -51,6 +54,11 @@ public class GameManager : MonoBehaviour
         {
             LoadScene("Scene_MainMenu");
         }
+
+        if (Input.GetKey(KeyCode.Return) || Input.GetButton("Start"))
+        {
+            RespawnPlayer();
+        }
     }
     public void LoadScene(string sceneName)
     {
@@ -68,8 +76,9 @@ public class GameManager : MonoBehaviour
             for (int i = 0; i < players.Length; i++)
             {
                 players[i].transform.position = new Vector3(-2664f, -111.1f);
+            }
         }
-        }
+        Instance.GetComponent<PlayerInputManager>().DisableJoining();
         //gameObject.GetComponent<CameraShake>().mainCamera = GameObject.Find("Main Camera").GetComponent<Camera>();
 
     }
@@ -113,6 +122,7 @@ public class GameManager : MonoBehaviour
             }
 
         }
+        
         Debug.Log("all players alive");
 
     }
