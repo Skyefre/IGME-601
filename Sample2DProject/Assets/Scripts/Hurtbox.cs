@@ -61,17 +61,27 @@ public class Hurtbox : MonoBehaviour
         Player hitPlayer;
         Enemy hitEnemy;
         GameObject hitboxOwner;
-        if (hitHitbox.isProjectile)
+
+        if(hitHitbox.owner != null)
         {
-            hitPlayer = hitHitbox.owner.GetComponent<ProjectileBehavior>().owner.GetComponent<Player>();
-            hitEnemy = hitHitbox.owner.GetComponent<ProjectileBehavior>().GetComponent<Enemy>();
-            hitboxOwner = hitHitbox.owner.GetComponent<ProjectileBehavior>().owner;
+            if (hitHitbox.isProjectile)
+            {
+                hitPlayer = hitHitbox.owner.GetComponent<ProjectileBehavior>().owner.GetComponent<Player>();
+                hitEnemy = hitHitbox.owner.GetComponent<ProjectileBehavior>().GetComponent<Enemy>();
+                hitboxOwner = hitHitbox.owner.GetComponent<ProjectileBehavior>().owner;
+            }
+            else
+            {
+                hitPlayer = hitHitbox.owner.GetComponent<Player>();
+                hitEnemy = hitHitbox.owner.GetComponent<Enemy>();
+                hitboxOwner = hitHitbox.owner;
+            }
         }
         else
         {
-            hitPlayer = hitHitbox.owner.GetComponent<Player>();
-            hitEnemy = hitHitbox.owner.GetComponent<Enemy>();
-            hitboxOwner = hitHitbox.owner;
+            hitboxOwner = null;
+            hitPlayer = null;
+            hitEnemy = null;
         }
         
         if (hitHitbox != null && hitboxOwner != this.owner && hitHitbox.hitboxActive == true && hitPlayer != null) //the thing that hit you is a player
