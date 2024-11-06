@@ -151,13 +151,13 @@ public class Hurtbox : MonoBehaviour
         {
             if (owner.GetComponent<Player>() != null)
             {
-                owner.GetComponent<Player>().TakeDamage(owner, hitHitbox.damage, -2 * (owner.GetComponent<Player>().facingRight ? 1 : -1), -10, 15);
+                owner.GetComponent<Player>().TakeDamage(owner, hitHitbox.damage, -2 * (owner.GetComponent<Player>().facingRight ? 1 : -1), 10, 15);
                 owner.GetComponent<Player>().hitstopVal = 10;
                 owner.GetComponent<Player>().animator.enabled = false;
             }
             else if (owner.GetComponent<Enemy>() != null)
             {
-                owner.GetComponent<Enemy>().TakeDamage(owner, hitHitbox.damage, -2 * (owner.GetComponent<Player>().facingRight ? 1 : -1), -10, 15);
+                owner.GetComponent<Enemy>().TakeDamage(owner, hitHitbox.damage, -2 * (owner.GetComponent<Player>().facingRight ? 1 : -1), 10, 15);
                 owner.GetComponent<Enemy>().hitstopVal = 10;
                 owner.GetComponent<Enemy>().animator.enabled = false;
             }
@@ -165,6 +165,7 @@ public class Hurtbox : MonoBehaviour
             {
                 Debug.Log("Hurtbox owner is not a player or enemy");
             }
+            GameManager.Instance.gameObject.GetComponent<CameraShake>().Shake(3f, (1f / 6f)); //shake the camera when hit
         }
     }
 }
