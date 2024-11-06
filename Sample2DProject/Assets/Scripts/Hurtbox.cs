@@ -137,6 +137,25 @@ public class Hurtbox : MonoBehaviour
             }
             GameManager.Instance.gameObject.GetComponent<CameraShake>().Shake(3f, (1f/6f)); //shake the camera when hit
         }
+        else if (hitHitbox != null && hitboxOwner == null && hitHitbox.hitboxActive == true) //If the hitbox has no owner (e.g. spikes)
+        {
+            if (owner.GetComponent<Player>() != null)
+            {
+                owner.GetComponent<Player>().TakeDamage(owner, hitHitbox.damage, -2 * (owner.GetComponent<Player>().facingRight ? 1 : -1), -10, 15);
+                owner.GetComponent<Player>().hitstopVal = 10;
+                owner.GetComponent<Player>().animator.enabled = false;
+            }
+            else if (owner.GetComponent<Enemy>() != null)
+            {
+                owner.GetComponent<Enemy>().TakeDamage(owner, hitHitbox.damage, -2 * (owner.GetComponent<Player>().facingRight ? 1 : -1), -10, 15);
+                owner.GetComponent<Enemy>().hitstopVal = 10;
+                owner.GetComponent<Enemy>().animator.enabled = false;
+            }
+            else
+            {
+                Debug.Log("Hurtbox owner is not a player or enemy");
+            }
+        }
     }
 }
 
