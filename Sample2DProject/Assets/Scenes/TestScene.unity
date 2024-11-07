@@ -197,7 +197,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4964693390700085476, guid: ffa5b1c162269e543bd5e2036eb4406b, type: 3}
       propertyPath: obstacleDetectRayLength
-      value: 40
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 6309864910153200494, guid: ffa5b1c162269e543bd5e2036eb4406b, type: 3}
       propertyPath: m_LocalPosition.x

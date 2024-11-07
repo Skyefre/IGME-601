@@ -98,6 +98,7 @@ public class Enemy : MonoBehaviour
     public float obstacleDetectRayLength;
     public Transform ledgeDetector;
     private Vector3 ledgeDetectorPosition;
+    private Vector3 jumpSpaceDetectorPos;
     public float stateTime;     // time when we enter a new state
     public float playerDetectedWaitTime = 1;
     public float chaseTime;
@@ -145,10 +146,12 @@ public class Enemy : MonoBehaviour
         if (facingRight)
         {
             ledgeDetectorPosition  = transform.position + new Vector3(20, 20, 0);
+            jumpSpaceDetectorPos = transform.position + new Vector3(20, 100, 0);
         }
         else
         {
             ledgeDetectorPosition = transform.position + new Vector3(-20, 20, 0);
+            jumpSpaceDetectorPos = transform.position + new Vector3(-20, 100, 0);
         }
     }
 
@@ -1034,13 +1037,24 @@ public class Enemy : MonoBehaviour
 
     public bool CheckForObstacles()
     {
-        RaycastHit2D hitObstacle = Physics2D.Raycast(ledgeDetector.position, facingRight ? Vector2.right : Vector2.left, obstacleDetectRayLength, groundLayer);
+        RaycastHit2D hitObstacle = Physics2D.Raycast(ledgeDetectorPosition, facingRight ? Vector2.right : Vector2.left, obstacleDetectRayLength, groundLayer);
 
         if (hitObstacle.collider == true)
             return true;
         else
             return false;
     }
+
+    public bool CheckForJumpSpace()
+    {
+        RaycastHit2D hitSpace = Physics2D.Raycast(jumpSpaceDetectorPos, facingRight ? Vector2.right : Vector2.left, obstacleDetectRayLength, groundLayer);
+
+        if (hitSpace.collider == true)
+            return true;
+        else
+            return false;
+    }
+
     public bool CheckForPlayer()
     {
         RaycastHit2D hitPlayer = Physics2D.Raycast(ledgeDetector.position, facingRight ? Vector2.right : Vector2.left, playerDetectRayLength, playerLayer);
@@ -1063,7 +1077,9 @@ public class Enemy : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-        Gizmos.DrawRay(ledgeDetector.position, (facingRight ? Vector2.right : Vector2.left) * playerDetectRayLength);
-        Gizmos.DrawRay(ledgeDetector.position, Vector2.down * ledgeDetectRayLength);
+        //Gizmos.DrawRay(ledgeDetector.position, (facingRight ? Vector2.right : Vector2.left) * playerDetectRayLength);
+        //Gizmos.DrawRay(ledgeDetector.position, Vector2.down * ledgeDetectRayLength);
+        Gizmos.DrawRay(ledgeDetectorPosition, (facingRight ? Vector2.right : Vector2.left) * obstacleDetectRayLength);
+        Gizmos.DrawRay(jumpSpaceDetectorPos, (facingRight ? Vector2.right : Vector2.left) * obstacleDetectRayLength);
     }
 }
