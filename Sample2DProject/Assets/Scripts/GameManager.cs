@@ -2,14 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.LowLevel;
+using static Player;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
+    public PlayerInputManager playerInputManager;
     public GameObject[] players;
     public List<Texture2D> colorPalletes;
     public bool enableStartScreen;
     public int ShardsCollected;
+    public int FleckCollected;
+    public int PlayerLives;
 
     private void Awake()
     {
@@ -30,6 +35,8 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         Debug.Log("Shards initiated");
+        FleckCollected = 0;
+        PlayerLives = 3;
         ShardsCollected = 0;
     }
 
@@ -49,16 +56,24 @@ public class GameManager : MonoBehaviour
                 LoadScene("TestScene");
             }
         }
-
+        
         if (Input.GetKey(KeyCode.R))
         {
             LoadScene("Scene_MainMenu");
         }
 
-        if (Input.GetKey(KeyCode.Return) || Input.GetButton("Start"))
+ 
+
+        if (players.Length>=2)
         {
-            RespawnPlayer();
+
+            if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Joystick1Button7))
+            {
+                RespawnPlayer();
+            }
+            
         }
+       
     }
     public void LoadScene(string sceneName)
     {
@@ -108,18 +123,22 @@ public class GameManager : MonoBehaviour
 
     public void RespawnPlayer()
     {
-        if(players.Length>1) {
+        if(players.Length>1 && PlayerLives>=1) {
 
             if (players[0].activeInHierarchy == false)
             {
+
                 players[0].SetActive(true);
                 players[0].transform.position = players[1].transform.position;
             }
             else
             {
+
                 players[1].SetActive(true);
                 players[1].transform.position = players[0].transform.position;
             }
+            PlayerLives--;
+            Debug.Log("Player Respawned! Player Lives left: " + PlayerLives);
 
         }
         

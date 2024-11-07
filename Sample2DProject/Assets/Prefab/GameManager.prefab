@@ -45,10 +45,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1744375883c37bd44a9d21f122ecd1c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerInputManager: {fileID: 3279068900433643487}
   players: []
   colorPalletes:
   - {fileID: 2800000, guid: 235cb502145088843ab19b0800c35e98, type: 3}
   - {fileID: 2800000, guid: 2e03d3a02d72af74992abaee952541e1, type: 3}
+  enableStartScreen: 0
+  ShardsCollected: 0
+  FleckCollected: 0
+  PlayerLives: 0
 --- !u!114 &3279068900433643487
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -14,8 +14,6 @@ public class LevelTP : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("Hello!");
-        Debug.Log(collision.tag);
         gameManager = FindObjectOfType<GameManager>();
         if (gameManager.players.Length >= 2)
         {
