@@ -20,6 +20,7 @@ public class ProjectileBehavior : MonoBehaviour
     public int xKnockback;
     public int yKnockback;
     public int hitstun;
+    public bool disableAfterAnimation = false;
     public bool projectileActive = true;
 
     protected float timer = 0.0f;
@@ -34,10 +35,21 @@ public class ProjectileBehavior : MonoBehaviour
         transform.position += new Vector3(hspd,vspd,0);
 
         //destroy projectile after lifetime
-        timer += Time.deltaTime;
-        if (timer >= lifeTime)
+        if (disableAfterAnimation)
         {
-            DestroyProjectile();
+            if (GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).normalizedTime >= 1)
+            {
+                DestroyProjectile();
+            }
+        }
+        else
+        {
+            //destroy projectile after lifetime
+            timer += Time.deltaTime;
+            if (timer >= lifeTime)
+            {
+                DestroyProjectile();
+            }
         }
         gameObject.GetComponent<SpriteRenderer>().flipX = facingRight ? false : true;
     }
@@ -62,6 +74,7 @@ public class ProjectileBehavior : MonoBehaviour
             Debug.Log("Projectile owner not set");
             return;
         }
+        projectileActive = true;
         facingRight = owner.GetComponent<Player>() != null ? owner.GetComponent<Player>().facingRight : (owner.GetComponent<Enemy>() != null ? owner.GetComponent<Enemy>().facingRight : true);
         if(hitbox != null)
         {

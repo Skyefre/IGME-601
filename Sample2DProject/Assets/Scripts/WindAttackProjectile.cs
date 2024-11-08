@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class IceAttackProjectile : ProjectileBehavior
+public class WindAttackProjectile : ProjectileBehavior
 {
 
     //projectile speed

@@ -58,6 +58,10 @@ public class Hurtbox : MonoBehaviour
     public void OnTriggerEnter2D(Collider2D collision)
     {
         Hitbox hitHitbox = collision.gameObject.GetComponent<Hitbox>();
+        if(hitHitbox == null)
+        {
+            return;
+        }
         Player hitPlayer;
         Enemy hitEnemy;
         GameObject hitboxOwner;
@@ -81,7 +85,7 @@ public class Hurtbox : MonoBehaviour
             hitHitbox.canCancel = true;
             if (owner.GetComponent<Player>() != null)
             {
-                owner.GetComponent<Player>().TakeDamage(hitHitbox.owner, hitHitbox.damage, hitHitbox.xKnockback * (hitPlayer.facingRight ? 1 : -1), hitHitbox.yKnockback, hitHitbox.hitstun);
+                owner.GetComponent<Player>().TakeDamage(hitHitbox.owner, 0 /*players cant damage eachother*/, hitHitbox.xKnockback * (hitPlayer.facingRight ? 1 : -1), hitHitbox.yKnockback, hitHitbox.hitstun);
                 owner.GetComponent<Player>().hitstopVal = 10;
                 owner.GetComponent<Player>().animator.enabled = false;
             }

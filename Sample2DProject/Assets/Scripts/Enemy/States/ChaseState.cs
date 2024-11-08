@@ -23,8 +23,12 @@ public class ChaseState : EnemyBaseState
     public override void LogicUpdate()
     {
         base.LogicUpdate();
-        if (enemy.CheckForLedge() || enemy.CheckForObstacles())
+        if (enemy.CheckForLedge())
             Rotate();
+        if (enemy.CheckForObstacles() && enemy.CheckForJumpSpace())
+        {
+            Jump();
+        }
     }
 
     public override void PhysicsUpdate()
@@ -57,5 +61,11 @@ public class ChaseState : EnemyBaseState
     public void Rotate()
     {
         enemy.facingRight = !enemy.facingRight;
+    }
+
+    public void Jump()
+    {
+        enemy.hspd = enemy.facingRight ? 6 : -6;
+        enemy.vspd = 15;
     }
 }
