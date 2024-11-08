@@ -196,6 +196,10 @@ PrefabInstance:
       value: Enemy
       objectReference: {fileID: 0}
     - target: {fileID: 4964693390700085476, guid: ffa5b1c162269e543bd5e2036eb4406b, type: 3}
+      propertyPath: enemyName
+      value: landAdvanced
+      objectReference: {fileID: 0}
+    - target: {fileID: 4964693390700085476, guid: ffa5b1c162269e543bd5e2036eb4406b, type: 3}
       propertyPath: obstacleDetectRayLength
       value: 50
       objectReference: {fileID: 0}
@@ -434,6 +438,7 @@ MonoBehaviour:
   maxZoom: 360
   minDistance: 360
   zoomLimiter: 960
+  zoomSpeed: 1
   target: {x: 0, y: 0, z: 0}
 --- !u!1001 &627458557
 PrefabInstance:

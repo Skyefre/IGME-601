@@ -929,6 +929,16 @@ public class Enemy : MonoBehaviour
                 hurtboxData = enemyData.enemyData[i].hurtboxData;
             }
         }
+        if(enemyName == "landBasic")
+        {
+            animator.runtimeAnimatorController = baseAnimController;
+            gameObject.GetComponent<SpriteRenderer>().material.SetTexture("_PaletteTex", colorPalletes[4]);
+        }
+        else if( enemyName == "landAdvanced")
+        {
+            animator.runtimeAnimatorController = otherEnemyAnimControllers[0];
+            gameObject.GetComponent<SpriteRenderer>().material.SetTexture("_PaletteTex", colorPalletes[5]);
+        }
         InitHitboxes();
         InitHurtbox();
     }
