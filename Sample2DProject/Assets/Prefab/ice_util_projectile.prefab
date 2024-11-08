@@ -187,11 +187,19 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1904163154029707718, guid: eaaa902c8e0aed742b8a6fb7927d3fbb, type: 3}
       propertyPath: m_Size.x
-      value: 1.0065703
+      value: 64
+      objectReference: {fileID: 0}
+    - target: {fileID: 1904163154029707718, guid: eaaa902c8e0aed742b8a6fb7927d3fbb, type: 3}
+      propertyPath: m_Size.y
+      value: 64
       objectReference: {fileID: 0}
     - target: {fileID: 1904163154029707718, guid: eaaa902c8e0aed742b8a6fb7927d3fbb, type: 3}
       propertyPath: m_Offset.x
-      value: 0.0032852888
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1904163154029707718, guid: eaaa902c8e0aed742b8a6fb7927d3fbb, type: 3}
+      propertyPath: m_Offset.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1904163154029707718, guid: eaaa902c8e0aed742b8a6fb7927d3fbb, type: 3}
       propertyPath: m_AutoTiling
@@ -203,7 +211,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1904163154029707718, guid: eaaa902c8e0aed742b8a6fb7927d3fbb, type: 3}
       propertyPath: m_SpriteTilingProperty.pivot.y
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1904163154029707718, guid: eaaa902c8e0aed742b8a6fb7927d3fbb, type: 3}
       propertyPath: m_SpriteTilingProperty.newSize.x
@@ -215,11 +223,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1904163154029707718, guid: eaaa902c8e0aed742b8a6fb7927d3fbb, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x
-      value: 1
+      value: 64
       objectReference: {fileID: 0}
     - target: {fileID: 1904163154029707718, guid: eaaa902c8e0aed742b8a6fb7927d3fbb, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.y
-      value: 1
+      value: 64
       objectReference: {fileID: 0}
     - target: {fileID: 1904163154029707718, guid: eaaa902c8e0aed742b8a6fb7927d3fbb, type: 3}
       propertyPath: m_SpriteTilingProperty.adaptiveTilingThreshold
@@ -227,11 +235,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2446027952992015299, guid: eaaa902c8e0aed742b8a6fb7927d3fbb, type: 3}
       propertyPath: m_LocalScale.x
-      value: 64
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2446027952992015299, guid: eaaa902c8e0aed742b8a6fb7927d3fbb, type: 3}
       propertyPath: m_LocalScale.y
-      value: 64
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2446027952992015299, guid: eaaa902c8e0aed742b8a6fb7927d3fbb, type: 3}
       propertyPath: m_LocalPosition.x
@@ -329,10 +337,10 @@ PrefabInstance:
       addedObject: {fileID: -4638867517264936102}
     - targetCorrespondingSourceObject: {fileID: 3368831122626336784, guid: eaaa902c8e0aed742b8a6fb7927d3fbb, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 6482945974493179088}
+      addedObject: {fileID: 1557243204263075968}
     - targetCorrespondingSourceObject: {fileID: 3368831122626336784, guid: eaaa902c8e0aed742b8a6fb7927d3fbb, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1557243204263075968}
+      addedObject: {fileID: 670163138701136861}
   m_SourcePrefab: {fileID: 100100000, guid: eaaa902c8e0aed742b8a6fb7927d3fbb, type: 3}
 --- !u!4 &5795846887871210890 stripped
 Transform:
@@ -365,12 +373,13 @@ MonoBehaviour:
   damage: 1
   xoffset: 0
   yoffset: 0
-  width: 57
-  height: 76
+  width: 64
+  height: 64
   xKnockback: 0
   yKnockback: 0
   hitstun: 0
-  projectileActive: 1
+  disableAfterAnimation: 1
+  projectileActive: 0
   hurtbox: {fileID: 1403234053119399148}
   gravity: 1
   maxHspd: 10
@@ -381,33 +390,6 @@ MonoBehaviour:
     m_Bits: 8
   rayLength: 0.1
   rayOffset: {x: 8, y: 8}
---- !u!114 &6482945974493179088
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6871520450933059161}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1815f02208e1bc34b975bf0f83325d07, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hspd: 0
-  vspd: 0
-  lifeTime: 5
-  owner: {fileID: 0}
-  facingRight: 1
-  hitbox: {fileID: 0}
-  damage: 0
-  xoffset: 0
-  yoffset: 0
-  width: 0
-  height: 0
-  xKnockback: 0
-  yKnockback: 0
-  hitstun: 0
-  projectileActive: 1
 --- !u!212 &1557243204263075968
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -449,8 +431,8 @@ SpriteRenderer:
   m_SortingLayerID: 1188232955
   m_SortingLayer: 4
   m_SortingOrder: 1
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.73571557, g: 0.9339623, b: 0.9172198, a: 1}
+  m_Sprite: {fileID: 370004355, guid: 4979ce04bef57354ca6bd4acc819eb39, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -460,3 +442,24 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &670163138701136861
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6871520450933059161}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 4d94c24e2873668478f58dae1fd9c36d, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

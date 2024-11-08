@@ -27,8 +27,12 @@ public class PatrolState : EnemyBaseState
     {
         base.LogicUpdate();
 
-        if (enemy.CheckForLedge() || enemy.CheckForObstacles())
+        if (enemy.CheckForLedge())
             Rotate();
+        if (enemy.CheckForObstacles() && enemy.CheckForJumpSpace())
+        {
+            Jump();
+        }
         if (enemy.CheckForPlayer())
             enemy.SwitchAIState(enemy.playerDetectedState);
      
@@ -42,6 +46,7 @@ public class PatrolState : EnemyBaseState
             Rotate();
         }
 
+        
         base.PhysicsUpdate();
 
         //if (enemy.facingRight)
@@ -54,5 +59,11 @@ public class PatrolState : EnemyBaseState
     public void Rotate()
     {
         enemy.facingRight = !enemy.facingRight;
+    }
+
+    public void Jump()
+    {
+        enemy.hspd = enemy.facingRight ? 6 : -6;
+        enemy.vspd = 15;
     }
 }

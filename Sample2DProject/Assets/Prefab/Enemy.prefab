@@ -137,7 +137,8 @@ MonoBehaviour:
   enemyName: landBasic
   animator: {fileID: 1776125985378903741}
   baseAnimController: {fileID: 9100000, guid: 1b36fe47e24061841be98977330e394c, type: 2}
-  otherEnemyAnimControllers: []
+  otherEnemyAnimControllers:
+  - {fileID: 22100000, guid: 7655e087754d99f47a7f687b7e53054f, type: 2}
   colorPalletes:
   - {fileID: 2800000, guid: 2b0d3dbc6001c1a41b2ccf8052cc9bbe, type: 3}
   - {fileID: 2800000, guid: e0c36872d357cee49b091ebf5b1769cb, type: 3}

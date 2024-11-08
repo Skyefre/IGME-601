@@ -831,17 +831,42 @@ public class Player : MonoBehaviour
                         switch (weaponName)
                         {
                             case "ice":
-                                if (projectiles["ice_attack"].activeSelf == false)
+                                if (!projectiles["ice_attack"].activeSelf && !projectiles["ice_attack"].GetComponent<IceAttackProjectile>().projectileActive)
                                 {
                                     projectiles["ice_attack"].SetActive(true);
-                                    projectiles["ice_attack"].GetComponent<ProjectileBehavior>().InitProjectile(spellSpawnData.spellAttack[0].xOffset, spellSpawnData.spellAttack[0].yOffset);
+                                    projectiles["ice_attack"].GetComponent<IceAttackProjectile>().InitProjectile(spellSpawnData.spellAttack[0].xOffset, spellSpawnData.spellAttack[0].yOffset);
                                 }
                                 break;
                             case "wind":
+                                if (!projectiles["wind_attack"].activeSelf && !projectiles["wind_attack"].GetComponent<WindAttackProjectile>().projectileActive)
+                                {
+                                    projectiles["wind_attack"].SetActive(true);
+                                    projectiles["wind_attack"].GetComponent<WindAttackProjectile>().InitProjectile(spellSpawnData.spellAttack[0].xOffset, spellSpawnData.spellAttack[0].yOffset);
+                                }
                                 break;
                             case "lightning":
                                 break;
                             case "fire":
+                                break;
+                            default:
+                                break;
+                        }
+                    }
+                    else
+                    {
+                        switch (weaponName)
+                        {
+                            case "ice":
+                                projectiles["ice_attack"].GetComponent<IceAttackProjectile>().projectileActive = false;
+                                break;
+                            case "wind":
+                                projectiles["wind_attack"].GetComponent<WindAttackProjectile>().projectileActive = false;
+                                break;
+                            case "lightning":
+                                //projectiles["lightning_attack"].GetComponent<LightningAttackProjectile>().projectileActive = false;
+                                break;
+                            case "fire":
+                                //projectiles["fire_attack"].GetComponent<FireAttackProjectile>().projectileActive = false;
                                 break;
                             default:
                                 break;
@@ -893,7 +918,7 @@ public class Player : MonoBehaviour
                                 if (projectiles["ice_util"].activeSelf == false)
                                 {
                                     projectiles["ice_util"].SetActive(true);
-                                    projectiles["ice_util"].GetComponent<ProjectileBehavior>().InitProjectile(spellSpawnData.spellUtil[0].xOffset, spellSpawnData.spellUtil[0].yOffset);
+                                    projectiles["ice_util"].GetComponent<IceBlock>().InitProjectile(spellSpawnData.spellUtil[0].xOffset, spellSpawnData.spellUtil[0].yOffset);
                                 }
                                 break;
                             case "wind":
@@ -1040,6 +1065,7 @@ public class Player : MonoBehaviour
                     tempHspd = hspd;
                     hspd = 0;
                 }
+                jump.Play();
                 hurtbox.GetComponent<Hurtbox>().updateHurtbox(
                 hurtboxData.jumpsquatHurtbox.xOffset,
                 hurtboxData.jumpsquatHurtbox.yOffset,
@@ -1048,7 +1074,7 @@ public class Player : MonoBehaviour
                 );
                 break;
             case PlayerState.Jump:
-                jump.Play();
+                
                 hurtbox.GetComponent<Hurtbox>().updateHurtbox(
                 hurtboxData.jumpHurtbox.xOffset,
                 hurtboxData.jumpHurtbox.yOffset,
@@ -1472,7 +1498,7 @@ public class Player : MonoBehaviour
         {
             //TODO: Replace the projectile list indicies with the proper projectiles once they are added
             projectiles.Add("ice_attack", Instantiate(projectileList[0]));
-            projectiles.Add("wind_attack", Instantiate(projectileList[0]));
+            projectiles.Add("wind_attack", Instantiate(projectileList[2]));
             projectiles.Add("lightning_attack", Instantiate(projectileList[0]));
             projectiles.Add("fire_attack", Instantiate(projectileList[0]));
 
@@ -1482,28 +1508,28 @@ public class Player : MonoBehaviour
             projectiles.Add("fire_util", Instantiate(projectileList[1]));
 
 
-            projectiles["ice_attack"].GetComponent<ProjectileBehavior>().owner = gameObject;
+            projectiles["ice_attack"].GetComponent<IceAttackProjectile>().owner = gameObject;
             projectiles["ice_attack"].SetActive(false);
 
-            projectiles["wind_attack"].GetComponent<ProjectileBehavior>().owner = gameObject;
+            projectiles["wind_attack"].GetComponent<WindAttackProjectile>().owner = gameObject;
             projectiles["wind_attack"].SetActive(false);
 
-            projectiles["lightning_attack"].GetComponent<ProjectileBehavior>().owner = gameObject;
+            projectiles["lightning_attack"].GetComponent<IceAttackProjectile>().owner = gameObject;
             projectiles["lightning_attack"].SetActive(false);
 
-            projectiles["fire_attack"].GetComponent<ProjectileBehavior>().owner = gameObject;
+            projectiles["fire_attack"].GetComponent<IceAttackProjectile>().owner = gameObject;
             projectiles["fire_attack"].SetActive(false);
 
-            projectiles["ice_util"].GetComponent<ProjectileBehavior>().owner = gameObject;
+            projectiles["ice_util"].GetComponent<IceBlock>().owner = gameObject;
             projectiles["ice_util"].SetActive(false);
 
-            projectiles["wind_util"].GetComponent<ProjectileBehavior>().owner = gameObject;
+            projectiles["wind_util"].GetComponent<IceBlock>().owner = gameObject;
             projectiles["wind_util"].SetActive(false);
 
-            projectiles["lightning_util"].GetComponent<ProjectileBehavior>().owner = gameObject;
+            projectiles["lightning_util"].GetComponent<IceBlock>().owner = gameObject;
             projectiles["lightning_util"].SetActive(false);
 
-            projectiles["fire_util"].GetComponent<ProjectileBehavior>().owner = gameObject;
+            projectiles["fire_util"].GetComponent<IceBlock>().owner = gameObject;
             projectiles["fire_util"].SetActive(false);
 
 

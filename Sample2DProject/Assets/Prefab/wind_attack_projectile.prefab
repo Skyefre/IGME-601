@@ -10,10 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 1403540307047826808}
   - component: {fileID: 1787150594817013749}
-  - component: {fileID: 5898809805146107035}
-  - component: {fileID: -1946518387601216128}
+  - component: {fileID: 6935106915076308867}
+  - component: {fileID: 5138594440475919047}
   m_Layer: 0
-  m_Name: ice_attack_projectile
+  m_Name: wind_attack_projectile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -76,7 +76,7 @@ SpriteRenderer:
   m_SortingLayerID: 1188232955
   m_SortingLayer: 4
   m_SortingOrder: 10
-  m_Sprite: {fileID: 721316351, guid: 4cbbeb1b605e7f1408b25960ae436b03, type: 3}
+  m_Sprite: {fileID: -1702384673, guid: 207db4b82dc7e214fbf4033cd6a179ba, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -87,7 +87,35 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!95 &5898809805146107035
+--- !u!114 &6935106915076308867
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 32924885386218554}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a1cd64a06a9f7548a22c0cdcac0585a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hspd: 4
+  vspd: 0
+  lifeTime: 1
+  owner: {fileID: 0}
+  facingRight: 1
+  hitbox: {fileID: 8197869277279490300}
+  damage: 1
+  xoffset: 0
+  yoffset: 0
+  width: 0
+  height: 0
+  xKnockback: 0
+  yKnockback: 15
+  hitstun: 20
+  disableAfterAnimation: 0
+  projectileActive: 0
+--- !u!95 &5138594440475919047
 Animator:
   serializedVersion: 5
   m_ObjectHideFlags: 0
@@ -97,7 +125,7 @@ Animator:
   m_GameObject: {fileID: 32924885386218554}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 7a621063367c4b34e9b570fadcb4e2a2, type: 2}
+  m_Controller: {fileID: 9100000, guid: 8e4b5d80edf98854d956531ab629806d, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -108,34 +136,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &-1946518387601216128
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 32924885386218554}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 85ffa4b3df53b514789df7c6a5679f4e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hspd: 2
-  vspd: 0
-  lifeTime: 2
-  owner: {fileID: 0}
-  facingRight: 1
-  hitbox: {fileID: 8197869277279490300}
-  damage: 0
-  xoffset: 0
-  yoffset: 0
-  width: 0
-  height: 0
-  xKnockback: 0
-  yKnockback: 3
-  hitstun: 45
-  disableAfterAnimation: 0
-  projectileActive: 1
 --- !u!1001 &7855430148885623021
 PrefabInstance:
   m_ObjectHideFlags: 0
