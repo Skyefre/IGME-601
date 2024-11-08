@@ -61,11 +61,12 @@ public class Player : MonoBehaviour
     public int runSpeed = 3;
     public int jumpForce = 10;
     public int gravity = 1;
-    public int health = 100;
+    public int health = 10;
     public int hspd = 0;
     public int vspd = 0;
     public int maxHspd = 10;
     public int maxVspd = 1;
+    public bool dead = true;
     public PlayerState state = PlayerState.Idle;
     
     //public BaseSpell currentSpell;
@@ -1567,8 +1568,12 @@ public class Player : MonoBehaviour
             SetState(PlayerState.Hitstun);
         }
 
-        if(health <= 0) 
+        if(health <= 0)
+        {
+            dead = true;
             gameObject.SetActive(false);
+        }
+
         Debug.Log("Player Health: " + health);
 
 

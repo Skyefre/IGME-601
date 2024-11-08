@@ -125,24 +125,32 @@ public class GameManager : MonoBehaviour
     {
         if(players.Length>1 && PlayerLives>=1) {
 
-            if (players[0].activeInHierarchy == false)
+            if (players[0].activeInHierarchy == false && players[0].GetComponent<Player>().dead)
             {
 
                 players[0].SetActive(true);
-                players[0].transform.position = players[1].transform.position;
+                players[1].transform.position = players[0].transform.position;
+                PlayerLives--;
+                Debug.Log("Player Respawned! Player Lives left: " + PlayerLives);
+
             }
-            else
+            else if(players[1].activeInHierarchy == false && players[1].GetComponent<Player>().dead)
             {
 
                 players[1].SetActive(true);
-                players[1].transform.position = players[0].transform.position;
+                players[0].transform.position = players[1].transform.position;
+                PlayerLives--;
+                Debug.Log("Player Respawned! Player Lives left: " + PlayerLives);
+
             }
-            PlayerLives--;
-            Debug.Log("Player Respawned! Player Lives left: " + PlayerLives);
+            else
+            {
+                Debug.Log("all players alive");
+
+            }
 
         }
         
-        Debug.Log("all players alive");
 
     }
 }
