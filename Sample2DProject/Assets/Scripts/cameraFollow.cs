@@ -84,7 +84,7 @@ public class cameraFollow : MonoBehaviour
         {
             bounds.Encapsulate(GameManager.Instance.players[i].transform.position);
         }
-        Debug.Log(bounds.size.magnitude);
+        //Debug.Log(bounds.size.magnitude);
         return bounds;
     }
 }
