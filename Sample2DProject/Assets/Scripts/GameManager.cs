@@ -96,4 +96,14 @@ public class GameManager : MonoBehaviour
             players[i].GetComponent<SpriteRenderer>().material.SetTexture("_PaletteTex", colorPalletes[i]);
         }
     }
+
+    public void DebugTP()
+    {
+        players = GameObject.FindGameObjectsWithTag("Player");
+
+        for (int i = 0; i < players.Length; i++)
+        {
+            players[i].transform.position = new Vector3(-2664f, -111.1f);
+        }
+    }
 }
