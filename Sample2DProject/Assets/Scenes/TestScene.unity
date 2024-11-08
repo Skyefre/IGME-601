@@ -437,8 +437,8 @@ MonoBehaviour:
   minZoom: 180
   maxZoom: 360
   minDistance: 360
-  zoomLimiter: 960
-  zoomSpeed: 1
+  zoomLimiter: 360
+  zoomSpeed: 2
   target: {x: 0, y: 0, z: 0}
 --- !u!1001 &627458557
 PrefabInstance:

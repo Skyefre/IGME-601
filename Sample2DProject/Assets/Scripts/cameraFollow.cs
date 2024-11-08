@@ -61,7 +61,7 @@ public class cameraFollow : MonoBehaviour
             //cam.orthographicSize = newZoom;
 
             // Disable Pixel Perfect Camera if zoomed out
-            if (cam.orthographicSize <= minZoom)
+            if (cam.orthographicSize <= minZoom +2)
             {
                 cam.orthographicSize = minZoom;
                 pixelPerfectCamera.enabled = true;
