@@ -59,11 +59,11 @@ public class Player : MonoBehaviour
 
     //Player fields
     public int runSpeed = 3;
-    public int jumpForce = 10;
-    public int gravity = 1;
+    public float jumpForce = 10;
+    public float gravity = 1;
     public int health = 100;
     public int hspd = 0;
-    public int vspd = 0;
+    public float vspd = 0;
     public int maxHspd = 10;
     public int maxVspd = 1;
     public PlayerState state = PlayerState.Idle;
@@ -922,6 +922,11 @@ public class Player : MonoBehaviour
                                 }
                                 break;
                             case "wind":
+                                if (projectiles["wind_util"].activeSelf == false)
+                                {
+                                    projectiles["wind_util"].SetActive(true);
+                                    projectiles["wind_util"].GetComponent<WindUtility>().InitProjectile(spellSpawnData.spellUtil[0].xOffset, spellSpawnData.spellUtil[0].yOffset);
+                                }
                                 break;
                             case "lightning":
                                 break;
@@ -1503,7 +1508,7 @@ public class Player : MonoBehaviour
             projectiles.Add("fire_attack", Instantiate(projectileList[0]));
 
             projectiles.Add("ice_util", Instantiate(projectileList[1]));
-            projectiles.Add("wind_util", Instantiate(projectileList[1]));
+            projectiles.Add("wind_util", Instantiate(projectileList[3]));
             projectiles.Add("lightning_util", Instantiate(projectileList[1]));
             projectiles.Add("fire_util", Instantiate(projectileList[1]));
 
@@ -1523,7 +1528,7 @@ public class Player : MonoBehaviour
             projectiles["ice_util"].GetComponent<IceBlock>().owner = gameObject;
             projectiles["ice_util"].SetActive(false);
 
-            projectiles["wind_util"].GetComponent<IceBlock>().owner = gameObject;
+            projectiles["wind_util"].GetComponent<WindUtility>().owner = gameObject;
             projectiles["wind_util"].SetActive(false);
 
             projectiles["lightning_util"].GetComponent<IceBlock>().owner = gameObject;
