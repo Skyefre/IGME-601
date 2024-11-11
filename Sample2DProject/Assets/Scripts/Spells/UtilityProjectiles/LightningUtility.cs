@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LightningUtility : MonoBehaviour
+public class LightningUtility : ProjectileBehavior
 {
     // Start is called before the first frame update
     void Start()
