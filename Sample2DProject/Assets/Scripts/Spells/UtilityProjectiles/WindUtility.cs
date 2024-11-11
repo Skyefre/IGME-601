@@ -28,11 +28,11 @@ public class WindUtility : ProjectileBehavior
     //protected float timer = 0.0f;
     protected float abilityTimer = 0.0f;
 
-    private void Awake()
+    protected override void Start()
     {
         //save base jump force, change current jump force to new.
-        //baseJumpForce = owner.GetComponent<Player>().jumpForce;
-        //newJumpForce = baseJumpForce * 2;
+        baseJumpForce = owner.GetComponent<Player>().jumpForce;
+        newJumpForce = baseJumpForce * 2;
     }
 
     // Update is called once per frame
@@ -44,7 +44,7 @@ public class WindUtility : ProjectileBehavior
         abilityTimer += Time.deltaTime;
 
         //set jump force to new 
-        //owner.GetComponent<Player>().jumpForce = newJumpForce;
+       owner.GetComponent<Player>().jumpForce = newJumpForce;
 
         //restore player stats when timer is up
         if (abilityTimer >= lifeTime)

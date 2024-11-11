@@ -25,7 +25,7 @@ public class ProjectileBehavior : MonoBehaviour
 
     protected float timer = 0.0f;
 
-    protected void Start()
+    protected virtual void Start()
     {
         //InitProjectile(0,0);
     }
