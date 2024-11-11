@@ -8,7 +8,9 @@
 			"impulseFrames": {
 				"sideAttackImpulseFrames": [],
 				"upAttackImpulseFrames": [],
-				"downAttackImpulseFrames": [2]
+				"downAttackImpulseFrames": [2],
+				"spellAttackImpulseFrames": [],
+				"spellUtilImpulseFrames": []
 			},
 			"impulseData": {
 				"sideAttackImpulseData": [],
@@ -18,7 +20,9 @@
 						"xImpulse": 0,
 						"yImpulse": -10
 					}
-				]
+				],
+				"spellAttackImpulseData": [],
+				"spellUtilImpulseData": []
 			},
 			"frameData": {
 				"sideAttackFrames": {
@@ -186,7 +190,9 @@
 			"impulseFrames": {
 				"sideAttackImpulseFrames": [],
 				"upAttackImpulseFrames": [],
-				"downAttackImpulseFrames": [2]
+				"downAttackImpulseFrames": [2],
+				"spellAttackImpulseFrames": [],
+				"spellUtilImpulseFrames": [4]
 			},
 			"impulseData": {
 				"sideAttackImpulseData": [],
@@ -195,6 +201,13 @@
 					{
 						"xImpulse": 0,
 						"yImpulse": -10
+					}
+				],
+				"spellAttackImpulseData": [],
+				"spellUtilImpulseData": [
+					{
+						"xImpulse": -10,
+						"yImpulse": 4
 					}
 				]
 			},
@@ -364,7 +377,9 @@
 			"impulseFrames": {
 				"sideAttackImpulseFrames": [],
 				"upAttackImpulseFrames": [],
-				"downAttackImpulseFrames": [2]
+				"downAttackImpulseFrames": [2],
+				"spellAttackImpulseFrames": [],
+				"spellUtilImpulseFrames": []
 			},
 			"impulseData": {
 				"sideAttackImpulseData": [],
@@ -374,7 +389,9 @@
 						"xImpulse": 0,
 						"yImpulse": -10
 					}
-				]
+				],
+				"spellAttackImpulseData": [],
+				"spellUtilImpulseData": []
 			},
 			"frameData": {
 				"sideAttackFrames": {
@@ -542,7 +559,9 @@
 			"impulseFrames": {
 				"sideAttackImpulseFrames": [],
 				"upAttackImpulseFrames": [],
-				"downAttackImpulseFrames": [2]
+				"downAttackImpulseFrames": [2],
+				"spellAttackImpulseFrames": [],
+				"spellUtilImpulseFrames": []
 			},
 			"impulseData": {
 				"sideAttackImpulseData": [],
@@ -552,7 +571,9 @@
 						"xImpulse": 0,
 						"yImpulse": -10
 					}
-				]
+				],
+				"spellAttackImpulseData": [],
+				"spellUtilImpulseData": []
 			},
 			"frameData": {
 				"sideAttackFrames": {
