@@ -561,19 +561,38 @@
 				"upAttackImpulseFrames": [],
 				"downAttackImpulseFrames": [2],
 				"spellAttackImpulseFrames": [],
-				"spellUtilImpulseFrames": []
+				"spellUtilImpulseFrames": [2,3,4,5]
 			},
 			"impulseData": {
 				"sideAttackImpulseData": [],
 				"upAttackImpulseData": [],
-				"downAttackImpulseData": [
+				"downAttackImpulseData": 
+				[
 					{
 						"xImpulse": 0,
 						"yImpulse": -10
 					}
 				],
 				"spellAttackImpulseData": [],
-				"spellUtilImpulseData": []
+				"spellUtilImpulseData": 
+				[
+					{
+						"xImpulse": 0,
+						"yImpulse": 20
+					},
+					{
+						"xImpulse": 0,
+						"yImpulse": 20
+					},
+					{
+						"xImpulse": 0,
+						"yImpulse": 20
+					},
+					{
+						"xImpulse": 0,
+						"yImpulse": 10
+					}
+				]
 			},
 			"frameData": {
 				"sideAttackFrames": {
