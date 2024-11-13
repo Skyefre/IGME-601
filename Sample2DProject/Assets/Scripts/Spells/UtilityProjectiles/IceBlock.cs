@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -31,12 +32,14 @@ public class IceBlock : ProjectileBehavior
     public RaycastHit2D grounded;
     public RaycastHit2D collidedCeiling;
     private BoxCollider2D boxCollider;// Reference to the BoxCollider2D component
+    //private BoxCollider2D windCollider;
 
     //so that the block only persists a certain amount of time
     //protected float timer = 0.0f;
     private void Awake()
     {
         boxCollider = gameObject.GetComponent<BoxCollider2D>();
+        //windCollider = GetComponent<WindUtility>().GetComponent<BoxCollider2D>();
     }
 
     // Update is called once per frame
@@ -74,6 +77,7 @@ public class IceBlock : ProjectileBehavior
                 }
             }
         }
+        
         // check for ceiling
         collidedCeiling = IsTouchingCeiling();
         if (collidedCeiling.collider != null)

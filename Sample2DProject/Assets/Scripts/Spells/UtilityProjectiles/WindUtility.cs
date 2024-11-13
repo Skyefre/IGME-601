@@ -22,17 +22,27 @@ public class WindUtility : ProjectileBehavior
     //public int yKnockback;
     //public int hitstun;
     //public bool projectileActive = true;
-    private float newJumpForce;
-    private float baseJumpForce;
+    private float newGravity;
+    private float baseGravity;
+    //public BoxCollider2D windCollider;
 
     //protected float timer = 0.0f;
     protected float abilityTimer = 0.0f;
 
+    //collision
+    private BoxCollider2D boxCollider;// Reference to the BoxCollider2D component
+    public float rayLength = 0.1f; // Length of the ray
+    public Vector2 rayOffset = new Vector2(8f, 8f); // Offset for the rays
+    public LayerMask groundLayer; // Layer mask to specify what is considered ground
+    private RaycastHit2D rayRight;
+    private RaycastHit2D rayLeft;
+
     protected override void Start()
     {
         //save base jump force, change current jump force to new.
-        baseJumpForce = owner.GetComponent<Player>().jumpForce;
-        newJumpForce = baseJumpForce * 2;
+        baseGravity = owner.GetComponent<Player>().gravity;
+        newGravity = 0.75f;
+        boxCollider = gameObject.GetComponent<BoxCollider2D>();
     }
 
     // Update is called once per frame
@@ -44,7 +54,37 @@ public class WindUtility : ProjectileBehavior
         abilityTimer += Time.deltaTime;
 
         //set jump force to new 
-       owner.GetComponent<Player>().jumpForce = newJumpForce;
+        owner.GetComponent<Player>().gravity = newGravity;
+
+
+        //raycast bs to detect when the projectile hits the cube
+        rayRight = Physics2D.Raycast(transform.position, transform.TransformDirection(Vector2.right), rayLength);
+        Debug.DrawRay(transform.position, transform.TransformDirection(Vector2.right) * rayLength, Color.cyan);
+
+        rayLeft = Physics2D.Raycast(transform.position, transform.TransformDirection(Vector2.left), -rayLength);
+        Debug.DrawRay(transform.position, transform.TransformDirection(Vector2.left) * -rayLength, Color.cyan);
+
+        if (rayRight)
+        {
+            Debug.Log("rayRight hit : " + rayRight.collider.name);
+            if (rayRight.collider.name == "ice_util_projectile")
+            {
+                rayRight.transform.GetComponent<IceBlock>().LerpHspd(-5, -6);
+                Debug.Log("BLOCK MOVED");
+                DestroyProjectile();
+            }
+        }
+
+        if (rayLeft)
+        {
+            Debug.Log("rayLeft hit : " + rayLeft.collider.name);
+            if (rayLeft.collider.name == "ice_util_projectile")
+            {
+                rayLeft.transform.GetComponent<IceBlock>().LerpHspd(5, 6);
+                Debug.Log("BLOCK MOVED");
+                DestroyProjectile();
+            }
+        }
 
         //restore player stats when timer is up
         if (abilityTimer >= lifeTime)
@@ -76,7 +116,9 @@ public class WindUtility : ProjectileBehavior
     public override void DestroyProjectile()
     {
         timer = 0;
-        //hitbox.GetComponent<Hitbox>().hitboxActive = false;
+        
+        hitbox.GetComponent<Hitbox>().hitboxActive = false;
+        
         gameObject.SetActive(false);
     }
 
@@ -88,7 +130,7 @@ public class WindUtility : ProjectileBehavior
 
         //reset values
         //player.gravity *= 2;
-        owner.GetComponent<Player>().jumpForce = baseJumpForce;
+        owner.GetComponent<Player>().gravity = baseGravity;
     }
 
     //spawn the wind blast in front of the player
@@ -99,8 +141,18 @@ public class WindUtility : ProjectileBehavior
             Debug.Log("Wind Util owner not set");
             return;
         }
+        projectileActive = true;
         facingRight = owner.GetComponent<Player>() != null ? owner.GetComponent<Player>().facingRight : (owner.GetComponent<Enemy>() != null ? owner.GetComponent<Enemy>().facingRight : true);
+        if (hitbox != null)
+        {
+            hitbox.GetComponent<Hitbox>().owner = gameObject;
+            hitbox.GetComponent<Hitbox>().isProjectile = true;
+            hitbox.GetComponent<Hitbox>().hitboxActive = true;
+            hitbox.GetComponent<Hitbox>().updateHitbox(damage, 0, 0, width, height, xKnockback, yKnockback, hitstun);
+        }
 
+        hspd = Mathf.Abs(hspd) * (facingRight ? 1 : -1);
         gameObject.transform.position = new Vector3(owner.transform.position.x + spawnX * (facingRight ? 1 : -1), owner.transform.position.y + spawnY, 0);
+        DontDestroyOnLoad(gameObject);
     }
 }

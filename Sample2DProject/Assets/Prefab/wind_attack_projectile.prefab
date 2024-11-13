@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 5138594440475919047}
   m_Layer: 0
   m_Name: wind_attack_projectile
-  m_TagString: Untagged
+  m_TagString: Wind
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
