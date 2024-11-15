@@ -357,6 +357,7 @@ MonoBehaviour:
   vspd: 0
   maxHspd: 15
   maxVspd: 15
+  dead: 1
   state: 0
   facingRight: 1
   InTeleport: 0
@@ -488,7 +489,7 @@ AudioSource:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1649555061467412725}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 92def8d4092cf7043b9ac97a5760404f, type: 3}

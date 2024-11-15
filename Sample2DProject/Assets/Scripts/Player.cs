@@ -1571,7 +1571,9 @@ public class Player : MonoBehaviour
         if(health <= 0)
         {
             dead = true;
-            gameObject.SetActive(false);
+            gravity = 0;
+            GetComponent<BoxCollider2D>().enabled = false;
+
         }
 
         Debug.Log("Player Health: " + health);
