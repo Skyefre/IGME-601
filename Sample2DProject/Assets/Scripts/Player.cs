@@ -66,7 +66,7 @@ public class Player : MonoBehaviour
     public int vspd = 0;
     public int maxHspd = 10;
     public int maxVspd = 1;
-    public bool dead = true;
+    public bool dead = false;
     public PlayerState state = PlayerState.Idle;
     
     //public BaseSpell currentSpell;
@@ -108,7 +108,8 @@ public class Player : MonoBehaviour
     private void Awake()
     {
         inputs = inputHandler.keyBindings;
-        gameObject.GetComponent<SpriteRenderer>().material.SetTexture("_PaletteTex", colorPalletes[GameManager.Instance.players.Length == 1 ? 0 : 1]);
+        GameManager.Instance.players.Add(this.gameObject);
+        gameObject.GetComponent<SpriteRenderer>().material.SetTexture("_PaletteTex", colorPalletes[GameManager.Instance.players.Count == 1 ? 0 : 1]);
 
     }
     // Start is called before the first frame update
@@ -131,6 +132,13 @@ public class Player : MonoBehaviour
 
     void FixedUpdate()
     {
+        //check for menu input
+        if (inputs[InputHandler.Inputs.Pause] == InputHandler.InputState.Pressed && dead)
+        {
+            Debug.Log("Menuing!");
+            SetState(PlayerState.Menuing);
+        }
+
         if (hitstopVal > 0)
         {
             hitstopVal--;
@@ -484,7 +492,6 @@ public class Player : MonoBehaviour
                 {
                     SetState(PlayerState.Shield);
                 }
-
                 break;
             case PlayerState.Landing:
                 vspd = 0;
@@ -967,18 +974,27 @@ public class Player : MonoBehaviour
                 }
                 break;
             case PlayerState.Menuing:
-                hspd = 0;
-                vspd = 0;
-                if (inputs[InputHandler.Inputs.Pause] == InputHandler.InputState.Pressed)
+                if(!dead)
                 {
-                    SetState(grounded.collider != null ? PlayerState.Idle : PlayerState.Jump);
-                }
+                    hspd = 0;
+                    vspd = 0;
+                    if (inputs[InputHandler.Inputs.Pause] == InputHandler.InputState.Pressed)
+                    {
+                        SetState(grounded.collider != null ? PlayerState.Idle : PlayerState.Jump);
+                    }
 
-                //change weapon when attack is pressed
-                if (inputs[InputHandler.Inputs.Attack] == InputHandler.InputState.Pressed)
-                {
-                    CycleWeapon();
+                    //change weapon when attack is pressed
+                    if (inputs[InputHandler.Inputs.Attack] == InputHandler.InputState.Pressed)
+                    {
+                        CycleWeapon();
+                    }
                 }
+                else
+                {
+                    GameManager.Instance.RespawnPlayer(this.gameObject);
+                    Debug.Log("Respawning player!");
+                }
+              
                 //change color when jump is pressed
                 //if (inputs[InputHandler.Inputs.Jump] == InputHandler.InputState.Pressed)
                 //{
@@ -1570,10 +1586,13 @@ public class Player : MonoBehaviour
 
         if(health <= 0)
         {
+            Debug.Log("You Died!");
+            GetComponent<BoxCollider2D>().enabled = false;
+            this.gameObject.transform.position = new Vector3(0, 1000);
             dead = true;
             gravity = 0;
-            GetComponent<BoxCollider2D>().enabled = false;
-
+            GetComponent<SpriteRenderer>().enabled = false;  
+            GameManager.Instance.players.Remove(this.gameObject);
         }
 
         Debug.Log("Player Health: " + health);

@@ -56,7 +56,7 @@ public class LevelTP : MonoBehaviour
 
     public void OnTriggerEnter2D(Collider2D collision)
     {
-        for (int i = 0; i < GameManager.Instance.players.Length; i++)
+        for (int i = 0; i < GameManager.Instance.players.Count; i++)
         {
             if (collision.gameObject == GameManager.Instance.players[i])
             {
@@ -67,7 +67,7 @@ public class LevelTP : MonoBehaviour
 
     public void OnTriggerExit2D(Collider2D collision)
     {
-        for (int i = 0; i < GameManager.Instance.players.Length; i++)
+        for (int i = 0; i < GameManager.Instance.players.Count; i++)
         {
             if (collision.gameObject == GameManager.Instance.players[i])
             {
@@ -80,7 +80,7 @@ public class LevelTP : MonoBehaviour
 
     public void CheckGameStart()
     {
-        if (GameManager.Instance.players.Length > 1)
+        if (GameManager.Instance.players.Count > 1)
         {
             bool allPlayersReady = true;
             foreach (GameObject player in GameManager.Instance.players)

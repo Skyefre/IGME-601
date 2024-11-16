@@ -357,7 +357,7 @@ MonoBehaviour:
   vspd: 0
   maxHspd: 15
   maxVspd: 15
-  dead: 1
+  dead: 0
   state: 0
   facingRight: 1
   InTeleport: 0

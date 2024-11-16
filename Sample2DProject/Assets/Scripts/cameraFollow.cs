@@ -26,15 +26,15 @@ public class cameraFollow : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (GameManager.Instance.players.Length > 0)
+        if (GameManager.Instance.players.Count > 0)
         {
             // Get the average position of all players and set the camera to that position
             Vector3 averagePos = Vector3.zero;
-            for (int i = 0; i < GameManager.Instance.players.Length; i++)
+            for (int i = 0; i < GameManager.Instance.players.Count; i++)
             {
                 averagePos += GameManager.Instance.players[i].transform.position;
             }
-            averagePos /= GameManager.Instance.players.Length;
+            averagePos /= GameManager.Instance.players.Count;
             target = averagePos + offset;
 
             // Calculate the new zoom level based on the distance between players
@@ -80,7 +80,7 @@ public class cameraFollow : MonoBehaviour
     private Bounds GetGreatestDistance()
     {
         var bounds = new Bounds(GameManager.Instance.players[0].transform.position, Vector3.zero);
-        for (int i = 0; i < GameManager.Instance.players.Length; i++)
+        for (int i = 0; i < GameManager.Instance.players.Count; i++)
         {
             bounds.Encapsulate(GameManager.Instance.players[i].transform.position);
         }
