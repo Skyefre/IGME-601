@@ -47,7 +47,7 @@ public class Player : MonoBehaviour
     public PlayerJSONReader.FrameDataContainer frameData;
     public PlayerJSONReader.HitboxDataContainer hitboxData;
     public PlayerJSONReader.HurtboxDataContainer hurtboxData;
-    public PlayerJSONReader.ImpulseFrameData impulseFrameData;
+    public PlayerJSONReader.ImpulseFrames impulseFrames;
     public PlayerJSONReader.ImpulseDataContainer impulseData;
     public PlayerJSONReader.SpellFrameData spellframeData;
     public PlayerJSONReader.SpellSpawnDataContainer spellSpawnData;
@@ -59,11 +59,11 @@ public class Player : MonoBehaviour
 
     //Player fields
     public int runSpeed = 3;
-    public int jumpForce = 10;
-    public int gravity = 1;
-    public int health = 10;
+    public float jumpForce = 10;
+    public float gravity = 1;
+    public int health = 100;
     public int hspd = 0;
-    public int vspd = 0;
+    public float vspd = 0;
     public int maxHspd = 10;
     public int maxVspd = 1;
     public bool dead = false;
@@ -423,25 +423,29 @@ public class Player : MonoBehaviour
                 break;
             case PlayerState.Jump:
 
-                #region ground collision check
-                //cast ray to check for ground and get variables for return values
-                //RaycastHit2D groundHitRayHit = IsGrounded();
-                Vector2? collideGroundPoint = grounded.collider != null ? (Vector2?)grounded.point : null;
-                Collider2D collidedGround = grounded.collider;
-
-                //check for ground differing based on if colider is on slope or flat ground
-                if (collidedGround != null)
+                //check for ground collision
+                if (grounded.collider != null)
                 {
                     SnapToSurface(grounded);
                     vspd = 0;
                     SetState(PlayerState.Landing);
                     break;
                 }
-                #endregion
 
                 //check for attack input
                 if (inputs[InputHandler.Inputs.Attack] == InputHandler.InputState.Pressed)
                 {
+                    //check for turnaround inputs
+                    if (inputs[InputHandler.Inputs.Left] == InputHandler.InputState.Held)
+                    {
+                        facingRight = false;
+                    }
+                    else if (inputs[InputHandler.Inputs.Right] == InputHandler.InputState.Held)
+                    {
+                        facingRight = true;
+                    }
+
+                    //check for which attack is pressed
                     if (inputs[InputHandler.Inputs.Up] == InputHandler.InputState.Held)
                     {
                         SetState(PlayerState.UpAttack);
@@ -476,19 +480,19 @@ public class Player : MonoBehaviour
                 if (inputs[InputHandler.Inputs.Right] == InputHandler.InputState.Held)
                 {
                     facingRight = true;
-                    hspd = runSpeed;
+                    hspd = hspd < runSpeed ? runSpeed : hspd;
                 }
                 else if (inputs[InputHandler.Inputs.Left] == InputHandler.InputState.Held)
                 {
                     facingRight = false;
-                    hspd = -runSpeed;
+                    hspd = hspd > -runSpeed ? -runSpeed : hspd;
                 }
                 else if (inputs[InputHandler.Inputs.Left] == InputHandler.InputState.UnPressed && inputs[InputHandler.Inputs.Right] == InputHandler.InputState.UnPressed)
                 {
-                    hspd = 0;
+                    LerpHspd(0, 5);
                 }
                 //check for shield input
-                if (inputs[InputHandler.Inputs.Shield] == InputHandler.InputState.Pressed)
+                if (inputs[InputHandler.Inputs.Shield] == InputHandler.InputState.Held)
                 {
                     SetState(PlayerState.Shield);
                 }
@@ -654,22 +658,35 @@ public class Player : MonoBehaviour
                     //allow for horizontal movement
                     if (inputs[InputHandler.Inputs.Right] == InputHandler.InputState.Held)
                     {
-                        hspd = runSpeed;
+                        hspd = hspd < runSpeed ? runSpeed : hspd;
                     }
                     else if (inputs[InputHandler.Inputs.Left] == InputHandler.InputState.Held)
                     {
-                        hspd = -runSpeed;
+                        hspd = hspd > -runSpeed ? -runSpeed : hspd;
                     }
                     else if (inputs[InputHandler.Inputs.Left] == InputHandler.InputState.UnPressed && inputs[InputHandler.Inputs.Right] == InputHandler.InputState.UnPressed)
                     {
-                        hspd = 0;
+                        LerpHspd(0, 5);
                     }
                 }
+
+                //handle impulse activation
+                for (int i = 0; i < impulseFrames.sideAttackImpulseFrames.Count; i++)
+                {
+                    if (currentFrame == impulseFrames.sideAttackImpulseFrames[i])
+                    {
+
+                        vspd = impulseData.sideAttackImpulseData[i].yImpulse;
+                        hspd = impulseData.sideAttackImpulseData[i].xImpulse * (facingRight ? 1 : -1);
+                    }
+                }
+
                 if (animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1)
                 {
                     SetState(grounded.collider != null ? PlayerState.Idle : PlayerState.Jump);
                     break;
                 }
+                
                 break;
             case PlayerState.UpAttack:
 
@@ -735,17 +752,29 @@ public class Player : MonoBehaviour
                     //allow for horizontal movement
                     if (inputs[InputHandler.Inputs.Right] == InputHandler.InputState.Held)
                     {
-                        hspd = runSpeed;
+                        hspd = hspd < runSpeed ? runSpeed : hspd;
                     }
                     else if (inputs[InputHandler.Inputs.Left] == InputHandler.InputState.Held)
                     {
-                        hspd = -runSpeed;
+                        hspd = hspd > -runSpeed ? -runSpeed : hspd;
                     }
                     else if (inputs[InputHandler.Inputs.Left] == InputHandler.InputState.UnPressed && inputs[InputHandler.Inputs.Right] == InputHandler.InputState.UnPressed)
                     {
-                        hspd = 0;
+                        LerpHspd(0, 5);
                     }
                 }
+
+                //handle impulse activation
+                for (int i = 0; i < impulseFrames.upAttackImpulseFrames.Count; i++)
+                {
+                    if (currentFrame == impulseFrames.upAttackImpulseFrames[i])
+                    {
+
+                        vspd = impulseData.upAttackImpulseData[i].yImpulse;
+                        hspd = impulseData.upAttackImpulseData[i].xImpulse * (facingRight ? 1 : -1);
+                    }
+                }
+
                 if (animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1)
                 {
 
@@ -823,6 +852,17 @@ public class Player : MonoBehaviour
                         hspd = 0;
                     }
                 }
+                //handle impulse activation
+                for (int i = 0; i < impulseFrames.downAttackImpulseFrames.Count; i++)
+                {
+                    if (currentFrame == impulseFrames.downAttackImpulseFrames[i])
+                    {
+
+                        vspd = impulseData.downAttackImpulseData[i].yImpulse;
+                        hspd = impulseData.downAttackImpulseData[i].xImpulse * (facingRight ? 1 : -1);
+                    }
+                }
+
                 if (animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1)
                 {
 
@@ -897,17 +937,28 @@ public class Player : MonoBehaviour
                     //allow for horizontal movement
                     if (inputs[InputHandler.Inputs.Right] == InputHandler.InputState.Held)
                     {
-                        hspd = runSpeed;
+                        hspd = hspd < runSpeed ? runSpeed : hspd;
                     }
                     else if (inputs[InputHandler.Inputs.Left] == InputHandler.InputState.Held)
                     {
-                        hspd = -runSpeed;
+                        hspd = hspd > -runSpeed ? -runSpeed : hspd;
                     }
                     else if (inputs[InputHandler.Inputs.Left] == InputHandler.InputState.UnPressed && inputs[InputHandler.Inputs.Right] == InputHandler.InputState.UnPressed)
                     {
-                        hspd = 0;
+                        LerpHspd(0, 5);
                     }
                 }
+                //handle impulse activation
+                for (int i = 0; i < impulseFrames.spellAttackImpulseFrames.Count; i++)
+                {
+                    if (currentFrame == impulseFrames.spellAttackImpulseFrames[i])
+                    {
+
+                        vspd = impulseData.spellAttackImpulseData[i].yImpulse;
+                        hspd = impulseData.spellAttackImpulseData[i].xImpulse * (facingRight ? 1 : -1);
+                    }
+                }
+
                 if (animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1)
                 {
                     SetState(grounded.collider != null ? PlayerState.Idle : PlayerState.Jump);
@@ -930,6 +981,11 @@ public class Player : MonoBehaviour
                                 }
                                 break;
                             case "wind":
+                                if (projectiles["wind_util"].activeSelf == false)
+                                {
+                                    projectiles["wind_util"].SetActive(true);
+                                    projectiles["wind_util"].GetComponent<WindUtility>().InitProjectile(spellSpawnData.spellUtil[0].xOffset, spellSpawnData.spellUtil[0].yOffset);
+                                }
                                 break;
                             case "lightning":
                                 break;
@@ -956,17 +1012,29 @@ public class Player : MonoBehaviour
                     //allow for horizontal movement
                     if (inputs[InputHandler.Inputs.Right] == InputHandler.InputState.Held)
                     {
-                        hspd = runSpeed;
+                        hspd = hspd < runSpeed ? runSpeed : hspd;
                     }
                     else if (inputs[InputHandler.Inputs.Left] == InputHandler.InputState.Held)
                     {
-                        hspd = -runSpeed;
+                        hspd = hspd > -runSpeed ? -runSpeed : hspd;
                     }
                     else if (inputs[InputHandler.Inputs.Left] == InputHandler.InputState.UnPressed && inputs[InputHandler.Inputs.Right] == InputHandler.InputState.UnPressed)
                     {
-                        hspd = 0;
+                        LerpHspd(0, 5);
                     }
                 }
+
+                //handle impulse activation
+                for (int i = 0; i < impulseFrames.spellUtilImpulseFrames.Count; i++)
+                {
+                    if (currentFrame == impulseFrames.spellUtilImpulseFrames[i])
+                    {
+
+                        vspd = impulseData.spellUtilImpulseData[i].yImpulse;
+                        hspd = impulseData.spellUtilImpulseData[i].xImpulse * (facingRight ? 1 : -1);
+                    }
+                }
+
                 if (animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1)
                 {
                     SetState(grounded.collider != null ? PlayerState.Idle : PlayerState.Jump);
@@ -1448,7 +1516,7 @@ public class Player : MonoBehaviour
                 frameData = weaponData.weaponData[i].frameData;
                 hitboxData = weaponData.weaponData[i].hitboxData;
                 hurtboxData = weaponData.weaponData[i].hurtboxData;
-                impulseFrameData = weaponData.weaponData[i].impulseFrameData;
+                impulseFrames = weaponData.weaponData[i].impulseFrames;
                 impulseData = weaponData.weaponData[i].impulseData;
                 spellframeData = weaponData.weaponData[i].spellframeData;
                 spellSpawnData = weaponData.weaponData[i].spellSpawnData;
@@ -1520,7 +1588,7 @@ public class Player : MonoBehaviour
             projectiles.Add("fire_attack", Instantiate(projectileList[0]));
 
             projectiles.Add("ice_util", Instantiate(projectileList[1]));
-            projectiles.Add("wind_util", Instantiate(projectileList[1]));
+            projectiles.Add("wind_util", Instantiate(projectileList[3]));
             projectiles.Add("lightning_util", Instantiate(projectileList[1]));
             projectiles.Add("fire_util", Instantiate(projectileList[1]));
 
@@ -1540,7 +1608,7 @@ public class Player : MonoBehaviour
             projectiles["ice_util"].GetComponent<IceBlock>().owner = gameObject;
             projectiles["ice_util"].SetActive(false);
 
-            projectiles["wind_util"].GetComponent<IceBlock>().owner = gameObject;
+            projectiles["wind_util"].GetComponent<WindUtility>().owner = gameObject;
             projectiles["wind_util"].SetActive(false);
 
             projectiles["lightning_util"].GetComponent<IceBlock>().owner = gameObject;

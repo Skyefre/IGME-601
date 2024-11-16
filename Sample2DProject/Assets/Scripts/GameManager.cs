@@ -17,6 +17,9 @@ public class GameManager : MonoBehaviour
     public int ShardsCollected;
     public int FleckCollected;
     public int PlayerLives;
+    public int stockCount;
+    public List<Texture2D> colorPalettes;
+    public List<Texture2D> unusedPalettes; // Palettes aren't in use by any of the players
 
     private void Awake()
     {
@@ -172,5 +175,13 @@ public class GameManager : MonoBehaviour
 
 
 
+    public void DebugTP()
+    {
+        players = GameObject.FindGameObjectsWithTag("Player");
+
+        for (int i = 0; i < players.Length; i++)
+        {
+            players[i].transform.position = new Vector3(-2664f, -111.1f);
+        }
     }
 }

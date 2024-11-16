@@ -97,11 +97,13 @@ public class PlayerJSONReader : MonoBehaviour
     }
 
     [System.Serializable]
-    public class ImpulseFrameData
+    public class ImpulseFrames
     {
         public List<int> sideAttackImpulseFrames;
         public List<int> upAttackImpulseFrames;
         public List<int> downAttackImpulseFrames;
+        public List<int> spellAttackImpulseFrames;
+        public List<int> spellUtilImpulseFrames;
     }
 
     [System.Serializable]
@@ -110,6 +112,8 @@ public class PlayerJSONReader : MonoBehaviour
         public List<ImpulseData> sideAttackImpulseData;
         public List<ImpulseData> upAttackImpulseData;
         public List<ImpulseData> downAttackImpulseData;
+        public List<ImpulseData> spellAttackImpulseData;
+        public List<ImpulseData> spellUtilImpulseData;
     }
 
     [System.Serializable]
@@ -124,7 +128,7 @@ public class PlayerJSONReader : MonoBehaviour
         public HurtboxDataContainer hurtboxData;
         public SpellFrameData spellframeData;
         public SpellSpawnDataContainer spellSpawnData;
-        public ImpulseFrameData impulseFrameData;
+        public ImpulseFrames impulseFrames;
         public ImpulseDataContainer impulseData;
     }
 
