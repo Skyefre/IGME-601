@@ -154,7 +154,7 @@ public class GameManager : MonoBehaviour
         playerScript.health = 2;
         player.GetComponent<BoxCollider2D>().enabled = true;
         player.GetComponent<SpriteRenderer>().enabled = true;
-        
+
         players.Add(player);
         players[1].transform.position = players[0].transform.position;
         /* int playerloc = System.Array.IndexOf(players, player);
@@ -174,12 +174,11 @@ public class GameManager : MonoBehaviour
         Debug.Log("Player Respawned! Player Lives left: " + PlayerLives);
 
 
-
+    }
     public void DebugTP()
     {
-        players = GameObject.FindGameObjectsWithTag("Player");
 
-        for (int i = 0; i < players.Length; i++)
+        for (int i = 0; i < players.Count; i++)
         {
             players[i].transform.position = new Vector3(-2664f, -111.1f);
         }

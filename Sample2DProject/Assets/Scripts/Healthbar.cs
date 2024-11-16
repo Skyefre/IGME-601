@@ -30,7 +30,7 @@ public class Healthbar : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (GameManager.Instance.players.Length >= playerNumber)
+        if (GameManager.Instance.players.Count >= playerNumber)
         {
             gameObject.GetComponent<Image>().enabled = true;
             Player player = GameManager.Instance.players[playerNumber - 1].GetComponent<Player>();
