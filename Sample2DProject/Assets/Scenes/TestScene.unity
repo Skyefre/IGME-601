@@ -63959,6 +63959,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5341f70e54974664a959360ef6511e6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stocks: 0
+  playerCount: 0
 --- !u!4 &1385902800
 Transform:
   m_ObjectHideFlags: 0
@@ -64409,7 +64411,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -479594010739835997, guid: a9bab66106fe9f64f8e123ff86289a9a, type: 3}
       propertyPath: damage
-      value: 10
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: -479594010739835997, guid: a9bab66106fe9f64f8e123ff86289a9a, type: 3}
       propertyPath: yKnockback
@@ -64437,7 +64439,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5179528165672124276, guid: a9bab66106fe9f64f8e123ff86289a9a, type: 3}
       propertyPath: m_LocalScale.y
-      value: 639.77405
+      value: 2164.8816
       objectReference: {fileID: 0}
     - target: {fileID: 5179528165672124276, guid: a9bab66106fe9f64f8e123ff86289a9a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -64445,7 +64447,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5179528165672124276, guid: a9bab66106fe9f64f8e123ff86289a9a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1111.7509
+      value: -1874.3314
       objectReference: {fileID: 0}
     - target: {fileID: 5179528165672124276, guid: a9bab66106fe9f64f8e123ff86289a9a, type: 3}
       propertyPath: m_LocalPosition.z

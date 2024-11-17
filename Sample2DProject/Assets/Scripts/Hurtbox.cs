@@ -155,7 +155,7 @@ public class Hurtbox : MonoBehaviour
         {
             if (owner.GetComponent<Player>() != null)
             {
-                owner.GetComponent<Player>().TakeDamage(owner, 1, -2 * (owner.GetComponent<Player>().facingRight ? -2 : 2), 15, 15);
+                owner.GetComponent<Player>().TakeDamage(owner, hitHitbox.damage, -2 * (owner.GetComponent<Player>().facingRight ? -2 : 2), 15, 15);
                 owner.GetComponent<Player>().hitstopVal = 10;
                 owner.GetComponent<Player>().animator.enabled = false;
             }

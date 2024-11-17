@@ -1695,6 +1695,7 @@ public class Player : MonoBehaviour
 
         if(health <= 0)
         {
+            health = 0;
             Die();
         }
         Debug.Log("Player Health: " + health);
