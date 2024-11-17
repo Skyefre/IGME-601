@@ -54,7 +54,7 @@ public class Healthbar : MonoBehaviour
         }
         else
         {
-            gameObject.GetComponent<Image>().material.SetTexture("_PaletteTex", basePalette);
+            //gameObject.GetComponent<Image>().material.SetTexture("_PaletteTex", basePalette);
             animator.SetBool("joined", false);
             //If there is no connected player, hide the health bar
             if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name != "Scene_MainMenu")
