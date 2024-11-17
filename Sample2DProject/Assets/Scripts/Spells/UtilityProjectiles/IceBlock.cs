@@ -6,21 +6,8 @@ using static Player;
 
 public class IceBlock : ProjectileBehavior
 {
-    //variables (commented out ones aren't necessary right now but I believe we'll need them for
-    //public float hspd = 0.0f;
-    //public float vspd = 0.0f;
-    //public float lifeTime = 5.0f;
-    //public GameObject owner;
-    //public bool facingRight = true;
+    
     public GameObject hurtbox;
-    ////public int damage = 1;
-    //public int xoffset;
-    //public int yoffset;
-    //public int width;
-    //public int height;
-    //public int xKnockback;
-    //public int yKnockback;
-    //public int hitstun;
     public int gravity = 1;
     public int maxHspd = 10;
     public int maxVspd = 10;
@@ -53,6 +40,7 @@ public class IceBlock : ProjectileBehavior
         {
             SnapToSurface(grounded);
             vspd = 0;
+            LerpHspd(0, 10);
         }
         else
         {
@@ -662,5 +650,16 @@ public class IceBlock : ProjectileBehavior
         }
 
         return;
+    }
+
+    public void TakeKnockback(GameObject hitPlayer, int xKnockback, int yKnockback, int hitstun)
+    {
+
+        //If this player is block and facing the right direction
+        hspd = xKnockback;
+        vspd = yKnockback;
+        Debug.Log("Ice block is Hit!");
+
+
     }
 }

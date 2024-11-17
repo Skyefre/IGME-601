@@ -52,73 +52,73 @@ public class WindUtility : ProjectileBehavior
         transform.position += new Vector3(hspd, vspd, 0);
 
         //decrease player's gravity and increase their jumpheight for 5 seconds
-        abilityTimer += Time.deltaTime;
+        //abilityTimer += Time.deltaTime;
 
         //set jump force to new 
-        owner.GetComponent<Player>().gravity = newGravity;
+        //owner.GetComponent<Player>().gravity = newGravity;
 
 
         //raycast for right side of projectile
-        Vector3 rayRightOrigin = new Vector2(transform.position.x + rayOffset.x, transform.position.y);
-        rayRight = Physics2D.Raycast(rayRightOrigin, transform.TransformDirection(Vector2.right), rayLength);
-        Debug.DrawRay(rayRightOrigin, transform.TransformDirection(Vector2.right) * rayLength, Color.cyan);
+        //Vector3 rayRightOrigin = new Vector2(transform.position.x + rayOffset.x, transform.position.y);
+        //rayRight = Physics2D.Raycast(rayRightOrigin, transform.TransformDirection(Vector2.right), rayLength);
+        //Debug.DrawRay(rayRightOrigin, transform.TransformDirection(Vector2.right) * rayLength, Color.cyan);
 
-        //raycast for left side of projectile
-        Vector3 rayLeftOrigin = new Vector2(transform.position.x - rayOffset.x, transform.position.y);
-        rayLeft = Physics2D.Raycast(rayLeftOrigin, transform.TransformDirection(Vector2.left), -rayLength);
-        Debug.DrawRay(rayLeftOrigin, transform.TransformDirection(Vector2.left) * -rayLength, Color.cyan);
+        ////raycast for left side of projectile
+        //Vector3 rayLeftOrigin = new Vector2(transform.position.x - rayOffset.x, transform.position.y);
+        //rayLeft = Physics2D.Raycast(rayLeftOrigin, transform.TransformDirection(Vector2.left), -rayLength);
+        //Debug.DrawRay(rayLeftOrigin, transform.TransformDirection(Vector2.left) * -rayLength, Color.cyan);
 
-        //raycast for the right
-        if (rayRight)
-        {
-            //get name of whatever it hits
-            Debug.Log("rayRight hit : " + rayRight.collider.name);
+        ////raycast for the right
+        //if (rayRight)
+        //{
+        //    //get name of whatever it hits
+        //    Debug.Log("rayRight hit : " + rayRight.collider.name);
 
-            //if it hits the block, move it to the right
-            if (rayRight.collider.name == "ice_util_projectile" || rayRight.collider.name == "ice_util_projectile(Clone)")
-            {
-                if (rayRight.transform.GetComponent<IceBlock>().hspd > 0)
-                {
-                    Debug.Log("Block already moving");
-                }
+        //    //if it hits the block, move it to the right
+        //    if (rayRight.collider.name == "ice_util_projectile" || rayRight.collider.name == "ice_util_projectile(Clone)")
+        //    {
+        //        if (rayRight.transform.GetComponent<IceBlock>().hspd > 0)
+        //        {
+        //            Debug.Log("Block already moving");
+        //        }
 
-                else
-                {
-                    rayRight.transform.GetComponent<IceBlock>().hspd = iceBlkHspd;
-                    Debug.Log("BLOCK MOVED");
-                    DestroyProjectile();
-                }
-            }
-        }
+        //        else
+        //        {
+        //            rayRight.transform.GetComponent<IceBlock>().hspd = iceBlkHspd;
+        //            Debug.Log("BLOCK MOVED");
+        //            DestroyProjectile();
+        //        }
+        //    }
+        //}
 
-        //raycast for the left
-        if (rayLeft)
-        {
-            //get the name of whatever it hits
-            Debug.Log("rayLeft hit : " + rayLeft.collider.name);
+        ////raycast for the left
+        //if (rayLeft)
+        //{
+        //    //get the name of whatever it hits
+        //    Debug.Log("rayLeft hit : " + rayLeft.collider.name);
 
-            //if it hits the block, move it to the left
-            if (rayLeft.collider.name == "ice_util_projectile" || rayLeft.collider.name == "ice_util_projectile(Clone)")
-            {
-                if (rayLeft.transform.GetComponent<IceBlock>().hspd > 0)
-                {
-                    Debug.Log("Block already moving");
-                }
+        //    //if it hits the block, move it to the left
+        //    if (rayLeft.collider.name == "ice_util_projectile" || rayLeft.collider.name == "ice_util_projectile(Clone)")
+        //    {
+        //        if (rayLeft.transform.GetComponent<IceBlock>().hspd > 0)
+        //        {
+        //            Debug.Log("Block already moving");
+        //        }
 
-                else
-                {
-                    rayLeft.transform.GetComponent<IceBlock>().hspd = -iceBlkHspd;
-                    Debug.Log("BLOCK MOVED");
-                    DestroyProjectile();
-                }
-            }
-        }
+        //        else
+        //        {
+        //            rayLeft.transform.GetComponent<IceBlock>().hspd = -iceBlkHspd;
+        //            Debug.Log("BLOCK MOVED");
+        //            DestroyProjectile();
+        //        }
+        //    }
+        //}
 
         //restore player stats when timer is up
-        if (abilityTimer >= lifeTime)
-        {
-            RestoreStats();
-        }
+        //if (abilityTimer >= lifeTime)
+        //{
+        //    RestoreStats();
+        //}
 
         //destroy projectile after lifetime
         if (disableAfterAnimation)
@@ -151,15 +151,15 @@ public class WindUtility : ProjectileBehavior
     }
 
     //restore player stats to original values
-    public void RestoreStats()
-    {
-        //reset timer
-        abilityTimer = 0;
+    //public void RestoreStats()
+    //{
+    //    //reset timer
+    //    abilityTimer = 0;
 
-        //reset values
-        //player.gravity *= 2;
-        owner.GetComponent<Player>().gravity = baseGravity;
-    }
+    //    //reset values
+    //    //player.gravity *= 2;
+    //    owner.GetComponent<Player>().gravity = baseGravity;
+    //}
 
     //spawn the wind blast in front of the player
     public override void InitProjectile(int spawnX, int spawnY)

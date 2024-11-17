@@ -238,7 +238,6 @@ public class Player : MonoBehaviour
                 //check for spell input
                 if (inputs[InputHandler.Inputs.Spell] == InputHandler.InputState.Released)
                 {
-                    Debug.Log(animator.GetCurrentAnimatorStateInfo(0).shortNameHash);
                     if(vfxEntities["spell_charge"].GetComponent<SpellChargeEntity>().animator.GetCurrentAnimatorStateInfo(0).IsName("spell_charged"))
                     {
                         SetState(PlayerState.SpellUtil);
