@@ -6,12 +6,12 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
     public GameObject[] players;
-    public List<Texture2D> colorPalletes;
+    public List<Texture2D> colorPalettes;
     public bool enableStartScreen;
     public int ShardsCollected;
     public int stockCount;
-    public List<Texture2D> colorPalettes;
-    public List<Texture2D> unusedPalettes; // Palettes aren't in use by any of the players
+    //public List<Texture2D> colorPalettes;
+    //public List<Texture2D> unusedPalettes; // Palettes aren't in use by any of the players
 
     private void Awake()
     {
@@ -96,7 +96,7 @@ public class GameManager : MonoBehaviour
         //}
         for (int i = 0; i < players.Length; i++)
         {
-            players[i].GetComponent<SpriteRenderer>().material.SetTexture("_PaletteTex", colorPalletes[i]);
+            players[i].GetComponent<SpriteRenderer>().material.SetTexture("_PaletteTex", colorPalettes[i]);
         }
     }
 

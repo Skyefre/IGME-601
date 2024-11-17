@@ -61,7 +61,7 @@ public class Player : MonoBehaviour
     public int runSpeed = 3;
     public float jumpForce = 10;
     public float gravity = 1;
-    public int health = 100;
+    public int health = 10;
     public int hspd = 0;
     public float vspd = 0;
     public int maxHspd = 10;

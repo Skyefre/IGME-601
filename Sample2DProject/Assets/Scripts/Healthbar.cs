@@ -34,11 +34,10 @@ public class Healthbar : MonoBehaviour
         {
             gameObject.GetComponent<Image>().enabled = true;
             Player player = GameManager.Instance.players[playerNumber - 1].GetComponent<Player>();
-            //gameObject.GetComponent<Image>().material.SetTexture("_PaletteTex",
-            //    GameManager.Instance.colorPalettes[player.currentColorIndex]);
+            gameObject.GetComponent<Image>().material.SetTexture("_PaletteTex",
+                GameManager.Instance.colorPalettes[playerNumber-1]);
 
-            int stockCount = GameManager.Instance.stockCount;
-            animator.SetInteger("StockCount", stockCount > 0? stockCount: 1);
+            animator.SetBool("joined", true);
 
             // Force the animator to update its state
             animator.Update(0);
@@ -49,14 +48,14 @@ public class Healthbar : MonoBehaviour
             frameCount = (int)(currentClipInfo[0].clip.length * currentClipInfo[0].clip.frameRate);
 
             // Set the animator to a specific frame based on stock count
-            float normalizedTime = (1f / frameCount) * (8 - player.health);
+            float normalizedTime = (1f / frameCount) * (10 - player.health);
             animator.Play(currentClipInfo[0].clip.name, 0, normalizedTime);
             animator.speed = 0;
         }
         else
         {
             gameObject.GetComponent<Image>().material.SetTexture("_PaletteTex", basePalette);
-            animator.SetInteger("StockCount", 0);
+            animator.SetBool("joined", false);
             //If there is no connected player, hide the health bar
             if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name != "Scene_MainMenu")
             {
