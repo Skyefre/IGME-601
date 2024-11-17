@@ -1707,6 +1707,7 @@ public class Player : MonoBehaviour
         gameObject.GetComponent<SpriteRenderer>().enabled = false;
         //gameObject.GetComponent<InputHandler>().enabled = false;
         gameObject.GetComponent<BoxCollider2D>().enabled = false;
+        hurtbox.SetActive(false);
         gameObject.GetComponent<Rigidbody2D>().simulated = false;
         isAlive = false;
         //this is where we would do death burst animations
@@ -1729,6 +1730,7 @@ public class Player : MonoBehaviour
         {
             gameObject.GetComponent<SpriteRenderer>().enabled = true;
             //gameObject.GetComponent<InputHandler>().enabled = true;
+            hurtbox.SetActive(true);
             gameObject.GetComponent<BoxCollider2D>().enabled = true;
             gameObject.GetComponent<Rigidbody2D>().simulated = true;
             isAlive = true;
