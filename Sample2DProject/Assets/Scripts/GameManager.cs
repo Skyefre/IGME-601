@@ -9,6 +9,9 @@ public class GameManager : MonoBehaviour
     public List<Texture2D> colorPalletes;
     public bool enableStartScreen;
     public int ShardsCollected;
+    public int stockCount;
+    public List<Texture2D> colorPalettes;
+    public List<Texture2D> unusedPalettes; // Palettes aren't in use by any of the players
 
     private void Awake()
     {

@@ -8,7 +8,7 @@ public class LightningUtility : ProjectileBehavior
     protected override void Start()
     {
         
-    }
+    //}
 
     // Update is called once per frame
     void Update()
