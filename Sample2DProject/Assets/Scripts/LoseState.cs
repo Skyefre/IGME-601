@@ -18,6 +18,7 @@ public class LoseState : MonoBehaviour
     {
         stocks = GameManager.Instance.stockCount;
         playerCount = GameManager.Instance.players.Length;
+        int counter = 0;
 
         if (stocks <= 0)
         {
@@ -25,9 +26,14 @@ public class LoseState : MonoBehaviour
             {
                 if (player.GetComponent<BoxCollider2D>().enabled == false)
                 {
-                    Debug.Log("Player's defeated!");
-                    GameManager.Instance.LoadScene("Lose");
-                }
+                    counter++;
+                }             
+            }
+
+            if (counter >= playerCount)
+            {
+                Debug.Log("Player's defeated!");
+                GameManager.Instance.LoadScene("Lose");
             }
         }
     }
