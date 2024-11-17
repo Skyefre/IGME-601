@@ -1,10 +1,10 @@
-﻿
-Shader "Hidden/PaletteSwapLookup"
+﻿Shader "Hidden/PaletteSwapLookup"
 {
     Properties
     {
         _MainTex ("Texture", 2D) = "white" {}
         _PaletteTex("TargetTexture", 2D) = "white" {}
+        _Alpha ("Alpha", Range(0, 1)) = 1.0
     }
     SubShader
     {
@@ -42,13 +42,14 @@ Shader "Hidden/PaletteSwapLookup"
             
             sampler2D _MainTex;
             sampler2D _PaletteTex;
+            float _Alpha;
 
             fixed4 frag (v2f i) : SV_Target
             {
                 float4 mainColor = tex2D(_MainTex, i.uv);
                 float x = mainColor.r;
                 float4 paletteColor = tex2D(_PaletteTex, float2(x, 0));
-                paletteColor.a = mainColor.a; // Preserve the alpha channel
+                paletteColor.a = mainColor.a * _Alpha; // Modify the alpha channel
                 return paletteColor;
             }
 

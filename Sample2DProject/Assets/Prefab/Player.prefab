@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 5484855606325471435}
   - component: {fileID: -4435922527637562003}
   - component: {fileID: -7222035744448415508}
+  - component: {fileID: 2190747417558815941}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -332,14 +333,18 @@ MonoBehaviour:
       yOffset: 0
       width: 0
       height: 0
-  impulseFrameData:
+  impulseFrames:
     sideAttackImpulseFrames: 
     upAttackImpulseFrames: 
     downAttackImpulseFrames: 
+    spellAttackImpulseFrames: 
+    spellUtilImpulseFrames: 
   impulseData:
     sideAttackImpulseData: []
     upAttackImpulseData: []
     downAttackImpulseData: []
+    spellAttackImpulseData: []
+    spellUtilImpulseData: []
   spellframeData:
     spellAttackFrames: 
     spellUtilFrames: 
@@ -350,7 +355,7 @@ MonoBehaviour:
   runSpeed: 4
   jumpForce: 15
   gravity: 1
-  health: 10
+  health: 2
   hspd: 0
   vspd: 0
   maxHspd: 15
@@ -367,12 +372,17 @@ MonoBehaviour:
   hitboxReference: {fileID: 2071856720676495377, guid: a9bab66106fe9f64f8e123ff86289a9a, type: 3}
   hurtboxReference: {fileID: 2071856720676495377, guid: 93f0f0d69bc905d49a654f329ed68ef4, type: 3}
   iceBlock: {fileID: 6871520450933059161, guid: d57d2e8b273df6a408217680f38f9bb7, type: 3}
+  isAlive: 1
   hitstopVal: 0
   projectileList:
   - {fileID: 32924885386218554, guid: 33b9b55ac80ace0428af039babffc17b, type: 3}
   - {fileID: 6871520450933059161, guid: d57d2e8b273df6a408217680f38f9bb7, type: 3}
+  - {fileID: 32924885386218554, guid: 37bd2748ec971dd45919b481a981f947, type: 3}
+  - {fileID: 938566767569704894, guid: 637c0b8b2e73f8243a06ff16983d581f, type: 3}
   spellCharge: 0
   maxSpellCharge: 100
+  vfxList:
+  - {fileID: 7226205147136119726, guid: 2b7d47a80b7c49a4d9cd8ee0e91cd74c, type: 3}
 --- !u!95 &237148384208766883
 Animator:
   serializedVersion: 5
@@ -478,3 +488,30 @@ MonoBehaviour:
   jsonFile: {fileID: 4900000, guid: ca64a7a0f9a3fde41a6666a90e20a1b5, type: 3}
   weaponDataList:
     weaponData: []
+--- !u!50 &2190747417558815941
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1649555061467412725}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0

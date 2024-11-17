@@ -1,14 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
     public GameObject[] players;
-    public List<Texture2D> colorPalletes;
+    public List<Texture2D> colorPalettes;
     public bool enableStartScreen;
     public int ShardsCollected;
+    public int stockCount;
+    //public List<Texture2D> colorPalettes;
+    //public List<Texture2D> unusedPalettes; // Palettes aren't in use by any of the players
 
     private void Awake()
     {
@@ -28,6 +32,7 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log("Shards initiated");
         ShardsCollected = 0;
+        stockCount = 5;
     }
 
 
@@ -37,6 +42,7 @@ public class GameManager : MonoBehaviour
         if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name != "Scene_MainMenu")
         {
             //CheckAlivePlayers();
+            gameObject.GetComponent<PlayerInputManager>().DisableJoining();
         }
         else
         {
@@ -45,6 +51,7 @@ public class GameManager : MonoBehaviour
             {
                 LoadScene("TestScene");
             }
+            gameObject.GetComponent<PlayerInputManager>().EnableJoining();
         }
 
         if (Input.GetKey(KeyCode.R))
@@ -60,6 +67,11 @@ public class GameManager : MonoBehaviour
             foreach (KeyValuePair<string, GameObject> projectile in players[i].GetComponent<Player>().projectiles)
             {
                 DontDestroyOnLoad(projectile.Value);
+            }
+
+            foreach (KeyValuePair<string, GameObject> vfxEntity in players[i].GetComponent<Player>().vfxEntities)
+            {
+                DontDestroyOnLoad(vfxEntity.Value);
             }
         }
         UnityEngine.SceneManagement.SceneManager.LoadScene(sceneName);
@@ -93,7 +105,17 @@ public class GameManager : MonoBehaviour
         //}
         for (int i = 0; i < players.Length; i++)
         {
-            players[i].GetComponent<SpriteRenderer>().material.SetTexture("_PaletteTex", colorPalletes[i]);
+            players[i].GetComponent<SpriteRenderer>().material.SetTexture("_PaletteTex", colorPalettes[i]);
+        }
+    }
+
+    public void DebugTP()
+    {
+        players = GameObject.FindGameObjectsWithTag("Player");
+
+        for (int i = 0; i < players.Length; i++)
+        {
+            players[i].transform.position = new Vector3(-2664f, -111.1f);
         }
     }
 }

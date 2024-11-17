@@ -47,7 +47,7 @@ public class Player : MonoBehaviour
     public PlayerJSONReader.FrameDataContainer frameData;
     public PlayerJSONReader.HitboxDataContainer hitboxData;
     public PlayerJSONReader.HurtboxDataContainer hurtboxData;
-    public PlayerJSONReader.ImpulseFrameData impulseFrameData;
+    public PlayerJSONReader.ImpulseFrames impulseFrames;
     public PlayerJSONReader.ImpulseDataContainer impulseData;
     public PlayerJSONReader.SpellFrameData spellframeData;
     public PlayerJSONReader.SpellSpawnDataContainer spellSpawnData;
@@ -58,11 +58,11 @@ public class Player : MonoBehaviour
 
     //Player fields
     public int runSpeed = 3;
-    public int jumpForce = 10;
-    public int gravity = 1;
-    public int health = 100;
+    public float jumpForce = 10;
+    public float gravity = 1;
+    public int health = 10;
     public int hspd = 0;
-    public int vspd = 0;
+    public float vspd = 0;
     public int maxHspd = 10;
     public int maxVspd = 1;
     public PlayerState state = PlayerState.Idle;
@@ -82,7 +82,7 @@ public class Player : MonoBehaviour
     private List<GameObject> hitboxes = new List<GameObject>();
     private GameObject hurtbox;
     public GameObject iceBlock;
-
+    public bool isAlive = true;
 
     private int tempHspd = 0;
     public int hitstopVal = 0;
@@ -98,6 +98,10 @@ public class Player : MonoBehaviour
     public Dictionary<string, GameObject> projectiles = new Dictionary<string, GameObject>();
     public int spellCharge = 0;
     public int maxSpellCharge = 100;
+
+    //VFX stuff
+    public List<GameObject> vfxList = new List<GameObject>();
+    public Dictionary<string, GameObject> vfxEntities = new Dictionary<string, GameObject>();
 
     public BoxCollider2D PlayerCollider
     {
@@ -125,17 +129,27 @@ public class Player : MonoBehaviour
 
     void FixedUpdate()
     {
+        //update this frames inputs
+        inputs = inputHandler.keyBindings;
         if (hitstopVal > 0)
         {
             hitstopVal--;
+            return;
+        }
+        else if (!isAlive)
+        {
+            //check for menu input
+            if (inputs[InputHandler.Inputs.Pause] == InputHandler.InputState.Pressed && GameManager.Instance.stockCount >0)
+            {
+                Respawn();
+            }
             return;
         }
         else
         {
             animator.enabled = true;
         }
-        //update this frames inputs
-        inputs = inputHandler.keyBindings;
+        
 
         //update animator info things to get current frame and frame count
         animStateInfo = animator.GetCurrentAnimatorStateInfo(0);
@@ -165,20 +179,30 @@ public class Player : MonoBehaviour
         //get spell button for the charge system
         if (inputs[InputHandler.Inputs.Spell] == InputHandler.InputState.Held)
         {
-            spellCharge++;
-            if(spellCharge >= maxSpellCharge)
+            //spellCharge++;
+            //if(spellCharge >= maxSpellCharge)
+            //{
+            //    spellCharge = maxSpellCharge + 4;
+            //    //make the character flash white
+            //}
+            if (!vfxEntities["spell_charge"].activeSelf)
             {
-                spellCharge = maxSpellCharge + 4;
-                //make the character flash white
-                //gameObject.GetComponent<SpriteRenderer>().material.SetFloat("_Flash", 1);
+                vfxEntities["spell_charge"].SetActive(true);
+                vfxEntities["spell_charge"].GetComponent<SpellChargeEntity>().InitProjectile((int)transform.position.x, (int)(transform.position.y + boxCollider.size.y / 2));
             }
+            
         }
         else
         {
-            if(spellCharge > 0)
-            {
-                spellCharge-=2;
-            }
+            //if(spellCharge > 0)
+            //{
+            //    spellCharge-=2;
+            //}
+            //if (vfxEntities["spell_charge"].activeSelf)
+            //{
+            //    vfxEntities["spell_charge"].GetComponent<SpellChargeEntity>().DestroyProjectile();
+            //}
+
         }
 
         switch (state)
@@ -214,7 +238,8 @@ public class Player : MonoBehaviour
                 //check for spell input
                 if (inputs[InputHandler.Inputs.Spell] == InputHandler.InputState.Released)
                 {
-                    if(spellCharge >= maxSpellCharge)
+                    Debug.Log(animator.GetCurrentAnimatorStateInfo(0).shortNameHash);
+                    if(vfxEntities["spell_charge"].GetComponent<SpellChargeEntity>().animator.GetCurrentAnimatorStateInfo(0).IsName("spell_charged"))
                     {
                         SetState(PlayerState.SpellUtil);
                     }
@@ -288,7 +313,7 @@ public class Player : MonoBehaviour
                 //check for spell input
                 if (inputs[InputHandler.Inputs.Spell] == InputHandler.InputState.Released)
                 {
-                    if (spellCharge >= maxSpellCharge)
+                    if (/*spellCharge >= maxSpellCharge*/vfxEntities["spell_charge"].GetComponent<SpellChargeEntity>().animator.GetCurrentAnimatorStateInfo(0).IsName("spell_charged"))
                     {
                         SetState(PlayerState.SpellUtil);
                     }
@@ -409,25 +434,29 @@ public class Player : MonoBehaviour
                 break;
             case PlayerState.Jump:
 
-                #region ground collision check
-                //cast ray to check for ground and get variables for return values
-                //RaycastHit2D groundHitRayHit = IsGrounded();
-                Vector2? collideGroundPoint = grounded.collider != null ? (Vector2?)grounded.point : null;
-                Collider2D collidedGround = grounded.collider;
-
-                //check for ground differing based on if colider is on slope or flat ground
-                if (collidedGround != null)
+                //check for ground collision
+                if (grounded.collider != null)
                 {
                     SnapToSurface(grounded);
                     vspd = 0;
                     SetState(PlayerState.Landing);
                     break;
                 }
-                #endregion
 
                 //check for attack input
                 if (inputs[InputHandler.Inputs.Attack] == InputHandler.InputState.Pressed)
                 {
+                    //check for turnaround inputs
+                    if (inputs[InputHandler.Inputs.Left] == InputHandler.InputState.Held)
+                    {
+                        facingRight = false;
+                    }
+                    else if (inputs[InputHandler.Inputs.Right] == InputHandler.InputState.Held)
+                    {
+                        facingRight = true;
+                    }
+
+                    //check for which attack is pressed
                     if (inputs[InputHandler.Inputs.Up] == InputHandler.InputState.Held)
                     {
                         SetState(PlayerState.UpAttack);
@@ -447,7 +476,7 @@ public class Player : MonoBehaviour
                 //check for spell input
                 if (inputs[InputHandler.Inputs.Spell] == InputHandler.InputState.Released)
                 {
-                    if (spellCharge >= maxSpellCharge)
+                    if (/*spellCharge >= maxSpellCharge*/vfxEntities["spell_charge"].GetComponent<SpellChargeEntity>().animator.GetCurrentAnimatorStateInfo(0).IsName("spell_charged"))
                     {
                         SetState(PlayerState.SpellUtil);
                     }
@@ -462,19 +491,19 @@ public class Player : MonoBehaviour
                 if (inputs[InputHandler.Inputs.Right] == InputHandler.InputState.Held)
                 {
                     facingRight = true;
-                    hspd = runSpeed;
+                    hspd = hspd < runSpeed ? runSpeed : hspd;
                 }
                 else if (inputs[InputHandler.Inputs.Left] == InputHandler.InputState.Held)
                 {
                     facingRight = false;
-                    hspd = -runSpeed;
+                    hspd = hspd > -runSpeed ? -runSpeed : hspd;
                 }
                 else if (inputs[InputHandler.Inputs.Left] == InputHandler.InputState.UnPressed && inputs[InputHandler.Inputs.Right] == InputHandler.InputState.UnPressed)
                 {
-                    hspd = 0;
+                    LerpHspd(0, 5);
                 }
                 //check for shield input
-                if (inputs[InputHandler.Inputs.Shield] == InputHandler.InputState.Pressed)
+                if (inputs[InputHandler.Inputs.Shield] == InputHandler.InputState.Held)
                 {
                     SetState(PlayerState.Shield);
                 }
@@ -641,22 +670,35 @@ public class Player : MonoBehaviour
                     //allow for horizontal movement
                     if (inputs[InputHandler.Inputs.Right] == InputHandler.InputState.Held)
                     {
-                        hspd = runSpeed;
+                        hspd = hspd < runSpeed ? runSpeed : hspd;
                     }
                     else if (inputs[InputHandler.Inputs.Left] == InputHandler.InputState.Held)
                     {
-                        hspd = -runSpeed;
+                        hspd = hspd > -runSpeed ? -runSpeed : hspd;
                     }
                     else if (inputs[InputHandler.Inputs.Left] == InputHandler.InputState.UnPressed && inputs[InputHandler.Inputs.Right] == InputHandler.InputState.UnPressed)
                     {
-                        hspd = 0;
+                        LerpHspd(0, 5);
                     }
                 }
+
+                //handle impulse activation
+                for (int i = 0; i < impulseFrames.sideAttackImpulseFrames.Count; i++)
+                {
+                    if (currentFrame == impulseFrames.sideAttackImpulseFrames[i])
+                    {
+
+                        vspd = impulseData.sideAttackImpulseData[i].yImpulse;
+                        hspd = impulseData.sideAttackImpulseData[i].xImpulse * (facingRight ? 1 : -1);
+                    }
+                }
+
                 if (animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1)
                 {
                     SetState(grounded.collider != null ? PlayerState.Idle : PlayerState.Jump);
                     break;
                 }
+                
                 break;
             case PlayerState.UpAttack:
 
@@ -722,17 +764,29 @@ public class Player : MonoBehaviour
                     //allow for horizontal movement
                     if (inputs[InputHandler.Inputs.Right] == InputHandler.InputState.Held)
                     {
-                        hspd = runSpeed;
+                        hspd = hspd < runSpeed ? runSpeed : hspd;
                     }
                     else if (inputs[InputHandler.Inputs.Left] == InputHandler.InputState.Held)
                     {
-                        hspd = -runSpeed;
+                        hspd = hspd > -runSpeed ? -runSpeed : hspd;
                     }
                     else if (inputs[InputHandler.Inputs.Left] == InputHandler.InputState.UnPressed && inputs[InputHandler.Inputs.Right] == InputHandler.InputState.UnPressed)
                     {
-                        hspd = 0;
+                        LerpHspd(0, 5);
                     }
                 }
+
+                //handle impulse activation
+                for (int i = 0; i < impulseFrames.upAttackImpulseFrames.Count; i++)
+                {
+                    if (currentFrame == impulseFrames.upAttackImpulseFrames[i])
+                    {
+
+                        vspd = impulseData.upAttackImpulseData[i].yImpulse;
+                        hspd = impulseData.upAttackImpulseData[i].xImpulse * (facingRight ? 1 : -1);
+                    }
+                }
+
                 if (animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1)
                 {
 
@@ -810,6 +864,17 @@ public class Player : MonoBehaviour
                         hspd = 0;
                     }
                 }
+                //handle impulse activation
+                for (int i = 0; i < impulseFrames.downAttackImpulseFrames.Count; i++)
+                {
+                    if (currentFrame == impulseFrames.downAttackImpulseFrames[i])
+                    {
+
+                        vspd = impulseData.downAttackImpulseData[i].yImpulse;
+                        hspd = impulseData.downAttackImpulseData[i].xImpulse * (facingRight ? 1 : -1);
+                    }
+                }
+
                 if (animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1)
                 {
 
@@ -826,17 +891,42 @@ public class Player : MonoBehaviour
                         switch (weaponName)
                         {
                             case "ice":
-                                if (projectiles["ice_attack"].activeSelf == false)
+                                if (!projectiles["ice_attack"].activeSelf && !projectiles["ice_attack"].GetComponent<IceAttackProjectile>().projectileActive)
                                 {
                                     projectiles["ice_attack"].SetActive(true);
-                                    projectiles["ice_attack"].GetComponent<ProjectileBehavior>().InitProjectile(spellSpawnData.spellAttack[0].xOffset, spellSpawnData.spellAttack[0].yOffset);
+                                    projectiles["ice_attack"].GetComponent<IceAttackProjectile>().InitProjectile(spellSpawnData.spellAttack[0].xOffset, spellSpawnData.spellAttack[0].yOffset);
                                 }
                                 break;
                             case "wind":
+                                if (!projectiles["wind_attack"].activeSelf && !projectiles["wind_attack"].GetComponent<WindAttackProjectile>().projectileActive)
+                                {
+                                    projectiles["wind_attack"].SetActive(true);
+                                    projectiles["wind_attack"].GetComponent<WindAttackProjectile>().InitProjectile(spellSpawnData.spellAttack[0].xOffset, spellSpawnData.spellAttack[0].yOffset);
+                                }
                                 break;
                             case "lightning":
                                 break;
                             case "fire":
+                                break;
+                            default:
+                                break;
+                        }
+                    }
+                    else
+                    {
+                        switch (weaponName)
+                        {
+                            case "ice":
+                                projectiles["ice_attack"].GetComponent<IceAttackProjectile>().projectileActive = false;
+                                break;
+                            case "wind":
+                                projectiles["wind_attack"].GetComponent<WindAttackProjectile>().projectileActive = false;
+                                break;
+                            case "lightning":
+                                //projectiles["lightning_attack"].GetComponent<LightningAttackProjectile>().projectileActive = false;
+                                break;
+                            case "fire":
+                                //projectiles["fire_attack"].GetComponent<FireAttackProjectile>().projectileActive = false;
                                 break;
                             default:
                                 break;
@@ -859,17 +949,28 @@ public class Player : MonoBehaviour
                     //allow for horizontal movement
                     if (inputs[InputHandler.Inputs.Right] == InputHandler.InputState.Held)
                     {
-                        hspd = runSpeed;
+                        hspd = hspd < runSpeed ? runSpeed : hspd;
                     }
                     else if (inputs[InputHandler.Inputs.Left] == InputHandler.InputState.Held)
                     {
-                        hspd = -runSpeed;
+                        hspd = hspd > -runSpeed ? -runSpeed : hspd;
                     }
                     else if (inputs[InputHandler.Inputs.Left] == InputHandler.InputState.UnPressed && inputs[InputHandler.Inputs.Right] == InputHandler.InputState.UnPressed)
                     {
-                        hspd = 0;
+                        LerpHspd(0, 5);
                     }
                 }
+                //handle impulse activation
+                for (int i = 0; i < impulseFrames.spellAttackImpulseFrames.Count; i++)
+                {
+                    if (currentFrame == impulseFrames.spellAttackImpulseFrames[i])
+                    {
+
+                        vspd = impulseData.spellAttackImpulseData[i].yImpulse;
+                        hspd = impulseData.spellAttackImpulseData[i].xImpulse * (facingRight ? 1 : -1);
+                    }
+                }
+
                 if (animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1)
                 {
                     SetState(grounded.collider != null ? PlayerState.Idle : PlayerState.Jump);
@@ -888,14 +989,40 @@ public class Player : MonoBehaviour
                                 if (projectiles["ice_util"].activeSelf == false)
                                 {
                                     projectiles["ice_util"].SetActive(true);
-                                    projectiles["ice_util"].GetComponent<ProjectileBehavior>().InitProjectile(spellSpawnData.spellUtil[0].xOffset, spellSpawnData.spellUtil[0].yOffset);
+                                    projectiles["ice_util"].GetComponent<IceBlock>().InitProjectile(spellSpawnData.spellUtil[0].xOffset, spellSpawnData.spellUtil[0].yOffset);
                                 }
                                 break;
                             case "wind":
+                                if (!projectiles["wind_util"].activeSelf && !projectiles["wind_util"].GetComponent<WindUtility>().projectileActive)
+                                {
+                                    projectiles["wind_util"].SetActive(true);
+                                    projectiles["wind_util"].GetComponent<WindUtility>().InitProjectile(spellSpawnData.spellUtil[0].xOffset, spellSpawnData.spellUtil[0].yOffset);
+                                }
                                 break;
                             case "lightning":
                                 break;
                             case "fire":
+                                break;
+                            default:
+                                break;
+                        }
+                    }
+                    else
+                    {
+                        switch (weaponName)
+                        {
+                            case "ice":
+                                //projectiles["ice_attack"].GetComponent<IceAttackProjectile>().projectileActive = false;
+                                //the iceblock currently doesn't need to deactivate hitbox spawning
+                                break;
+                            case "wind":
+                                projectiles["wind_util"].GetComponent<WindUtility>().projectileActive = false;
+                                break;
+                            case "lightning":
+                                //projectiles["lightning_attack"].GetComponent<LightningAttackProjectile>().projectileActive = false;
+                                break;
+                            case "fire":
+                                //projectiles["fire_attack"].GetComponent<FireAttackProjectile>().projectileActive = false;
                                 break;
                             default:
                                 break;
@@ -918,17 +1045,29 @@ public class Player : MonoBehaviour
                     //allow for horizontal movement
                     if (inputs[InputHandler.Inputs.Right] == InputHandler.InputState.Held)
                     {
-                        hspd = runSpeed;
+                        hspd = hspd < runSpeed ? runSpeed : hspd;
                     }
                     else if (inputs[InputHandler.Inputs.Left] == InputHandler.InputState.Held)
                     {
-                        hspd = -runSpeed;
+                        hspd = hspd > -runSpeed ? -runSpeed : hspd;
                     }
                     else if (inputs[InputHandler.Inputs.Left] == InputHandler.InputState.UnPressed && inputs[InputHandler.Inputs.Right] == InputHandler.InputState.UnPressed)
                     {
-                        hspd = 0;
+                        LerpHspd(0, 5);
                     }
                 }
+
+                //handle impulse activation
+                for (int i = 0; i < impulseFrames.spellUtilImpulseFrames.Count; i++)
+                {
+                    if (currentFrame == impulseFrames.spellUtilImpulseFrames[i])
+                    {
+
+                        vspd = impulseData.spellUtilImpulseData[i].yImpulse;
+                        hspd = impulseData.spellUtilImpulseData[i].xImpulse * (facingRight ? 1 : -1);
+                    }
+                }
+
                 if (animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1)
                 {
                     SetState(grounded.collider != null ? PlayerState.Idle : PlayerState.Jump);
@@ -938,21 +1077,22 @@ public class Player : MonoBehaviour
             case PlayerState.Menuing:
                 hspd = 0;
                 vspd = 0;
-                if (inputs[InputHandler.Inputs.Pause] == InputHandler.InputState.Pressed)
-                {
-                    SetState(grounded.collider != null ? PlayerState.Idle : PlayerState.Jump);
-                }
 
-                //change weapon when attack is pressed
-                if (inputs[InputHandler.Inputs.Attack] == InputHandler.InputState.Pressed)
+                //change weapon when start is pressed
+                if (inputs[InputHandler.Inputs.Pause] == InputHandler.InputState.Pressed)
                 {
                     CycleWeapon();
                 }
-                //change color when jump is pressed
-                //if (inputs[InputHandler.Inputs.Jump] == InputHandler.InputState.Pressed)
-                //{
-                //    CycleColor();
-                //}
+                if(animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1)
+                {
+                    SetState(grounded.collider != null ? PlayerState.Idle : PlayerState.Jump);
+                }
+                //check for ground
+                if (grounded.collider == null)
+                {
+                    SetState(PlayerState.Jump);
+                    break;
+                }
 
                 break;
         }
@@ -992,13 +1132,17 @@ public class Player : MonoBehaviour
 
         gameObject.transform.position += new Vector3(hspd, vspd, 0);
         gameObject.GetComponent<SpriteRenderer>().flipX = facingRight ? false : true;
-        //if(facingRight)
-        //{
-        //    iceBlock.transform.localRotation = Quaternion.Euler(0, 0, 0);        }
-        //else
-        //{
-        //    iceBlock.transform.localRotation = Quaternion.Euler(0, 180, 0);
-        //}
+        
+        //get rid of the charge animation after you release the spell button
+        if (inputs[InputHandler.Inputs.Spell] == InputHandler.InputState.UnPressed)
+        {
+
+            if (vfxEntities["spell_charge"].activeSelf)
+            {
+                vfxEntities["spell_charge"].GetComponent<SpellChargeEntity>().DestroyProjectile();
+            }
+
+        }
 
     }
 
@@ -1043,6 +1187,7 @@ public class Player : MonoBehaviour
                 );
                 break;
             case PlayerState.Jump:
+                
                 hurtbox.GetComponent<Hurtbox>().updateHurtbox(
                 hurtboxData.jumpHurtbox.xOffset,
                 hurtboxData.jumpHurtbox.yOffset,
@@ -1106,6 +1251,7 @@ public class Player : MonoBehaviour
                 );
                 break;
             case PlayerState.Menuing:
+                CycleWeapon();
                 hurtbox.GetComponent<Hurtbox>().updateHurtbox(
                 hurtboxData.menuingHurtbox.xOffset,
                 hurtboxData.menuingHurtbox.yOffset,
@@ -1399,7 +1545,7 @@ public class Player : MonoBehaviour
                 frameData = weaponData.weaponData[i].frameData;
                 hitboxData = weaponData.weaponData[i].hitboxData;
                 hurtboxData = weaponData.weaponData[i].hurtboxData;
-                impulseFrameData = weaponData.weaponData[i].impulseFrameData;
+                impulseFrames = weaponData.weaponData[i].impulseFrames;
                 impulseData = weaponData.weaponData[i].impulseData;
                 spellframeData = weaponData.weaponData[i].spellframeData;
                 spellSpawnData = weaponData.weaponData[i].spellSpawnData;
@@ -1407,7 +1553,7 @@ public class Player : MonoBehaviour
         }
         InitHitboxes();
         InitHurtbox();
-        InitProjectiles();
+        InitEntities();
     }
 
     void InitHitboxes()
@@ -1421,6 +1567,7 @@ public class Player : MonoBehaviour
             GameObject hitbox = Instantiate(hitboxReference, gameObject.transform);
             hitbox.GetComponent<Hitbox>().owner = gameObject;
             hitbox.GetComponent<Hitbox>().hitboxActive = false;
+            hitbox.GetComponent<Hitbox>().isProjectile = false;
             hitbox.GetComponent<Hitbox>().damage = 0;
             hitbox.GetComponent<Hitbox>().xoffset = 0;
             hitbox.GetComponent<Hitbox>().yoffset = 0;
@@ -1451,7 +1598,7 @@ public class Player : MonoBehaviour
 
     }
 
-    void InitProjectiles()
+    void InitEntities()
     {
         //set all projectiles in projectile list to inactive
         //for (int i = 0; i < projectileList.Count; i++)
@@ -1460,51 +1607,63 @@ public class Player : MonoBehaviour
         //    projectiles.Add(weaponName + "_attack", Instantiate(projectileList[i]));
         //    //projectileList[i].GetComponent<ProjectileBehavior>().owner = gameObject;
         //}
-        
+
         //initialize projectile dictionary
-        if(projectiles.Count < 1)
+        if (projectiles.Count < 1)
         {
             //TODO: Replace the projectile list indicies with the proper projectiles once they are added
             projectiles.Add("ice_attack", Instantiate(projectileList[0]));
-            projectiles.Add("wind_attack", Instantiate(projectileList[0]));
+            projectiles.Add("wind_attack", Instantiate(projectileList[2]));
             projectiles.Add("lightning_attack", Instantiate(projectileList[0]));
             projectiles.Add("fire_attack", Instantiate(projectileList[0]));
 
             projectiles.Add("ice_util", Instantiate(projectileList[1]));
-            projectiles.Add("wind_util", Instantiate(projectileList[1]));
+            projectiles.Add("wind_util", Instantiate(projectileList[3]));
             projectiles.Add("lightning_util", Instantiate(projectileList[1]));
             projectiles.Add("fire_util", Instantiate(projectileList[1]));
 
 
-            projectiles["ice_attack"].GetComponent<ProjectileBehavior>().owner = gameObject;
+
+            projectiles["ice_attack"].GetComponent<IceAttackProjectile>().owner = gameObject;
             projectiles["ice_attack"].SetActive(false);
 
-            projectiles["wind_attack"].GetComponent<ProjectileBehavior>().owner = gameObject;
+            projectiles["wind_attack"].GetComponent<WindAttackProjectile>().owner = gameObject;
             projectiles["wind_attack"].SetActive(false);
 
-            projectiles["lightning_attack"].GetComponent<ProjectileBehavior>().owner = gameObject;
+            projectiles["lightning_attack"].GetComponent<IceAttackProjectile>().owner = gameObject;
             projectiles["lightning_attack"].SetActive(false);
 
-            projectiles["fire_attack"].GetComponent<ProjectileBehavior>().owner = gameObject;
+            projectiles["fire_attack"].GetComponent<IceAttackProjectile>().owner = gameObject;
             projectiles["fire_attack"].SetActive(false);
 
-            projectiles["ice_util"].GetComponent<ProjectileBehavior>().owner = gameObject;
+            projectiles["ice_util"].GetComponent<IceBlock>().owner = gameObject;
             projectiles["ice_util"].SetActive(false);
 
-            projectiles["wind_util"].GetComponent<ProjectileBehavior>().owner = gameObject;
+            projectiles["wind_util"].GetComponent<WindUtility>().owner = gameObject;
             projectiles["wind_util"].SetActive(false);
 
-            projectiles["lightning_util"].GetComponent<ProjectileBehavior>().owner = gameObject;
+            projectiles["lightning_util"].GetComponent<IceBlock>().owner = gameObject;
             projectiles["lightning_util"].SetActive(false);
 
-            projectiles["fire_util"].GetComponent<ProjectileBehavior>().owner = gameObject;
+            projectiles["fire_util"].GetComponent<IceBlock>().owner = gameObject;
             projectiles["fire_util"].SetActive(false);
 
 
         }
-        
-        
-        //projectiles["ice_attack"].GetComponent<ProjectileBehavior>().InitProjectile(spellSpawnData.spellAttack[0].xOffset, spellSpawnData.spellAttack[0].yOffset);
+
+        //vfx entities
+        if (vfxEntities.Count < 1)
+        {
+            vfxEntities.Add("spell_charge", Instantiate(vfxList[0]));
+
+
+
+            vfxEntities["spell_charge"].GetComponent<SpellChargeEntity>().owner = gameObject;
+            vfxEntities["spell_charge"].SetActive(false);
+
+
+        }
+
     }
 
     void DisableAllHitboxes()
@@ -1535,11 +1694,70 @@ public class Player : MonoBehaviour
             SetState(PlayerState.Hitstun);
         }
 
-        if(health <= 0) 
-            Destroy(gameObject);
+        if(health <= 0)
+        {
+            Die();
+        }
         Debug.Log("Player Health: " + health);
 
 
+    }
+    public void Die()
+    {
+        //disable player
+        gameObject.GetComponent<SpriteRenderer>().enabled = false;
+        //gameObject.GetComponent<InputHandler>().enabled = false;
+        gameObject.GetComponent<BoxCollider2D>().enabled = false;
+        gameObject.GetComponent<Rigidbody2D>().simulated = false;
+        isAlive = false;
+        //this is where we would do death burst animations
+
+
+    }
+
+    public void Respawn()
+    {
+        if (health <= 0)
+        {
+            GameManager.Instance.stockCount--;
+        }
+        if (GameManager.Instance.stockCount <= 0)
+        {
+            Debug.Log("DEAD BOY ALERT DEADYDEAD BOY OVER HERE");
+            //return;
+        }
+        else
+        {
+            gameObject.GetComponent<SpriteRenderer>().enabled = true;
+            //gameObject.GetComponent<InputHandler>().enabled = true;
+            gameObject.GetComponent<BoxCollider2D>().enabled = true;
+            gameObject.GetComponent<Rigidbody2D>().simulated = true;
+            isAlive = true;
+            health = 10;
+
+            GameObject otherplayer;
+            int playerloc = System.Array.IndexOf(GameManager.Instance.players, gameObject);
+            if (playerloc == 1)
+            {
+                otherplayer = GameManager.Instance.players[0];
+                gameObject.transform.position = otherplayer.transform.position;
+
+            }
+            else
+            {
+                otherplayer = GameManager.Instance.players[1];
+                gameObject.transform.position = otherplayer.transform.position;
+
+            }
+        }
+        //reset player
+        //gameObject.SetActive(true);
+
+        //this respawn point should be set based on the map
+        //gameObject.transform.position = Vector3.zero;
+        hspd = 0;
+        vspd = 0;
+        SetState(PlayerState.Idle);
     }
 
     private void CycleWeapon()

@@ -46,9 +46,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   players: []
-  colorPalletes:
+  colorPalettes:
   - {fileID: 2800000, guid: 235cb502145088843ab19b0800c35e98, type: 3}
   - {fileID: 2800000, guid: 2e03d3a02d72af74992abaee952541e1, type: 3}
+  enableStartScreen: 0
+  ShardsCollected: 0
+  stockCount: 0
 --- !u!114 &3279068900433643487
 MonoBehaviour:
   m_ObjectHideFlags: 0
