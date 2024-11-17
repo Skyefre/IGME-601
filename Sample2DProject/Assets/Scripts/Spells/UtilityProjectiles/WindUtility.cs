@@ -75,7 +75,7 @@ public class WindUtility : ProjectileBehavior
             Debug.Log("rayRight hit : " + rayRight.collider.name);
 
             //if it hits the block, move it to the right
-            if (rayRight.collider.name == "ice_util_projectile")
+            if (rayRight.collider.name == "ice_util_projectile" || rayRight.collider.name == "ice_util_projectile(Clone)")
             {
                 if (rayRight.transform.GetComponent<IceBlock>().hspd > 0)
                 {
@@ -98,7 +98,7 @@ public class WindUtility : ProjectileBehavior
             Debug.Log("rayLeft hit : " + rayLeft.collider.name);
 
             //if it hits the block, move it to the left
-            if (rayLeft.collider.name == "ice_util_projectile")
+            if (rayLeft.collider.name == "ice_util_projectile" || rayLeft.collider.name == "ice_util_projectile(Clone)")
             {
                 if (rayLeft.transform.GetComponent<IceBlock>().hspd > 0)
                 {
