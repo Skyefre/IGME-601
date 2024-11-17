@@ -954,6 +954,7 @@ public class Enemy : MonoBehaviour
             GameObject hitbox = Instantiate(hitboxReference, gameObject.transform);
             hitbox.GetComponent<Hitbox>().owner = gameObject;
             hitbox.GetComponent<Hitbox>().hitboxActive = false;
+            hitbox.GetComponent<Hitbox>().isProjectile = false;
             hitbox.GetComponent<Hitbox>().damage = 0;
             hitbox.GetComponent<Hitbox>().xoffset = 0;
             hitbox.GetComponent<Hitbox>().yoffset = 0;

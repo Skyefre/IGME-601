@@ -30,11 +30,17 @@ public class cameraFollow : MonoBehaviour
         {
             // Get the average position of all players and set the camera to that position
             Vector3 averagePos = Vector3.zero;
+            int numAlivePlayers = 0;
             for (int i = 0; i < GameManager.Instance.players.Length; i++)
             {
-                averagePos += GameManager.Instance.players[i].transform.position;
+                if (GameManager.Instance.players[i].GetComponent<Player>().isAlive)
+                {
+                    averagePos += GameManager.Instance.players[i].transform.position;
+                    numAlivePlayers++;
+                }
+                
             }
-            averagePos /= GameManager.Instance.players.Length;
+            averagePos /= numAlivePlayers;
             target = averagePos + offset;
 
             // Calculate the new zoom level based on the distance between players
