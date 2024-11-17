@@ -1711,6 +1711,7 @@ public class Player : MonoBehaviour
         gameObject.GetComponent<BoxCollider2D>().enabled = false;
         gameObject.GetComponent<Rigidbody2D>().simulated = false;
         isAlive = false;
+        transform.position = new Vector3(-2664f, -111.1f);
         //this is where we would do death burst animations
 
 

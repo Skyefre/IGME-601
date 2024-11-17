@@ -939,6 +939,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: -479594010739835997, guid: a9bab66106fe9f64f8e123ff86289a9a, type: 3}
+      propertyPath: damage
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -479594010739835997, guid: a9bab66106fe9f64f8e123ff86289a9a, type: 3}
       propertyPath: yKnockback
       value: 12
       objectReference: {fileID: 0}
@@ -64499,6 +64503,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: -479594010739835997, guid: a9bab66106fe9f64f8e123ff86289a9a, type: 3}
+      propertyPath: damage
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -479594010739835997, guid: a9bab66106fe9f64f8e123ff86289a9a, type: 3}
       propertyPath: yKnockback
       value: 12
       objectReference: {fileID: 0}
@@ -65872,6 +65880,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: -479594010739835997, guid: a9bab66106fe9f64f8e123ff86289a9a, type: 3}
+      propertyPath: damage
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -479594010739835997, guid: a9bab66106fe9f64f8e123ff86289a9a, type: 3}
       propertyPath: yKnockback
       value: 12
       objectReference: {fileID: 0}
@@ -66247,6 +66259,10 @@ PrefabInstance:
     - target: {fileID: -479594010739835997, guid: a9bab66106fe9f64f8e123ff86289a9a, type: 3}
       propertyPath: owner
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: -479594010739835997, guid: a9bab66106fe9f64f8e123ff86289a9a, type: 3}
+      propertyPath: damage
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: -479594010739835997, guid: a9bab66106fe9f64f8e123ff86289a9a, type: 3}
       propertyPath: yKnockback

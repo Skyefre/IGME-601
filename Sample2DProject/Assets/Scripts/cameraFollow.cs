@@ -40,6 +40,10 @@ public class cameraFollow : MonoBehaviour
                 }
                 
             }
+            if(numAlivePlayers == 0)
+            {
+                return;
+            }
             averagePos /= numAlivePlayers;
             target = averagePos + offset;
 
@@ -88,7 +92,11 @@ public class cameraFollow : MonoBehaviour
         var bounds = new Bounds(GameManager.Instance.players[0].transform.position, Vector3.zero);
         for (int i = 0; i < GameManager.Instance.players.Length; i++)
         {
-            bounds.Encapsulate(GameManager.Instance.players[i].transform.position);
+            if (GameManager.Instance.players[i].GetComponent<Player>().isAlive)
+            {
+                bounds.Encapsulate(GameManager.Instance.players[i].transform.position);
+            }
+                
         }
         //Debug.Log(bounds.size.magnitude);
         return bounds;
