@@ -36,6 +36,7 @@ public class WindUtility : ProjectileBehavior
     public LayerMask groundLayer; // Layer mask to specify what is considered ground
     private RaycastHit2D rayRight;
     private RaycastHit2D rayLeft;
+    public int iceBlkHspd = 2;
 
     protected override void Start()
     {
@@ -57,32 +58,59 @@ public class WindUtility : ProjectileBehavior
         owner.GetComponent<Player>().gravity = newGravity;
 
 
-        //raycast bs to detect when the projectile hits the cube
-        rayRight = Physics2D.Raycast(transform.position, transform.TransformDirection(Vector2.right), rayLength);
-        Debug.DrawRay(transform.position, transform.TransformDirection(Vector2.right) * rayLength, Color.cyan);
+        //raycast for right side of projectile
+        Vector3 rayRightOrigin = new Vector2(transform.position.x + rayOffset.x, transform.position.y);
+        rayRight = Physics2D.Raycast(rayRightOrigin, transform.TransformDirection(Vector2.right), rayLength);
+        Debug.DrawRay(rayRightOrigin, transform.TransformDirection(Vector2.right) * rayLength, Color.cyan);
 
-        rayLeft = Physics2D.Raycast(transform.position, transform.TransformDirection(Vector2.left), -rayLength);
-        Debug.DrawRay(transform.position, transform.TransformDirection(Vector2.left) * -rayLength, Color.cyan);
+        //raycast for left side of projectile
+        Vector3 rayLeftOrigin = new Vector2(transform.position.x - rayOffset.x, transform.position.y);
+        rayLeft = Physics2D.Raycast(rayLeftOrigin, transform.TransformDirection(Vector2.left), -rayLength);
+        Debug.DrawRay(rayLeftOrigin, transform.TransformDirection(Vector2.left) * -rayLength, Color.cyan);
 
+        //raycast for the right
         if (rayRight)
         {
+            //get name of whatever it hits
             Debug.Log("rayRight hit : " + rayRight.collider.name);
+
+            //if it hits the block, move it to the right
             if (rayRight.collider.name == "ice_util_projectile")
             {
-                rayRight.transform.GetComponent<IceBlock>().LerpHspd(-5, -6);
-                Debug.Log("BLOCK MOVED");
-                DestroyProjectile();
+                if (rayRight.transform.GetComponent<IceBlock>().hspd > 0)
+                {
+                    Debug.Log("Block already moving");
+                }
+
+                else
+                {
+                    rayRight.transform.GetComponent<IceBlock>().hspd = iceBlkHspd;
+                    Debug.Log("BLOCK MOVED");
+                    DestroyProjectile();
+                }
             }
         }
 
+        //raycast for the left
         if (rayLeft)
         {
+            //get the name of whatever it hits
             Debug.Log("rayLeft hit : " + rayLeft.collider.name);
+
+            //if it hits the block, move it to the left
             if (rayLeft.collider.name == "ice_util_projectile")
             {
-                rayLeft.transform.GetComponent<IceBlock>().LerpHspd(5, 6);
-                Debug.Log("BLOCK MOVED");
-                DestroyProjectile();
+                if (rayLeft.transform.GetComponent<IceBlock>().hspd > 0)
+                {
+                    Debug.Log("Block already moving");
+                }
+
+                else
+                {
+                    rayLeft.transform.GetComponent<IceBlock>().hspd = -iceBlkHspd;
+                    Debug.Log("BLOCK MOVED");
+                    DestroyProjectile();
+                }
             }
         }
 

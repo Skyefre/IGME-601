@@ -115,7 +115,11 @@ MonoBehaviour:
   hitstun: 0
   disableAfterAnimation: 0
   projectileActive: 0
-  windCollider: {fileID: 1274393751252234605}
+  rayLength: 0.1
+  rayOffset: {x: 8, y: 8}
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!61 &1274393751252234605
 BoxCollider2D:
   m_ObjectHideFlags: 0
