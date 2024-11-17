@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class GameManager : MonoBehaviour
 {
@@ -31,6 +32,7 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log("Shards initiated");
         ShardsCollected = 0;
+        stockCount = 5;
     }
 
 
@@ -40,6 +42,7 @@ public class GameManager : MonoBehaviour
         if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name != "Scene_MainMenu")
         {
             //CheckAlivePlayers();
+            gameObject.GetComponent<PlayerInputManager>().DisableJoining();
         }
         else
         {
@@ -48,6 +51,7 @@ public class GameManager : MonoBehaviour
             {
                 LoadScene("TestScene");
             }
+            gameObject.GetComponent<PlayerInputManager>().EnableJoining();
         }
 
         if (Input.GetKey(KeyCode.R))

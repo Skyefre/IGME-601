@@ -83,7 +83,7 @@ public class Player : MonoBehaviour
     private List<GameObject> hitboxes = new List<GameObject>();
     private GameObject hurtbox;
     public GameObject iceBlock;
-
+    public bool isAlive = true;
 
     private int tempHspd = 0;
     public int hitstopVal = 0;
@@ -130,17 +130,27 @@ public class Player : MonoBehaviour
 
     void FixedUpdate()
     {
+        //update this frames inputs
+        inputs = inputHandler.keyBindings;
         if (hitstopVal > 0)
         {
             hitstopVal--;
+            return;
+        }
+        else if (!isAlive)
+        {
+            //check for menu input
+            if (inputs[InputHandler.Inputs.Pause] == InputHandler.InputState.Pressed && GameManager.Instance.stockCount >0)
+            {
+                Respawn();
+            }
             return;
         }
         else
         {
             animator.enabled = true;
         }
-        //update this frames inputs
-        inputs = inputHandler.keyBindings;
+        
 
         //update animator info things to get current frame and frame count
         animStateInfo = animator.GetCurrentAnimatorStateInfo(0);
@@ -1635,11 +1645,56 @@ public class Player : MonoBehaviour
             SetState(PlayerState.Hitstun);
         }
 
-        if(health <= 0) 
-            Destroy(gameObject);
+        if(health <= 0)
+        {
+            Die();
+        }
         Debug.Log("Player Health: " + health);
 
 
+    }
+    public void Die()
+    {
+        //disable player
+        gameObject.GetComponent<SpriteRenderer>().material.SetFloat("_Alpha", .3f);
+        //gameObject.GetComponent<InputHandler>().enabled = false;
+        gameObject.GetComponent<BoxCollider2D>().enabled = false;
+        gameObject.GetComponent<Rigidbody2D>().simulated = false;
+        isAlive = false;
+        //this is where we would do death burst animations
+
+
+    }
+
+    public void Respawn()
+    {
+        if (health <= 0)
+        {
+            GameManager.Instance.stockCount--;
+        }
+        if (GameManager.Instance.stockCount <= 0)
+        {
+            Debug.Log("DEAD BOY ALERT DEADYDEAD BOY OVER HERE");
+            //return;
+        }
+        else
+        {
+            gameObject.GetComponent<SpriteRenderer>().material.SetFloat("_Alpha", 1f);
+            //gameObject.GetComponent<InputHandler>().enabled = true;
+            gameObject.GetComponent<BoxCollider2D>().enabled = true;
+            gameObject.GetComponent<Rigidbody2D>().simulated = true;
+            isAlive = true;
+            health = 10;
+
+        }
+        //reset player
+        //gameObject.SetActive(true);
+
+        //this respawn point should be set based on the map
+        //gameObject.transform.position = Vector3.zero;
+        hspd = 0;
+        vspd = 0;
+        SetState(PlayerState.Idle);
     }
 
     private void CycleWeapon()
