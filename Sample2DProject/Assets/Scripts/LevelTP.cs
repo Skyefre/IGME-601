@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class LevelTP : MonoBehaviour
 {
@@ -51,7 +53,39 @@ public class LevelTP : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        CheckGameStart();
+        if (SceneManager.GetActiveScene().name == "TestScene")
+        {
+            CheckLevelComplete();
+        }
+        else
+        {
+            CheckGameStart();
+
+        }
+    }
+
+    private void CheckLevelComplete()
+    {
+        if (GameManager.Instance.players.Length > 1)
+        {
+            bool allPlayersReady = true;
+            foreach (GameObject player in GameManager.Instance.players)
+            {
+                if (!readyPlayers.Contains(player))
+                {
+                    allPlayersReady = false;
+                    break;
+                }
+            }
+
+            if (allPlayersReady)
+            {
+                if(GameManager.Instance.ShardsCollected >= 10)
+                {
+                    SceneManager.LoadScene("Win");
+                }
+            }
+        }
     }
 
     public void OnTriggerEnter2D(Collider2D collision)
