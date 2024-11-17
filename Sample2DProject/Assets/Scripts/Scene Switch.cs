@@ -20,5 +20,9 @@ public class SceneSwitch : MonoBehaviour
             player.gameObject.GetComponent<Player>().transform.position = new Vector3(-2664f, -111.1f);
             player.gameObject.GetComponent<Player>().Respawn();
         }
+        foreach (GameObject player in GameManager.Instance.players)
+        {
+            player.gameObject.GetComponent<Player>().transform.position = new Vector3(-2664f, -111.1f);
+        }
     }
 }
