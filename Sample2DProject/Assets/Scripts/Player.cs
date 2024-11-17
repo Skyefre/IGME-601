@@ -1081,6 +1081,7 @@ public class Player : MonoBehaviour
                 if (inputs[InputHandler.Inputs.Pause] == InputHandler.InputState.Pressed)
                 {
                     CycleWeapon();
+                    animator.SetTrigger("restartAnim");
                 }
                 if(animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1)
                 {

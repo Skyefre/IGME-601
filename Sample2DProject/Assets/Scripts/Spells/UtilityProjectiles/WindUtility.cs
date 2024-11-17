@@ -22,8 +22,8 @@ public class WindUtility : ProjectileBehavior
     //public int yKnockback;
     //public int hitstun;
     //public bool projectileActive = true;
-    private float newGravity;
-    private float baseGravity;
+    //private float newGravity;
+    //private float baseGravity;
     //public BoxCollider2D windCollider;
 
     //protected float timer = 0.0f;
@@ -41,8 +41,8 @@ public class WindUtility : ProjectileBehavior
     protected override void Start()
     {
         //save base jump force, change current jump force to new.
-        baseGravity = owner.GetComponent<Player>().gravity;
-        newGravity = 0.75f;
+        //baseGravity = owner.GetComponent<Player>().gravity;
+        //newGravity = 0.75f;
         boxCollider = gameObject.GetComponent<BoxCollider2D>();
     }
 
