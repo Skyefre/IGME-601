@@ -203,10 +203,10 @@ public class Player : MonoBehaviour
             //{
             //    spellCharge-=2;
             //}
-            if (vfxEntities["spell_charge"].activeSelf)
-            {
-                vfxEntities["spell_charge"].GetComponent<SpellChargeEntity>().DestroyProjectile();
-            }
+            //if (vfxEntities["spell_charge"].activeSelf)
+            //{
+            //    vfxEntities["spell_charge"].GetComponent<SpellChargeEntity>().DestroyProjectile();
+            //}
 
         }
 
@@ -243,7 +243,8 @@ public class Player : MonoBehaviour
                 //check for spell input
                 if (inputs[InputHandler.Inputs.Spell] == InputHandler.InputState.Released)
                 {
-                    if(/*spellCharge >= maxSpellCharge*/vfxEntities["spell_charge"].GetComponent<SpellChargeEntity>().animator)
+                    Debug.Log(animator.GetCurrentAnimatorStateInfo(0).shortNameHash);
+                    if(vfxEntities["spell_charge"].GetComponent<SpellChargeEntity>().animator.GetCurrentAnimatorStateInfo(0).IsName("spell_charged"))
                     {
                         SetState(PlayerState.SpellUtil);
                     }
@@ -317,7 +318,7 @@ public class Player : MonoBehaviour
                 //check for spell input
                 if (inputs[InputHandler.Inputs.Spell] == InputHandler.InputState.Released)
                 {
-                    if (/*spellCharge >= maxSpellCharge*/vfxEntities["spell_charge"].GetComponent<SpellChargeEntity>().animator.GetBool("charged"))
+                    if (/*spellCharge >= maxSpellCharge*/vfxEntities["spell_charge"].GetComponent<SpellChargeEntity>().animator.GetCurrentAnimatorStateInfo(0).IsName("spell_charged"))
                     {
                         SetState(PlayerState.SpellUtil);
                     }
@@ -480,7 +481,7 @@ public class Player : MonoBehaviour
                 //check for spell input
                 if (inputs[InputHandler.Inputs.Spell] == InputHandler.InputState.Released)
                 {
-                    if (/*spellCharge >= maxSpellCharge*/vfxEntities["spell_charge"].GetComponent<SpellChargeEntity>().animator.GetBool("charged"))
+                    if (/*spellCharge >= maxSpellCharge*/vfxEntities["spell_charge"].GetComponent<SpellChargeEntity>().animator.GetCurrentAnimatorStateInfo(0).IsName("spell_charged"))
                     {
                         SetState(PlayerState.SpellUtil);
                     }
@@ -1121,6 +1122,17 @@ public class Player : MonoBehaviour
         //{
         //    iceBlock.transform.localRotation = Quaternion.Euler(0, 180, 0);
         //}
+
+        //get rid of the charge animation after you release the spell button
+        if (inputs[InputHandler.Inputs.Spell] == InputHandler.InputState.UnPressed)
+        {
+            
+            if (vfxEntities["spell_charge"].activeSelf)
+            {
+                vfxEntities["spell_charge"].GetComponent<SpellChargeEntity>().DestroyProjectile();
+            }
+
+        }
 
     }
 

@@ -17,7 +17,7 @@ public class SpellChargeEntity : ProjectileBehavior
     {
         if(owner != null)
         {
-            gameObject.GetComponent<SpriteRenderer>().material.SetTexture("_PaletteTex", GameManager.Instance.players[0] == owner? GameManager.Instance.colorPalettes[0]: GameManager.Instance.colorPalettes[0]);
+            gameObject.GetComponent<SpriteRenderer>().material.SetTexture("_PaletteTex", GameManager.Instance.players[0] == owner? GameManager.Instance.colorPalettes[0]: GameManager.Instance.colorPalettes[1]);
         }
     }
 
