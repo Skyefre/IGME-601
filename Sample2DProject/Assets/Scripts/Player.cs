@@ -1123,16 +1123,16 @@ public class Player : MonoBehaviour
         //    iceBlock.transform.localRotation = Quaternion.Euler(0, 180, 0);
         //}
 
-        /*//get rid of the charge animation after you release the spell button
+        //get rid of the charge animation after you release the spell button
         if (inputs[InputHandler.Inputs.Spell] == InputHandler.InputState.UnPressed)
         {
-            
+
             if (vfxEntities["spell_charge"].activeSelf)
             {
                 vfxEntities["spell_charge"].GetComponent<SpellChargeEntity>().DestroyProjectile();
             }
 
-        }*/
+        }
 
     }
 
@@ -1597,9 +1597,9 @@ public class Player : MonoBehaviour
         //    projectiles.Add(weaponName + "_attack", Instantiate(projectileList[i]));
         //    //projectileList[i].GetComponent<ProjectileBehavior>().owner = gameObject;
         //}
-        
+
         //initialize projectile dictionary
-        if(projectiles.Count < 1)
+        if (projectiles.Count < 1)
         {
             //TODO: Replace the projectile list indicies with the proper projectiles once they are added
             projectiles.Add("ice_attack", Instantiate(projectileList[0]));
