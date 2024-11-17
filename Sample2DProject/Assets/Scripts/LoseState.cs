@@ -21,8 +21,14 @@ public class LoseState : MonoBehaviour
 
         if (stocks <= 0)
         {
-            Debug.Log("Player's defeated!");
-            GameManager.Instance.LoadScene("Lose");
+            foreach (GameObject player in GameManager.Instance.players)
+            {
+                if (player.GetComponent<BoxCollider2D>().enabled == false)
+                {
+                    Debug.Log("Player's defeated!");
+                    GameManager.Instance.LoadScene("Lose");
+                }
+            }
         }
     }
 }
