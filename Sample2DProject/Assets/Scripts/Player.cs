@@ -1115,14 +1115,7 @@ public class Player : MonoBehaviour
 
         gameObject.transform.position += new Vector3(hspd, vspd, 0);
         gameObject.GetComponent<SpriteRenderer>().flipX = facingRight ? false : true;
-        //if(facingRight)
-        //{
-        //    iceBlock.transform.localRotation = Quaternion.Euler(0, 0, 0);        }
-        //else
-        //{
-        //    iceBlock.transform.localRotation = Quaternion.Euler(0, 180, 0);
-        //}
-
+        
         //get rid of the charge animation after you release the spell button
         if (inputs[InputHandler.Inputs.Spell] == InputHandler.InputState.UnPressed)
         {

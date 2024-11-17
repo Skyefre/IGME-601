@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class SpellChargeEntity : ProjectileBehavior
 {
-    public float chargeTime = 1.0f;
-    private float chargeTimer = 0.0f;
     public Animator animator;
 
     public void Awake()

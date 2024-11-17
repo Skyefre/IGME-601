@@ -68,6 +68,11 @@ public class GameManager : MonoBehaviour
             {
                 DontDestroyOnLoad(projectile.Value);
             }
+
+            foreach (KeyValuePair<string, GameObject> vfxEntity in players[i].GetComponent<Player>().vfxEntities)
+            {
+                DontDestroyOnLoad(vfxEntity.Value);
+            }
         }
         UnityEngine.SceneManagement.SceneManager.LoadScene(sceneName);
         if (sceneName == "TestScene")
