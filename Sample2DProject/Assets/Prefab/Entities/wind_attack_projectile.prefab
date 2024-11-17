@@ -99,9 +99,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a1cd64a06a9f7548a22c0cdcac0585a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hspd: 4
+  hspd: 6
   vspd: 0
-  lifeTime: 1
+  lifeTime: 0.5
   owner: {fileID: 0}
   facingRight: 1
   hitbox: {fileID: 8197869277279490300}

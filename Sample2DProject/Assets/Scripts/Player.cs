@@ -993,7 +993,7 @@ public class Player : MonoBehaviour
                                 }
                                 break;
                             case "wind":
-                                if (projectiles["wind_util"].activeSelf == false)
+                                if (!projectiles["wind_util"].activeSelf && !projectiles["wind_util"].GetComponent<WindUtility>().projectileActive)
                                 {
                                     projectiles["wind_util"].SetActive(true);
                                     projectiles["wind_util"].GetComponent<WindUtility>().InitProjectile(spellSpawnData.spellUtil[0].xOffset, spellSpawnData.spellUtil[0].yOffset);
@@ -1002,6 +1002,27 @@ public class Player : MonoBehaviour
                             case "lightning":
                                 break;
                             case "fire":
+                                break;
+                            default:
+                                break;
+                        }
+                    }
+                    else
+                    {
+                        switch (weaponName)
+                        {
+                            case "ice":
+                                //projectiles["ice_attack"].GetComponent<IceAttackProjectile>().projectileActive = false;
+                                //the iceblock currently doesn't need to deactivate hitbox spawning
+                                break;
+                            case "wind":
+                                projectiles["wind_util"].GetComponent<WindUtility>().projectileActive = false;
+                                break;
+                            case "lightning":
+                                //projectiles["lightning_attack"].GetComponent<LightningAttackProjectile>().projectileActive = false;
+                                break;
+                            case "fire":
+                                //projectiles["fire_attack"].GetComponent<FireAttackProjectile>().projectileActive = false;
                                 break;
                             default:
                                 break;
@@ -1056,21 +1077,22 @@ public class Player : MonoBehaviour
             case PlayerState.Menuing:
                 hspd = 0;
                 vspd = 0;
-                if (inputs[InputHandler.Inputs.Pause] == InputHandler.InputState.Pressed)
-                {
-                    SetState(grounded.collider != null ? PlayerState.Idle : PlayerState.Jump);
-                }
 
-                //change weapon when attack is pressed
-                if (inputs[InputHandler.Inputs.Attack] == InputHandler.InputState.Pressed)
+                //change weapon when start is pressed
+                if (inputs[InputHandler.Inputs.Pause] == InputHandler.InputState.Pressed)
                 {
                     CycleWeapon();
                 }
-                //change color when jump is pressed
-                //if (inputs[InputHandler.Inputs.Jump] == InputHandler.InputState.Pressed)
-                //{
-                //    CycleColor();
-                //}
+                if(animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1)
+                {
+                    SetState(grounded.collider != null ? PlayerState.Idle : PlayerState.Jump);
+                }
+                //check for ground
+                if (grounded.collider == null)
+                {
+                    SetState(PlayerState.Jump);
+                    break;
+                }
 
                 break;
         }
@@ -1229,6 +1251,7 @@ public class Player : MonoBehaviour
                 );
                 break;
             case PlayerState.Menuing:
+                CycleWeapon();
                 hurtbox.GetComponent<Hurtbox>().updateHurtbox(
                 hurtboxData.menuingHurtbox.xOffset,
                 hurtboxData.menuingHurtbox.yOffset,
