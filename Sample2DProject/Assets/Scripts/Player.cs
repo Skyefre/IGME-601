@@ -1123,7 +1123,7 @@ public class Player : MonoBehaviour
         //    iceBlock.transform.localRotation = Quaternion.Euler(0, 180, 0);
         //}
 
-        //get rid of the charge animation after you release the spell button
+        /*//get rid of the charge animation after you release the spell button
         if (inputs[InputHandler.Inputs.Spell] == InputHandler.InputState.UnPressed)
         {
             
@@ -1132,7 +1132,7 @@ public class Player : MonoBehaviour
                 vfxEntities["spell_charge"].GetComponent<SpellChargeEntity>().DestroyProjectile();
             }
 
-        }
+        }*/
 
     }
 
@@ -1695,7 +1695,7 @@ public class Player : MonoBehaviour
     public void Die()
     {
         //disable player
-        gameObject.GetComponent<SpriteRenderer>().material.SetFloat("_Alpha", .3f);
+        gameObject.GetComponent<SpriteRenderer>().enabled = false;
         //gameObject.GetComponent<InputHandler>().enabled = false;
         gameObject.GetComponent<BoxCollider2D>().enabled = false;
         gameObject.GetComponent<Rigidbody2D>().simulated = false;
@@ -1718,13 +1718,27 @@ public class Player : MonoBehaviour
         }
         else
         {
-            gameObject.GetComponent<SpriteRenderer>().material.SetFloat("_Alpha", 1f);
+            gameObject.GetComponent<SpriteRenderer>().enabled = true;
             //gameObject.GetComponent<InputHandler>().enabled = true;
             gameObject.GetComponent<BoxCollider2D>().enabled = true;
             gameObject.GetComponent<Rigidbody2D>().simulated = true;
             isAlive = true;
             health = 10;
 
+            GameObject otherplayer;
+            int playerloc = System.Array.IndexOf(GameManager.Instance.players, gameObject);
+            if (playerloc == 1)
+            {
+                otherplayer = GameManager.Instance.players[0];
+                gameObject.transform.position = otherplayer.transform.position;
+
+            }
+            else
+            {
+                otherplayer = GameManager.Instance.players[1];
+                gameObject.transform.position = otherplayer.transform.position;
+
+            }
         }
         //reset player
         //gameObject.SetActive(true);
