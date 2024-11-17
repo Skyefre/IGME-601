@@ -100,6 +100,10 @@ public class Player : MonoBehaviour
     public int spellCharge = 0;
     public int maxSpellCharge = 100;
 
+    //VFX stuff
+    public List<GameObject> vfxList = new List<GameObject>();
+    public Dictionary<string, GameObject> vfxEntities = new Dictionary<string, GameObject>();
+
     public BoxCollider2D PlayerCollider
     {
         get => boxCollider;
@@ -180,20 +184,30 @@ public class Player : MonoBehaviour
         //get spell button for the charge system
         if (inputs[InputHandler.Inputs.Spell] == InputHandler.InputState.Held)
         {
-            spellCharge++;
-            if(spellCharge >= maxSpellCharge)
+            //spellCharge++;
+            //if(spellCharge >= maxSpellCharge)
+            //{
+            //    spellCharge = maxSpellCharge + 4;
+            //    //make the character flash white
+            //}
+            if (!vfxEntities["spell_charge"].activeSelf)
             {
-                spellCharge = maxSpellCharge + 4;
-                //make the character flash white
-                //gameObject.GetComponent<SpriteRenderer>().material.SetFloat("_Flash", 1);
+                vfxEntities["spell_charge"].SetActive(true);
+                vfxEntities["spell_charge"].GetComponent<SpellChargeEntity>().InitProjectile((int)transform.position.x, (int)(transform.position.y + boxCollider.size.y / 2));
             }
+            
         }
         else
         {
-            if(spellCharge > 0)
+            //if(spellCharge > 0)
+            //{
+            //    spellCharge-=2;
+            //}
+            if (vfxEntities["spell_charge"].activeSelf)
             {
-                spellCharge-=2;
+                vfxEntities["spell_charge"].GetComponent<SpellChargeEntity>().DestroyProjectile();
             }
+
         }
 
         switch (state)
@@ -229,7 +243,7 @@ public class Player : MonoBehaviour
                 //check for spell input
                 if (inputs[InputHandler.Inputs.Spell] == InputHandler.InputState.Released)
                 {
-                    if(spellCharge >= maxSpellCharge)
+                    if(/*spellCharge >= maxSpellCharge*/vfxEntities["spell_charge"].GetComponent<SpellChargeEntity>().animator)
                     {
                         SetState(PlayerState.SpellUtil);
                     }
@@ -303,7 +317,7 @@ public class Player : MonoBehaviour
                 //check for spell input
                 if (inputs[InputHandler.Inputs.Spell] == InputHandler.InputState.Released)
                 {
-                    if (spellCharge >= maxSpellCharge)
+                    if (/*spellCharge >= maxSpellCharge*/vfxEntities["spell_charge"].GetComponent<SpellChargeEntity>().animator.GetBool("charged"))
                     {
                         SetState(PlayerState.SpellUtil);
                     }
@@ -466,7 +480,7 @@ public class Player : MonoBehaviour
                 //check for spell input
                 if (inputs[InputHandler.Inputs.Spell] == InputHandler.InputState.Released)
                 {
-                    if (spellCharge >= maxSpellCharge)
+                    if (/*spellCharge >= maxSpellCharge*/vfxEntities["spell_charge"].GetComponent<SpellChargeEntity>().animator.GetBool("charged"))
                     {
                         SetState(PlayerState.SpellUtil);
                     }
@@ -1517,7 +1531,7 @@ public class Player : MonoBehaviour
         }
         InitHitboxes();
         InitHurtbox();
-        InitProjectiles();
+        InitEntities();
     }
 
     void InitHitboxes()
@@ -1562,7 +1576,7 @@ public class Player : MonoBehaviour
 
     }
 
-    void InitProjectiles()
+    void InitEntities()
     {
         //set all projectiles in projectile list to inactive
         //for (int i = 0; i < projectileList.Count; i++)
@@ -1585,6 +1599,7 @@ public class Player : MonoBehaviour
             projectiles.Add("wind_util", Instantiate(projectileList[3]));
             projectiles.Add("lightning_util", Instantiate(projectileList[1]));
             projectiles.Add("fire_util", Instantiate(projectileList[1]));
+
 
 
             projectiles["ice_attack"].GetComponent<IceAttackProjectile>().owner = gameObject;
@@ -1613,9 +1628,20 @@ public class Player : MonoBehaviour
 
 
         }
-        
-        
-        //projectiles["ice_attack"].GetComponent<ProjectileBehavior>().InitProjectile(spellSpawnData.spellAttack[0].xOffset, spellSpawnData.spellAttack[0].yOffset);
+
+        //vfx entities
+        if (vfxEntities.Count < 1)
+        {
+            vfxEntities.Add("spell_charge", Instantiate(vfxList[0]));
+
+
+
+            vfxEntities["spell_charge"].GetComponent<SpellChargeEntity>().owner = gameObject;
+            vfxEntities["spell_charge"].SetActive(false);
+
+
+        }
+
     }
 
     void DisableAllHitboxes()
