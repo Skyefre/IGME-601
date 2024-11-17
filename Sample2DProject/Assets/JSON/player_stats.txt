@@ -176,8 +176,8 @@
 				],
 				"spellUtil": [
 					{
-						"xOffset": 64,
-						"yOffset": 45
+						"xOffset": 70,
+						"yOffset": 32
 					}
 				]
 			}

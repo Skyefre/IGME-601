@@ -13,7 +13,7 @@ public class Hurtbox : MonoBehaviour
 
     BoxCollider2D hurtCollider;
     // Start is called before the first frame update
-    void Start()
+    protected virtual void Start()
     {
         hurtCollider = gameObject.GetComponent<BoxCollider2D>();
     }
@@ -24,7 +24,7 @@ public class Hurtbox : MonoBehaviour
 
     }
 
-    public void updateHurtbox( int xoffset, int yoffset, int width, int height)
+    public virtual void updateHurtbox( int xoffset, int yoffset, int width, int height)
     {
         this.xoffset = xoffset;
         this.yoffset = yoffset;
@@ -55,7 +55,7 @@ public class Hurtbox : MonoBehaviour
         gameObject.transform.localScale = new Vector3(width * 2, height * 2, 1);
     }
 
-    public void OnTriggerEnter2D(Collider2D collision)
+    public virtual void OnTriggerEnter2D(Collider2D collision)
     {
         Hitbox hitHitbox = collision.gameObject.GetComponent<Hitbox>();
         if(hitHitbox == null)
