@@ -2551,9 +2551,6 @@ PrefabInstance:
     m_RemovedGameObjects:
     - {fileID: 6889115153611365889, guid: 8b0288aec8f292f4fa820ffcec6efc06, type: 3}
     m_AddedGameObjects: []
-<<<<<<< Updated upstream
-    m_AddedComponents: []
-=======
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 431966647749826700, guid: 8b0288aec8f292f4fa820ffcec6efc06, type: 3}
       insertIndex: -1
@@ -2561,7 +2558,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 431966647749826700, guid: 8b0288aec8f292f4fa820ffcec6efc06, type: 3}
       insertIndex: -1
       addedObject: {fileID: 0}
->>>>>>> Stashed changes
   m_SourcePrefab: {fileID: 100100000, guid: 8b0288aec8f292f4fa820ffcec6efc06, type: 3}
 --- !u!224 &69818637 stripped
 RectTransform:
