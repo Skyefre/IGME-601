@@ -13,7 +13,8 @@ public class SceneSwitch : MonoBehaviour
 
     private void Reset()
     {
-        GameManager.Instance.stockCount = 7;
+        GameManager.Instance.stockCount = 5;
+        GameManager.Instance.ShardsCollected = 0;
         foreach (GameObject player in GameManager.Instance.players)
         {
             player.gameObject.GetComponent<Player>().isAlive = true;

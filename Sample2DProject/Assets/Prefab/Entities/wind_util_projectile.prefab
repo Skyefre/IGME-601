@@ -201,6 +201,18 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 938566767569704894}
     - target: {fileID: -479594010739835997, guid: a9bab66106fe9f64f8e123ff86289a9a, type: 3}
+      propertyPath: damage
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -479594010739835997, guid: a9bab66106fe9f64f8e123ff86289a9a, type: 3}
+      propertyPath: hitstun
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: -479594010739835997, guid: a9bab66106fe9f64f8e123ff86289a9a, type: 3}
+      propertyPath: xKnockback
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: -479594010739835997, guid: a9bab66106fe9f64f8e123ff86289a9a, type: 3}
       propertyPath: yKnockback
       value: 10
       objectReference: {fileID: 0}
