@@ -24,7 +24,7 @@ public class Shard : MonoBehaviour, ICollectible
     {
         GameManager.Instance.ShardsCollected++;
         shardsCount++;
-        shardCountText.text = shardsCount.ToString() + "/10";
+        shardCountText.text = shardsCount.ToString() + "/13";
         Debug.Log("You collected an item!");
         Destroy(gameObject);
         OnShardCollected?.Invoke();

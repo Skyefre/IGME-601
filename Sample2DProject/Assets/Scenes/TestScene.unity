@@ -64216,114 +64216,6 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
---- !u!1001 &1292755591
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 2493432621324621647, guid: 9f3f8a3cde28c2b4f9aa0a7d07263b7c, type: 3}
-      propertyPath: m_SortingLayer
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 2493432621324621647, guid: 9f3f8a3cde28c2b4f9aa0a7d07263b7c, type: 3}
-      propertyPath: m_SortingLayerID
-      value: 1188232955
-      objectReference: {fileID: 0}
-    - target: {fileID: 3968215311664057435, guid: 9f3f8a3cde28c2b4f9aa0a7d07263b7c, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -1933
-      objectReference: {fileID: 0}
-    - target: {fileID: 3968215311664057435, guid: 9f3f8a3cde28c2b4f9aa0a7d07263b7c, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -67
-      objectReference: {fileID: 0}
-    - target: {fileID: 3968215311664057435, guid: 9f3f8a3cde28c2b4f9aa0a7d07263b7c, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3968215311664057435, guid: 9f3f8a3cde28c2b4f9aa0a7d07263b7c, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3968215311664057435, guid: 9f3f8a3cde28c2b4f9aa0a7d07263b7c, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3968215311664057435, guid: 9f3f8a3cde28c2b4f9aa0a7d07263b7c, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3968215311664057435, guid: 9f3f8a3cde28c2b4f9aa0a7d07263b7c, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3968215311664057435, guid: 9f3f8a3cde28c2b4f9aa0a7d07263b7c, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3968215311664057435, guid: 9f3f8a3cde28c2b4f9aa0a7d07263b7c, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3968215311664057435, guid: 9f3f8a3cde28c2b4f9aa0a7d07263b7c, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4045245893927962504, guid: 9f3f8a3cde28c2b4f9aa0a7d07263b7c, type: 3}
-      propertyPath: m_Name
-      value: Collectible (12)
-      objectReference: {fileID: 0}
-    - target: {fileID: 4045245893927962504, guid: 9f3f8a3cde28c2b4f9aa0a7d07263b7c, type: 3}
-      propertyPath: m_Layer
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7466942250898380574, guid: 9f3f8a3cde28c2b4f9aa0a7d07263b7c, type: 3}
-      propertyPath: m_Layer
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 4045245893927962504, guid: 9f3f8a3cde28c2b4f9aa0a7d07263b7c, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1292755593}
-  m_SourcePrefab: {fileID: 100100000, guid: 9f3f8a3cde28c2b4f9aa0a7d07263b7c, type: 3}
---- !u!1 &1292755592 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4045245893927962504, guid: 9f3f8a3cde28c2b4f9aa0a7d07263b7c, type: 3}
-  m_PrefabInstance: {fileID: 1292755591}
-  m_PrefabAsset: {fileID: 0}
---- !u!50 &1292755593
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1292755592}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 0
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
 --- !u!1001 &1306487519
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -65167,7 +65059,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 0/10
+  m_text: 0/13
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: e73a58f6e2794ae7b1b7e50b7fb811b0, type: 2}
@@ -67038,7 +66930,6 @@ SceneRoots:
   - {fileID: 43980128}
   - {fileID: 1221046477}
   - {fileID: 1953701433}
-  - {fileID: 1292755591}
   - {fileID: 1089944488}
   - {fileID: 371243953}
   - {fileID: 791777443}
