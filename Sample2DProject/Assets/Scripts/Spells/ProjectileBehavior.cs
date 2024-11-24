@@ -60,7 +60,7 @@ public class ProjectileBehavior : MonoBehaviour
         timer = 0;
         if(hitbox != null)
         {
-            hitbox.GetComponent<Hitbox>().hitboxActive = false;
+            hitbox.GetComponent<Hitbox>().ignoreHurtboxes.Clear();
         }
         gameObject.SetActive(false);
     }
@@ -80,7 +80,7 @@ public class ProjectileBehavior : MonoBehaviour
         {
             hitbox.GetComponent<Hitbox>().owner = gameObject;
             hitbox.GetComponent<Hitbox>().isProjectile = true;
-            hitbox.GetComponent<Hitbox>().hitboxActive = true;
+            hitbox.GetComponent<Hitbox>().ignoreHurtboxes.Clear();
             hitbox.GetComponent<Hitbox>().updateHitbox(damage, 0, 0, width, height, xKnockback, yKnockback, hitstun);
         }
         

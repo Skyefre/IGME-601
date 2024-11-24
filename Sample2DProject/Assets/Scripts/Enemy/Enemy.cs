@@ -349,7 +349,7 @@ public class Enemy : MonoBehaviour
                     {
                         if (hitboxes[0].activeSelf == false)
                         {
-                            hitboxes[0].GetComponent<Hitbox>().hitboxActive = true;
+                            hitboxes[0].GetComponent<Hitbox>().ignoreHurtboxes.Clear();
                         }
                         hitboxes[0].SetActive(true);
                         hitboxes[0].GetComponent<Hitbox>().updateHitbox(
@@ -408,7 +408,7 @@ public class Enemy : MonoBehaviour
                     {
                         if (hitboxes[0].activeSelf == false)
                         {
-                            hitboxes[0].GetComponent<Hitbox>().hitboxActive = true;
+                            hitboxes[0].GetComponent<Hitbox>().ignoreHurtboxes.Clear();
                         }
                         hitboxes[0].SetActive(true);
                         hitboxes[0].GetComponent<Hitbox>().updateHitbox(
@@ -468,7 +468,7 @@ public class Enemy : MonoBehaviour
                     {
                         if (hitboxes[0].activeSelf == false)
                         {
-                            hitboxes[0].GetComponent<Hitbox>().hitboxActive = true;
+                            hitboxes[0].GetComponent<Hitbox>().ignoreHurtboxes.Clear();
                         }
                         hitboxes[0].SetActive(true);
                         hitboxes[0].GetComponent<Hitbox>().updateHitbox(
@@ -953,7 +953,7 @@ public class Enemy : MonoBehaviour
         {
             GameObject hitbox = Instantiate(hitboxReference, gameObject.transform);
             hitbox.GetComponent<Hitbox>().owner = gameObject;
-            hitbox.GetComponent<Hitbox>().hitboxActive = false;
+            hitbox.GetComponent<Hitbox>().ignoreHurtboxes.Clear();
             hitbox.GetComponent<Hitbox>().isProjectile = false;
             hitbox.GetComponent<Hitbox>().damage = 0;
             hitbox.GetComponent<Hitbox>().xoffset = 0;
