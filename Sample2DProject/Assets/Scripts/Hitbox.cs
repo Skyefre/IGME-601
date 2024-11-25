@@ -5,7 +5,8 @@ using UnityEngine;
 public class Hitbox : MonoBehaviour
 {
     public GameObject owner;
-    public bool hitboxActive;
+    //public bool hitboxActive;
+    public List<GameObject> ignoreHurtboxes = new List<GameObject>();
     public bool canCancel;
     public bool isProjectile = false;
     public int damage = 1;

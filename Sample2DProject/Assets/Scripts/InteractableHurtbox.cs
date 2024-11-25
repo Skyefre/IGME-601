@@ -59,10 +59,10 @@ public class InteractableHurtbox : Hurtbox
             return;
         }
 
-        if (hitHitbox != null && hitboxOwner != this.owner && hitHitbox.hitboxActive == true && hitPlayer != null) //the thing that hit you is a player
+        if (hitHitbox != null && hitboxOwner != this.owner && (!hitHitbox.ignoreHurtboxes.Contains(owner)) && hitPlayer != null) //the thing that hit you is a player
         {
             //Debug.Log("Hurtbox hit: " + owner.GetInstanceID());
-            hitHitbox.hitboxActive = false;
+            hitHitbox.ignoreHurtboxes.Add(owner);
             hitHitbox.canCancel = true;
             if (owner.GetComponent<IceBlock>() != null)
             {
@@ -79,10 +79,10 @@ public class InteractableHurtbox : Hurtbox
             hitPlayer.animator.enabled = false;
             GameManager.Instance.gameObject.GetComponent<CameraShake>().Shake(3f, (1f / 6f)); //shake the camera when hit
         }
-        else if (hitHitbox != null && hitboxOwner != this.owner && hitHitbox.hitboxActive == true && hitEnemy != null)//the thing that hit you is an enemy
+        else if (hitHitbox != null && hitboxOwner != this.owner && (!hitHitbox.ignoreHurtboxes.Contains(owner)) && hitEnemy != null)//the thing that hit you is an enemy
         {
             //Debug.Log("Hurtbox hit: " + owner.GetInstanceID());
-            hitHitbox.hitboxActive = false;
+            hitHitbox.ignoreHurtboxes.Add(owner);
             hitHitbox.canCancel = true;
             if (owner.GetComponent<IceBlock>() != null)
             {
@@ -98,7 +98,7 @@ public class InteractableHurtbox : Hurtbox
             }
             GameManager.Instance.gameObject.GetComponent<CameraShake>().Shake(3f, (1f / 6f)); //shake the camera when hit
         }
-        else if (hitHitbox != null && hitboxOwner == null && hitHitbox.hitboxActive == true) //If the hitbox has no owner (e.g. spikes)
+        else if (hitHitbox != null && hitboxOwner == null && (!hitHitbox.ignoreHurtboxes.Contains(owner))) //If the hitbox has no owner (e.g. spikes)
         {
             if (owner.GetComponent<IceBlock>() != null)
             {

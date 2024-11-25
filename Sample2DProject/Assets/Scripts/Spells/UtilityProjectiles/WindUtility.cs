@@ -145,7 +145,7 @@ public class WindUtility : ProjectileBehavior
     {
         timer = 0;
         
-        hitbox.GetComponent<Hitbox>().hitboxActive = false;
+        hitbox.GetComponent<Hitbox>().ignoreHurtboxes.Clear();
         
         gameObject.SetActive(false);
     }
@@ -175,7 +175,7 @@ public class WindUtility : ProjectileBehavior
         {
             hitbox.GetComponent<Hitbox>().owner = gameObject;
             hitbox.GetComponent<Hitbox>().isProjectile = true;
-            hitbox.GetComponent<Hitbox>().hitboxActive = true;
+            hitbox.GetComponent<Hitbox>().ignoreHurtboxes.Clear();
             hitbox.GetComponent<Hitbox>().updateHitbox(damage, 0, 0, width, height, xKnockback, yKnockback, hitstun);
         }
 
