@@ -17,6 +17,7 @@ public class cameraFollow : MonoBehaviour
     private Vector3 vel = Vector3.zero;
     private Camera cam;
     private PixelPerfectCamera pixelPerfectCamera;
+    private bool camInitialized = false;
 
     private void Start()
     {
@@ -38,9 +39,8 @@ public class cameraFollow : MonoBehaviour
                     averagePos += GameManager.Instance.players[i].transform.position;
                     numAlivePlayers++;
                 }
-                
             }
-            if(numAlivePlayers == 0)
+            if (numAlivePlayers == 0)
             {
                 return;
             }
@@ -53,7 +53,6 @@ public class cameraFollow : MonoBehaviour
 
             if (greatestDistance.size.x > minDistance || greatestDistance.size.y > (minDistance / 16 * 9))
             {
-                //newZoom = Mathf.Lerp(minZoom, maxZoom, (greatestDistance.size.magnitude - minDistance) / zoomLimiter);
                 if (greatestDistance.size.x >= greatestDistance.size.y)
                 {
                     newZoom = Mathf.Lerp(minZoom, maxZoom, ((greatestDistance.size.x / 16 * 9) - (minDistance / 16 * 9)) / zoomLimiter);
@@ -64,14 +63,10 @@ public class cameraFollow : MonoBehaviour
                 }
             }
 
-
-
-
             cam.orthographicSize = Mathf.Lerp(cam.orthographicSize, newZoom, zoomSpeed * Time.deltaTime);
-            //cam.orthographicSize = newZoom;
 
             // Disable Pixel Perfect Camera if zoomed out
-            if (cam.orthographicSize <= minZoom +2)
+            if (cam.orthographicSize <= minZoom + 2)
             {
                 cam.orthographicSize = minZoom;
                 pixelPerfectCamera.enabled = true;
@@ -81,6 +76,14 @@ public class cameraFollow : MonoBehaviour
                 pixelPerfectCamera.enabled = false;
             }
 
+            // Clamp player positions to the camera bounds
+            if(!camInitialized)
+            {
+
+                transform.position = new Vector3(target.x, target.y, transform.position.z);
+                camInitialized = true;
+            }
+            ClampPlayerPositionsToCameraBounds();
         }
 
         target.z = transform.position.z;
@@ -96,9 +99,29 @@ public class cameraFollow : MonoBehaviour
             {
                 bounds.Encapsulate(GameManager.Instance.players[i].transform.position);
             }
-                
         }
-        //Debug.Log(bounds.size.magnitude);
         return bounds;
+    }
+
+    private void ClampPlayerPositionsToCameraBounds()
+    {
+        float cameraHeight = cam.orthographicSize * 2;
+        float cameraWidth = cameraHeight * cam.aspect;
+
+        float minX = transform.position.x - cameraWidth / 2;
+        float maxX = transform.position.x + cameraWidth / 2;
+        float minY = transform.position.y - cameraHeight / 2;
+        float maxY = transform.position.y + cameraHeight / 2;
+
+        foreach (var player in GameManager.Instance.players)
+        {
+            if (player.GetComponent<Player>().isAlive)
+            {
+                Vector3 playerPos = player.transform.position;
+                playerPos.x = Mathf.Clamp(playerPos.x, minX, maxX);
+                //playerPos.y = Mathf.Clamp(playerPos.y, minY, maxY);
+                player.transform.position = playerPos;
+            }
+        }
     }
 }

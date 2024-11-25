@@ -608,7 +608,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cda3f3c1407151f4a9a0f26d250e7fe0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  offset: {x: 0, y: 110, z: 0}
+  offset: {x: 0, y: 36, z: 0}
   damping: 0
   minZoom: 180
   maxZoom: 360
