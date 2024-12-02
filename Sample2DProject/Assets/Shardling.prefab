@@ -10,7 +10,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1206941424731489362, guid: 8570cbe2501d59a4a82370b211802789, type: 3}
       propertyPath: m_Name
-      value: Collectible
+      value: Shardling
       objectReference: {fileID: 0}
     - target: {fileID: 1206941424731489362, guid: 8570cbe2501d59a4a82370b211802789, type: 3}
       propertyPath: m_Layer
@@ -102,11 +102,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2599534207171255684, guid: 8570cbe2501d59a4a82370b211802789, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x
-      value: 64
+      value: 128
       objectReference: {fileID: 0}
     - target: {fileID: 2599534207171255684, guid: 8570cbe2501d59a4a82370b211802789, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.y
-      value: 64
+      value: 128
       objectReference: {fileID: 0}
     - target: {fileID: 2599534207171255684, guid: 8570cbe2501d59a4a82370b211802789, type: 3}
       propertyPath: m_SpriteTilingProperty.adaptiveTilingThreshold
@@ -147,6 +147,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d94f259cd0051c1439e2888e2a807c1b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  shardCountText: {fileID: 0}
 --- !u!212 &8535743750816398803
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -188,7 +189,7 @@ SpriteRenderer:
   m_SortingLayerID: 1188232955
   m_SortingLayer: 4
   m_SortingOrder: 1
-  m_Sprite: {fileID: 1681175731, guid: 4d02ffcf8a34d3046ba836d25bead5f1, type: 3}
+  m_Sprite: {fileID: -1419375940, guid: 7a4fffbd46edbb442af21e99dd52c5fa, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -209,7 +210,7 @@ Animator:
   m_GameObject: {fileID: 4045245893927962504}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 5406d0e77c4e3a047b4b3671f7fdf516, type: 2}
+  m_Controller: {fileID: 9100000, guid: 8e4b5d80edf98854d956531ab629806d, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
