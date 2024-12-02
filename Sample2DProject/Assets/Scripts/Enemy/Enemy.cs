@@ -1016,7 +1016,7 @@ public class Enemy : MonoBehaviour
             hitstunVal = hitstun;
             SetState(EnemyState.Hitstun);
         }
-        if (health == 0)
+        if (health <= 0)
             Destroy(this.gameObject);
 
         bool hitDirection = hspd > 0 ? false : true;
