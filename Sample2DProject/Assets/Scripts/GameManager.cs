@@ -14,6 +14,9 @@ public class GameManager : MonoBehaviour
     public int stockCount;
     //public List<Texture2D> colorPalettes;
     //public List<Texture2D> unusedPalettes; // Palettes aren't in use by any of the players
+    public List<string> p1Shards;
+    public List<string> p2Shards;
+    public List<string> globalShardList;
 
     private void Awake()
     {
@@ -108,6 +111,7 @@ public class GameManager : MonoBehaviour
         for (int i = 0; i < players.Length; i++)
         {
             players[i].GetComponent<SpriteRenderer>().material.SetTexture("_PaletteTex", colorPalettes[i]);
+            players[i].GetComponent<Player>().playerNumber = i+1;
         }
     }
 

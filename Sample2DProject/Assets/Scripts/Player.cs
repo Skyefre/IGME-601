@@ -27,6 +27,7 @@ public class Player : MonoBehaviour
         SpellUtil
     }
 
+    public int playerNumber = 1;
     
 
     //Animation info fields
@@ -1768,13 +1769,22 @@ public class Player : MonoBehaviour
     {
         if (otherWeaponAnimControllers.Count == 0) return;
 
+        List<string> shardList = playerNumber == 1 ? GameManager.Instance.p1Shards : GameManager.Instance.p2Shards;
+
+        //if (shardList.Contains(weaponName))
+        //{
+        //    currentAnimControllerIndex = (currentAnimControllerIndex + 1) % otherWeaponAnimControllers.Count;
+        //    animator.runtimeAnimatorController = otherWeaponAnimControllers[currentAnimControllerIndex];
+        //    weaponName = otherWeaponAnimControllers[currentAnimControllerIndex].name;
+        //}
+
         currentAnimControllerIndex++;
-        if (currentAnimControllerIndex > otherWeaponAnimControllers.Count)
+        if (currentAnimControllerIndex > shardList.Count-1)
         {
             currentAnimControllerIndex = 0;
         }
 
-        if (currentAnimControllerIndex == 0)
+        if (shardList[currentAnimControllerIndex] == "ice")
         {
             animator.runtimeAnimatorController = baseAnimController;
             weaponName = "ice";
@@ -1782,8 +1792,16 @@ public class Player : MonoBehaviour
         }
         else
         {
-            animator.runtimeAnimatorController = otherWeaponAnimControllers[currentAnimControllerIndex - 1];
-            weaponName = otherWeaponAnimControllers[currentAnimControllerIndex - 1].name;
+            //animator.runtimeAnimatorController = otherWeaponAnimControllers[currentAnimControllerIndex - 1];
+            //weaponName = otherWeaponAnimControllers[currentAnimControllerIndex - 1].name;
+            while(otherWeaponAnimControllers[currentAnimControllerIndex].name != (shardList[currentAnimControllerIndex]))
+            {
+                currentAnimControllerIndex++;
+                if (currentAnimControllerIndex > shardList.Count - 1)
+                {
+                    currentAnimControllerIndex = 0;
+                }
+            }
         }
 
         InitWeapon();

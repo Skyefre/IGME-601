@@ -16064,6 +16064,50 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameManager
       objectReference: {fileID: 0}
+    - target: {fileID: 6823095089534674004, guid: 9314197c5595ba84f856a1e68eb0737f, type: 3}
+      propertyPath: p1Shards.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6823095089534674004, guid: 9314197c5595ba84f856a1e68eb0737f, type: 3}
+      propertyPath: p2Shards.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6823095089534674004, guid: 9314197c5595ba84f856a1e68eb0737f, type: 3}
+      propertyPath: p1Shards.Array.data[0]
+      value: ice
+      objectReference: {fileID: 0}
+    - target: {fileID: 6823095089534674004, guid: 9314197c5595ba84f856a1e68eb0737f, type: 3}
+      propertyPath: p1Shards.Array.data[1]
+      value: lightning
+      objectReference: {fileID: 0}
+    - target: {fileID: 6823095089534674004, guid: 9314197c5595ba84f856a1e68eb0737f, type: 3}
+      propertyPath: p2Shards.Array.data[0]
+      value: wind
+      objectReference: {fileID: 0}
+    - target: {fileID: 6823095089534674004, guid: 9314197c5595ba84f856a1e68eb0737f, type: 3}
+      propertyPath: p2Shards.Array.data[1]
+      value: fire
+      objectReference: {fileID: 0}
+    - target: {fileID: 6823095089534674004, guid: 9314197c5595ba84f856a1e68eb0737f, type: 3}
+      propertyPath: globalShardList.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6823095089534674004, guid: 9314197c5595ba84f856a1e68eb0737f, type: 3}
+      propertyPath: globalShardList.Array.data[0]
+      value: ice
+      objectReference: {fileID: 0}
+    - target: {fileID: 6823095089534674004, guid: 9314197c5595ba84f856a1e68eb0737f, type: 3}
+      propertyPath: globalShardList.Array.data[1]
+      value: wind
+      objectReference: {fileID: 0}
+    - target: {fileID: 6823095089534674004, guid: 9314197c5595ba84f856a1e68eb0737f, type: 3}
+      propertyPath: globalShardList.Array.data[2]
+      value: lightning
+      objectReference: {fileID: 0}
+    - target: {fileID: 6823095089534674004, guid: 9314197c5595ba84f856a1e68eb0737f, type: 3}
+      propertyPath: globalShardList.Array.data[3]
+      value: fire
+      objectReference: {fileID: 0}
     - target: {fileID: 8238671865993954579, guid: 9314197c5595ba84f856a1e68eb0737f, type: 3}
       propertyPath: m_RootOrder
       value: 3
