@@ -124,6 +124,11 @@ public class Player : MonoBehaviour
         }
         characterJSON.GetWeaponStats();
         weaponData = characterJSON.weaponDataList;
+        if (playerNumber != 1)
+        {
+            weaponName = "wind";
+            animator.runtimeAnimatorController = otherWeaponAnimControllers[0];
+        }
         InitWeapon();
         SetState(PlayerState.Idle);
     }
@@ -1533,7 +1538,7 @@ public class Player : MonoBehaviour
         return;
     }
 
-    void InitWeapon()
+    public void InitWeapon()
     {
 
         for (int i = 0; i < weaponData.weaponData.Count; i++)
@@ -1765,18 +1770,11 @@ public class Player : MonoBehaviour
         SetState(PlayerState.Idle);
     }
 
-    private void CycleWeapon()
+    public void CycleWeapon()
     {
         if (otherWeaponAnimControllers.Count == 0) return;
 
         List<string> shardList = playerNumber == 1 ? GameManager.Instance.p1Shards : GameManager.Instance.p2Shards;
-
-        //if (shardList.Contains(weaponName))
-        //{
-        //    currentAnimControllerIndex = (currentAnimControllerIndex + 1) % otherWeaponAnimControllers.Count;
-        //    animator.runtimeAnimatorController = otherWeaponAnimControllers[currentAnimControllerIndex];
-        //    weaponName = otherWeaponAnimControllers[currentAnimControllerIndex].name;
-        //}
 
         currentAnimControllerIndex++;
         if (currentAnimControllerIndex > shardList.Count-1)
@@ -1792,16 +1790,24 @@ public class Player : MonoBehaviour
         }
         else
         {
-            //animator.runtimeAnimatorController = otherWeaponAnimControllers[currentAnimControllerIndex - 1];
-            //weaponName = otherWeaponAnimControllers[currentAnimControllerIndex - 1].name;
-            while(otherWeaponAnimControllers[currentAnimControllerIndex].name != (shardList[currentAnimControllerIndex]))
+
+            bool shardFound = false;
+            for (int i = 0; i < otherWeaponAnimControllers.Count; i++)
             {
-                currentAnimControllerIndex++;
-                if (currentAnimControllerIndex > shardList.Count - 1)
+                if (shardList[currentAnimControllerIndex] == otherWeaponAnimControllers[i].name)
                 {
-                    currentAnimControllerIndex = 0;
+                    shardFound = true;
+                    currentAnimControllerIndex = i;
+                    break;
                 }
             }
+            if (shardFound)
+            {
+                animator.runtimeAnimatorController = otherWeaponAnimControllers[currentAnimControllerIndex];
+                weaponName = otherWeaponAnimControllers[currentAnimControllerIndex].name;
+            }
+
+
         }
 
         InitWeapon();
