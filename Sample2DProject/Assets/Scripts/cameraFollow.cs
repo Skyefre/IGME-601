@@ -120,7 +120,7 @@ public class cameraFollow : MonoBehaviour
         float maxY = transform.position.y + cameraHeight / 2;
 
         cameraClamped = true;
-        foreach (var player in GameManager.Instance.players)
+        foreach (GameObject player in GameManager.Instance.players)
         {
             if (player.GetComponent<Player>().isAlive)
             {
@@ -128,6 +128,10 @@ public class cameraFollow : MonoBehaviour
                 if(!(playerPos.x <= minX+1 || playerPos.x >= maxX-1))
                 {
                     cameraClamped = false;
+                }
+                if (playerPos.y <= minY + 1)
+                {
+                    player.GetComponent<Player>().TeleportToOtherPlayer();
                 }
                 playerPos.x = Mathf.Clamp(playerPos.x, minX, maxX);
                 //playerPos.y = Mathf.Clamp(playerPos.y, minY, maxY);

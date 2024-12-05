@@ -172,7 +172,7 @@ public class Hurtbox : MonoBehaviour
             }
             else if (owner.GetComponent<Enemy>() != null)
             {
-                owner.GetComponent<Enemy>().TakeDamage(owner, hitHitbox.damage, -2 * (owner.GetComponent<Enemy>().facingRight ? 1 : -1), 10, 15);
+                owner.GetComponent<Enemy>().TakeDamage(owner, hitHitbox.damage, 0, 12, 15);
                 owner.GetComponent<Enemy>().hitstopVal = 10;
                 owner.GetComponent<Enemy>().animator.enabled = false;
             }
