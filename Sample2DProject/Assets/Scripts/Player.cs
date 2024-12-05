@@ -1745,20 +1745,7 @@ public class Player : MonoBehaviour
             isAlive = true;
             health = 10;
 
-            GameObject otherplayer;
-            int playerloc = System.Array.IndexOf(GameManager.Instance.players, gameObject);
-            if (playerloc == 1)
-            {
-                otherplayer = GameManager.Instance.players[0];
-                gameObject.transform.position = otherplayer.transform.position;
-
-            }
-            else
-            {
-                otherplayer = GameManager.Instance.players[1];
-                gameObject.transform.position = otherplayer.transform.position;
-
-            }
+            TeleportToOtherPlayer();
         }
         //reset player
         //gameObject.SetActive(true);
@@ -1768,6 +1755,24 @@ public class Player : MonoBehaviour
         hspd = 0;
         vspd = 0;
         SetState(PlayerState.Idle);
+    }
+
+    public void TeleportToOtherPlayer()
+    {
+        GameObject otherplayer;
+        int playerloc = System.Array.IndexOf(GameManager.Instance.players, gameObject);
+        if (playerloc == 1)
+        {
+            otherplayer = GameManager.Instance.players[0];
+            gameObject.transform.position = otherplayer.transform.position;
+
+        }
+        else
+        {
+            otherplayer = GameManager.Instance.players[1];
+            gameObject.transform.position = otherplayer.transform.position;
+
+        }
     }
 
     public void CycleWeapon()

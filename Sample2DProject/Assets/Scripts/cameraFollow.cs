@@ -18,6 +18,7 @@ public class cameraFollow : MonoBehaviour
     private Camera cam;
     private PixelPerfectCamera pixelPerfectCamera;
     private bool camInitialized = false;
+    private bool cameraClamped = false;
 
     private void Start()
     {
@@ -76,14 +77,19 @@ public class cameraFollow : MonoBehaviour
                 pixelPerfectCamera.enabled = false;
             }
 
-            // Clamp player positions to the camera bounds
             if(!camInitialized)
             {
 
                 transform.position = new Vector3(target.x, target.y, transform.position.z);
                 camInitialized = true;
             }
+
+            // Clamp player positions to the camera bounds
             ClampPlayerPositionsToCameraBounds();
+            if(cameraClamped)
+            {
+                target = new Vector3(transform.position.x, transform.position.y, transform.position.z);
+            }
         }
 
         target.z = transform.position.z;
@@ -113,14 +119,21 @@ public class cameraFollow : MonoBehaviour
         float minY = transform.position.y - cameraHeight / 2;
         float maxY = transform.position.y + cameraHeight / 2;
 
+        cameraClamped = true;
         foreach (var player in GameManager.Instance.players)
         {
             if (player.GetComponent<Player>().isAlive)
             {
                 Vector3 playerPos = player.transform.position;
+                if(!(playerPos.x <= minX+1 || playerPos.x >= maxX-1))
+                {
+                    cameraClamped = false;
+                }
                 playerPos.x = Mathf.Clamp(playerPos.x, minX, maxX);
                 //playerPos.y = Mathf.Clamp(playerPos.y, minY, maxY);
                 player.transform.position = playerPos;
+
+
             }
         }
     }
