@@ -259,14 +259,14 @@ public class Player : MonoBehaviour
                 if (inputs[InputHandler.Inputs.Left] == InputHandler.InputState.Held)
                 {
                     //hspd = -runSpeed;
-                    SetState(PlayerState.Run);
                     facingRight = false;
+                    SetState(PlayerState.Run);
                 }
                 else if (inputs[InputHandler.Inputs.Right] == InputHandler.InputState.Held)
                 {
                     //hspd = runSpeed;
-                    SetState(PlayerState.Run);
                     facingRight = true;
+                    SetState(PlayerState.Run);
                 }
                 else if (inputs[InputHandler.Inputs.Jump] == InputHandler.InputState.Pressed)
                 {
@@ -521,13 +521,13 @@ public class Player : MonoBehaviour
                 {
                     if (inputs[InputHandler.Inputs.Left] == InputHandler.InputState.Held)
                     {
-                        SetState(PlayerState.Run);
                         facingRight = false;
+                        SetState(PlayerState.Run);
                     }
                     else if (inputs[InputHandler.Inputs.Right] == InputHandler.InputState.Held)
                     {
-                        SetState(PlayerState.Run);
                         facingRight = true;
+                        SetState(PlayerState.Run);
                     }
                     else
                     {
@@ -1178,6 +1178,8 @@ public class Player : MonoBehaviour
                 hurtboxData.runHurtbox.width,
                 hurtboxData.runHurtbox.height
                 );
+                vfxEntities["dash_dust"].SetActive(true);
+                vfxEntities["dash_dust"].GetComponent<Entity>().InitEntity(0, 0);
                 break;
             case PlayerState.Jumpsquat:
                 if (hspd != 0)
@@ -1185,6 +1187,10 @@ public class Player : MonoBehaviour
                     tempHspd = hspd;
                     hspd = 0;
                 }
+                //create jump_dust effect
+                vfxEntities["jump_dust"].SetActive(true);
+                vfxEntities["jump_dust"].GetComponent<Entity>().InitEntity(0, 0);
+
                 hurtbox.GetComponent<Hurtbox>().updateHurtbox(
                 hurtboxData.jumpsquatHurtbox.xOffset,
                 hurtboxData.jumpsquatHurtbox.yOffset,
@@ -1657,15 +1663,36 @@ public class Player : MonoBehaviour
 
         }
 
-        //vfx entities
+        //vfx vfxEntities
         if (vfxEntities.Count < 1)
         {
             vfxEntities.Add("spell_charge", Instantiate(vfxList[0]));
+            vfxEntities.Add("jump_dust", Instantiate(vfxList[1]));
+            vfxEntities.Add("dash_dust", Instantiate(vfxList[2]));
+            vfxEntities.Add("hit_spark", Instantiate(vfxList[3]));
+            vfxEntities.Add("block_spark", Instantiate(vfxList[4]));
 
+            foreach (KeyValuePair<string, GameObject> entity in vfxEntities)
+            {
+                DontDestroyOnLoad(entity.Value);
+            }
 
 
             vfxEntities["spell_charge"].GetComponent<SpellChargeEntity>().owner = gameObject;
             vfxEntities["spell_charge"].SetActive(false);
+
+            vfxEntities["jump_dust"].GetComponent<Entity>().owner = gameObject;
+            vfxEntities["jump_dust"].SetActive(false);
+
+            vfxEntities["dash_dust"].GetComponent<Entity>().owner = gameObject;
+            vfxEntities["dash_dust"].SetActive(false);
+
+
+            vfxEntities["hit_spark"].GetComponent<Entity>().owner = gameObject;
+            vfxEntities["hit_spark"].SetActive(false);
+
+            vfxEntities["block_spark"].GetComponent<Entity>().owner = gameObject;
+            vfxEntities["block_spark"].SetActive(false);
 
 
         }
@@ -1681,7 +1708,7 @@ public class Player : MonoBehaviour
 
     }
 
-    public void TakeDamage(GameObject hitPlayer, int damage, int xKnockback, int yKnockback, int hitstun)
+    public void TakeDamage(GameObject hitPlayer, int damage, int xKnockback, int yKnockback, int hitstun, Vector2 hitsparkSpawnPoint, Texture targetTexture)
     {
 
         //If this player is block and facing the right direction
@@ -1689,10 +1716,19 @@ public class Player : MonoBehaviour
             ((hitPlayer.transform.position.x > gameObject.transform.position.x && facingRight) ||
             (hitPlayer.transform.position.x < gameObject.transform.position.x && !facingRight)))
         {
+            vfxEntities["block_spark"].SetActive(true);
+            vfxEntities["block_spark"].GetComponent<Entity>().InitEntity(
+                (int)(hitsparkSpawnPoint.x - transform.position.x),
+                (int)(hitsparkSpawnPoint.y - transform.position.y));
             hspd = xKnockback / 2;
         }
         else
         {
+            vfxEntities["hit_spark"].SetActive(true);
+            vfxEntities["hit_spark"].GetComponent<Entity>().InitEntity(
+                (int)(hitsparkSpawnPoint.x - transform.position.x),
+                (int)(hitsparkSpawnPoint.y - transform.position.y),
+                targetTexture);
             health -= damage;
             hspd = xKnockback;
             vspd = yKnockback;

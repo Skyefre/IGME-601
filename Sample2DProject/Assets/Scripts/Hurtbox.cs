@@ -90,8 +90,12 @@ public class Hurtbox : MonoBehaviour
         
         if (hitHitbox != null && hitboxOwner != this.owner && (!hitHitbox.ignoreHurtboxes.Contains(owner)) && hitPlayer != null) //the thing that hit you is a player
         {
-            //Debug.Log("Hurtbox hit: " + owner.GetInstanceID());
-            //hitHitbox.hitboxActive = false;
+            //generate the location of the hit or block spark
+            BoxCollider2D hurtboxCollider = gameObject.GetComponent<BoxCollider2D>();
+            BoxCollider2D hitboxCollider = collision.gameObject.GetComponent<BoxCollider2D>();
+
+            Vector2 overlapCenter = GetOverlapCenter(hurtboxCollider, hitboxCollider);
+
             hitHitbox.ignoreHurtboxes.Add(owner);
             hitHitbox.canCancel = true;
             //if (owner.GetComponent<Player>() != null)
@@ -102,7 +106,7 @@ public class Hurtbox : MonoBehaviour
             //}
             /*else*/ if(owner.GetComponent<Enemy>() != null)
             {
-                owner.GetComponent<Enemy>().TakeDamage(hitHitbox.owner, hitHitbox.damage, hitHitbox.xKnockback * (hitPlayer.facingRight ? 1 : -1), hitHitbox.yKnockback, hitHitbox.hitstun);
+                owner.GetComponent<Enemy>().TakeDamage(hitHitbox.owner, hitHitbox.damage, hitHitbox.xKnockback * (hitPlayer.facingRight ? 1 : -1), hitHitbox.yKnockback, hitHitbox.hitstun, overlapCenter, hitHitbox.owner.GetComponent<SpriteRenderer>().material.GetTexture("_PaletteTex"));
                 owner.GetComponent<Enemy>().hitstopVal = 10;
                 owner.GetComponent<Enemy>().animator.enabled = false;
 
@@ -133,18 +137,24 @@ public class Hurtbox : MonoBehaviour
         }
         else if(hitHitbox != null && hitboxOwner != this.owner && (!hitHitbox.ignoreHurtboxes.Contains(owner)) && hitEnemy != null)//the thing that hit you is an enemy
         {
-            //Debug.Log("Hurtbox hit: " + owner.GetInstanceID());
+
+            //generate the location of the hit or block spark
+            BoxCollider2D hurtboxCollider = gameObject.GetComponent<BoxCollider2D>();
+            BoxCollider2D hitboxCollider = collision.gameObject.GetComponent<BoxCollider2D>();
+
+            Vector2 overlapCenter = GetOverlapCenter(hurtboxCollider, hitboxCollider);
+
             hitHitbox.ignoreHurtboxes.Add(owner);
             hitHitbox.canCancel = true;
             if (owner.GetComponent<Player>() != null)
             {
-                owner.GetComponent<Player>().TakeDamage(hitHitbox.owner, hitHitbox.damage, hitHitbox.xKnockback * (hitEnemy.facingRight ? 1 : -1), hitHitbox.yKnockback, hitHitbox.hitstun);
+                owner.GetComponent<Player>().TakeDamage(hitHitbox.owner, hitHitbox.damage, hitHitbox.xKnockback * (hitEnemy.facingRight ? 1 : -1), hitHitbox.yKnockback, hitHitbox.hitstun, overlapCenter, hitHitbox.owner.GetComponent<SpriteRenderer>().material.GetTexture("_PaletteTex"));
                 owner.GetComponent<Player>().hitstopVal = 10;
                 owner.GetComponent<Player>().animator.enabled = false;
             }
             else if (owner.GetComponent<Enemy>() != null)
             {
-                owner.GetComponent<Enemy>().TakeDamage(hitHitbox.owner, hitHitbox.damage, hitHitbox.xKnockback * (hitEnemy.facingRight ? 1 : -1), hitHitbox.yKnockback, hitHitbox.hitstun);
+                owner.GetComponent<Enemy>().TakeDamage(hitHitbox.owner, hitHitbox.damage, hitHitbox.xKnockback * (hitEnemy.facingRight ? 1 : -1), hitHitbox.yKnockback, hitHitbox.hitstun, overlapCenter, hitHitbox.owner.GetComponent<SpriteRenderer>().material.GetTexture("_PaletteTex"));
                 owner.GetComponent<Enemy>().hitstopVal = 10;
                 owner.GetComponent<Enemy>().animator.enabled = false;
             }
@@ -164,15 +174,20 @@ public class Hurtbox : MonoBehaviour
         }
         else if (hitHitbox != null && hitboxOwner == null && (!hitHitbox.ignoreHurtboxes.Contains(owner))) //If the hitbox has no owner (e.g. spikes)
         {
+            //generate the location of the hit or block spark
+            BoxCollider2D hurtboxCollider = gameObject.GetComponent<BoxCollider2D>();
+            BoxCollider2D hitboxCollider = collision.gameObject.GetComponent<BoxCollider2D>();
+
+            Vector2 overlapCenter = GetOverlapCenter(hurtboxCollider, hitboxCollider);
             if (owner.GetComponent<Player>() != null)
             {
-                owner.GetComponent<Player>().TakeDamage(owner, hitHitbox.damage, -2 * (owner.GetComponent<Player>().facingRight ? -2 : 2), 15, 15);
+                owner.GetComponent<Player>().TakeDamage(owner, hitHitbox.damage, 0, 15, 15, overlapCenter, hitHitbox.owner.GetComponent<SpriteRenderer>().material.GetTexture("_PaletteTex"));
                 owner.GetComponent<Player>().hitstopVal = 10;
                 owner.GetComponent<Player>().animator.enabled = false;
             }
             else if (owner.GetComponent<Enemy>() != null)
             {
-                owner.GetComponent<Enemy>().TakeDamage(owner, hitHitbox.damage, 0, 12, 15);
+                owner.GetComponent<Enemy>().TakeDamage(owner, hitHitbox.damage, 0, 15, 15, overlapCenter, hitHitbox.owner.GetComponent<SpriteRenderer>().material.GetTexture("_PaletteTex"));
                 owner.GetComponent<Enemy>().hitstopVal = 10;
                 owner.GetComponent<Enemy>().animator.enabled = false;
             }
@@ -182,6 +197,37 @@ public class Hurtbox : MonoBehaviour
             }
             GameManager.Instance.gameObject.GetComponent<CameraShake>().Shake(3f, (1f / 6f)); //shake the camera when hit
         }
+    }
+
+    public Vector2 GetOverlapCenter(BoxCollider2D collider1, BoxCollider2D collider2)
+    {
+        Bounds bounds1 = collider1.bounds;
+        Bounds bounds2 = collider2.bounds;
+
+        // Calculate the overlap area
+        float xMin = Mathf.Max(bounds1.min.x, bounds2.min.x);
+        float xMax = Mathf.Min(bounds1.max.x, bounds2.max.x);
+        float yMin = Mathf.Max(bounds1.min.y, bounds2.min.y);
+        float yMax = Mathf.Min(bounds1.max.y, bounds2.max.y);
+
+        //// Check if there is an overlap
+        //if (xMin < xMax && yMin < yMax)
+        //{
+        //    // Calculate the center point of the overlap
+        //    float overlapCenterX = (xMin + xMax) / 2;
+        //    float overlapCenterY = (yMin + yMax) / 2;
+        //    return new Vector2(overlapCenterX, overlapCenterY);
+        //}
+        //else
+        //{
+        //    // No overlap
+        //    return Vector2.zero;
+        //}
+
+        // Calculate the center point of the overlap
+        float overlapCenterX = (xMin + xMax) / 2;
+        float overlapCenterY = (yMin + yMax) / 2;
+        return new Vector2(overlapCenterX, overlapCenterY);
     }
 }
 

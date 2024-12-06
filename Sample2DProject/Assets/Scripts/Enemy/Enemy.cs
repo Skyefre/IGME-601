@@ -994,7 +994,7 @@ public class Enemy : MonoBehaviour
 
     }
 
-    public void TakeDamage(GameObject hitEnemy, int damage, int xKnockback, int yKnockback, int hitstun)
+    public void TakeDamage(GameObject hitEnemy, int damage, int xKnockback, int yKnockback, int hitstun, Vector2 hitsparkSpawnPoint, Texture targetTexture)
     {
         //SwitchAIState(damagedState);
         //if (CheckForMeleeTarget())

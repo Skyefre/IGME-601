@@ -242,6 +242,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be4c5071fc6a4d045920f9804d49b96c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerNumber: 1
   weaponName: ice
   animator: {fileID: 237148384208766883}
   baseAnimController: {fileID: 9100000, guid: c916afd6bc4a3114aadd5a2f0c1b51ec, type: 2}
@@ -383,6 +384,10 @@ MonoBehaviour:
   maxSpellCharge: 100
   vfxList:
   - {fileID: 7226205147136119726, guid: 2b7d47a80b7c49a4d9cd8ee0e91cd74c, type: 3}
+  - {fileID: 5956380059710332751, guid: 72fd5a63ee0c7ac48a3b7d62ebb02b44, type: 3}
+  - {fileID: 5956380059710332751, guid: 2619449bb4620ae4398841c8d9564a8a, type: 3}
+  - {fileID: 7661281493243405180, guid: 7c3dc7e6fab7d6940a070aa7906f5017, type: 3}
+  - {fileID: 9138364230967113404, guid: 74410406417aad5408a2c9261fb5c4b9, type: 3}
 --- !u!95 &237148384208766883
 Animator:
   serializedVersion: 5
