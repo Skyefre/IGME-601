@@ -104,6 +104,11 @@ public class Player : MonoBehaviour
     public List<GameObject> vfxList = new List<GameObject>();
     public Dictionary<string, GameObject> vfxEntities = new Dictionary<string, GameObject>();
 
+    //SFX stuff
+    public AudioSource audioSource;
+    public List<AudioClip> audioClips = new List<AudioClip>();
+    private bool hasPlayedTheAudio = false;
+
     public BoxCollider2D PlayerCollider
     {
         get => boxCollider;
@@ -118,6 +123,7 @@ public class Player : MonoBehaviour
     void Start()
     {
         boxCollider = GetComponent<BoxCollider2D>();
+        audioSource = GetComponent<AudioSource>();
         if (characterJSON == null)
         {
             characterJSON = gameObject.GetComponent<PlayerJSONReader>();
@@ -375,7 +381,12 @@ public class Player : MonoBehaviour
                 break;
             case PlayerState.Jumpsquat:
 
-
+                if(!hasPlayedTheAudio)
+                {
+                    audioSource.PlayOneShot(audioClips[0], 1f);
+                    hasPlayedTheAudio = true;
+                }
+                
                 //check for attack input
                 if (inputs[InputHandler.Inputs.Attack] == InputHandler.InputState.Pressed)
                 {
@@ -432,13 +443,14 @@ public class Player : MonoBehaviour
                 }
                 if (animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1)
                 {
-
+                    hasPlayedTheAudio = false;
                     SetState(PlayerState.Jump);
                 }
 
                 break;
             case PlayerState.Jump:
 
+                
                 //check for ground collision
                 if (grounded.collider != null)
                 {
