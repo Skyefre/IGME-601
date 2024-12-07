@@ -1,0 +1,3647 @@
+fileFormatVersion: 2
+guid: 3b706b84e307c9e4ea77babe1f65e4a6
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 0.5
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 8192
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: 601tutorialGif-Sheet_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 675
+        width: 160
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 73ad2a59d529f6a45a041fa20c10a846
+      internalID: 1807866175
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 601tutorialGif-Sheet_1
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 675
+        width: 160
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4a711d6193cce8a47aacee1cdc723961
+      internalID: 1999546907
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 601tutorialGif-Sheet_2
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 675
+        width: 160
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3174c83c4eedd6d41a45304c85f66b5f
+      internalID: -1269864186
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 601tutorialGif-Sheet_3
+      rect:
+        serializedVersion: 2
+        x: 480
+        y: 675
+        width: 160
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 020f130f7e5969a408aacc395062445e
+      internalID: 203697754
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 601tutorialGif-Sheet_4
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 675
+        width: 160
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 152e0621fa47c2f4d9ffe15a08668947
+      internalID: 144626731
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 601tutorialGif-Sheet_5
+      rect:
+        serializedVersion: 2
+        x: 800
+        y: 675
+        width: 160
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6d87dfed0224e9447828f830d458526e
+      internalID: -1424769248
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 601tutorialGif-Sheet_6
+      rect:
+        serializedVersion: 2
+        x: 960
+        y: 675
+        width: 160
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 48d868753dc85a54b8db50599313047e
+      internalID: -1428496823
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 601tutorialGif-Sheet_7
+      rect:
+        serializedVersion: 2
+        x: 1120
+        y: 675
+        width: 160
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b7944fab418c5ef439df0a7c31fc4065
+      internalID: -801743969
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 601tutorialGif-Sheet_8
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 600
+        width: 160
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d70b0bc730f794848858ae9a333a677e
+      internalID: -1713048351
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 601tutorialGif-Sheet_9
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 600
+        width: 160
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fdaab48fc07aafc4fb4d818c1277a400
+      internalID: -1982090403
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 601tutorialGif-Sheet_10
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 600
+        width: 160
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 26c8d07b20266834fb379a2f8bd2bd5e
+      internalID: 1314553795
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 601tutorialGif-Sheet_11
+      rect:
+        serializedVersion: 2
+        x: 480
+        y: 600
+        width: 160
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eecd7ff0388f80c42a9417930c17c4bd
+      internalID: -2086726825
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 601tutorialGif-Sheet_12
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 600
+        width: 160
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ebd627fb99cad5547ba086ef27db0c31
+      internalID: -1745806010
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 601tutorialGif-Sheet_13
+      rect:
+        serializedVersion: 2
+        x: 800
+        y: 600
+        width: 160
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fa3d7b9cc8e189e44ae884aa02908d72
+      internalID: 896735227
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 601tutorialGif-Sheet_14
+      rect:
+        serializedVersion: 2
+        x: 960
+        y: 600
+        width: 160
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 342e1d2196cb0f248a13cfac5352fbda
+      internalID: -1445204941
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 601tutorialGif-Sheet_15
+      rect:
+        serializedVersion: 2
+        x: 1120
+        y: 600
+        width: 160
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e9bb50b007aca26488e6f479826f6ebb
+      internalID: 1564489430
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 601tutorialGif-Sheet_16
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 600
+        width: 160
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 05ef832510ec46543bdfd49acf264377
+      internalID: -874429718
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 601tutorialGif-Sheet_17
+      rect:
+        serializedVersion: 2
+        x: 1440
+        y: 600
+        width: 160
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 977fc73107d48f348a11103baaa771f8
+      internalID: 73060495
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 601tutorialGif-Sheet_18
+      rect:
+        serializedVersion: 2
+        x: 1600
+        y: 600
+        width: 160
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b4468d95af373794a9fd3a6e92c329a8
+      internalID: -2008672634
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 601tutorialGif-Sheet_19
+      rect:
+        serializedVersion: 2
+        x: 1760
+        y: 600
+        width: 160
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4751073a72c988544aa408e4fb5c64c4
+      internalID: 348090328
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 601tutorialGif-Sheet_20
+      rect:
+        serializedVersion: 2
+        x: 1920
+        y: 600
+        width: 160
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 67cd0ed012d27a843b5c60755a98086e
+      internalID: 965693509
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 601tutorialGif-Sheet_21
+      rect:
+        serializedVersion: 2
+        x: 2080
+        y: 600
+        width: 160
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2ccb04f24d7b04c45a83d36986616134
+      internalID: -1620776161
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 601tutorialGif-Sheet_22
+      rect:
+        serializedVersion: 2
+        x: 2240
+        y: 600
+        width: 160
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bc76ef7d071d9c9499aa5bd77b5ee38d
+      internalID: 218267669
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 601tutorialGif-Sheet_23
+      rect:
+        serializedVersion: 2
+        x: 2400
+        y: 600
+        width: 160
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b4f2d04cc9fa5d1428a59db14e9c86dd
+      internalID: 1742245973
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 601tutorialGif-Sheet_24
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 525
+        width: 160
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e5fe3606fa146a44e8ff175d6a04b9ba
+      internalID: 1434372537
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 601tutorialGif-Sheet_25
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 525
+        width: 160
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7382cdabd879c5e408090a002d5aae8b
+      internalID: -2043586332
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 601tutorialGif-Sheet_26
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 525
+        width: 160
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dd9fff8699d6b2d4692740d7f08c2a87
+      internalID: 1888691377
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 601tutorialGif-Sheet_27
+      rect:
+        serializedVersion: 2
+        x: 480
+        y: 525
+        width: 160
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 05e0250702d99b442a4e41b758f81c13
+      internalID: 382989615
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 601tutorialGif-Sheet_28
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 525
+        width: 160
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 758b1f4e66519474db4d009d67b6932d
+      internalID: -1418554510
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 601tutorialGif-Sheet_29
+      rect:
+        serializedVersion: 2
+        x: 800
+        y: 525
+        width: 160
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a8bef50a57c55374c85dd063d9cd0cde
+      internalID: 794119750
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 601tutorialGif-Sheet_30
+      rect:
+        serializedVersion: 2
+        x: 960
+        y: 525
+        width: 160
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1b3ced47b72a7084e8e35573f051b6b8
+      internalID: -339249
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 601tutorialGif-Sheet_31
+      rect:
+        serializedVersion: 2
+        x: 1120
+        y: 525
+        width: 160
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6f12e01ea41c22747b792c1db4db2e03
+      internalID: -247326660
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 601tutorialGif-Sheet_32
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 525
+        width: 160
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e75d908b6838f7a479eb38946978a3fe
+      internalID: -932458339
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 601tutorialGif-Sheet_33
+      rect:
+        serializedVersion: 2
+        x: 1440
+        y: 525
+        width: 160
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: feb81e9cb4988d34cbe6118458096c3a
+      internalID: -1958449055
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 601tutorialGif-Sheet_34
+      rect:
+        serializedVersion: 2
+        x: 1600
+        y: 525
+        width: 160
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d5b6003d3c02a2b4aa133d2338837355
+      internalID: 282745019
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 601tutorialGif-Sheet_35
+      rect:
+        serializedVersion: 2
+        x: 1760
+        y: 525
+        width: 160
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d950c91c8f3407d478225073e0abb843
+      internalID: 197077260
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 601tutorialGif-Sheet_36
+      rect:
+        serializedVersion: 2
+        x: 1920
+        y: 525
+        width: 160
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d4f5f840b1c330a4882929ac0b53f72e
+      internalID: 1084475370
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 601tutorialGif-Sheet_37
+      rect:
+        serializedVersion: 2
+        x: 2080
+        y: 525
+        width: 160
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e4f1f66a07d24ad488aee46394c5dc60
+      internalID: -1527149625
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 601tutorialGif-Sheet_38
+      rect:
+        serializedVersion: 2
+        x: 2240
+        y: 525
+        width: 160
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cda3dd6c856b5ca49b3e8304a10c2dd3
+      internalID: 1874937635
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 601tutorialGif-Sheet_39
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 450
+        width: 160
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 58cc2543e5348d64d950d412ce10bbae
+      internalID: 2112151002
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 601tutorialGif-Sheet_40
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 450
+        width: 160
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ed3e8465de70e954eaf25a64d61402eb
+      internalID: 55304032
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 601tutorialGif-Sheet_41
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 450
+        width: 160
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3c306876cbdda6f47a66ef7d80d851c9
+      internalID: 669418192
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 601tutorialGif-Sheet_42
+      rect:
+        serializedVersion: 2
+        x: 480
+        y: 450
+        width: 160
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 961cc0462dbe6cf4d8fc1658dd317c44
+      internalID: -1878568573
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 601tutorialGif-Sheet_43
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 450
+        width: 160
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f476b667e737d1e458abefe8300c1c34
+      internalID: -1103376081
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 601tutorialGif-Sheet_44
+      rect:
+        serializedVersion: 2
+        x: 800
+        y: 450
+        width: 160
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b205ea5f0e1c5b342b86e8bc9e09ddbf
+      internalID: 1121550356
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 601tutorialGif-Sheet_45
+      rect:
+        serializedVersion: 2
+        x: 960
+        y: 450
+        width: 160
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b55b18617ef520f4d9a731e162092ff4
+      internalID: 1324393191
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 601tutorialGif-Sheet_46
+      rect:
+        serializedVersion: 2
+        x: 1120
+        y: 450
+        width: 160
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 924387531718fd44f8ec0ffbcbd37570
+      internalID: -1589901469
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 601tutorialGif-Sheet_47
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 450
+        width: 160
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9b9538157a76ea2459954ecc00a6d193
+      internalID: 1624506883
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 601tutorialGif-Sheet_48
+      rect:
+        serializedVersion: 2
+        x: 1440
+        y: 450
+        width: 160
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a53c91cb0e79f3e44b9675eb0441c1a2
+      internalID: -1758359770
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 601tutorialGif-Sheet_49
+      rect:
+        serializedVersion: 2
+        x: 1600
+        y: 450
+        width: 160
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fd025e49d34189a4d96ba6d9f01f6620
+      internalID: -1105116544
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 601tutorialGif-Sheet_50
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 375
+        width: 160
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b260c740e946de742b3e73d9b7ec77b3
+      internalID: 1356896504
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 601tutorialGif-Sheet_51
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 375
+        width: 160
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 87299fffb101693499b77ae8821b9712
+      internalID: 1585260046
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 601tutorialGif-Sheet_52
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 375
+        width: 160
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4bef169930ce01143be53acd7146335d
+      internalID: -260000449
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 601tutorialGif-Sheet_53
+      rect:
+        serializedVersion: 2
+        x: 480
+        y: 375
+        width: 160
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a91f275ec93efa640a3ddad2a7759aa7
+      internalID: 1203112740
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 601tutorialGif-Sheet_54
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 375
+        width: 160
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 309a230d83aff654d8dac74e2efff2e2
+      internalID: 2096152932
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 601tutorialGif-Sheet_55
+      rect:
+        serializedVersion: 2
+        x: 800
+        y: 375
+        width: 160
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d94315ab5dd9a0548b81fe6e5ded900b
+      internalID: 641553633
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 601tutorialGif-Sheet_56
+      rect:
+        serializedVersion: 2
+        x: 960
+        y: 375
+        width: 160
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9db4461ff5dae0447b5191bdc683872b
+      internalID: 1917881485
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 601tutorialGif-Sheet_57
+      rect:
+        serializedVersion: 2
+        x: 1120
+        y: 375
+        width: 160
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 780c0df808022e4408a1f3591594bd88
+      internalID: -1635370174
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 601tutorialGif-Sheet_58
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 375
+        width: 160
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1e3931e55265a50438426298004ac5ee
+      internalID: -1666915281
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 601tutorialGif-Sheet_59
+      rect:
+        serializedVersion: 2
+        x: 1440
+        y: 375
+        width: 160
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8449b88d35a239042b466481b31fd0ef
+      internalID: 1618444690
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 601tutorialGif-Sheet_60
+      rect:
+        serializedVersion: 2
+        x: 1600
+        y: 375
+        width: 160
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5d8d4cdcf16664b498bfb36dda98b432
+      internalID: -2101737890
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 601tutorialGif-Sheet_61
+      rect:
+        serializedVersion: 2
+        x: 1760
+        y: 375
+        width: 160
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b2f0de32db470fe4db6715e6bb09debf
+      internalID: -213922736
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 601tutorialGif-Sheet_62
+      rect:
+        serializedVersion: 2
+        x: 1920
+        y: 375
+        width: 160
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7f82bfe929b2e3141aca92ede1562269
+      internalID: 639715210
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 601tutorialGif-Sheet_63
+      rect:
+        serializedVersion: 2
+        x: 2080
+        y: 375
+        width: 160
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6f3f4476ff7a0024f976b61ef38e8733
+      internalID: -1938976171
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 601tutorialGif-Sheet_64
+      rect:
+        serializedVersion: 2
+        x: 2240
+        y: 375
+        width: 160
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 984461280460de84182adaad954fcbea
+      internalID: 311035561
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 601tutorialGif-Sheet_65
+      rect:
+        serializedVersion: 2
+        x: 2400
+        y: 375
+        width: 160
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 34b86f70d81a6384287cb2e7ed7e81bf
+      internalID: 1439360190
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 601tutorialGif-Sheet_66
+      rect:
+        serializedVersion: 2
+        x: 2560
+        y: 375
+        width: 160
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bb4c5d202de915342b0a1efadc39731c
+      internalID: 2036347250
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 601tutorialGif-Sheet_67
+      rect:
+        serializedVersion: 2
+        x: 2720
+        y: 375
+        width: 160
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1cea4cd83b1b1e642851c80aa6e20b44
+      internalID: 723007870
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 601tutorialGif-Sheet_68
+      rect:
+        serializedVersion: 2
+        x: 2880
+        y: 375
+        width: 160
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bb99de929c2421a4fbd16ebd31995a81
+      internalID: 1319725726
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 601tutorialGif-Sheet_69
+      rect:
+        serializedVersion: 2
+        x: 3040
+        y: 375
+        width: 160
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 116db42e394927f4f97cce97175464c5
+      internalID: -202641372
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 601tutorialGif-Sheet_70
+      rect:
+        serializedVersion: 2
+        x: 3200
+        y: 375
+        width: 160
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 56d00fe5d32143e47a21dff9fca9d87c
+      internalID: -374476672
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 601tutorialGif-Sheet_71
+      rect:
+        serializedVersion: 2
+        x: 3360
+        y: 375
+        width: 160
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 15bccf55744a3984fae0f86e741e2e0f
+      internalID: -1980184482
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 601tutorialGif-Sheet_72
+      rect:
+        serializedVersion: 2
+        x: 3520
+        y: 375
+        width: 160
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 424f349c81f2b794fad6dfbf8c1afb19
+      internalID: 486473759
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 601tutorialGif-Sheet_73
+      rect:
+        serializedVersion: 2
+        x: 3680
+        y: 375
+        width: 160
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e9a2536ba712a1c49b61b54ae7a7873c
+      internalID: 1662302607
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 601tutorialGif-Sheet_74
+      rect:
+        serializedVersion: 2
+        x: 3840
+        y: 375
+        width: 160
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e08b7886dbb7c14409afebf317a2531d
+      internalID: 1258712546
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 601tutorialGif-Sheet_75
+      rect:
+        serializedVersion: 2
+        x: 4000
+        y: 375
+        width: 160
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 36603917fac0c3842be1dfb6af0bdcc4
+      internalID: 194643848
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 601tutorialGif-Sheet_76
+      rect:
+        serializedVersion: 2
+        x: 4160
+        y: 375
+        width: 160
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b07e09941c410da4fb649580d99f39b5
+      internalID: -870380248
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 601tutorialGif-Sheet_77
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 300
+        width: 160
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cfbe07214fa556f4fbd1fdd1c8e1d0d7
+      internalID: 1218178359
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 601tutorialGif-Sheet_78
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 300
+        width: 160
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 18031b54b69cf774c86901c78936bbd0
+      internalID: 2053146530
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 601tutorialGif-Sheet_79
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 300
+        width: 160
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1ed18fabc5e10f14ba8e7d41f4a8cc3f
+      internalID: 648366737
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 601tutorialGif-Sheet_80
+      rect:
+        serializedVersion: 2
+        x: 480
+        y: 300
+        width: 160
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 09126b3ce1e7ff04b845aebc9308b275
+      internalID: 1329160160
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 601tutorialGif-Sheet_81
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 225
+        width: 160
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0f68ca97f757f0e4ab79a2751e5aa591
+      internalID: -749066364
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 601tutorialGif-Sheet_82
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 225
+        width: 160
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9d889b1e67c1ee049b05556c56ae1804
+      internalID: -790037261
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 601tutorialGif-Sheet_83
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 225
+        width: 160
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 71a74445034b6054d93788c4415bcf69
+      internalID: 827570126
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 601tutorialGif-Sheet_84
+      rect:
+        serializedVersion: 2
+        x: 480
+        y: 225
+        width: 160
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 89ca40751197b8345adadb5733b26afa
+      internalID: 616289987
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 601tutorialGif-Sheet_85
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 225
+        width: 160
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bc3a3d038b7492349b794d18a7ebaf14
+      internalID: -979905296
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 601tutorialGif-Sheet_86
+      rect:
+        serializedVersion: 2
+        x: 800
+        y: 225
+        width: 160
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6521ef6b3dbfb6744a8724b86c558add
+      internalID: -691513361
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 601tutorialGif-Sheet_87
+      rect:
+        serializedVersion: 2
+        x: 960
+        y: 225
+        width: 160
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8240472166a37f249b6bf04d771a7f74
+      internalID: 611876244
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 601tutorialGif-Sheet_88
+      rect:
+        serializedVersion: 2
+        x: 1120
+        y: 225
+        width: 160
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e70a627690649f647b505b03c84d3a46
+      internalID: 1004673288
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 601tutorialGif-Sheet_89
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 225
+        width: 160
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f831a80b317d28341aef6b2a70757266
+      internalID: -1023598086
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 601tutorialGif-Sheet_90
+      rect:
+        serializedVersion: 2
+        x: 1440
+        y: 225
+        width: 160
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bbbc81a10d6b3424a8890bd9b223531c
+      internalID: -1782535426
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 601tutorialGif-Sheet_91
+      rect:
+        serializedVersion: 2
+        x: 1600
+        y: 225
+        width: 160
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 659e90e5149236e478db6426e23cc266
+      internalID: 1514771626
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 601tutorialGif-Sheet_92
+      rect:
+        serializedVersion: 2
+        x: 1760
+        y: 225
+        width: 160
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6157ce9b5d82e5d4cadd52dfef456f11
+      internalID: -2069923463
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 601tutorialGif-Sheet_93
+      rect:
+        serializedVersion: 2
+        x: 1920
+        y: 225
+        width: 160
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 214d5ba2cba6ede47a6f76c13a6118ae
+      internalID: 1854100614
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 601tutorialGif-Sheet_94
+      rect:
+        serializedVersion: 2
+        x: 2080
+        y: 225
+        width: 160
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7beffddee767f65469ede1a2d3fb91fe
+      internalID: -749491642
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 601tutorialGif-Sheet_95
+      rect:
+        serializedVersion: 2
+        x: 2240
+        y: 225
+        width: 160
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 14c2a182bf4e18b45a7ee061e36f2e09
+      internalID: -1990115359
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 601tutorialGif-Sheet_96
+      rect:
+        serializedVersion: 2
+        x: 2400
+        y: 225
+        width: 160
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fcd308495ad77f844bfff4bdfea7b9d8
+      internalID: -1897757699
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 601tutorialGif-Sheet_97
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 150
+        width: 160
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 112d693d041dd5041a341c23ab0ea31d
+      internalID: 1633652418
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 601tutorialGif-Sheet_98
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 150
+        width: 160
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e2b0ff143802da945ba675ff3835fd89
+      internalID: -1168685033
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 601tutorialGif-Sheet_99
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 150
+        width: 160
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1c06a54610cc40b498aa65d381cc69c0
+      internalID: -1106429495
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 601tutorialGif-Sheet_100
+      rect:
+        serializedVersion: 2
+        x: 480
+        y: 150
+        width: 160
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e8817dc24c7ea2e4784a84819370124d
+      internalID: 1866995920
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 601tutorialGif-Sheet_101
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 150
+        width: 160
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a13974e9ca45bd643ab4abd2da652cdd
+      internalID: -1049021268
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 601tutorialGif-Sheet_102
+      rect:
+        serializedVersion: 2
+        x: 800
+        y: 150
+        width: 160
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bf8ba227b2f099643b8ce315f3b09bc8
+      internalID: 1491051508
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 601tutorialGif-Sheet_103
+      rect:
+        serializedVersion: 2
+        x: 960
+        y: 150
+        width: 160
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7be7b373118a43b4d8c518f9f1b9f7f6
+      internalID: 1302032012
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 601tutorialGif-Sheet_104
+      rect:
+        serializedVersion: 2
+        x: 1120
+        y: 150
+        width: 160
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d7f3a36d53ea77b45b65abbef90c353e
+      internalID: 833865386
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 601tutorialGif-Sheet_105
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 150
+        width: 160
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 09210f176db071b4fbfb9c41f28b25f8
+      internalID: -1657703150
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 601tutorialGif-Sheet_106
+      rect:
+        serializedVersion: 2
+        x: 1440
+        y: 150
+        width: 160
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e9acc317920d3364ab7a026b5fb42161
+      internalID: 307303920
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 601tutorialGif-Sheet_107
+      rect:
+        serializedVersion: 2
+        x: 1600
+        y: 150
+        width: 160
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 68632c31c7e46624eb08587a9aafe8d6
+      internalID: 138325133
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 601tutorialGif-Sheet_108
+      rect:
+        serializedVersion: 2
+        x: 1760
+        y: 150
+        width: 160
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c59d1581fb54fe3438d86058c7b4abda
+      internalID: -1288129768
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 601tutorialGif-Sheet_109
+      rect:
+        serializedVersion: 2
+        x: 1920
+        y: 150
+        width: 160
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 48711906d5ef9144395ce09f37b7db49
+      internalID: -1636865667
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 601tutorialGif-Sheet_110
+      rect:
+        serializedVersion: 2
+        x: 2080
+        y: 150
+        width: 160
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c4bd0bc2d9ebc854cb3bb4ac0e26f7ab
+      internalID: 1638335197
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 601tutorialGif-Sheet_111
+      rect:
+        serializedVersion: 2
+        x: 2240
+        y: 150
+        width: 160
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cb17931a8f6d1be44971d84127d31642
+      internalID: -603101502
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 601tutorialGif-Sheet_112
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 75
+        width: 160
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 88a92f75f0f3a18428f40dbd3d7b03c4
+      internalID: 1303353142
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 601tutorialGif-Sheet_113
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 75
+        width: 160
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 212ffe1ba4488914dbcd09f23cc85a5f
+      internalID: 1152505018
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 601tutorialGif-Sheet_114
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 75
+        width: 160
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d7ca5e27ac1c5094c9fe10cbbec0ffac
+      internalID: -257034620
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 601tutorialGif-Sheet_115
+      rect:
+        serializedVersion: 2
+        x: 480
+        y: 75
+        width: 160
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 53e94060821c61b4cb9e40e7d10ddacc
+      internalID: 1370719672
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 601tutorialGif-Sheet_116
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 75
+        width: 160
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6b7c8070b4acf9d45aac92ae0b4c1ab9
+      internalID: -1346992524
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 601tutorialGif-Sheet_117
+      rect:
+        serializedVersion: 2
+        x: 800
+        y: 75
+        width: 160
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 315af34cb95058b4390183d59787dc4f
+      internalID: -1598799782
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 601tutorialGif-Sheet_118
+      rect:
+        serializedVersion: 2
+        x: 960
+        y: 75
+        width: 160
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4ee3d12ae4c69254088d2181af0375de
+      internalID: 1347590032
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 601tutorialGif-Sheet_119
+      rect:
+        serializedVersion: 2
+        x: 1120
+        y: 75
+        width: 160
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ebc09e00649c54246bf2e52b57cd84e0
+      internalID: 1390776491
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 601tutorialGif-Sheet_120
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 75
+        width: 160
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 69af86652bc758343977f8d5b73b029f
+      internalID: -1345461480
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 601tutorialGif-Sheet_121
+      rect:
+        serializedVersion: 2
+        x: 1440
+        y: 75
+        width: 160
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b1c0da8f6700c9549af3ea8d4a469bef
+      internalID: -1306779864
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 601tutorialGif-Sheet_122
+      rect:
+        serializedVersion: 2
+        x: 1600
+        y: 75
+        width: 160
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 111fbaa3981fa054582c1d8f5531fd25
+      internalID: 1816058776
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 601tutorialGif-Sheet_123
+      rect:
+        serializedVersion: 2
+        x: 1760
+        y: 75
+        width: 160
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3bff319d1fbc87f4da05392fc636c633
+      internalID: 1996717899
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 601tutorialGif-Sheet_124
+      rect:
+        serializedVersion: 2
+        x: 1920
+        y: 75
+        width: 160
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: afe176cc2e86d114dbce2738426a60bd
+      internalID: 774925165
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 601tutorialGif-Sheet_125
+      rect:
+        serializedVersion: 2
+        x: 2080
+        y: 75
+        width: 160
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2cc09b70b970e7445b9ede5306331c50
+      internalID: 932692856
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 601tutorialGif-Sheet_126
+      rect:
+        serializedVersion: 2
+        x: 2240
+        y: 75
+        width: 160
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4422d3770bd47664fa618733542995e3
+      internalID: -1899604390
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 601tutorialGif-Sheet_127
+      rect:
+        serializedVersion: 2
+        x: 2400
+        y: 75
+        width: 160
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a8907e3a6a922944a80864fc50a20464
+      internalID: -1969628605
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 601tutorialGif-Sheet_128
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 160
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 89a4b368fe9f11a48b0d948ba9b400c4
+      internalID: 820549933
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 601tutorialGif-Sheet_129
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 0
+        width: 160
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 189da87d903d6ac4cb222bbdd912d2cc
+      internalID: 463538549
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 601tutorialGif-Sheet_130
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 0
+        width: 160
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 18b03e530a6fb88408726e760a9405cd
+      internalID: 675869717
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 601tutorialGif-Sheet_131
+      rect:
+        serializedVersion: 2
+        x: 480
+        y: 0
+        width: 160
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 634eb981ace371948a6fe280a6e74806
+      internalID: -1322412618
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 601tutorialGif-Sheet_132
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 0
+        width: 160
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a1c3bd0327e67a84daa6c197e94a3390
+      internalID: -1250456137
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 601tutorialGif-Sheet_133
+      rect:
+        serializedVersion: 2
+        x: 800
+        y: 0
+        width: 160
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ac554fec98a43444085c488b86b4bf30
+      internalID: 1295640299
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 601tutorialGif-Sheet_134
+      rect:
+        serializedVersion: 2
+        x: 960
+        y: 0
+        width: 160
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b04d3eb69c01df642bdc92769d2cd847
+      internalID: 297798229
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 601tutorialGif-Sheet_135
+      rect:
+        serializedVersion: 2
+        x: 1120
+        y: 0
+        width: 160
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f5d8532da094b9041915d23731d054fd
+      internalID: 833915543
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 601tutorialGif-Sheet_136
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 0
+        width: 160
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e455ad6f2c5de0d4889230141db5f1f4
+      internalID: -1792373011
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 601tutorialGif-Sheet_137
+      rect:
+        serializedVersion: 2
+        x: 1440
+        y: 0
+        width: 160
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f1530957e96679e40b7be38199727fbf
+      internalID: 954885980
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 601tutorialGif-Sheet_138
+      rect:
+        serializedVersion: 2
+        x: 1600
+        y: 0
+        width: 160
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d2181e2093ff8f044bf2ec72692d54fc
+      internalID: 2105467938
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 601tutorialGif-Sheet_139
+      rect:
+        serializedVersion: 2
+        x: 1760
+        y: 0
+        width: 160
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 49fbb9bb31644b042a85960c6c63cbc8
+      internalID: -1513117005
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 601tutorialGif-Sheet_140
+      rect:
+        serializedVersion: 2
+        x: 1920
+        y: 0
+        width: 160
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 23d7e39afe87d834c9a6f907030000a7
+      internalID: -1010252119
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 601tutorialGif-Sheet_141
+      rect:
+        serializedVersion: 2
+        x: 2080
+        y: 0
+        width: 160
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c81ba5d296ab0934b810000dab97e1de
+      internalID: 1236994568
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 601tutorialGif-Sheet_142
+      rect:
+        serializedVersion: 2
+        x: 2240
+        y: 0
+        width: 160
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 059ee8a861dce5940a14556ca7045ee5
+      internalID: -671197844
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 601tutorialGif-Sheet_143
+      rect:
+        serializedVersion: 2
+        x: 2400
+        y: 0
+        width: 160
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ae36fd9cb051a5944bed5219dc6efdbd
+      internalID: -1614789344
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 601tutorialGif-Sheet_144
+      rect:
+        serializedVersion: 2
+        x: 2560
+        y: 0
+        width: 160
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bef09dd44c2128040b52233723b7dbd2
+      internalID: 1604823713
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 601tutorialGif-Sheet_145
+      rect:
+        serializedVersion: 2
+        x: 2720
+        y: 0
+        width: 160
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9bc988a049158d34b808733bc7be328c
+      internalID: -1660748990
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 601tutorialGif-Sheet_146
+      rect:
+        serializedVersion: 2
+        x: 2880
+        y: 0
+        width: 160
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4cfb7d55cfaf4b0409e88a3d1c01c2bd
+      internalID: 1335317081
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 601tutorialGif-Sheet_147
+      rect:
+        serializedVersion: 2
+        x: 3040
+        y: 0
+        width: 160
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ff4787969abac6f48a065b77c0af0a80
+      internalID: -2020871042
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 601tutorialGif-Sheet_148
+      rect:
+        serializedVersion: 2
+        x: 3200
+        y: 0
+        width: 160
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ff79945a3d1ad8e45b5c98f9c94b7fb1
+      internalID: 801415565
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 601tutorialGif-Sheet_149
+      rect:
+        serializedVersion: 2
+        x: 3360
+        y: 0
+        width: 160
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3b552c8e72f78a548a12404c9e83f31b
+      internalID: -222079855
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 601tutorialGif-Sheet_150
+      rect:
+        serializedVersion: 2
+        x: 3520
+        y: 0
+        width: 160
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1325853bdee7e364886f7d6daf7bce05
+      internalID: -1387457918
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 601tutorialGif-Sheet_151
+      rect:
+        serializedVersion: 2
+        x: 3680
+        y: 0
+        width: 160
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 156a7be877c563f4b9f5556364483026
+      internalID: 1551145443
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 601tutorialGif-Sheet_152
+      rect:
+        serializedVersion: 2
+        x: 3840
+        y: 0
+        width: 160
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 53eaf6a5387847442892cf9c35a34506
+      internalID: -1974492485
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 601tutorialGif-Sheet_153
+      rect:
+        serializedVersion: 2
+        x: 4000
+        y: 0
+        width: 160
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0963074d527483c45bfdba160533df71
+      internalID: -1964354396
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 601tutorialGif-Sheet_154
+      rect:
+        serializedVersion: 2
+        x: 4160
+        y: 0
+        width: 160
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: feeff81b939b4d54282dd224bfd7dad5
+      internalID: 1401228523
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 601tutorialGif-Sheet_155
+      rect:
+        serializedVersion: 2
+        x: 4320
+        y: 0
+        width: 160
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ddc784f82459e8e44a431b949e4a55ea
+      internalID: -1621679946
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 601tutorialGif-Sheet_156
+      rect:
+        serializedVersion: 2
+        x: 4480
+        y: 0
+        width: 160
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cb126b3991a32b54d956a8e9cae62b2a
+      internalID: 5929904
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 601tutorialGif-Sheet_157
+      rect:
+        serializedVersion: 2
+        x: 4640
+        y: 0
+        width: 160
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 92ae4b4dcdb54be48803369f438d7d6d
+      internalID: -1846557651
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 601tutorialGif-Sheet_158
+      rect:
+        serializedVersion: 2
+        x: 4800
+        y: 0
+        width: 160
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f4be02079d6a73a4598e74f98b6c674a
+      internalID: 1829469795
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 601tutorialGif-Sheet_159
+      rect:
+        serializedVersion: 2
+        x: 4960
+        y: 0
+        width: 160
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 28c4f6cb7f2e27a47bbdeb5403361280
+      internalID: -124167530
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      601tutorialGif-Sheet_0: 1807866175
+      601tutorialGif-Sheet_1: 1999546907
+      601tutorialGif-Sheet_10: 1314553795
+      601tutorialGif-Sheet_100: 1866995920
+      601tutorialGif-Sheet_101: -1049021268
+      601tutorialGif-Sheet_102: 1491051508
+      601tutorialGif-Sheet_103: 1302032012
+      601tutorialGif-Sheet_104: 833865386
+      601tutorialGif-Sheet_105: -1657703150
+      601tutorialGif-Sheet_106: 307303920
+      601tutorialGif-Sheet_107: 138325133
+      601tutorialGif-Sheet_108: -1288129768
+      601tutorialGif-Sheet_109: -1636865667
+      601tutorialGif-Sheet_11: -2086726825
+      601tutorialGif-Sheet_110: 1638335197
+      601tutorialGif-Sheet_111: -603101502
+      601tutorialGif-Sheet_112: 1303353142
+      601tutorialGif-Sheet_113: 1152505018
+      601tutorialGif-Sheet_114: -257034620
+      601tutorialGif-Sheet_115: 1370719672
+      601tutorialGif-Sheet_116: -1346992524
+      601tutorialGif-Sheet_117: -1598799782
+      601tutorialGif-Sheet_118: 1347590032
+      601tutorialGif-Sheet_119: 1390776491
+      601tutorialGif-Sheet_12: -1745806010
+      601tutorialGif-Sheet_120: -1345461480
+      601tutorialGif-Sheet_121: -1306779864
+      601tutorialGif-Sheet_122: 1816058776
+      601tutorialGif-Sheet_123: 1996717899
+      601tutorialGif-Sheet_124: 774925165
+      601tutorialGif-Sheet_125: 932692856
+      601tutorialGif-Sheet_126: -1899604390
+      601tutorialGif-Sheet_127: -1969628605
+      601tutorialGif-Sheet_128: 820549933
+      601tutorialGif-Sheet_129: 463538549
+      601tutorialGif-Sheet_13: 896735227
+      601tutorialGif-Sheet_130: 675869717
+      601tutorialGif-Sheet_131: -1322412618
+      601tutorialGif-Sheet_132: -1250456137
+      601tutorialGif-Sheet_133: 1295640299
+      601tutorialGif-Sheet_134: 297798229
+      601tutorialGif-Sheet_135: 833915543
+      601tutorialGif-Sheet_136: -1792373011
+      601tutorialGif-Sheet_137: 954885980
+      601tutorialGif-Sheet_138: 2105467938
+      601tutorialGif-Sheet_139: -1513117005
+      601tutorialGif-Sheet_14: -1445204941
+      601tutorialGif-Sheet_140: -1010252119
+      601tutorialGif-Sheet_141: 1236994568
+      601tutorialGif-Sheet_142: -671197844
+      601tutorialGif-Sheet_143: -1614789344
+      601tutorialGif-Sheet_144: 1604823713
+      601tutorialGif-Sheet_145: -1660748990
+      601tutorialGif-Sheet_146: 1335317081
+      601tutorialGif-Sheet_147: -2020871042
+      601tutorialGif-Sheet_148: 801415565
+      601tutorialGif-Sheet_149: -222079855
+      601tutorialGif-Sheet_15: 1564489430
+      601tutorialGif-Sheet_150: -1387457918
+      601tutorialGif-Sheet_151: 1551145443
+      601tutorialGif-Sheet_152: -1974492485
+      601tutorialGif-Sheet_153: -1964354396
+      601tutorialGif-Sheet_154: 1401228523
+      601tutorialGif-Sheet_155: -1621679946
+      601tutorialGif-Sheet_156: 5929904
+      601tutorialGif-Sheet_157: -1846557651
+      601tutorialGif-Sheet_158: 1829469795
+      601tutorialGif-Sheet_159: -124167530
+      601tutorialGif-Sheet_16: -874429718
+      601tutorialGif-Sheet_17: 73060495
+      601tutorialGif-Sheet_18: -2008672634
+      601tutorialGif-Sheet_19: 348090328
+      601tutorialGif-Sheet_2: -1269864186
+      601tutorialGif-Sheet_20: 965693509
+      601tutorialGif-Sheet_21: -1620776161
+      601tutorialGif-Sheet_22: 218267669
+      601tutorialGif-Sheet_23: 1742245973
+      601tutorialGif-Sheet_24: 1434372537
+      601tutorialGif-Sheet_25: -2043586332
+      601tutorialGif-Sheet_26: 1888691377
+      601tutorialGif-Sheet_27: 382989615
+      601tutorialGif-Sheet_28: -1418554510
+      601tutorialGif-Sheet_29: 794119750
+      601tutorialGif-Sheet_3: 203697754
+      601tutorialGif-Sheet_30: -339249
+      601tutorialGif-Sheet_31: -247326660
+      601tutorialGif-Sheet_32: -932458339
+      601tutorialGif-Sheet_33: -1958449055
+      601tutorialGif-Sheet_34: 282745019
+      601tutorialGif-Sheet_35: 197077260
+      601tutorialGif-Sheet_36: 1084475370
+      601tutorialGif-Sheet_37: -1527149625
+      601tutorialGif-Sheet_38: 1874937635
+      601tutorialGif-Sheet_39: 2112151002
+      601tutorialGif-Sheet_4: 144626731
+      601tutorialGif-Sheet_40: 55304032
+      601tutorialGif-Sheet_41: 669418192
+      601tutorialGif-Sheet_42: -1878568573
+      601tutorialGif-Sheet_43: -1103376081
+      601tutorialGif-Sheet_44: 1121550356
+      601tutorialGif-Sheet_45: 1324393191
+      601tutorialGif-Sheet_46: -1589901469
+      601tutorialGif-Sheet_47: 1624506883
+      601tutorialGif-Sheet_48: -1758359770
+      601tutorialGif-Sheet_49: -1105116544
+      601tutorialGif-Sheet_5: -1424769248
+      601tutorialGif-Sheet_50: 1356896504
+      601tutorialGif-Sheet_51: 1585260046
+      601tutorialGif-Sheet_52: -260000449
+      601tutorialGif-Sheet_53: 1203112740
+      601tutorialGif-Sheet_54: 2096152932
+      601tutorialGif-Sheet_55: 641553633
+      601tutorialGif-Sheet_56: 1917881485
+      601tutorialGif-Sheet_57: -1635370174
+      601tutorialGif-Sheet_58: -1666915281
+      601tutorialGif-Sheet_59: 1618444690
+      601tutorialGif-Sheet_6: -1428496823
+      601tutorialGif-Sheet_60: -2101737890
+      601tutorialGif-Sheet_61: -213922736
+      601tutorialGif-Sheet_62: 639715210
+      601tutorialGif-Sheet_63: -1938976171
+      601tutorialGif-Sheet_64: 311035561
+      601tutorialGif-Sheet_65: 1439360190
+      601tutorialGif-Sheet_66: 2036347250
+      601tutorialGif-Sheet_67: 723007870
+      601tutorialGif-Sheet_68: 1319725726
+      601tutorialGif-Sheet_69: -202641372
+      601tutorialGif-Sheet_7: -801743969
+      601tutorialGif-Sheet_70: -374476672
+      601tutorialGif-Sheet_71: -1980184482
+      601tutorialGif-Sheet_72: 486473759
+      601tutorialGif-Sheet_73: 1662302607
+      601tutorialGif-Sheet_74: 1258712546
+      601tutorialGif-Sheet_75: 194643848
+      601tutorialGif-Sheet_76: -870380248
+      601tutorialGif-Sheet_77: 1218178359
+      601tutorialGif-Sheet_78: 2053146530
+      601tutorialGif-Sheet_79: 648366737
+      601tutorialGif-Sheet_8: -1713048351
+      601tutorialGif-Sheet_80: 1329160160
+      601tutorialGif-Sheet_81: -749066364
+      601tutorialGif-Sheet_82: -790037261
+      601tutorialGif-Sheet_83: 827570126
+      601tutorialGif-Sheet_84: 616289987
+      601tutorialGif-Sheet_85: -979905296
+      601tutorialGif-Sheet_86: -691513361
+      601tutorialGif-Sheet_87: 611876244
+      601tutorialGif-Sheet_88: 1004673288
+      601tutorialGif-Sheet_89: -1023598086
+      601tutorialGif-Sheet_9: -1982090403
+      601tutorialGif-Sheet_90: -1782535426
+      601tutorialGif-Sheet_91: 1514771626
+      601tutorialGif-Sheet_92: -2069923463
+      601tutorialGif-Sheet_93: 1854100614
+      601tutorialGif-Sheet_94: -749491642
+      601tutorialGif-Sheet_95: -1990115359
+      601tutorialGif-Sheet_96: -1897757699
+      601tutorialGif-Sheet_97: 1633652418
+      601tutorialGif-Sheet_98: -1168685033
+      601tutorialGif-Sheet_99: -1106429495
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
