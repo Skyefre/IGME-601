@@ -1711,6 +1711,12 @@ public class Player : MonoBehaviour
 
     }
 
+    public void ResetBoxCollider()
+    {
+        boxCollider.enabled = false;
+        boxCollider.enabled = true; //this resets the collider to fix a bug where the player wouldn't spawn in the correct position thus being pushed a bit to the right
+    }
+
     void DisableAllHitboxes()
     {
         foreach (GameObject hitbox in hitboxes)

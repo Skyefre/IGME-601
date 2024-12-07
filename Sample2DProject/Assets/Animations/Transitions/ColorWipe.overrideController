@@ -1,0 +1,15 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: ColorWipe
+  m_Controller: {fileID: 9100000, guid: 0d5d5cfc18cc39543ba173159f641da9, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: c133981bc39f7c04e9caeffaafb9d2f7, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 4e4740e88d0cb4c4990c2516afbaaf4a, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: f417dbb5a9e348845aa84e5dc3e9e4a6, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 8c1d233c4423ded48ad7b303207c5fc4, type: 2}

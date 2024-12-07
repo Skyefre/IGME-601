@@ -12,8 +12,7 @@ public class GameManager : MonoBehaviour
     public int ShardsCollected;
     public int ShardlingsCollected;
     public int stockCount;
-    //public List<Texture2D> colorPalettes;
-    //public List<Texture2D> unusedPalettes; // Palettes aren't in use by any of the players
+    public ScreenTransitioner screenTransitioner;
     public List<string> p1Shards;
     public List<string> p2Shards;
     public List<string> globalShardList;
@@ -79,15 +78,8 @@ public class GameManager : MonoBehaviour
                 DontDestroyOnLoad(vfxEntity.Value);
             }
         }
-        UnityEngine.SceneManagement.SceneManager.LoadScene(sceneName);
-        if (sceneName == "TestScene")
-        {
-            for (int i = 0; i < players.Length; i++)
-            {
-                players[i].transform.position = new Vector3(-2664f, -111.1f);
-        }
-        }
-        //gameObject.GetComponent<CameraShake>().mainCamera = GameObject.Find("Main Camera").GetComponent<Camera>();
+        screenTransitioner.EnterLoad(sceneName);
+        
 
     }
 
