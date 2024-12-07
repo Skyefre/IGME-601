@@ -114,7 +114,7 @@ public class LevelTP : MonoBehaviour
 
     public void CheckGameStart()
     {
-        if (GameManager.Instance.players.Length > 1)
+        if (GameManager.Instance.players.Length >= 1)
         {
             bool allPlayersReady = true;
             foreach (GameObject player in GameManager.Instance.players)
@@ -128,7 +128,7 @@ public class LevelTP : MonoBehaviour
 
             if (allPlayersReady)
             {
-                GameManager.Instance.LoadScene("TestScene"); 
+                GameManager.Instance.LoadScene("FinalLevel"); 
             }
         }
     }
