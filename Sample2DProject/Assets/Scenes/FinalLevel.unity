@@ -296,6 +296,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2166660587382182668, guid: ed38ba5b7246fe64b9f7777eb9a2c378, type: 3}
+      propertyPath: state
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 3418892531436805689, guid: ed38ba5b7246fe64b9f7777eb9a2c378, type: 3}
       propertyPath: m_Name
       value: tutorialSprite (1)
@@ -91850,7 +91854,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5179528165672124276, guid: a9bab66106fe9f64f8e123ff86289a9a, type: 3}
       propertyPath: m_LocalScale.x
-      value: 6546.4136
+      value: 13677.646
       objectReference: {fileID: 0}
     - target: {fileID: 5179528165672124276, guid: a9bab66106fe9f64f8e123ff86289a9a, type: 3}
       propertyPath: m_LocalScale.y
@@ -91858,7 +91862,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5179528165672124276, guid: a9bab66106fe9f64f8e123ff86289a9a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 72.8022
+      value: -1610.6724
       objectReference: {fileID: 0}
     - target: {fileID: 5179528165672124276, guid: a9bab66106fe9f64f8e123ff86289a9a, type: 3}
       propertyPath: m_LocalPosition.y
@@ -93654,6 +93658,10 @@ PrefabInstance:
     - target: {fileID: 1014670602269140376, guid: ed38ba5b7246fe64b9f7777eb9a2c378, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2166660587382182668, guid: ed38ba5b7246fe64b9f7777eb9a2c378, type: 3}
+      propertyPath: state
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3418892531436805689, guid: ed38ba5b7246fe64b9f7777eb9a2c378, type: 3}
       propertyPath: m_Name

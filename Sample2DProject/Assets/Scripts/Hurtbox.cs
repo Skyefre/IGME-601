@@ -181,13 +181,13 @@ public class Hurtbox : MonoBehaviour
             Vector2 overlapCenter = GetOverlapCenter(hurtboxCollider, hitboxCollider);
             if (owner.GetComponent<Player>() != null)
             {
-                owner.GetComponent<Player>().TakeDamage(owner, hitHitbox.damage, 0, 15, 15, overlapCenter, hitHitbox.owner.GetComponent<SpriteRenderer>().material.GetTexture("_PaletteTex"));
+                owner.GetComponent<Player>().TakeDamage(owner, hitHitbox.damage, 0, 15, 15, overlapCenter, null);
                 owner.GetComponent<Player>().hitstopVal = 10;
                 owner.GetComponent<Player>().animator.enabled = false;
             }
             else if (owner.GetComponent<Enemy>() != null)
             {
-                owner.GetComponent<Enemy>().TakeDamage(owner, hitHitbox.damage, 0, 15, 15, overlapCenter, hitHitbox.owner.GetComponent<SpriteRenderer>().material.GetTexture("_PaletteTex"));
+                owner.GetComponent<Enemy>().TakeDamage(owner, hitHitbox.damage, 0, 15, 15, overlapCenter, null);
                 owner.GetComponent<Enemy>().hitstopVal = 10;
                 owner.GetComponent<Enemy>().animator.enabled = false;
             }
