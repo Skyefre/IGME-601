@@ -392,6 +392,8 @@ MonoBehaviour:
   audioSource: {fileID: 0}
   audioClips:
   - {fileID: 8300000, guid: ad6fddf425d0dbc48a237dcdfba57257, type: 3}
+  - {fileID: 8300000, guid: 608480c4c135e5845b18c9d3938efe85, type: 3}
+  - {fileID: 8300000, guid: 67890652db4da2045a2c4fc0d6178659, type: 3}
 --- !u!95 &237148384208766883
 Animator:
   serializedVersion: 5

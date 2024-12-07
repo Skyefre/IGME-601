@@ -1728,6 +1728,7 @@ public class Player : MonoBehaviour
             ((hitPlayer.transform.position.x > gameObject.transform.position.x && facingRight) ||
             (hitPlayer.transform.position.x < gameObject.transform.position.x && !facingRight)))
         {
+            audioSource.PlayOneShot(audioClips[1]);
             vfxEntities["block_spark"].SetActive(true);
             vfxEntities["block_spark"].GetComponent<Entity>().InitEntity(
                 (int)(hitsparkSpawnPoint.x - transform.position.x),
@@ -1736,6 +1737,7 @@ public class Player : MonoBehaviour
         }
         else
         {
+            audioSource.PlayOneShot(audioClips[2]);
             vfxEntities["hit_spark"].SetActive(true);
             vfxEntities["hit_spark"].GetComponent<Entity>().InitEntity(
                 (int)(hitsparkSpawnPoint.x - transform.position.x),

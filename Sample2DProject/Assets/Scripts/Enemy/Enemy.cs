@@ -84,6 +84,8 @@ public class Enemy : MonoBehaviour
     private int lerpDelay = 0;
     //private int gravityDelay = 1;
     private BoxCollider2D boxCollider;// Reference to the BoxCollider2D component
+    public AudioSource audioSource;
+    public List<AudioClip> audioClips = new List<AudioClip>();
 
     // AI Stuff
     public EnemyBaseState currentState;
@@ -126,6 +128,7 @@ public class Enemy : MonoBehaviour
     void Start()
     {
         boxCollider = GetComponent<BoxCollider2D>();
+        audioSource = GetComponent<AudioSource>();
         if (characterJSON == null)
         {
             characterJSON = gameObject.GetComponent<EnemyJSONReader>();
@@ -1010,6 +1013,7 @@ public class Enemy : MonoBehaviour
         }
         else
         {
+            audioSource.PlayOneShot(audioClips[0]);
             health -= damage;
             hspd = xKnockback;
             vspd = yKnockback;
