@@ -15751,6 +15751,10 @@ PrefabInstance:
       propertyPath: m_PlayerJoinedEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1971816237}
+    - target: {fileID: 4002452149782322562, guid: 9314197c5595ba84f856a1e68eb0737f, type: 3}
+      propertyPath: m_Name
+      value: StockCountText
+      objectReference: {fileID: 0}
     - target: {fileID: 4337121079334652506, guid: 9314197c5595ba84f856a1e68eb0737f, type: 3}
       propertyPath: mainCamera
       value: 
