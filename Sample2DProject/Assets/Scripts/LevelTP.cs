@@ -80,7 +80,9 @@ public class LevelTP : MonoBehaviour
 
             if (allPlayersReady)
             {
-                if(GameManager.Instance.ShardsCollected >= 10)
+                Debug.Log("Wahoo");
+                Debug.Log(GameManager.Instance.ShardsCollected);
+                if (GameManager.Instance.ShardsCollected >= 4)
                 {
                     SceneManager.LoadScene("Win");
                 }
