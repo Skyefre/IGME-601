@@ -105,6 +105,7 @@ public class Enemy : MonoBehaviour
     public float playerDetectedWaitTime = 1;
     public float chaseTime;
 
+    public ParticleSystem deathExplosion = default;
 
     public BoxCollider2D EnemyCollider
     {
@@ -1021,7 +1022,10 @@ public class Enemy : MonoBehaviour
             SetState(EnemyState.Hitstun);
         }
         if (health <= 0)
+        {
+            deathExplosion.Play();
             Destroy(this.gameObject);
+        }
 
         bool hitDirection = hspd > 0 ? false : true;
         if (hitDirection != facingRight)

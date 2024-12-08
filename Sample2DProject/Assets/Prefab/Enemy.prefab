@@ -266,6 +266,7 @@ MonoBehaviour:
   stateTime: 0
   playerDetectedWaitTime: 0.5
   chaseTime: 5
+  deathExplosion: {fileID: 6038608999982862885, guid: e9e2f51ac363621489a9cf03510be684, type: 3}
 --- !u!95 &1776125985378903741
 Animator:
   serializedVersion: 5

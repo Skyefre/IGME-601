@@ -921,6 +921,8 @@ MonoBehaviour:
   hitboxReference: {fileID: 2071856720676495377, guid: a9bab66106fe9f64f8e123ff86289a9a, type: 3}
   hurtboxReference: {fileID: 2071856720676495377, guid: 93f0f0d69bc905d49a654f329ed68ef4, type: 3}
   hitstopVal: 0
+  audioSource: {fileID: 0}
+  audioClips: []
   ledgeDetectRayLength: 0
   playerDetectRayLength: 10
   meleeDetectRayLength: 40
@@ -929,6 +931,7 @@ MonoBehaviour:
   stateTime: 0
   playerDetectedWaitTime: 1
   chaseTime: 0
+  deathExplosion: {fileID: 0}
 --- !u!1 &772515509
 GameObject:
   m_ObjectHideFlags: 0
