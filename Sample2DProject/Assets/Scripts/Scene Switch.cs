@@ -5,10 +5,23 @@ using UnityEngine.SceneManagement;
 
 public class SceneSwitch : MonoBehaviour
 {
+    //public InputHandler inputHandler;
+    //private Dictionary<InputHandler.Inputs, InputHandler.InputState> inputs;
+    //private void Awake()
+    //{
+    //    inputs = inputHandler.keyBindings;
+    //}
+    //void FixedUpdate()
+    //{
+    //    if (inputs[InputHandler.Inputs.Pause] == InputHandler.InputState.Pressed)
+    //    {
+    //        Restart();
+    //    }
+    //}
     public void Restart()
     {
         Reset();
-        SceneManager.LoadScene("TestScene");
+        SceneManager.LoadScene("Scene_MainMenu");
     }
 
     private void Reset()
