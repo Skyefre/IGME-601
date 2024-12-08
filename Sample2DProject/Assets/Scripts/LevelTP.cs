@@ -68,7 +68,16 @@ public class LevelTP : MonoBehaviour
     {
         if (GameManager.Instance.players.Length > 1)
         {
-            bool allPlayersReady = true;
+
+            if(readyPlayers.Count > 0)
+            {
+                if (GameManager.Instance.ShardsCollected >= 4)
+                {
+                    SceneManager.LoadScene("Win");
+                }
+            }
+
+            /*bool allPlayersReady = true;
             foreach (GameObject player in GameManager.Instance.players)
             {
                 if (!readyPlayers.Contains(player))
@@ -86,7 +95,7 @@ public class LevelTP : MonoBehaviour
                 {
                     SceneManager.LoadScene("Win");
                 }
-            }
+            }*/
         }
     }
 
