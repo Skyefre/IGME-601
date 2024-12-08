@@ -1021,13 +1021,29 @@ public class Enemy : MonoBehaviour
             SetState(EnemyState.Hitstun);
         }
         if (health <= 0)
+        {
+            PlayDeathSound(audioClips[1]);
             Destroy(this.gameObject);
+        }
+            
 
         bool hitDirection = hspd > 0 ? false : true;
         if (hitDirection != facingRight)
             facingRight = !facingRight;
 
         Debug.Log("Enemy Health: " + health);
+    }
+
+    private void PlayDeathSound(AudioClip deathClip)
+    {
+        // Create a new GameObject to play the sound
+        GameObject audioObject = new GameObject("DeathSound");
+        AudioSource audioSource = audioObject.AddComponent<AudioSource>();
+        audioSource.clip = deathClip;
+        audioSource.Play();
+
+        // Destroy the audio object after the sound finishes
+        Destroy(audioObject, deathClip.length);
     }
 
     public void AnimationFinishedTrigger()
