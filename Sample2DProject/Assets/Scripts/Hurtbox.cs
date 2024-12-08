@@ -113,7 +113,14 @@ public class Hurtbox : MonoBehaviour
                 //if the hitbox is a projectile, destroy it
                 if (hitHitbox.isProjectile)
                 {
-                    hitHitbox.owner.GetComponent<ProjectileBehavior>().DestroyProjectile();
+                    if (hitHitbox.owner.gameObject.tag == "ice" || hitHitbox.owner.gameObject.tag == "wind")
+                    {
+                        hitHitbox.owner.GetComponent<ProjectileBehavior>().DestroyProjectile();
+                    }
+                    else
+                    {
+                        hitHitbox.gameObject.SetActive(false);
+                    }
                 }
 
                 hitPlayer.hitstopVal = 10;
@@ -168,7 +175,14 @@ public class Hurtbox : MonoBehaviour
             //if the hitbox is a projectile, destroy it
             if (hitHitbox.isProjectile)
             {
-                hitHitbox.owner.GetComponent<ProjectileBehavior>().DestroyProjectile();
+                if (hitHitbox.owner.gameObject.tag == "ice" || hitHitbox.owner.gameObject.tag == "wind")
+                {
+                    hitHitbox.owner.GetComponent<ProjectileBehavior>().DestroyProjectile();
+                }
+                else
+                {
+                    hitHitbox.gameObject.SetActive(false);
+                }
             }
             GameManager.Instance.gameObject.GetComponent<CameraShake>().Shake(3f, (1f/6f)); //shake the camera when hit
         }

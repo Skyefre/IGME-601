@@ -80,6 +80,7 @@ public class ProjectileBehavior : MonoBehaviour
         {
             hitbox.GetComponent<Hitbox>().owner = gameObject;
             hitbox.GetComponent<Hitbox>().isProjectile = true;
+            hitbox.SetActive(true);
             hitbox.GetComponent<Hitbox>().ignoreHurtboxes.Clear();
             hitbox.GetComponent<Hitbox>().updateHitbox(damage, 0, 0, width, height, xKnockback, yKnockback, hitstun);
         }
