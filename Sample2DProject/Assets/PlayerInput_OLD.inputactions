@@ -53,7 +53,7 @@
                 {
                     "name": "Pause",
                     "type": "Button",
-                    "id": "1479d072-52fc-443d-8893-ee21078bfdae",
+                    "id": "79bf2da6-bcf9-4b30-86bc-0cbea381d21a",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -61,17 +61,6 @@
                 }
             ],
             "bindings": [
-                {
-                    "name": "",
-                    "id": "34151722-847f-44ac-bfaf-6cc7a365576e",
-                    "path": "<HID::18D1-9400>/trigger",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Stadia",
-                    "action": "Jump",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
                 {
                     "name": "",
                     "id": "e4195561-c81a-453d-93a8-d5e1c3821f73",
@@ -90,28 +79,6 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard",
-                    "action": "Jump",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "899e6839-7c1a-4573-86df-9d99dd0bf892",
-                    "path": "<Keyboard>/space",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard",
-                    "action": "Jump",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "49f33328-0544-45b2-976a-1465f5e0383e",
-                    "path": "<HID::mayflash limited MAYFLASH GameCube Controller Adapter>/button2",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Mayflash Gamecube",
                     "action": "Jump",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -140,28 +107,6 @@
                 },
                 {
                     "name": "",
-                    "id": "c5fdc094-3c21-4102-a10d-132f7ce55092",
-                    "path": "<HID::mayflash limited MAYFLASH GameCube Controller Adapter>/button3",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Mayflash Gamecube",
-                    "action": "Attack",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "820a1735-d3b6-4b7e-a399-fba96e9b1ec2",
-                    "path": "<HID::18D1-9400>/button4",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Stadia",
-                    "action": "Attack",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "2894b686-4d96-486a-8a73-3e1e26b81587",
                     "path": "<Gamepad>/buttonNorth",
                     "interactions": "",
@@ -178,61 +123,6 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard",
-                    "action": "Spell",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "0603813d-7e17-40bf-b75d-e516610a8b8c",
-                    "path": "<Gamepad>/leftShoulder",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Controller",
-                    "action": "Spell",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "9bbf5109-fcab-4a95-8a56-d96aa0ab5ed3",
-                    "path": "<Gamepad>/leftTrigger",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Controller",
-                    "action": "Spell",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "b25d8730-4ed0-4d26-960d-f1ff77dff61c",
-                    "path": "<HID::mayflash limited MAYFLASH GameCube Controller Adapter>/button4",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Mayflash Gamecube",
-                    "action": "Spell",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "bd3de2e8-8d74-4e76-85b6-b47af51a13d5",
-                    "path": "<HID::mayflash limited MAYFLASH GameCube Controller Adapter>/button5",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Mayflash Gamecube",
-                    "action": "Spell",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "a2360e65-4e63-471a-b7e0-b250f3a289ca",
-                    "path": "<HID::18D1-9400>/button5",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Stadia",
                     "action": "Spell",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -261,56 +151,23 @@
                 },
                 {
                     "name": "",
-                    "id": "95868cd8-4a40-4605-80ac-13423fd3c1a0",
-                    "path": "<Gamepad>/rightShoulder",
+                    "id": "822256bc-1267-4fa6-8d78-58d77274c769",
+                    "path": "<Gamepad>/start",
                     "interactions": "",
                     "processors": "",
                     "groups": "Controller",
-                    "action": "Shield",
+                    "action": "Pause",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
-                    "id": "a217749a-58ff-430a-af46-3baf784e2c5f",
-                    "path": "<Gamepad>/rightTrigger",
+                    "id": "b26190ac-3342-4112-844d-c29f94910b46",
+                    "path": "<Keyboard>/enter",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Controller",
-                    "action": "Shield",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "a0349e4d-7a94-4452-b80c-357acbd0c9d7",
-                    "path": "<HID::mayflash limited MAYFLASH GameCube Controller Adapter>/trigger",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Mayflash Gamecube",
-                    "action": "Shield",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "462c6ef2-2180-4261-888b-0e14b4a80e5a",
-                    "path": "<HID::mayflash limited MAYFLASH GameCube Controller Adapter>/button6",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Mayflash Gamecube",
-                    "action": "Shield",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "26147db6-fb7a-486a-a5be-ad21a09f0a80",
-                    "path": "<HID::18D1-9400>/button2",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Stadia",
-                    "action": "Shield",
+                    "groups": "Keyboard",
+                    "action": "Pause",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -489,279 +346,270 @@
                     "action": "Movement",
                     "isComposite": true,
                     "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "Menu",
+            "id": "2024a2cc-2906-4113-a8ba-b06bd6f03794",
+            "actions": [
+                {
+                    "name": "Select",
+                    "type": "Button",
+                    "id": "a0928e6e-876c-4f12-83dc-d64b9b2c1cb3",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 },
                 {
-                    "name": "Dpad",
-                    "id": "e6a8c8f6-d5c8-4ce2-b1d2-01991a506e0d",
-                    "path": "2DVector",
-                    "interactions": "",
+                    "name": "Back",
+                    "type": "Button",
+                    "id": "0c74582d-eeb8-4385-9e17-281c37993d33",
+                    "expectedControlType": "Button",
                     "processors": "",
-                    "groups": "",
-                    "action": "Movement",
-                    "isComposite": true,
-                    "isPartOfComposite": false
+                    "interactions": "",
+                    "initialStateCheck": false
                 },
                 {
-                    "name": "analog",
-                    "id": "d9bd25d8-cd98-4cd1-a30c-f3abc3c608ba",
-                    "path": "2DVector",
-                    "interactions": "",
+                    "name": "MenuMove",
+                    "type": "Value",
+                    "id": "2a51f3e9-8fec-4196-bc63-e659385d184e",
+                    "expectedControlType": "Dpad",
                     "processors": "",
-                    "groups": "",
-                    "action": "Movement",
-                    "isComposite": true,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "up",
-                    "id": "8da0143a-3865-48fc-86e5-622b718692e6",
-                    "path": "<Joystick>/stick/up",
                     "interactions": "",
-                    "processors": "",
-                    "groups": "Mayflash Gamecube",
-                    "action": "Movement",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "down",
-                    "id": "b3bf0ea6-0bb4-4fe2-9493-8515ea780aea",
-                    "path": "<Joystick>/stick/down",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Mayflash Gamecube",
-                    "action": "Movement",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "left",
-                    "id": "6f8e1a15-96d1-4e3b-984c-0f8550699a80",
-                    "path": "<Joystick>/stick/left",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Mayflash Gamecube",
-                    "action": "Movement",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "right",
-                    "id": "e811d01a-9bcf-469b-8c9f-d714092e1907",
-                    "path": "<Joystick>/stick/right",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Mayflash Gamecube",
-                    "action": "Movement",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "dpad",
-                    "id": "7b874c06-ec65-499d-b36a-7d91f27a2f84",
-                    "path": "2DVector",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Movement",
-                    "isComposite": true,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "up",
-                    "id": "339de14c-dfaf-4c4f-bba1-f14973cda9c8",
-                    "path": "<HID::mayflash limited MAYFLASH GameCube Controller Adapter>/button13",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Mayflash Gamecube",
-                    "action": "Movement",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "down",
-                    "id": "8ab8d870-c2e9-44e4-ac96-7e01d548350c",
-                    "path": "<HID::mayflash limited MAYFLASH GameCube Controller Adapter>/button15",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Mayflash Gamecube",
-                    "action": "Movement",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "left",
-                    "id": "d2af8a06-c9a8-481c-865e-b690af7d893b",
-                    "path": "<HID::mayflash limited MAYFLASH GameCube Controller Adapter>/button16",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Mayflash Gamecube",
-                    "action": "Movement",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "right",
-                    "id": "e2fd3843-fe0a-4a2a-9d42-e0efb7fc55a2",
-                    "path": "<HID::mayflash limited MAYFLASH GameCube Controller Adapter>/button14",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Mayflash Gamecube",
-                    "action": "Movement",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "dpad",
-                    "id": "5a366529-fb51-4f2c-8f28-b445dd1d67e3",
-                    "path": "2DVector",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Movement",
-                    "isComposite": true,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "up",
-                    "id": "dec31c76-3986-46bc-b790-f68ad5e6ccb5",
-                    "path": "<HID::18D1-9400>/hat/up",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Stadia",
-                    "action": "Movement",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "down",
-                    "id": "5fda4586-91af-4eac-aedd-3d5845c386d7",
-                    "path": "<HID::18D1-9400>/hat/down",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Stadia",
-                    "action": "Movement",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "left",
-                    "id": "cb78e2f8-34ab-4249-ab6f-e0aff56f5441",
-                    "path": "<HID::18D1-9400>/hat/left",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Stadia",
-                    "action": "Movement",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "right",
-                    "id": "bae36902-d688-431b-9974-5e3be5be1e1d",
-                    "path": "<HID::18D1-9400>/hat/right",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Stadia",
-                    "action": "Movement",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "analog",
-                    "id": "6c9ded6b-7a09-4db7-b45f-086bf02368de",
-                    "path": "2DVector",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Movement",
-                    "isComposite": true,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "up",
-                    "id": "e40d35a8-af66-4d03-a340-8c4d30241ccc",
-                    "path": "<HID::18D1-9400>/stick/up",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Stadia",
-                    "action": "Movement",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "down",
-                    "id": "f18d48a5-fec6-4186-b06d-975d3618219f",
-                    "path": "<HID::18D1-9400>/stick/down",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Stadia",
-                    "action": "Movement",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "left",
-                    "id": "1f92aede-22d1-4d45-9f53-5544266276f2",
-                    "path": "<HID::18D1-9400>/stick/left",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Stadia",
-                    "action": "Movement",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "right",
-                    "id": "c03a246e-783b-4910-ad96-efec7d144d62",
-                    "path": "<HID::18D1-9400>/stick/right",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Stadia",
-                    "action": "Movement",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
+                    "initialStateCheck": true
+                }
+            ],
+            "bindings": [
                 {
                     "name": "",
-                    "id": "492a2a64-6a78-4495-a961-703a75d921e8",
-                    "path": "<Gamepad>/start",
+                    "id": "e39de407-0372-4b9c-aa8f-f2a08694f472",
+                    "path": "<Gamepad>/buttonEast",
                     "interactions": "",
                     "processors": "",
                     "groups": "Controller",
-                    "action": "Pause",
+                    "action": "Back",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
-                    "id": "58c98db4-5885-4089-926d-9284104de6fc",
+                    "id": "b8a64ea3-f5bc-4286-bc46-d4020f7312e7",
+                    "path": "<Keyboard>/j",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "Back",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "c1ac26a1-cdac-4ba5-ab3a-76529d6279c8",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "Back",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "2D Vector",
+                    "id": "ef8de524-16c9-4a2d-8a1d-a89d281cf019",
+                    "path": "2DVector",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MenuMove",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "up",
+                    "id": "036a247a-d718-4c44-b6a1-ccfc23556b9e",
+                    "path": "<Gamepad>/dpad/up",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Controller",
+                    "action": "MenuMove",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "down",
+                    "id": "a93070e3-cb07-4fbc-91be-c47cc02f4224",
+                    "path": "<Gamepad>/dpad/down",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Controller",
+                    "action": "MenuMove",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "left",
+                    "id": "021c07e1-b2b1-48b7-bd29-0025600609f0",
+                    "path": "<Gamepad>/dpad/left",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Controller",
+                    "action": "MenuMove",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "right",
+                    "id": "d986af8c-01da-42b0-9dc7-1793214b8d44",
+                    "path": "<Gamepad>/dpad/right",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Controller",
+                    "action": "MenuMove",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "2D Vector",
+                    "id": "cf82bdd8-6352-41f4-aba3-438697479740",
+                    "path": "2DVector",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MenuMove",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "up",
+                    "id": "baf456b0-77ea-4941-8700-eaa87d07252d",
+                    "path": "<Gamepad>/leftStick/up",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Controller",
+                    "action": "MenuMove",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "down",
+                    "id": "a838b578-5023-4409-abe3-2d65bec92553",
+                    "path": "<Gamepad>/leftStick/down",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Controller",
+                    "action": "MenuMove",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "left",
+                    "id": "d24fe24f-9493-417a-a69b-8fb49a0196f2",
+                    "path": "<Gamepad>/leftStick/left",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Controller",
+                    "action": "MenuMove",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "right",
+                    "id": "3780e70e-19ef-4a1b-b7e2-9ec76b41853a",
+                    "path": "<Gamepad>/leftStick/right",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Controller",
+                    "action": "MenuMove",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "2D Vector",
+                    "id": "9ac808f6-0672-4fce-8fc7-e39185929b6d",
+                    "path": "2DVector",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MenuMove",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "up",
+                    "id": "f69ec89a-f226-41c1-8fea-d89b8a398908",
+                    "path": "<Keyboard>/w",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "MenuMove",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "down",
+                    "id": "782a1ba7-08d7-4ee6-94f9-e3ba64886540",
+                    "path": "<Keyboard>/s",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "MenuMove",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "left",
+                    "id": "59a8d25a-ea81-4a36-98d4-8a028fa3dcac",
+                    "path": "<Keyboard>/a",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "MenuMove",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "right",
+                    "id": "b1e558c6-52e8-49de-bd05-047fa50b3df2",
+                    "path": "<Keyboard>/d",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "MenuMove",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "b8e244f6-a8cf-409d-9cb9-5adc7ddf76d8",
+                    "path": "<Gamepad>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Controller",
+                    "action": "Select",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "474a5e48-0bf2-4ada-82c3-e50caa9e9faf",
+                    "path": "<Keyboard>/k",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "Select",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "68569d1c-663b-457b-abe9-e3989efe3390",
                     "path": "<Keyboard>/enter",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard",
-                    "action": "Pause",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "3e6656f6-5d82-4f59-952e-003ed1562b7f",
-                    "path": "<HID::mayflash limited MAYFLASH GameCube Controller Adapter>/button10",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Mayflash Gamecube",
-                    "action": "Pause",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "6a09deea-b42f-4a08-ab91-41ad808adb0a",
-                    "path": "<HID::18D1-9400>/button12",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Stadia",
-                    "action": "Pause",
+                    "action": "Select",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
@@ -786,28 +634,6 @@
             "devices": [
                 {
                     "devicePath": "<Gamepad>",
-                    "isOptional": false,
-                    "isOR": false
-                }
-            ]
-        },
-        {
-            "name": "Mayflash Gamecube",
-            "bindingGroup": "Mayflash Gamecube",
-            "devices": [
-                {
-                    "devicePath": "<HID::mayflash limited MAYFLASH GameCube Controller Adapter>",
-                    "isOptional": false,
-                    "isOR": false
-                }
-            ]
-        },
-        {
-            "name": "Stadia",
-            "bindingGroup": "Stadia",
-            "devices": [
-                {
-                    "devicePath": "<HID::18D1-9400>",
                     "isOptional": false,
                     "isOR": false
                 }

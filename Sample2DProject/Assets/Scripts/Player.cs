@@ -1463,6 +1463,13 @@ public class Player : MonoBehaviour
         Debug.DrawRay(leftRayOrigin, Vector2.up * rayLength, Color.green);
         Debug.DrawRay(rightRayOrigin, Vector2.up * rayLength, Color.green);
 
+        if(leftHit.collider != null || rightHit.collider != null)
+        {
+            if(leftHit.collider.gameObject.tag == "Ice" || rightHit.collider.gameObject.tag == "Ice")
+            {
+                return new RaycastHit2D();
+            }
+        }
         if (leftHit.collider != null)
         {
             return leftHit;
