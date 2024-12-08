@@ -18,27 +18,30 @@ public class Shardling : MonoBehaviour, ICollectible
     {
         if (shardlingCountText == null)
         {
-            shardlingCountText = GameObject.Find("Count").GetComponent<TextMeshProUGUI>();
+            shardlingCountText = GameObject.Find("ShardlingCount").GetComponent<TextMeshProUGUI>();
         }
         if(stockCountText == null)
         {
-            shardlingCountText = GameObject.Find("StockCountText").GetComponent<TextMeshProUGUI>();
+            stockCountText = GameObject.Find("StockCountText").GetComponent<TextMeshProUGUI>();
 
         }
     }
 
     public void Collect()
     {
+        Debug.Log(shardlingCountText);
         GameManager.Instance.ShardlingsCollected++;
-        if(GameManager.Instance.ShardlingsCollected>= 25)
+        shardlingCount++;
+        shardlingCountText.text = shardlingCount.ToString();
+        Debug.Log("You collected a Shardling!");
+        if (GameManager.Instance.ShardlingsCollected >= 25)
         {
             GameManager.Instance.stockCount++;
             GameManager.Instance.ShardlingsCollected = 0;
+            shardlingCount = 0;
+            shardlingCountText.text = shardlingCount.ToString();
 
         }
-        shardlingCount++;
-        //shardlingCountText.text = shardlingCount.ToString();
-        Debug.Log("You collected a Shardling!");
         Destroy(gameObject);
         OnShardlingCollected?.Invoke();
     }
