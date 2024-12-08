@@ -24,7 +24,7 @@ public class Shardling : MonoBehaviour, ICollectible
     {
         GameManager.Instance.ShardlingsCollected++;
         shardlingCount++;
-        shardlingCountText.text = shardlingCount.ToString();
+        //shardlingCountText.text = shardlingCount.ToString();
         Debug.Log("You collected a Shardling!");
         Destroy(gameObject);
         OnShardlingCollected?.Invoke();
