@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
@@ -10,7 +11,8 @@ public class ScreenTransitioner : MonoBehaviour
     public Animator transition;
     public float transitionTime = 1f;
     private bool isLoading = false;
-
+    public TextMeshProUGUI shardCountText;
+    public TextMeshProUGUI shardlingCountText;
     void Update()
     {
         
@@ -55,6 +57,10 @@ public class ScreenTransitioner : MonoBehaviour
             for (int i = 0; i < GameManager.Instance.players.Length; i++)
             {
                 GameManager.Instance.stockCount = 5;//the reason there are 2 stock sets is so the player actually respawns, then gets set to max stocks
+                GameManager.Instance.ShardsCollected = 0;
+                GameManager.Instance.ShardlingsCollected = 0;
+                shardCountText.text = "0/4";
+                shardlingCountText.text = "0";
                 GameManager.Instance.players[i].GetComponent<Player>().Respawn();
                 GameManager.Instance.stockCount = 5;
                 GameManager.Instance.players[i].transform.position = new Vector3(0, -64, 0); ;
