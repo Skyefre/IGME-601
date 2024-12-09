@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 //using System.Diagnostics;
 using UnityEngine;
+using static System.TimeZoneInfo;
+using static UnityEditor.PlayerSettings;
 //using static UnityEngine.EventSystems.EventTrigger;
 //using static Enemy;
 
@@ -105,7 +107,7 @@ public class Enemy : MonoBehaviour
     public float playerDetectedWaitTime = 1;
     public float chaseTime;
 
-    public ParticleSystem deathExplosion = default;
+    public Particles deathBoom = default;
 
     public BoxCollider2D EnemyCollider
     {
@@ -138,7 +140,6 @@ public class Enemy : MonoBehaviour
         enemyData = characterJSON.enemyDataList;
         InitEnemy();
         SetState(EnemyState.Idle);
-
     }
 
     // Update is called once per frame
@@ -1023,7 +1024,8 @@ public class Enemy : MonoBehaviour
         }
         if (health <= 0)
         {
-            deathExplosion.Play();
+            deathBoom.transform.parent = null;
+            deathBoom.PlayDeathParticles(hitEnemy.transform.position);
             PlayDeathSound(audioClips[1]);
             Destroy(this.gameObject);
         }
