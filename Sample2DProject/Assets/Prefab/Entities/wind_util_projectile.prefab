@@ -113,7 +113,7 @@ MonoBehaviour:
   height: 0
   xKnockback: 5
   yKnockback: 0
-  hitstun: 0
+  hitstun: 20
   disableAfterAnimation: 1
   projectileActive: 0
   rayLength: 0.1

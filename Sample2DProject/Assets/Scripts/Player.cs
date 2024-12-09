@@ -908,14 +908,14 @@ public class Player : MonoBehaviour
                         switch (weaponName)
                         {
                             case "ice":
-                                if (!projectiles["ice_attack"].activeSelf && !projectiles["ice_attack"].GetComponent<IceAttackProjectile>().projectileActive)
+                                if (/*!projectiles["ice_attack"].activeSelf &&*/ !projectiles["ice_attack"].GetComponent<IceAttackProjectile>().projectileActive)
                                 {
                                     projectiles["ice_attack"].SetActive(true);
                                     projectiles["ice_attack"].GetComponent<IceAttackProjectile>().InitProjectile(spellSpawnData.spellAttack[0].xOffset, spellSpawnData.spellAttack[0].yOffset);
                                 }
                                 break;
                             case "wind":
-                                if (!projectiles["wind_attack"].activeSelf && !projectiles["wind_attack"].GetComponent<WindAttackProjectile>().projectileActive)
+                                if (/*!projectiles["wind_attack"].activeSelf && */!projectiles["wind_attack"].GetComponent<WindAttackProjectile>().projectileActive)
                                 {
                                     projectiles["wind_attack"].SetActive(true);
                                     projectiles["wind_attack"].GetComponent<WindAttackProjectile>().InitProjectile(spellSpawnData.spellAttack[0].xOffset, spellSpawnData.spellAttack[0].yOffset);
@@ -1013,11 +1013,13 @@ public class Player : MonoBehaviour
                         switch (weaponName)
                         {
                             case "ice":
-                                if (projectiles["ice_util"].activeSelf == false)
-                                {
-                                    projectiles["ice_util"].SetActive(true);
-                                    projectiles["ice_util"].GetComponent<IceBlock>().InitProjectile(spellSpawnData.spellUtil[0].xOffset, spellSpawnData.spellUtil[0].yOffset);
-                                }
+                                //if (projectiles["ice_util"].activeSelf == false)
+                                //{
+                                //    projectiles["ice_util"].SetActive(true);
+                                //    projectiles["ice_util"].GetComponent<IceBlock>().InitProjectile(spellSpawnData.spellUtil[0].xOffset, spellSpawnData.spellUtil[0].yOffset);
+                                //}
+                                projectiles["ice_util"].SetActive(true);
+                                projectiles["ice_util"].GetComponent<IceBlock>().InitProjectile(spellSpawnData.spellUtil[0].xOffset, spellSpawnData.spellUtil[0].yOffset);
                                 break;
                             case "wind":
                                 if (!projectiles["wind_util"].activeSelf && !projectiles["wind_util"].GetComponent<WindUtility>().projectileActive)

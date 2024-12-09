@@ -32,6 +32,9 @@ public class IceBlock : ProjectileBehavior
     // Update is called once per frame
     protected override void FixedUpdate()
     {
+        //reset box collider
+        //boxCollider.enabled = false;
+        //boxCollider.enabled = true;
         grounded = IsGrounded();
         collidedCeiling = IsTouchingCeiling();
 
@@ -107,6 +110,11 @@ public class IceBlock : ProjectileBehavior
     //spawn a block in front of the player
     public override void InitProjectile(int spawnX, int spawnY)
     {
+        gameObject.SetActive(false);
+        gameObject.SetActive(true);
+
+        timer = 0;
+        gameObject.GetComponent<Animator>().SetTrigger("restart");
         if (owner == null)
         {
             Debug.Log("Block owner not set");
@@ -117,6 +125,7 @@ public class IceBlock : ProjectileBehavior
         facingRight = owner.GetComponent<Player>() != null ? owner.GetComponent<Player>().facingRight : (owner.GetComponent<Enemy>() != null ? owner.GetComponent<Enemy>().facingRight : true);
 
         gameObject.transform.position = new Vector3(owner.transform.position.x + spawnX * (facingRight ? 1 : -1), owner.transform.position.y + spawnY, 0);
+        
     }
 
     #region Collision Detection

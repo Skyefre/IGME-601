@@ -95,23 +95,24 @@ public class WindUtility : ProjectileBehavior
     //spawn the wind blast in front of the player
     public override void InitProjectile(int spawnX, int spawnY)
     {
-        if (owner == null)
-        {
-            Debug.Log("Wind Util owner not set");
-            return;
-        }
-        projectileActive = true;
-        facingRight = owner.GetComponent<Player>() != null ? owner.GetComponent<Player>().facingRight : (owner.GetComponent<Enemy>() != null ? owner.GetComponent<Enemy>().facingRight : true);
-        if (hitbox != null)
-        {
-            hitbox.GetComponent<Hitbox>().owner = gameObject;
-            hitbox.GetComponent<Hitbox>().isProjectile = true;
-            hitbox.GetComponent<Hitbox>().ignoreHurtboxes.Clear();
-            hitbox.GetComponent<Hitbox>().updateHitbox(damage, 0, 0, width, height, xKnockback, yKnockback, hitstun);
-        }
+        //if (owner == null)
+        //{
+        //    Debug.Log("Wind Util owner not set");
+        //    return;
+        //}
+        //projectileActive = true;
+        //facingRight = owner.GetComponent<Player>() != null ? owner.GetComponent<Player>().facingRight : (owner.GetComponent<Enemy>() != null ? owner.GetComponent<Enemy>().facingRight : true);
+        //if (hitbox != null)
+        //{
+        //    hitbox.GetComponent<Hitbox>().owner = gameObject;
+        //    hitbox.GetComponent<Hitbox>().isProjectile = true;
+        //    hitbox.GetComponent<Hitbox>().ignoreHurtboxes.Clear();
+        //    hitbox.GetComponent<Hitbox>().updateHitbox(damage, 0, 0, width, height, xKnockback, yKnockback, hitstun);
+        //}
 
-        hspd = Mathf.Abs(hspd) * (facingRight ? 1 : -1);
-        gameObject.transform.position = new Vector3(owner.transform.position.x + spawnX * (facingRight ? 1 : -1), owner.transform.position.y + spawnY, 0);
-        DontDestroyOnLoad(gameObject);
+        //hspd = Mathf.Abs(hspd) * (facingRight ? 1 : -1);
+        //gameObject.transform.position = new Vector3(owner.transform.position.x + spawnX * (facingRight ? 1 : -1), owner.transform.position.y + spawnY, 0);
+        //DontDestroyOnLoad(gameObject);
+        base.InitProjectile(spawnX, spawnY);
     }
 }

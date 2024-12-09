@@ -69,6 +69,8 @@ public class ProjectileBehavior : MonoBehaviour
 
     public virtual void InitProjectile(int spawnX, int spawnY)
     {
+        timer = 0;
+        gameObject.GetComponent<Animator>().SetTrigger("restart");
         if(owner == null)
         {
             Debug.Log("Projectile owner not set");
