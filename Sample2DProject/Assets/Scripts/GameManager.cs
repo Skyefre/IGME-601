@@ -16,6 +16,10 @@ public class GameManager : MonoBehaviour
     public List<string> p1Shards;
     public List<string> p2Shards;
     public List<string> globalShardList;
+    public AudioSource Audio;
+    public AudioClip LobbyMusic;
+    public AudioClip BattleMusic;
+
 
     private Dictionary<InputHandler.Inputs, InputHandler.InputState> inputs;
 
@@ -39,6 +43,10 @@ public class GameManager : MonoBehaviour
         ShardsCollected = 0;
         ShardlingsCollected = 0;
         stockCount = 5;
+        Audio.clip = LobbyMusic;
+        Audio.Play();
+
+
     }
 
 

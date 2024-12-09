@@ -76,7 +76,10 @@ public class ScreenTransitioner : MonoBehaviour
             {
                 GameManager.Instance.players[i].transform.position = new Vector3(-6674f, -111.1f);
                 GameManager.Instance.players[i].GetComponent<Player>().ResetBoxCollider();
+
             }
+            GameManager.Instance.Audio.clip = GameManager.Instance.BattleMusic;
+            GameManager.Instance.Audio.Play();
         }
         else
         {
