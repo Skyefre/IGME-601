@@ -15759,15 +15759,6 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -0.40000153
       objectReference: {fileID: 0}
-<<<<<<< Updated upstream
-    - target: {fileID: 4511302746459253086, guid: 9314197c5595ba84f856a1e68eb0737f, type: 3}
-      propertyPath: m_text
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4677925326679624256, guid: 9314197c5595ba84f856a1e68eb0737f, type: 3}
-      propertyPath: m_Name
-      value: ShardlingCount
-=======
     - target: {fileID: 3279068900433643487, guid: 9314197c5595ba84f856a1e68eb0737f, type: 3}
       propertyPath: m_PlayerJoinedEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -15779,7 +15770,6 @@ PrefabInstance:
     - target: {fileID: 3847214343481571790, guid: 9314197c5595ba84f856a1e68eb0737f, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: 18.85022
->>>>>>> Stashed changes
       objectReference: {fileID: 0}
     - target: {fileID: 5142133129748719095, guid: 9314197c5595ba84f856a1e68eb0737f, type: 3}
       propertyPath: m_AnchorMax.y
