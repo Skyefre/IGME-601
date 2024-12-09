@@ -3,7 +3,16 @@ guid: de750e9913ec4de4e9d52585248ff63e
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - animator: {instanceID: 0}
+  - baseAnimController: {instanceID: 0}
+  - characterJSON: {instanceID: 0}
+  - currentSpell: {instanceID: 0}
+  - hitboxReference: {instanceID: 0}
+  - hurtboxReference: {instanceID: 0}
+  - audioSource: {instanceID: 0}
+  - ledgeDetector: {instanceID: 0}
+  - deathExplosion: {fileID: 6038608999982862885, guid: e9e2f51ac363621489a9cf03510be684, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
