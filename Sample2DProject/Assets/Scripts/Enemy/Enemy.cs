@@ -3,8 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 //using System.Diagnostics;
 using UnityEngine;
-using static System.TimeZoneInfo;
-using static UnityEditor.PlayerSettings;
 //using static UnityEngine.EventSystems.EventTrigger;
 //using static Enemy;
 
