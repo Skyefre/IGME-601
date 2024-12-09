@@ -15771,6 +15771,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.x
       value: 18.85022
       objectReference: {fileID: 0}
+    - target: {fileID: 4677925326679624256, guid: 9314197c5595ba84f856a1e68eb0737f, type: 3}
+      propertyPath: m_Name
+      value: ShardlingCount
+      objectReference: {fileID: 0}
     - target: {fileID: 5142133129748719095, guid: 9314197c5595ba84f856a1e68eb0737f, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
