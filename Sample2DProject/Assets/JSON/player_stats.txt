@@ -206,7 +206,7 @@
 				"spellAttackImpulseData": [],
 				"spellUtilImpulseData": [
 					{
-						"xImpulse": -10,
+						"xImpulse": -7,
 						"yImpulse": 4
 					}
 				]
@@ -396,19 +396,19 @@
 				[
 					{
 						"xImpulse": 10,
-						"yImpulse": 10
-					},
-					{
-						"xImpulse": 15,
-						"yImpulse": 10
-					},
-					{
-						"xImpulse": 15,
 						"yImpulse": 5
 					},
 					{
 						"xImpulse": 15,
 						"yImpulse": 10
+					},
+					{
+						"xImpulse": 10,
+						"yImpulse": 5
+					},
+					{
+						"xImpulse": 10,
+						"yImpulse": 5
 					}
 				]
 			},
@@ -558,7 +558,7 @@
 			"spellSpawnData": {
 				"spellAttack": [
 					{
-						"xOffset": 64,
+						"xOffset": 128,
 						"yOffset": 45
 					}
 				],
@@ -597,15 +597,15 @@
 				[
 					{
 						"xImpulse": 0,
-						"yImpulse": 20
+						"yImpulse": 10
 					},
 					{
 						"xImpulse": 0,
-						"yImpulse": 20
+						"yImpulse": 10
 					},
 					{
 						"xImpulse": 0,
-						"yImpulse": 20
+						"yImpulse": 10
 					},
 					{
 						"xImpulse": 0,

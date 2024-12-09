@@ -46,16 +46,17 @@ public class InteractableHurtbox : Hurtbox
                 hitEnemy = hitHitbox.owner.GetComponent<Enemy>();
                 hitboxOwner = hitHitbox.owner;
             }
+
+            if (hitHitbox.owner.tag != targetElementTag)
+            {
+                return;
+            }
         }
         else
         {
             hitboxOwner = null;
             hitPlayer = null;
             hitEnemy = null;
-        }
-
-        if (hitHitbox.owner.tag != targetElementTag)
-        {
             return;
         }
 

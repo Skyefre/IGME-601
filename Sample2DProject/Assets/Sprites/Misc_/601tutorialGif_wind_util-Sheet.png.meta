@@ -1,0 +1,721 @@
+fileFormatVersion: 2
+guid: aa87aa6f04c9af4449ddc6649e2f30d8
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 0.5
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: 601tutorialGif_wind_util-Sheet_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 225
+        width: 160
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8bca2260409e6bb43925bb663f393799
+      internalID: 741248576
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 601tutorialGif_wind_util-Sheet_1
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 225
+        width: 160
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d810eb97d8d164a44ba18d2777e8ee68
+      internalID: 724526487
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 601tutorialGif_wind_util-Sheet_2
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 225
+        width: 160
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f3585a80ca0a2024bbf0872521e04dd7
+      internalID: -524022886
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 601tutorialGif_wind_util-Sheet_3
+      rect:
+        serializedVersion: 2
+        x: 480
+        y: 225
+        width: 160
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 777de2a5b885e60438716dcf29da633e
+      internalID: -1613365579
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 601tutorialGif_wind_util-Sheet_4
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 225
+        width: 160
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cce5a389874b1f04f81113a71a8817df
+      internalID: 1760504254
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 601tutorialGif_wind_util-Sheet_5
+      rect:
+        serializedVersion: 2
+        x: 800
+        y: 225
+        width: 160
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b4041e5a2811f69408c6da9418124533
+      internalID: 1210207572
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 601tutorialGif_wind_util-Sheet_6
+      rect:
+        serializedVersion: 2
+        x: 960
+        y: 225
+        width: 160
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dce5e1448c98f27408a89b72022f3e47
+      internalID: 1024576873
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 601tutorialGif_wind_util-Sheet_7
+      rect:
+        serializedVersion: 2
+        x: 1120
+        y: 225
+        width: 160
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aa935f7ad9db36f48b14bacd105b650b
+      internalID: 360542478
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 601tutorialGif_wind_util-Sheet_8
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 150
+        width: 160
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ec2154f339affb649b70edb4c7726eb7
+      internalID: -750435388
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 601tutorialGif_wind_util-Sheet_9
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 150
+        width: 160
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fb4c76d281ba85448a2f1250fd00a89d
+      internalID: -227377916
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 601tutorialGif_wind_util-Sheet_10
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 150
+        width: 160
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2ae89d5e2ffd8264ba4be89088b8fb4c
+      internalID: -1169364817
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 601tutorialGif_wind_util-Sheet_11
+      rect:
+        serializedVersion: 2
+        x: 480
+        y: 150
+        width: 160
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e35542e012edada4b8db0a5c396bf8a6
+      internalID: 1985673859
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 601tutorialGif_wind_util-Sheet_12
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 150
+        width: 160
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cff1aaebc6ad35e4cb39ec3821803b77
+      internalID: 1188546046
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 601tutorialGif_wind_util-Sheet_13
+      rect:
+        serializedVersion: 2
+        x: 800
+        y: 150
+        width: 160
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f774f0a079f4ef648872bdf9a98b95a5
+      internalID: 1736177014
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 601tutorialGif_wind_util-Sheet_14
+      rect:
+        serializedVersion: 2
+        x: 960
+        y: 150
+        width: 160
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fe98396fdfd55ed4dafdd7d1dca6d03a
+      internalID: -1054229726
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 601tutorialGif_wind_util-Sheet_15
+      rect:
+        serializedVersion: 2
+        x: 1120
+        y: 150
+        width: 160
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8d3e84f1f5916ca4992398d4f687f31f
+      internalID: -694031467
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 601tutorialGif_wind_util-Sheet_16
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 75
+        width: 160
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e3d04f038f6cc64479165696be03763b
+      internalID: -1508604170
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 601tutorialGif_wind_util-Sheet_17
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 75
+        width: 160
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4ae396208bda414459c984f8c7d1f565
+      internalID: -805300823
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 601tutorialGif_wind_util-Sheet_18
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 75
+        width: 160
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 573fd5a3796b53e48b428d18196f30d6
+      internalID: 1195711119
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 601tutorialGif_wind_util-Sheet_19
+      rect:
+        serializedVersion: 2
+        x: 480
+        y: 75
+        width: 160
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f320c910141584d4fba2813481acec31
+      internalID: 750180585
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 601tutorialGif_wind_util-Sheet_20
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 75
+        width: 160
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 00592b3b2a5d7c040a441c4ba39196bf
+      internalID: 797181160
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 601tutorialGif_wind_util-Sheet_21
+      rect:
+        serializedVersion: 2
+        x: 800
+        y: 75
+        width: 160
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c367d911e4c00d347b605036f832d514
+      internalID: 207583494
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 601tutorialGif_wind_util-Sheet_22
+      rect:
+        serializedVersion: 2
+        x: 960
+        y: 75
+        width: 160
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3d0b50ee478c72d489b95577f1ece224
+      internalID: 1677287404
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 601tutorialGif_wind_util-Sheet_23
+      rect:
+        serializedVersion: 2
+        x: 1120
+        y: 75
+        width: 160
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a426184c1922ad34ca1bb2652f2f5ebe
+      internalID: -290834899
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 601tutorialGif_wind_util-Sheet_24
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 160
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 389f3d72bef861b41b6a80efe8a6b075
+      internalID: -720794105
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 601tutorialGif_wind_util-Sheet_25
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 0
+        width: 160
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 38bcdfaa6d242254a90570f509290ca8
+      internalID: 1611876331
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 601tutorialGif_wind_util-Sheet_26
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 0
+        width: 160
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fc9abf1f18e0e26448cb9ce66009dc4b
+      internalID: 1980569472
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      601tutorialGif_wind_util-Sheet_0: 741248576
+      601tutorialGif_wind_util-Sheet_1: 724526487
+      601tutorialGif_wind_util-Sheet_10: -1169364817
+      601tutorialGif_wind_util-Sheet_11: 1985673859
+      601tutorialGif_wind_util-Sheet_12: 1188546046
+      601tutorialGif_wind_util-Sheet_13: 1736177014
+      601tutorialGif_wind_util-Sheet_14: -1054229726
+      601tutorialGif_wind_util-Sheet_15: -694031467
+      601tutorialGif_wind_util-Sheet_16: -1508604170
+      601tutorialGif_wind_util-Sheet_17: -805300823
+      601tutorialGif_wind_util-Sheet_18: 1195711119
+      601tutorialGif_wind_util-Sheet_19: 750180585
+      601tutorialGif_wind_util-Sheet_2: -524022886
+      601tutorialGif_wind_util-Sheet_20: 797181160
+      601tutorialGif_wind_util-Sheet_21: 207583494
+      601tutorialGif_wind_util-Sheet_22: 1677287404
+      601tutorialGif_wind_util-Sheet_23: -290834899
+      601tutorialGif_wind_util-Sheet_24: -720794105
+      601tutorialGif_wind_util-Sheet_25: 1611876331
+      601tutorialGif_wind_util-Sheet_26: 1980569472
+      601tutorialGif_wind_util-Sheet_3: -1613365579
+      601tutorialGif_wind_util-Sheet_4: 1760504254
+      601tutorialGif_wind_util-Sheet_5: 1210207572
+      601tutorialGif_wind_util-Sheet_6: 1024576873
+      601tutorialGif_wind_util-Sheet_7: 360542478
+      601tutorialGif_wind_util-Sheet_8: -750435388
+      601tutorialGif_wind_util-Sheet_9: -227377916
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

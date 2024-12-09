@@ -6,7 +6,7 @@ using static Player;
 
 public class IceBlock : ProjectileBehavior
 {
-    
+
     public GameObject hurtbox;
     public int gravity = 1;
     public int maxHspd = 10;
@@ -65,7 +65,7 @@ public class IceBlock : ProjectileBehavior
                 }
             }
         }
-        
+
         // check for ceiling
         collidedCeiling = IsTouchingCeiling();
         if (collidedCeiling.collider != null)
@@ -128,8 +128,8 @@ public class IceBlock : ProjectileBehavior
         rayLength = -(vspd - 5);
 
         // Calculate the positions for the left and right rays
-        Vector2 leftRayOrigin = new Vector2(bounds.min.x + rayOffset.x, bounds.min.y +1);
-        Vector2 rightRayOrigin = new Vector2(bounds.max.x - rayOffset.x, bounds.min.y+1);
+        Vector2 leftRayOrigin = new Vector2(bounds.min.x + rayOffset.x, bounds.min.y + 1);
+        Vector2 rightRayOrigin = new Vector2(bounds.max.x - rayOffset.x, bounds.min.y + 1);
 
         // Cast rays downwards
         RaycastHit2D[] leftHits = Physics2D.RaycastAll(leftRayOrigin, Vector2.down, rayLength, groundLayer);
@@ -144,7 +144,7 @@ public class IceBlock : ProjectileBehavior
             //check if the first hit is the block itself
             if (leftHits[0].collider.gameObject == gameObject)
             {
-                if(leftHits.Length > 1)
+                if (leftHits.Length > 1)
                 {
                     leftHit = leftHits[1];
                 }
@@ -239,12 +239,12 @@ public class IceBlock : ProjectileBehavior
         // Cast rays to the left and right
         RaycastHit2D[] topLeftHits = Physics2D.RaycastAll(topLeftRayOrigin, Vector2.right, rayLength, groundLayer);
         RaycastHit2D[] bottomLeftHits = Physics2D.RaycastAll(bottomLeftRayOrigin, Vector2.right, rayLength, groundLayer);
-        RaycastHit2D[]centerLeftHits = Physics2D.RaycastAll(centerLeftRayOrigin, Vector2.right, rayLength, groundLayer);
+        RaycastHit2D[] centerLeftHits = Physics2D.RaycastAll(centerLeftRayOrigin, Vector2.right, rayLength, groundLayer);
         RaycastHit2D[] topRightHits = Physics2D.RaycastAll(topRightRayOrigin, Vector2.right, rayLength, groundLayer);
         RaycastHit2D[] bottomRightHits = Physics2D.RaycastAll(bottomRightRayOrigin, Vector2.right, rayLength, groundLayer);
         RaycastHit2D[] centerRightHits = Physics2D.RaycastAll(centerRightRayOrigin, Vector2.right, rayLength, groundLayer);
 
-        RaycastHit2D topLeftHit; 
+        RaycastHit2D topLeftHit;
         RaycastHit2D bottomLeftHit;
         RaycastHit2D centerLeftHit;
         RaycastHit2D topRightHit;
@@ -308,7 +308,7 @@ public class IceBlock : ProjectileBehavior
             //check if the first hit is the block itself
             if (centerLeftHits[0].collider.gameObject == gameObject)
             {
-                if(centerLeftHits.Length > 1)
+                if (centerLeftHits.Length > 1)
                 {
                     centerLeftHit = centerLeftHits[1];
                 }
@@ -448,8 +448,8 @@ public class IceBlock : ProjectileBehavior
         rayLength = vspd;
 
         // Calculate the positions for the left and right rays
-        Vector2 leftRayOrigin = new Vector2(bounds.min.x + rayOffset.x, bounds.max.y-1);
-        Vector2 rightRayOrigin = new Vector2(bounds.max.x - rayOffset.x, bounds.max.y-1);
+        Vector2 leftRayOrigin = new Vector2(bounds.min.x + rayOffset.x, bounds.max.y - 1);
+        Vector2 rightRayOrigin = new Vector2(bounds.max.x - rayOffset.x, bounds.max.y - 1);
 
         // Cast rays upwards
         RaycastHit2D[] leftHits = Physics2D.RaycastAll(leftRayOrigin, Vector2.up, rayLength, groundLayer);
@@ -626,7 +626,7 @@ public class IceBlock : ProjectileBehavior
     public void SnapToCeiling(RaycastHit2D hitRay)
     {
         float ceilingYVal = getColliderCeiling(hitRay.point.x, hitRay.collider);
-        gameObject.transform.position = new Vector3(gameObject.transform.position.x, ceilingYVal - boxCollider.bounds.size.y/2 - 1, 0);
+        gameObject.transform.position = new Vector3(gameObject.transform.position.x, ceilingYVal - boxCollider.bounds.size.y / 2 - 1, 0);
     }
     #endregion
 
@@ -662,4 +662,18 @@ public class IceBlock : ProjectileBehavior
 
 
     }
+
+    //private void OnTriggerEnter2D(Collider2D collision)
+    //{
+    //    if (collision.gameObject.tag == "Player")
+    //    {
+    //        if (collision.gameObject != gameObject)
+    //        {
+    //            DestroyProjectile();
+    //        }
+    //    }
+    //}
+
+
 }
+

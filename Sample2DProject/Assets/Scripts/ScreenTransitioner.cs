@@ -74,7 +74,7 @@ public class ScreenTransitioner : MonoBehaviour
         {
             for (int i = 0; i < GameManager.Instance.players.Length; i++)
             {
-                GameManager.Instance.players[i].transform.position = new Vector3(-2664f, -111.1f);
+                GameManager.Instance.players[i].transform.position = new Vector3(-6674f, -111.1f);
                 GameManager.Instance.players[i].GetComponent<Player>().ResetBoxCollider();
             }
         }
