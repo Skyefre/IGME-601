@@ -53,7 +53,7 @@ public class LevelTP : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (SceneManager.GetActiveScene().name == "TestScene")
+        if (SceneManager.GetActiveScene().name == "FinalLevel")
         {
             CheckLevelComplete();
         }
@@ -73,7 +73,7 @@ public class LevelTP : MonoBehaviour
             {
                 if (GameManager.Instance.ShardsCollected >= 4)
                 {
-                    SceneManager.LoadScene("Win");
+                    GameManager.Instance.LoadScene("Win");
                 }
             }
 

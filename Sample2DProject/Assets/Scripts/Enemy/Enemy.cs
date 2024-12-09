@@ -1039,6 +1039,7 @@ public class Enemy : MonoBehaviour
         // Create a new GameObject to play the sound
         GameObject audioObject = new GameObject("DeathSound");
         AudioSource audioSource = audioObject.AddComponent<AudioSource>();
+        audioSource.volume = 0.2f;
         audioSource.clip = deathClip;
         audioSource.Play();
 
