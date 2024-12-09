@@ -1059,6 +1059,7 @@ public class Enemy : MonoBehaviour
     public bool CheckForLedge()
     {
         RaycastHit2D hit = Physics2D.Raycast(ledgeDetector.position, Vector2.down, ledgeDetectRayLength, groundLayer);
+        Debug.DrawRay(ledgeDetector.position, Vector2.down * ledgeDetectRayLength, Color.red);
 
         if (hit.collider == null)
             return true;

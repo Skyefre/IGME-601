@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class PatrolState : EnemyBaseState
 {
-    private float lastRotateTime = 0f;
-    private float intervalTime = 5f; 
+    private float patrolRotateTimer = 0f;
+    public float basePatrolRotateVal = 5f;
+    public float patrolRotateVal = 5f;
+    public float patrolRotateValRange = 2f;
 
     public PatrolState(Enemy enemy, string animationName) : base (enemy, animationName)
     {
@@ -40,10 +42,20 @@ public class PatrolState : EnemyBaseState
 
     public override void PhysicsUpdate()
     {
-        if (Time.time > lastRotateTime + intervalTime)
+        //if (Time.time > patrolRotateTimer + patrolRotateVal)
+        //{
+        //    patrolRotateTimer = Time.time;    // Update the last rotate time
+        //    Rotate();
+        //}
+        if(patrolRotateTimer >= patrolRotateVal)
         {
-            lastRotateTime = Time.time;    // Update the last rotate time
+            patrolRotateTimer = 0;
+            patrolRotateVal = Random.Range(basePatrolRotateVal - patrolRotateValRange, basePatrolRotateVal + patrolRotateValRange);
             Rotate();
+        }
+        else
+        {
+            patrolRotateTimer += Time.deltaTime;
         }
 
         

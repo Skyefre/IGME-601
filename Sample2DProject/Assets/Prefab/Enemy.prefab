@@ -259,7 +259,7 @@ MonoBehaviour:
   audioClips:
   - {fileID: 8300000, guid: 67890652db4da2045a2c4fc0d6178659, type: 3}
   - {fileID: 8300000, guid: 2d1e63acca2c00c4abf4ee43de9d0cdf, type: 3}
-  ledgeDetectRayLength: 100
+  ledgeDetectRayLength: 32
   playerDetectRayLength: 256
   meleeDetectRayLength: 32
   obstacleDetectRayLength: 40
