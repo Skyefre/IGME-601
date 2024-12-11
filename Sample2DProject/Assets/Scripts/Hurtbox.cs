@@ -98,49 +98,49 @@ public class Hurtbox : MonoBehaviour
 
             hitHitbox.ignoreHurtboxes.Add(owner);
             hitHitbox.canCancel = true;
-            //if (owner.GetComponent<Player>() != null)
-            //{
-            //    owner.GetComponent<Player>().TakeDamage(hitHitbox.owner, 0 /*players cant damage eachother*/, hitHitbox.xKnockback * (hitPlayer.facingRight ? 1 : -1), hitHitbox.yKnockback, hitHitbox.hitstun);
-            //    owner.GetComponent<Player>().hitstopVal = 10;
-            //    owner.GetComponent<Player>().animator.enabled = false;
-            //}
-            /*else*/ if(owner.GetComponent<Enemy>() != null)
+            if (owner.GetComponent<Player>() != null)
+            {
+                owner.GetComponent<Player>().TakeDamage(hitHitbox.owner, 0, hitHitbox.xKnockback * (hitPlayer.facingRight ? 1 : -1), hitHitbox.yKnockback, hitHitbox.hitstun, overlapCenter, hitHitbox.owner.GetComponent<SpriteRenderer>().material.GetTexture("_PaletteTex"));
+                owner.GetComponent<Player>().hitstopVal = 10;
+                owner.GetComponent<Player>().animator.enabled = false;
+            }
+             if(owner.GetComponent<Enemy>() != null)
             {
                 owner.GetComponent<Enemy>().TakeDamage(hitHitbox.owner, hitHitbox.damage, hitHitbox.xKnockback * (hitPlayer.facingRight ? 1 : -1), hitHitbox.yKnockback, hitHitbox.hitstun, overlapCenter, hitHitbox.owner.GetComponent<SpriteRenderer>().material.GetTexture("_PaletteTex"));
                 owner.GetComponent<Enemy>().hitstopVal = 10;
                 owner.GetComponent<Enemy>().animator.enabled = false;
 
-                //if the hitbox is a projectile, destroy it
-                if (hitHitbox.isProjectile)
-                {
-                    if (hitHitbox.owner.gameObject.tag == "ice" || hitHitbox.owner.gameObject.tag == "wind")
-                    {
-                        hitHitbox.owner.GetComponent<ProjectileBehavior>().DestroyProjectile();
-                    }
-                    else
-                    {
-                        hitHitbox.gameObject.SetActive(false);
-                    }
-                }
+                ////if the hitbox is a projectile, destroy it
+                //if (hitHitbox.isProjectile)
+                //{
+                //    if (hitHitbox.owner.gameObject.tag == "ice" || hitHitbox.owner.gameObject.tag == "wind")
+                //    {
+                //        hitHitbox.owner.GetComponent<ProjectileBehavior>().DestroyProjectile();
+                //    }
+                //    else
+                //    {
+                //        hitHitbox.gameObject.SetActive(false);
+                //    }
+                //}
 
-                hitPlayer.hitstopVal = 10;
-                hitPlayer.animator.enabled = false;
-                GameManager.Instance.gameObject.GetComponent<CameraShake>().Shake(3f, (1f / 6f)); //shake the camera when hit
+                //hitPlayer.hitstopVal = 10;
+                //hitPlayer.animator.enabled = false;
+                //GameManager.Instance.gameObject.GetComponent<CameraShake>().Shake(3f, (1f / 6f)); //shake the camera when hit
             }
             else
             {
                 Debug.Log("Hurtbox owner is not a player or enemy");
             }
 
-            ////if the hitbox is a projectile, destroy it
-            //if (hitHitbox.isProjectile)
-            //{
-            //    hitHitbox.owner.GetComponent<ProjectileBehavior>().DestroyProjectile();
-            //}
+            //if the hitbox is a projectile, destroy it
+            if (hitHitbox.isProjectile)
+            {
+                hitHitbox.owner.GetComponent<ProjectileBehavior>().DestroyProjectile();
+            }
 
-            //hitPlayer.hitstopVal = 10;
-            //hitPlayer.animator.enabled = false;
-            //GameManager.Instance.gameObject.GetComponent<CameraShake>().Shake(3f, (1f/6f)); //shake the camera when hit
+            hitPlayer.hitstopVal = 10;
+            hitPlayer.animator.enabled = false;
+            GameManager.Instance.gameObject.GetComponent<CameraShake>().Shake(3f, (1f/6f)); //shake the camera when hit
         }
         else if(hitHitbox != null && hitboxOwner != this.owner && (!hitHitbox.ignoreHurtboxes.Contains(owner)) && hitEnemy != null)//the thing that hit you is an enemy
         {
